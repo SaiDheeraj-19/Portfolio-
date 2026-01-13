@@ -1,14 +1,9 @@
 "use client";
 
-import { UploadButton } from "@/utils/uploadthing";
-// Wait, I need to create utils first if not exist, or import from lib?
-// usually utils is: import { generateUploadButton } from "@uploadthing/react";
-// let's define it inline or use a new utils file.
-
 import { generateUploadButton } from "@uploadthing/react";
 import type { OurFileRouter } from "@/app/api/uploadthing/core";
 
-export const UploadButtonField = generateUploadButton<OurFileRouter>();
+export const UploadButton = generateUploadButton<OurFileRouter>();
 
 export default function TestUploadPage() {
     return (
@@ -16,7 +11,7 @@ export default function TestUploadPage() {
             <h1 className="mb-8 text-4xl font-bold">Upload Test</h1>
 
             <div className="p-8 border border-white/20 rounded-xl bg-neutral-900">
-                <UploadButtonField
+                <UploadButton
                     endpoint="imageUploader"
                     onClientUploadComplete={(res) => {
                         console.log("Files: ", res);
