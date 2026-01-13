@@ -143,7 +143,7 @@ npm start
 
 - **LinkedIn**: [https://www.linkedin.com/in/sai-dheeraj-a1145830b/](https://www.linkedin.com/in/sai-dheeraj-a1145830b/)
 - **GitHub**: [https://github.com/SaiDheeraj-19](https://github.com/SaiDheeraj-19)
-- **Email**: contact@example.com
+- **Email**: 16saidheeraj@gmail.com
 
 ## 📄 License
 
