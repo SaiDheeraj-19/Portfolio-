@@ -5,4 +5,4 @@ export const { GET, POST } = createRouteHandler({
     router: ourFileRouter,
 });
 
-export const config = { runtime: "nodejs" };
+export const runtime = "nodejs";
