@@ -1,6 +1,11 @@
 import { createUploadthing, type FileRouter } from "uploadthing/next";
 
-const f = createUploadthing();
+const f = createUploadthing({
+    errorFormatter: (err) => {
+        console.log("Uploadthing Error:", err);
+        return { message: err.message };
+    },
+});
 
 export const ourFileRouter = {
     // Route for uploading images (Profile, Projects, etc.)
