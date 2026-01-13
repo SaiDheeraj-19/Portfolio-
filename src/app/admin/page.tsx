@@ -55,7 +55,7 @@ export default function AdminPage() {
         }
     }
 
-    const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>, context: { type: 'project' | 'gallery' | 'cert' | 'profile', pIdx?: number, cat?: string, cIdx?: number, profileField?: 'idCardPhoto' | 'aboutMePhoto' }) => {
+    const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>, context: { type: 'project' | 'gallery' | 'cert' | 'profile', pIdx?: number, cat?: string, cIdx?: number, profileField?: 'idCardPhoto' | 'aboutMePhoto' | 'resumeUrl' }) => {
         const file = e.target.files?.[0];
         if (!file) return;
 
