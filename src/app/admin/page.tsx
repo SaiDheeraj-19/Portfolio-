@@ -96,9 +96,9 @@ export default function AdminPage() {
                     }
                 }
             }
-        } catch (err) {
-            console.error(err)
-            alert("Upload failed")
+        } catch (err: any) {
+            console.error("Upload Error Details:", err)
+            alert(`Upload failed: ${err.message || "Unknown error"}`)
         } finally {
             setUploadingId(null);
         }
