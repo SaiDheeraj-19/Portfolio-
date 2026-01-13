@@ -1,36 +1,154 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sai Dheeraj Portfolio
 
-## Getting Started
+A beautiful, modern portfolio website showcasing projects and professional work. Built with Next.js, TypeScript, and Tailwind CSS.
 
-First, run the development server:
+## 🚀 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Modern Design**: Clean, responsive layout with pastel color scheme
+- **Dark/Light Mode**: Seamless theme switching with system preference detection
+- **Smooth Animations**: Subtle transitions and micro-interactions
+- **Fully Responsive**: Optimized for all device sizes
+- **Accessible**: WCAG 2.2 AA compliant with semantic HTML
+- **Performance Optimized**: Fast loading with optimized assets
+
+## 📁 Project Structure
+
+```
+src/
+├── app/                    # Next.js app router pages
+│   ├── page.tsx           # Landing page
+│   ├── projects/          # Projects showcase
+│   ├── about/             # About me page
+│   ├── contact/           # Contact form
+│   └── layout.tsx         # Root layout
+├── components/
+│   ├── ui/                # Reusable UI components
+│   └── layout/            # Layout components
+├── lib/                   # Utility functions
+└── styles/                # Global styles
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠 Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Framework**: Next.js 16 with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **UI Components**: Radix UI + shadcn/ui
+- **Animations**: Framer Motion
+- **Icons**: Lucide React
+- **Theme**: next-themes
+- **State**: Zustand
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🎨 Design System
 
-## Learn More
+- **Primary Color**: #3B82F6 (Blue)
+- **Secondary Color**: #34D399 (Green)
+- **Typography**: Inter font family
+- **Spacing**: Consistent 4-point grid system
+- **Animations**: Ease-in-out transitions
 
-To learn more about Next.js, take a look at the following resources:
+## 📱 Pages
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Landing Page
+- Hero section with call-to-action
+- Featured projects preview
+- Skills showcase
+- Social links integration
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Projects Page
+- Project gallery with filtering
+- Search functionality
+- Category tabs
+- Live demo and code links
 
-## Deploy on Vercel
+### About Page
+- Personal story
+- Experience timeline
+- Education background
+- Skills overview
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Contact Page
+- Contact form with validation
+- Multiple contact methods
+- FAQ section
+- Social media links
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🚀 Getting Started
+
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd portfolio
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Run development server**
+   ```bash
+   npm run dev
+   ```
+
+4. **Open in browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
+
+## 📝 Customization
+
+### Personal Information
+Update your personal details in:
+- `src/app/page.tsx` - Hero section
+- `src/app/about/page.tsx` - About page
+- `src/app/contact/page.tsx` - Contact information
+
+### Projects
+Add your projects in `src/app/projects/page.tsx` by updating the projects array.
+
+### Social Links
+Update social media links in:
+- `src/components/layout/navbar.tsx`
+- `src/components/layout/footer.tsx`
+
+### Styling
+Customize colors and themes in `src/styles/globals.css`.
+
+## 🌟 Features Implemented
+
+✅ Landing page with hero section  
+✅ Projects showcase with filtering  
+✅ About page with experience timeline  
+✅ Contact page with form validation  
+✅ Dark/light mode toggle  
+✅ Responsive design  
+✅ Smooth animations  
+✅ Accessibility features  
+✅ Performance optimizations  
+✅ Reusable UI components  
+
+## 🚀 Deployment
+
+### Vercel (Recommended)
+1. Push to GitHub
+2. Connect repository to Vercel
+3. Deploy automatically
+
+### Other Platforms
+```bash
+npm run build
+npm start
+```
+
+## 📧 Contact
+
+- **LinkedIn**: [https://www.linkedin.com/in/sai-dheeraj-a1145830b/](https://www.linkedin.com/in/sai-dheeraj-a1145830b/)
+- **GitHub**: [https://github.com/SaiDheeraj-19](https://github.com/SaiDheeraj-19)
+- **Email**: contact@example.com
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+---
+
+Built with ❤️ using Next.js and modern web technologies.

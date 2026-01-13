@@ -1,0 +1,143 @@
+{
+  "certificationsData": {
+    "Oracle Cloud": [
+      {
+        "title": "Generative AI Professional 2025",
+        "img": "/cert_oracle_genai_full.png",
+        "issuer": "Oracle Cloud"
+      },
+      {
+        "title": "AI Foundations Associate 2025",
+        "img": "/cert_oracle_foundations_full.png",
+        "issuer": "Oracle Cloud"
+      }
+    ],
+    "Forage Job Simulations": [
+      {
+        "title": "GenAI Powered Data Analytics",
+        "img": "/cert_tata_genai.png",
+        "issuer": "Tata / Forage"
+      },
+      {
+        "title": "Technology Job Simulation",
+        "img": "/cert_deloitte_tech.png",
+        "issuer": "Deloitte / Forage"
+      }
+    ],
+    "Global": [
+      {
+        "title": "Generative AI Leader",
+        "img": "/cert_google_cloud_genai.png",
+        "issuer": "Google Cloud"
+      },
+      {
+        "title": "Build a Computer Vision App",
+        "img": "/cert_microsoft_vision.png",
+        "issuer": "Microsoft / Coursera"
+      },
+      {
+        "title": "Fundamentals of Deep Learning",
+        "img": "/cert_nvidia_dl.png",
+        "issuer": "NVIDIA DLI"
+      }
+    ],
+    "Professional": [
+      {
+        "title": "Generative AI Mastermind",
+        "img": "/cert_outskill_genai.png",
+        "issuer": "Outskill"
+      },
+      {
+        "title": "Teaching the AI Fluency Framework",
+        "img": "/cert_ai_teaching.png",
+        "issuer": "Anthrop\\C"
+      },
+      {
+        "title": "AI Fluency for Students",
+        "img": "/cert_ai_fluency_student.png",
+        "issuer": "Anthrop\\C"
+      }
+    ]
+  },
+  "projects": [
+    {
+      "title": "AI Commerce Platform",
+      "category": "Full Stack",
+      "description": "A real e-commerce and repair-booking platform replacing manual workflows with digital precision. Features AI instant quotes and real-time tracking.",
+      "details": "This is a real e-commerce and repair-booking platform built for a local mobile repair shop, designed to replace WhatsApp messages, phone calls, and guesswork with a proper digital workflow.\n\nThe system includes an AI-powered Instant Quote engine that:\n• Takes the device model\n• Understands the type of damage\n• Uses live spare-part pricing\n• Returns a realistic repair estimate in seconds\n\nAlongside that, the platform provides:\n• 24/7 repair slot booking\n• An online store for accessories\n• Real-time order and inventory tracking\n• A business dashboard to manage jobs and customers\n\nThis isn’t a demo store — it’s software built to increase trust, reduce friction, and convert visitors into paying customers.",
+      "image": "/fixit_home.png",
+      "gallery": [
+        "/fixit_home.png",
+        "/fixit_store.png",
+        "/fixit_service.png",
+        "/fixit_login.png"
+      ],
+      "tags": [
+        "React 19",
+        "Supabase",
+        "Gemini API",
+        "Real-Time Systems"
+      ],
+      "links": {
+        "demo": "#",
+        "github": "#"
+      }
+    },
+    {
+      "title": "Solvra — Smart Attendance System",
+      "category": "Full Stack",
+      "description": "A fraud-resistant attendance platform using face recognition, geofencing, and QR codes to eliminate proxy attendance.",
+      "details": "A fraud-resistant attendance platform built to eliminate proxy and location-based cheating in educational institutions.\n\nSolvra verifies attendance using three independent signals — student identity (face recognition), physical presence (GPS geofencing), and session-bound QR codes — ensuring only the right student in the right classroom can mark attendance.\n\nThe system includes:\n• Role-based dashboards for Admin, Faculty, and Students\n• Real-time attendance tracking\n• Secure JWT-based authentication\n• Live classroom location validation\n\nBuilt as a full-stack, security-first system designed to work under real classroom conditions.",
+      "image": "/uploads/1768284766473_Screenshot_2026-01-13_at_11.38.21_AM.png",
+      "gallery": [
+        "/uploads/1768285226046_Screenshot_2026-01-13_at_11.38.21_AM.png",
+        "/uploads/1768285229986_Screenshot_2026-01-13_at_11.47.25_AM.png",
+        "/uploads/1768285234461_Screenshot_2026-01-13_at_11.47.36_AM.png",
+        "/uploads/1768285237685_Screenshot_2026-01-13_at_11.47.47_AM.png",
+        "/uploads/1768285750802_Screenshot_2026-01-13_at_11.58.05_AM.png",
+        "/uploads/1768285762618_Screenshot_2026-01-13_at_11.55.30_AM.png",
+        "/uploads/1768285766551_Screenshot_2026-01-13_at_11.55.42_AM.png",
+        "/uploads/1768285769753_Screenshot_2026-01-13_at_11.55.49_AM.png",
+        "/uploads/1768285773467_Screenshot_2026-01-13_at_11.56.24_AM.png",
+        "/uploads/1768285796209_Screenshot_2026-01-13_at_11.57.40_AM.png",
+        "/uploads/1768285801088_Screenshot_2026-01-13_at_11.57.46_AM.png",
+        "/uploads/1768285805094_Screenshot_2026-01-13_at_11.57.53_AM.png"
+      ],
+      "tags": [
+        "MERN Full Stack",
+        "Next.js",
+        "Face Verification",
+        "Geofencing"
+      ],
+      "links": {
+        "demo": "#",
+        "github": "https://github.com/SaiDheeraj-19/Solvra-SmartAttendance"
+      }
+    },
+    {
+      "title": "AI-Powered Multilingual Speech Translation Platform",
+      "category": "AI",
+      "description": "Built a web app that converts speech into text and regional Indian languages (English, Tamil, Telugu, Malayalam, Kannada).\n",
+      "details": "Built a web app that converts speech into text and regional Indian languages (English, Tamil, Telugu, Malayalam, Kannada).\n\nSupports video uploads and YouTube links to generate translated transcripts from any video.\n\nUsed AssemblyAI for accurate speech recognition.\n\nUsed Google Language APIs to create clear, grammatically correct translations.\n\nBuilt the UI with Streamlit for fast and simple user interaction.\n\nAutomatically processes:\nVideo → Audio → Text → Translation → Final Transcript\n\nHelps make English content accessible to regional language users across India.",
+      "image": "/project3.png",
+      "gallery": [],
+      "tags": [
+        "Streamlit",
+        "AssemblyAI",
+        "Speech-to-Text"
+      ],
+      "links": {
+        "demo": "#",
+        "github": "#"
+      }
+    }
+  ],
+  "profile": {
+    "idCardConfig": {
+      "scale": 1,
+      "x": 0,
+      "y": 0
+    },
+    "resumeUrl": "/uploads/1768326558615_R_SAI_DHEERAJ.pdf"
+  }
+}
