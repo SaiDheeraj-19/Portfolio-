@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { Linkedin, Instagram } from "lucide-react"
+import { Linkedin, Instagram, Github } from "lucide-react"
 
 export default function Footer() {
     return (
@@ -14,6 +14,14 @@ export default function Footer() {
                     <div className="space-y-6">
                         <h3 className="text-2xl md:text-3xl font-medium tracking-wide">Find me online:</h3>
                         <div className="flex gap-4">
+                            <Link
+                                href="https://github.com/SaiDheeraj-19"
+                                target="_blank"
+                                className="bg-neutral-800 p-4 rounded-xl hover:bg-white hover:text-black transition-all duration-300"
+                            >
+                                <Github className="w-6 h-6" />
+                            </Link>
+
                             <Link
                                 href="https://www.linkedin.com/in/sai-dheeraj-a1145830b/"
                                 target="_blank"
@@ -50,6 +58,6 @@ export default function Footer() {
                     SAI DHEERAJ
                 </motion.h1>
             </div>
-        </footer>
+        </footer >
     )
 }
