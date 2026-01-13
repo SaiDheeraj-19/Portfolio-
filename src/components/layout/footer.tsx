@@ -12,7 +12,7 @@ export default function Footer() {
 
                     {/* Left Side - Socials */}
                     <div className="space-y-6">
-                        <h3 className="text-2xl md:text-3xl font-medium tracking-wide">Find me online:</h3>
+                        <h3 className="text-2xl md:text-3xl font-medium tracking-wide">Find me online:a</h3>
                         <div className="flex gap-4">
                             <Link
                                 href="https://github.com/SaiDheeraj-19"

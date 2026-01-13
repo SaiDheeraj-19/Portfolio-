@@ -1,9 +1,8 @@
-"use client"
-
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { Save, Plus, Trash2, Lock, LayoutDashboard, FileText, ArrowLeft, Upload, Loader2, Folder, Eye, EyeOff, Settings, Minimize, Maximize, Move, ScanFace } from "lucide-react"
+import { useUploadThing } from "@/lib/uploadthing"
 
 export default function AdminPage() {
     const [password, setPassword] = useState("")
@@ -14,6 +13,9 @@ export default function AdminPage() {
     const [isLoading, setIsLoading] = useState(false)
     const [statusMsg, setStatusMsg] = useState("")
     const [uploadingId, setUploadingId] = useState<string | null>(null) // Track which item is uploading "p-0", "c-Global-1"
+
+    const { startUpload: uploadImage } = useUploadThing("imageUploader")
+    const { startUpload: uploadResume } = useUploadThing("resumeUploader")
 
     // Fetch data on load
     useEffect(() => {
@@ -64,31 +66,31 @@ export default function AdminPage() {
                 : `p-${context.pIdx}`;
         setUploadingId(uploadKey);
 
-        const formData = new FormData();
-        formData.append("file", file);
-
         try {
-            const res = await fetch('/api/upload', {
-                method: 'POST',
-                body: formData
-            });
-            const json = await res.json();
+            let uploadedFiles;
+            if (context.profileField === 'resumeUrl') {
+                uploadedFiles = await uploadResume([file]);
+            } else {
+                uploadedFiles = await uploadImage([file]);
+            }
 
-            if (json.url) {
+            const url = uploadedFiles?.[0]?.url;
+
+            if (url) {
                 if (context.type === 'cert' && context.cat && context.cIdx !== undefined) {
-                    updateCert(context.cat, context.cIdx, "img", json.url)
+                    updateCert(context.cat, context.cIdx, "img", url)
                 }
                 else if (context.type === 'profile' && context.profileField) {
-                    updateProfile(context.profileField, json.url)
+                    updateProfile(context.profileField, url)
                 }
                 else if (context.pIdx !== undefined) {
                     if (context.type === 'gallery') {
                         const newProjects = [...data.projects];
                         const gallery = newProjects[context.pIdx].gallery || [];
-                        newProjects[context.pIdx] = { ...newProjects[context.pIdx], gallery: [...gallery, json.url] };
+                        newProjects[context.pIdx] = { ...newProjects[context.pIdx], gallery: [...gallery, url] };
                         setData({ ...data, projects: newProjects });
                     } else {
-                        updateProject(context.pIdx, "image", json.url);
+                        updateProject(context.pIdx, "image", url);
                     }
                 }
             }
