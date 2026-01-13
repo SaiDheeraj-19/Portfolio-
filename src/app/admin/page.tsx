@@ -295,8 +295,8 @@ export default function AdminPage() {
                                                         >X</button>
                                                     </div>
                                                 ))}
-                                                <label className="w-20 aspect-square bg-neutral-900 rounded-lg border border-dashed border-neutral-700 hover:border-[#ff4d29] flex items-center justify-center cursor-pointer shrink-0 transition-colors">
-                                                    <Plus className="w-5 h-5 text-neutral-500" />
+                                                <label className="w-20 aspect-square bg-neutral-900 rounded-lg border border-dashed border-neutral-700 hover:border-white flex items-center justify-center cursor-pointer shrink-0 transition-colors">
+                                                    {uploadingId === `g-${idx}` ? <Loader2 className="w-5 h-5 animate-spin text-white" /> : <Plus className="w-5 h-5 text-neutral-500" />}
                                                     <input type="file" className="hidden" onChange={(e) => handleFileUpload(e, { type: 'gallery', pIdx: idx })} accept="image/*" />
                                                 </label>
                                             </div>
