@@ -4,7 +4,6 @@ import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { Save, Plus, Trash2, Lock, LayoutDashboard, FileText, ArrowLeft, Upload, Loader2, Folder, Eye, EyeOff, Settings, Minimize, Maximize, Move, ScanFace } from "lucide-react"
-import { useUploadThing } from "@/lib/uploadthing"
 
 export default function AdminPage() {
     const [password, setPassword] = useState("")
@@ -16,8 +15,8 @@ export default function AdminPage() {
     const [statusMsg, setStatusMsg] = useState("")
     const [uploadingId, setUploadingId] = useState<string | null>(null) // Track which item is uploading "p-0", "c-Global-1"
 
-    const { startUpload: uploadImage } = useUploadThing("imageUploader")
-    const { startUpload: uploadResume } = useUploadThing("resumeUploader")
+    // const { startUpload: uploadImage } = useUploadThing("imageUploader")
+    // const { startUpload: uploadResume } = useUploadThing("resumeUploader")
 
     // Fetch data on load
     useEffect(() => {
@@ -59,49 +58,9 @@ export default function AdminPage() {
         }
     }
 
-    const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>, context: { type: 'project' | 'gallery' | 'cert' | 'profile', pIdx?: number, cat?: string, cIdx?: number, profileField?: 'idCardPhoto' | 'aboutMePhoto' | 'resumeUrl' }) => {
-        const file = e.target.files?.[0];
-        if (!file) return;
-
-        const uploadKey = context.type === 'cert' ? `c-${context.cat}-${context.cIdx}`
-            : context.type === 'profile' ? `prof-${context.profileField}`
-                : `p-${context.pIdx}`;
-        setUploadingId(uploadKey);
-
-        try {
-            let uploadedFiles;
-            if (context.profileField === 'resumeUrl') {
-                uploadedFiles = await uploadResume([file]);
-            } else {
-                uploadedFiles = await uploadImage([file]);
-            }
-
-            const url = uploadedFiles?.[0]?.url;
-
-            if (url) {
-                if (context.type === 'cert' && context.cat && context.cIdx !== undefined) {
-                    updateCert(context.cat, context.cIdx, "img", url)
-                }
-                else if (context.type === 'profile' && context.profileField) {
-                    updateProfile(context.profileField, url)
-                }
-                else if (context.pIdx !== undefined) {
-                    if (context.type === 'gallery') {
-                        const newProjects = [...data.projects];
-                        const gallery = newProjects[context.pIdx].gallery || [];
-                        newProjects[context.pIdx] = { ...newProjects[context.pIdx], gallery: [...gallery, url] };
-                        setData({ ...data, projects: newProjects });
-                    } else {
-                        updateProject(context.pIdx, "image", url);
-                    }
-                }
-            }
-        } catch (err: any) {
-            console.error("Upload Error Details:", err)
-            alert(`Upload failed: ${err.message || "Unknown error"}`)
-        } finally {
-            setUploadingId(null);
-        }
+    const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>, context: any) => {
+        alert("⚠️ Cloud Upload is DISABLED.\n\nTo add images:\n1. Add the file to 'public/uploads' locally.\n2. Push to GitHub.\n3. Manually edit the URL in the text field below if needed.");
+        e.target.value = ""; // Reset
     };
 
     // --- Profile Helpers ---
