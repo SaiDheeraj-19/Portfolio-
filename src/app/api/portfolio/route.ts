@@ -6,6 +6,8 @@ import path from 'path';
 // Local file path (fallback/seed)
 const dataFilePath = path.join(process.cwd(), 'src/data/portfolio.json');
 
+export const dynamic = "force-dynamic";
+
 // Initialize Postgres Pool
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
