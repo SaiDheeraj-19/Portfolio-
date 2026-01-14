@@ -1,19 +1,48 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { useRouter } from "next/navigation"
 import Link from "next/link"
-import { Save, Plus, Trash2, Lock, LayoutDashboard, FileText, ArrowLeft, Upload, Loader2, Folder, Eye, EyeOff, Settings, Minimize, Maximize, Move, ScanFace } from "lucide-react"
+import { Save, Plus, Trash2, Lock, LayoutDashboard, FileText, ArrowLeft, Upload, Folder, Eye, EyeOff, Settings, Move, ScanFace } from "lucide-react"
+
+interface Project {
+    title: string;
+    category: string;
+    description: string;
+    details: string;
+    image: string;
+    gallery: string[];
+    tags: string[];
+    links: { demo: string; github: string };
+}
+
+interface Certification {
+    title: string;
+    issuer: string;
+    img: string;
+}
+
+interface Profile {
+    idCardConfig?: { scale: number; x: number; y: number };
+    idCardPhoto?: string;
+    aboutMePhoto?: string;
+    resumeUrl?: string;
+}
+
+interface PortfolioData {
+    projects: Project[];
+    certificationsData: Record<string, Certification[]>;
+    profile: Profile;
+}
 
 export default function AdminPage() {
     const [password, setPassword] = useState("")
     const [showPassword, setShowPassword] = useState(false)
     const [isAuthenticated, setIsAuthenticated] = useState(false)
-    const [data, setData] = useState<any>(null)
+    const [data, setData] = useState<PortfolioData | null>(null)
     const [activeTab, setActiveTab] = useState("projects")
     const [isLoading, setIsLoading] = useState(false)
     const [statusMsg, setStatusMsg] = useState("")
-    const [uploadingId, setUploadingId] = useState<string | null>(null) // Track which item is uploading "p-0", "c-Global-1"
+    // const [uploadingId, setUploadingId] = useState<string | null>(null) // Removed
 
     // const { startUpload: uploadImage } = useUploadThing("imageUploader")
     // const { startUpload: uploadResume } = useUploadThing("resumeUploader")
@@ -58,13 +87,14 @@ export default function AdminPage() {
         }
     }
 
-    const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>, context: any) => {
+    const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
         alert("⚠️ Cloud Upload is DISABLED.\n\nTo add images:\n1. Add the file to 'public/uploads' locally.\n2. Push to GitHub.\n3. Manually edit the URL in the text field below if needed.");
         e.target.value = ""; // Reset
     };
 
     // --- Profile Helpers ---
     const updateProfile = (field: string, value: any) => {
+        if (!data) return;
         const profile = data.profile || { idCardConfig: { scale: 1, x: 0, y: 0 } };
         // If updating config (nested)
         if (field.startsWith('config.')) {
@@ -76,7 +106,7 @@ export default function AdminPage() {
                     idCardConfig: {
                         ...profile.idCardConfig,
                         [configKey]: value
-                    }
+                    } as any
                 }
             });
         } else {
@@ -86,13 +116,15 @@ export default function AdminPage() {
 
     // --- Project Helpers ---
     const updateProject = (idx: number, field: string, value: any) => {
-        const newProjects = [...data.projects]
-        newProjects[idx] = { ...newProjects[idx], [field]: value }
-        setData({ ...data, projects: newProjects })
+        if (!data) return;
+        const newProjects = [...data.projects];
+        newProjects[idx] = { ...newProjects[idx], [field]: value };
+        setData({ ...data, projects: newProjects });
     }
 
     const addProject = () => {
-        const newProject = {
+        if (!data) return;
+        const newProject: Project = {
             title: "New Project",
             category: "Full Stack",
             description: "Description...",
@@ -106,29 +138,34 @@ export default function AdminPage() {
     }
 
     const removeProject = (idx: number) => {
+        if (!data) return;
         if (!confirm("Delete this project?")) return;
-        const newProjects = data.projects.filter((_: any, i: number) => i !== idx)
+        const newProjects = data.projects.filter((_: Project, i: number) => i !== idx)
         setData({ ...data, projects: newProjects })
     }
 
     // --- Cert Helpers ---
     const updateCert = (category: string, idx: number, field: string, value: any) => {
+        if (!data) return;
         const newCerts = { ...data.certificationsData }
+        newCerts[category] = [...newCerts[category]]
         newCerts[category] = [...newCerts[category]]
         newCerts[category][idx] = { ...newCerts[category][idx], [field]: value }
         setData({ ...data, certificationsData: newCerts })
     }
 
     const addCert = (category: string) => {
+        if (!data) return;
         const newCerts = { ...data.certificationsData }
         newCerts[category] = [...newCerts[category], { title: "New Cert", issuer: "Issuer", img: "" }]
         setData({ ...data, certificationsData: newCerts })
     }
 
     const removeCert = (category: string, idx: number) => {
+        if (!data) return;
         if (!confirm("Delete this certificate?")) return;
         const newCerts = { ...data.certificationsData }
-        newCerts[category] = newCerts[category].filter((_: any, i: number) => i !== idx)
+        newCerts[category] = newCerts[category].filter((_: Certification, i: number) => i !== idx)
         setData({ ...data, certificationsData: newCerts })
     }
 
@@ -217,7 +254,7 @@ export default function AdminPage() {
 
                 {activeTab === "projects" && (
                     <div className="grid grid-cols-1 gap-8">
-                        {data.projects.map((project: any, idx: number) => (
+                        {data.projects.map((project: Project, idx: number) => (
                             <div key={idx} className="bg-neutral-900/50 border border-neutral-800 p-6 rounded-2xl flex flex-col md:flex-row gap-8 relative overflow-hidden group">
                                 <div className="flex-1 space-y-4">
 
@@ -235,8 +272,8 @@ export default function AdminPage() {
                                                     <div className="absolute inset-0 flex items-center justify-center text-xs text-neutral-600">No Image</div>
                                                 )}
                                                 <label className="absolute inset-0 bg-black/60 opacity-0 group-hover/img:opacity-100 flex items-center justify-center cursor-pointer transition-opacity">
-                                                    {uploadingId === `p-${idx}` ? <Loader2 className="animate-spin w-4 h-4 text-white" /> : <span className="text-[10px] uppercase font-bold text-white">Change Main</span>}
-                                                    <input type="file" className="hidden" onChange={(e) => handleFileUpload(e, { type: 'project', pIdx: idx })} accept="image/*" />
+                                                    <span className="text-[10px] uppercase font-bold text-white">Change Main</span>
+                                                    <input type="file" className="hidden" onChange={(e) => handleFileUpload(e)} accept="image/*" />
                                                 </label>
                                             </div>
 
@@ -247,7 +284,7 @@ export default function AdminPage() {
                                                         <img src={g} className="w-full h-full object-cover" alt="Gallery" />
                                                         <button
                                                             onClick={() => {
-                                                                const newGallery = project.gallery.filter((_: any, x: number) => x !== i);
+                                                                const newGallery = project.gallery.filter((_: string, x: number) => x !== i);
                                                                 updateProject(idx, "gallery", newGallery);
                                                             }}
                                                             className="absolute inset-0 bg-red-500/80 opacity-0 group-hover/gItem:opacity-100 flex items-center justify-center text-white font-bold text-xs"
@@ -255,8 +292,8 @@ export default function AdminPage() {
                                                     </div>
                                                 ))}
                                                 <label className="w-20 aspect-square bg-neutral-900 rounded-lg border border-dashed border-neutral-700 hover:border-white flex items-center justify-center cursor-pointer shrink-0 transition-colors">
-                                                    {uploadingId === `g-${idx}` ? <Loader2 className="w-5 h-5 animate-spin text-white" /> : <Plus className="w-5 h-5 text-neutral-500" />}
-                                                    <input type="file" className="hidden" onChange={(e) => handleFileUpload(e, { type: 'gallery', pIdx: idx })} accept="image/*" />
+                                                    <Plus className="w-5 h-5 text-neutral-500" />
+                                                    <input type="file" className="hidden" onChange={(e) => handleFileUpload(e)} accept="image/*" />
                                                 </label>
                                             </div>
                                         </div>
@@ -307,7 +344,7 @@ export default function AdminPage() {
                                                     {tag}
                                                     <button
                                                         onClick={() => {
-                                                            const newTags = project.tags.filter((_: any, i: number) => i !== tIdx)
+                                                            const newTags = project.tags.filter((_: string, i: number) => i !== tIdx)
                                                             updateProject(idx, "tags", newTags)
                                                         }}
                                                         className="hover:text-red-500 font-bold ml-1 opacity-0 group-hover/tag:opacity-100 transition-opacity"
@@ -376,7 +413,7 @@ export default function AdminPage() {
                                 </h2>
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                    {data.certificationsData[category].map((cert: any, cIdx: number) => (
+                                    {data.certificationsData[category].map((cert: Certification, cIdx: number) => (
                                         <div key={cIdx} className="bg-black border border-neutral-800 rounded-xl overflow-hidden group">
                                             <div className="aspect-[4/3] bg-neutral-900 relative">
                                                 {cert.img ? (
@@ -386,8 +423,8 @@ export default function AdminPage() {
                                                 )}
 
                                                 <label className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 flex items-center justify-center cursor-pointer transition-opacity z-10">
-                                                    {uploadingId === `c-${category}-${cIdx}` ? <Loader2 className="animate-spin w-6 h-6 text-white" /> : <Upload className="w-6 h-6 text-white" />}
-                                                    <input type="file" className="hidden" onChange={(e) => handleFileUpload(e, { type: 'cert', cat: category, cIdx })} accept="image/*" />
+                                                    <Upload className="w-6 h-6 text-white" />
+                                                    <input type="file" className="hidden" onChange={(e) => handleFileUpload(e)} accept="image/*" />
                                                 </label>
 
                                                 <button
@@ -481,10 +518,10 @@ export default function AdminPage() {
                                         <label className="block text-xs font-bold text-neutral-400 uppercase mb-3">Upload New Photo</label>
                                         <label className="flex items-center gap-3 cursor-pointer bg-neutral-900 hover:bg-neutral-800 p-4 rounded-xl border border-neutral-800 transition-colors group">
                                             <div className="w-10 h-10 rounded-full bg-neutral-800 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-colors">
-                                                {uploadingId === 'prof-idCardPhoto' ? <Loader2 className="w-5 h-5 animate-spin" /> : <Upload className="w-5 h-5" />}
+                                                <Upload className="w-5 h-5" />
                                             </div>
                                             <span className="font-medium text-neutral-300 group-hover:text-white">Choose Image file...</span>
-                                            <input type="file" className="hidden" onChange={(e) => handleFileUpload(e, { type: 'profile', profileField: 'idCardPhoto' })} accept="image/*" />
+                                            <input type="file" className="hidden" onChange={(e) => handleFileUpload(e)} accept="image/*" />
                                         </label>
                                     </div>
 
@@ -554,9 +591,9 @@ export default function AdminPage() {
                                 </div>
                                 <div className="flex-1">
                                     <label className="inline-flex items-center gap-3 cursor-pointer bg-white hover:bg-neutral-200 text-black px-6 py-3 rounded-xl font-bold transition-colors">
-                                        {uploadingId === 'prof-aboutMePhoto' ? <Loader2 className="w-5 h-5 animate-spin" /> : <Upload className="w-5 h-5" />}
+                                        <Upload className="w-5 h-5" />
                                         <span>Upload Photo</span>
-                                        <input type="file" className="hidden" onChange={(e) => handleFileUpload(e, { type: 'profile', profileField: 'aboutMePhoto' })} accept="image/*" />
+                                        <input type="file" className="hidden" onChange={(e) => handleFileUpload(e)} accept="image/*" />
                                     </label>
                                 </div>
                             </div>
@@ -572,9 +609,9 @@ export default function AdminPage() {
                             <div className="flex items-center gap-6">
                                 <div className="flex-1">
                                     <label className="inline-flex items-center gap-3 cursor-pointer bg-white hover:bg-neutral-200 text-black px-6 py-3 rounded-xl font-bold transition-colors">
-                                        {uploadingId === 'prof-resumeUrl' ? <Loader2 className="w-5 h-5 animate-spin" /> : <Upload className="w-5 h-5" />}
+                                        <Upload className="w-5 h-5" />
                                         <span>Upload Resume</span>
-                                        <input type="file" className="hidden" onChange={(e) => handleFileUpload(e, { type: 'profile', profileField: 'resumeUrl' })} accept=".pdf,.doc,.docx" />
+                                        <input type="file" className="hidden" onChange={(e) => handleFileUpload(e)} accept=".pdf,.doc,.docx" />
                                     </label>
                                 </div>
                                 {data.profile?.resumeUrl && (
