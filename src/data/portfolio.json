@@ -120,7 +120,11 @@
       "description": "Built a web app that converts speech into text and regional Indian languages (English, Tamil, Telugu, Malayalam, Kannada).\n",
       "details": "Built a web app that converts speech into text and regional Indian languages (English, Tamil, Telugu, Malayalam, Kannada).\n\nSupports video uploads and YouTube links to generate translated transcripts from any video.\n\nUsed AssemblyAI for accurate speech recognition.\n\nUsed Google Language APIs to create clear, grammatically correct translations.\n\nBuilt the UI with Streamlit for fast and simple user interaction.\n\nAutomatically processes:\nVideo → Audio → Text → Translation → Final Transcript\n\nHelps make English content accessible to regional language users across India.",
       "image": "/uploads/1768331606398_Gemini_Generated_Image_ec9qsjec9qsjec9q.jpeg",
-      "gallery": [],
+      "gallery": [
+        "/projects/aura/aura-preview-1.png",
+        "/projects/aura/aura-preview-2.png",
+        "/projects/aura/aura-preview-3.png"
+      ],
       "tags": [
         "Streamlit",
         "AssemblyAI",
