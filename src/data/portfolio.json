@@ -3,58 +3,58 @@
     "Oracle Cloud": [
       {
         "title": "Generative AI Professional 2025",
-        "img": "/cert_oracle_genai_full.png",
+        "img": "/certifications/oracle_gen_ai_prof_cert.png",
         "issuer": "Oracle Cloud"
       },
       {
         "title": "AI Foundations Associate 2025",
-        "img": "/cert_oracle_foundations_full.png",
+        "img": "/certifications/oracle_ai_foundations_badge.jpg",
         "issuer": "Oracle Cloud"
       }
     ],
     "Forage Job Simulations": [
       {
         "title": "GenAI Powered Data Analytics",
-        "img": "/cert_tata_genai.png",
+        "img": "/certifications/tata_data_analytics.png",
         "issuer": "Tata / Forage"
       },
       {
         "title": "Technology Job Simulation",
-        "img": "/cert_deloitte_tech.png",
+        "img": "/certifications/deloitte_job_sim.png",
         "issuer": "Deloitte / Forage"
       }
     ],
     "Global": [
       {
         "title": "Generative AI Leader",
-        "img": "/cert_google_cloud_genai.png",
+        "img": "/certifications/google_gen_ai_leader.png",
         "issuer": "Google Cloud"
       },
       {
         "title": "Build a Computer Vision App",
-        "img": "/cert_microsoft_vision.png",
+        "img": "/certifications/microsoft_azure_cv_cert.png",
         "issuer": "Microsoft / Coursera"
       },
       {
         "title": "Fundamentals of Deep Learning",
-        "img": "/cert_nvidia_dl.png",
+        "img": "/certifications/nvidia_deep_learning.png",
         "issuer": "NVIDIA DLI"
       }
     ],
     "Professional": [
       {
         "title": "Generative AI Mastermind",
-        "img": "/cert_outskill_genai.png",
+        "img": "/certifications/outskill_genai.png",
         "issuer": "Outskill"
       },
       {
         "title": "Teaching the AI Fluency Framework",
-        "img": "/cert_ai_teaching.png",
+        "img": "/certifications/anthropic_fluency_teaching_cert.png",
         "issuer": "Anthrop\\C"
       },
       {
         "title": "AI Fluency for Students",
-        "img": "/cert_ai_fluency_student.png",
+        "img": "/certifications/anthropic_fluency_students.png",
         "issuer": "Anthrop\\C"
       }
     ]
