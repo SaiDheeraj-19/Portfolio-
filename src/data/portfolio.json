@@ -142,6 +142,8 @@
       "x": 0,
       "y": 0
     },
+    "idCardPhoto": "/sai_profile_bw.png",
+    "aboutMePhoto": "/about_me_photo.jpg",
     "resumeUrl": "/uploads/1768326558615_R_SAI_DHEERAJ.pdf"
   }
 }
