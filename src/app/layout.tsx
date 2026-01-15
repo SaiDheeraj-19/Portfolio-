@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   title: "portfolio-saidheeraj",
   description: "A beautiful portfolio showcasing creative projects and professional work",
   icons: {
-    icon: "/sai_profile_color.png",
+    icon: "/face-icon.png",
   },
 };
 
