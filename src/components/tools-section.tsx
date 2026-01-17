@@ -172,7 +172,13 @@ export default function ToolsSection() {
 
                                 return new Promise((resolve) => {
                                     const img = new Image();
+                                    const timeout = setTimeout(() => {
+                                        // If image takes too long, return fallback
+                                        resolve(fallback);
+                                    }, 2000);
+
                                     img.onload = () => {
+                                        clearTimeout(timeout);
                                         const size = 128; // High res canvas
                                         const canvas = document.createElement("canvas");
                                         canvas.width = size;
@@ -199,7 +205,10 @@ export default function ToolsSection() {
                                             resolve(resolveWithCache(svgBase64)); // Fallback
                                         }
                                     };
-                                    img.onerror = () => resolve(fallback);
+                                    img.onerror = () => {
+                                        clearTimeout(timeout);
+                                        resolve(fallback);
+                                    };
                                     img.src = svgBase64;
                                 });
                             }
