@@ -4,15 +4,12 @@ import Link from "next/link"
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import {
-  ArrowRight, Github, Linkedin, Mail, Download, Code, Briefcase, GraduationCap, Award, Instagram,
-  ExternalLink, Filter, Search, Smartphone, Palette, Database, Phone, MapPin, Send, Users,
-  ScanFace, ShoppingCart, Mic, Cpu, Globe, Layers, Folder, FolderOpen, ChevronRight, ChevronDown, ArrowLeft
+  ArrowRight, Github, Mail, Code, Award, Instagram,
+  ExternalLink, Phone, Layers, Folder, ArrowLeft
 } from "lucide-react"
+
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+// Removed unused imports
 import Image from "next/image"
 import TextType from "@/components/TextType";
 import { FloatingPaths } from "@/components/ui/background-paths";
@@ -22,8 +19,6 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-
-  DialogTrigger,
 } from "@/components/ui/dialog"
 import ProfileCard from "@/components/react-bits/ProfileCard"
 import Aurora from "@/components/react-bits/Aurora"
@@ -34,18 +29,11 @@ import ToolsSection from "@/components/tools-section"
 
 export default function Home() {
   // --- Projects State ---
-  const [searchTerm, setSearchTerm] = useState("")
-  const [selectedCategory, setSelectedCategory] = useState("All")
-  // State for collapsible certification folders
-  const [openCategories, setOpenCategories] = useState<string[]>([])
-
-  const toggleCategory = (category: string) => {
-    setOpenCategories(prev =>
-      prev.includes(category)
-        ? prev.filter(c => c !== category)
-        : [...prev, category]
-    )
-  }
+  // Unused state commented out
+  // const [searchTerm, setSearchTerm] = useState("")
+  // const [selectedCategory, setSelectedCategory] = useState("All")
+  // const [openCategories, setOpenCategories] = useState<string[]>([])
+  // const toggleCategory ...
 
   // Gallery State
   const [showPhotoGallery, setShowPhotoGallery] = useState(false)
@@ -54,6 +42,7 @@ export default function Home() {
   const [showProjectsPopup, setShowProjectsPopup] = useState(false)
   const [showContactPopup, setShowContactPopup] = useState(false)
   const [selectedCertCategory, setSelectedCertCategory] = useState<string | null>(null)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [selectedProject, setSelectedProject] = useState<any>(null)
   const [selectedPhoto, setSelectedPhoto] = useState<string | null>(null)
 
@@ -124,10 +113,14 @@ export default function Home() {
     },
   ]
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [certificationsData, setCertificationsData] = useState<any>({})
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [projects, setProjects] = useState<any[]>([])
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [profile, setProfile] = useState<any>(null)
 
+  // Removed unused useEffect dependency array issues if any, keeping bare minimum
   useEffect(() => {
     fetch('/api/portfolio')
       .then(res => res.json())
@@ -139,18 +132,10 @@ export default function Home() {
       .catch(err => console.error("Failed to fetch portfolio data", err))
   }, [])
 
-  const categories = ["All", "Full Stack", "Mobile", "AI"]
+  // Removed unused categories array
+  // const categories = ["All", "Full Stack", "Mobile", "AI"]
 
-  const getCategoryIcon = (category: string) => {
-    switch (category) {
-      case "Full Stack": return <Code className="w-4 h-4" />
-      case "Web App": return <Briefcase className="w-4 h-4" />
-      case "Mobile": return <Smartphone className="w-4 h-4" />
-      case "Design": return <Palette className="w-4 h-4" />
-      case "Data": return <Database className="w-4 h-4" />
-      default: return <Code className="w-4 h-4" />
-    }
-  }
+  // Removed unused getCategoryIcon function
 
   // ... (rest of file)
 
@@ -162,208 +147,21 @@ export default function Home() {
   // Actually, I'll split this into 2 chunks in one call.
 
 
-  const filteredProjects = projects.filter((project) => {
-    const matchesSearch = project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      project.description.toLowerCase().includes(searchTerm.toLowerCase())
-    const matchesCategory = selectedCategory === "All" || project.category === selectedCategory
-    return matchesSearch && matchesCategory
-  })
+  // Removed unused filteredProjects
+  // const filteredProjects = ...
 
   // --- About Data ---
-  const skills = {
-    "Core Stack": ["React 19", "Next.js", "TypeScript"],
-    "Backend & Data": ["Node.js", "MongoDB", "Supabase", "REST APIs", "JWT Auth"],
-    "AI & Mobile": ["OpenAI / GenAI APIs", "Flutter", "Speech-to-Text", "Translation Pipelines", "Deep Learning Models"],
-    "System Capabilities": ["Face Recognition", "Geolocation", "Secure Authentication", "Real-Time Validation", "Role-Based Access Control"]
-  }
+  // Removed unused skills object
 
-  const certifications = {
-    "Global": [
-      {
-        name: "Oracle Certified Professional",
-        title: "Oracle Cloud Infrastructure Generative AI 2025",
-        issuer: "Oracle",
-        date: "2025",
-        image: "/certifications/oracle_gen_ai_prof_cert.png",
-        credentialId: "OCI-GENAI-2025",
-        description: "Comprehensive validation of proficiency in Oracle Cloud Infrastructure Generative AI services, covering LLM fine-tuning, RAG implementation, and agentic workflows."
-      },
-      {
-        name: "Oracle Certified Foundations Associate",
-        title: "Oracle Cloud Infrastructure AI Foundations",
-        issuer: "Oracle",
-        date: "2025",
-        image: "/certifications/oracle_ai_foundations_badge.jpg",
-        credentialId: "OCI-AI-2025",
-        description: "Foundational understanding of AI/ML concepts, Oracle AI services, and responsible AI practices within the OCI ecosystem."
-      },
-      {
-        name: "Certificate of Competency",
-        title: "Fundamentals of Deep Learning",
-        issuer: "NVIDIA",
-        date: "2025",
-        image: "/certifications/nvidia_deep_learning.png",
-        credentialId: "GjkYis3wR6a5dNI2Kgc5XA",
-        description: "Demonstrated competence in the fundamental techniques and applications of Deep Learning, including training and deploying neural networks."
-      },
-      {
-        name: "Generative AI Leader Track",
-        title: "Google Cloud Career Launchpad",
-        issuer: "Google Cloud",
-        date: "2025",
-        image: "/certifications/google_gen_ai_leader.png",
-        credentialId: "fkV6lUAy",
-        description: "Comprehensive leadership track focusing on Generative AI strategy, implementation, and cloud-based AI solutions using Google Cloud."
-      },
-      {
-        name: "Azure Cognitive Services Specialist",
-        title: "Build a Computer Vision App with Azure",
-        issuer: "Microsoft",
-        date: "2025",
-        image: "/certifications/microsoft_azure_cv_cert.png",
-        credentialId: "Azure-CV-2025",
-        description: "Practical project building and deploying computer vision applications using Azure Cognitive Services and cloud integration."
-      },
-      {
-        name: "Technology Job Simulation",
-        title: "Deloitte Technology Simulation",
-        issuer: "Deloitte",
-        date: "2025",
-        image: "/certifications/deloitte_job_sim.png",
-        credentialId: "Forage-Deloitte",
-        description: "Intensive virtual experience program simulating real-world technology consulting tasks, coding challenges, and system development."
-      },
-      {
-        name: "GenAI Powered Data Analytics",
-        title: "Job Simulation",
-        issuer: "Tata Group",
-        date: "2025",
-        image: "/certifications/tata_data_analytics.png",
-        credentialId: "Forage-Tata",
-        description: "Practical simulation of data analytics tasks enhanced by Generative AI tools and techniques."
-      }
-    ],
-    "Professional": [
-      {
-        name: "Full Stack Certification",
-        title: "Certificate of Achievement",
-        issuer: "OneRoadmap",
-        date: "2025",
-        image: "/certifications/oneroadmap_fullstack.png",
-        credentialId: "OR-FS-2025",
-        description: "Comprehensive assessment of full-stack development skills including frontend, backend, and database management."
-      },
-      {
-        name: "React Certification",
-        title: "Certificate of Achievement",
-        issuer: "OneRoadmap",
-        date: "2025",
-        image: "/certifications/oneroadmap_react.png",
-        credentialId: "OR-REACT-2025",
-        description: "Validation of React.js expertise, hooks, state management, and component-based architecture."
-      },
-      {
-        name: "Java Certification",
-        title: "Certificate of Achievement",
-        issuer: "OneRoadmap",
-        date: "2025",
-        image: "/certifications/oneroadmap_java.png",
-        credentialId: "OR-JAVA-2025",
-        description: "Validation of core Java programming proficiency and object-oriented design principles."
-      },
-      {
-        name: "JavaScript Certification",
-        title: "Certificate of Achievement",
-        issuer: "OneRoadmap",
-        date: "2025",
-        image: "/certifications/oneroadmap_javascript.png",
-        credentialId: "OR-JS-2025",
-        description: "Advanced JavaScript concepts, modern ES6+ features, and asynchronous programming."
-      },
-      {
-        name: "Python Certification",
-        title: "Certificate of Achievement",
-        issuer: "OneRoadmap",
-        date: "2025",
-        image: "/certifications/oneroadmap_python.png",
-        credentialId: "OR-PY-2025",
-        description: "Proficiency in Python programming for automation, data handling, and backend logic."
-      },
-      {
-        name: "Generative AI Mastermind",
-        title: "Certificate of Completion",
-        issuer: "Outskill",
-        date: "2025",
-        image: "/certifications/outskill_genai.png",
-        credentialId: "Outskill-GenAI-2025",
-        description: "Comprehensive training in Generative AI technologies and applications."
-      },
-      {
-        name: "AI Fluency Certification",
-        title: "AI Fluency for Students",
-        issuer: "Anthropic",
-        date: "2025",
-        image: "/certifications/anthropic_fluency_students.png",
-        credentialId: "Anthropic-AF-01",
-        description: "Validation of core AI concepts, ethical considerations, and practical applications of Large Language Models."
-      },
-      {
-        name: "Teaching the AI Fluency Framework",
-        title: "Certificate of Completion",
-        issuer: "Anthropic",
-        date: "2025",
-        image: "/certifications/anthropic_fluency_teaching_cert.png",
-        credentialId: "Anthropic-AF-Teach",
-        description: "Mastery of the AI Fluency Framework, enabling the effective instruction of AI concepts and responsible usage."
-      }
-    ]
-  }
+  // Removed unused certifications object (using fetched data instead)
 
   // --- Contact Form State ---
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: ""
-  })
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
+  // Removed unused form data and handlers
+  // const [formData, setFormData] = useState(...)
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setFormData(prev => ({ ...prev, [name]: value }))
-  }
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-
-    // Simulate form submission
-    try {
-      await new Promise(resolve => setTimeout(resolve, 1000))
-      setSubmitStatus("success")
-      setFormData({ name: "", email: "", subject: "", message: "" })
-    } catch (error) {
-      setSubmitStatus("error")
-    } finally {
-      setIsSubmitting(false)
-      setTimeout(() => setSubmitStatus("idle"), 5000)
-    }
-  }
-
-  const socialLinks = [
-    { icon: Github, href: "https://github.com/SaiDheeraj-19", label: "GitHub" },
-    { icon: Linkedin, href: "https://www.linkedin.com/in/sai-dheeraj-a1145830b/", label: "LinkedIn" },
-    { icon: Instagram, href: "https://www.instagram.com/your.saidheeraj/", label: "Instagram" },
-    { icon: Mail, href: "mailto:16saidheeraj@gmail.com", label: "Email" },
-  ]
-
-  const contactInfo = [
-    { icon: Mail, label: "Email", value: "16saidheeraj@gmail.com", href: "mailto:16saidheeraj@gmail.com" },
-    { icon: Phone, label: "Phone", value: "+91 9908918853", href: "tel:+919908918853" },
-    { icon: Phone, label: "WhatsApp", value: "+91 9493552753", href: "https://wa.me/919493552753" },
-    { icon: MapPin, label: "Location", value: "India", href: "#" }
-  ]
+  // Removed unused socialLinks and contactInfo arrays
+  // const socialLinks = ...
+  // const contactInfo = ...
 
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden">
@@ -387,9 +185,12 @@ export default function Home() {
         </div>
 
         {/* Background Large Text */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden z-0">
-          <span className="text-[14vw] md:text-[17vw] font-black text-transparent bg-clip-text bg-gradient-to-b from-white/40 to-white/10 whitespace-nowrap tracking-tighter leading-none select-none animate-[pulse_3s_ease-in-out_infinite] drop-shadow-[0_0_10px_rgba(255,255,255,0.4)]">
-            SAI DHEERAJ
+        <div className="absolute inset-0 flex flex-col md:flex-row items-center justify-between md:justify-center pointer-events-none select-none overflow-hidden z-0 py-24 md:py-0">
+          <span className="text-[20vw] md:text-[17vw] font-black text-transparent bg-clip-text bg-gradient-to-b from-white/40 to-white/10 whitespace-nowrap tracking-tighter leading-none select-none animate-[pulse_3s_ease-in-out_infinite] drop-shadow-[0_0_10px_rgba(255,255,255,0.4)]">
+            SAI
+          </span>
+          <span className="text-[20vw] md:text-[17vw] font-black text-transparent bg-clip-text bg-gradient-to-b from-white/40 to-white/10 whitespace-nowrap tracking-tighter leading-none select-none animate-[pulse_3s_ease-in-out_infinite] drop-shadow-[0_0_10px_rgba(255,255,255,0.4)] md:ml-8">
+            DHEERAJ
           </span>
         </div>
 
@@ -666,10 +467,10 @@ export default function Home() {
               <div className="flex-1 max-w-2xl">
                 <div className="space-y-6 text-neutral-300 text-base md:text-lg leading-relaxed font-light">
                   <p>
-                    I’m a <span className="text-white font-medium">Computer Science undergraduate</span> who builds software that has to survive real-world conditions, not just work in perfect demos.
+                    I&apos;m a <span className="text-white font-medium">Computer Science undergraduate</span> who builds software that has to survive real-world conditions, not just work in perfect demos.
                   </p>
                   <p>
-                    Since 2024, I’ve been focused on building full-stack and AI-powered systems where data, identity, and automation are tightly connected. I don’t think in screens or features — I think in how data flows, how users are verified, and how systems make decisions.
+                    Since 2024, I&apos;ve been focused on building full-stack and AI-powered systems where data, identity, and automation are tightly connected. I don&apos;t think in screens or features — I think in how data flows, how users are verified, and how systems make decisions.
                   </p>
 
                   <div>
@@ -682,7 +483,7 @@ export default function Home() {
                   </div>
 
                   <div className="py-4 border-l-4 border-white pl-6 italic text-white/90 bg-white/5 rounded-r-lg my-6">
-                    "What ties all of this together is one idea: Software should behave predictably even when the real world is messy."
+                    &quot;What ties all of this together is one idea: Software should behave predictably even when the real world is messy.&quot;
                   </div>
 
                   <div>
@@ -691,13 +492,13 @@ export default function Home() {
                       <li>Secure authentication and role-based access</li>
                       <li>Real-time validation</li>
                       <li>AI models connected directly to live user data</li>
-                      <li>Systems that don’t break when conditions aren’t perfect</li>
+                      <li>Systems that don&apos;t break when conditions aren&apos;t perfect</li>
                     </ul>
                   </div>
 
                   <p className="text-white font-medium text-xl md:text-2xl pt-6 border-t border-neutral-800 mt-6">
-                    I’m not interested in building pretty demos.<br />
-                    <span className="text-white font-black">I’m interested in building systems people can rely on.</span>
+                    I&apos;m not interested in building pretty demos.<br />
+                    <span className="text-white font-black">I&apos;m interested in building systems people can rely on.</span>
                   </p>
                 </div>
               </div>
@@ -735,6 +536,7 @@ export default function Home() {
               /* Certificates Grid View */
               <div className="w-full">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 w-full animate-in fade-in zoom-in-95 duration-300">
+                  {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                   {(selectedCertCategory ? certificationsData[selectedCertCategory as keyof typeof certificationsData] : []).map((cert: any, idx: number) => (
                     <button
                       key={idx}
@@ -822,7 +624,7 @@ export default function Home() {
               <div className="relative bg-[#0a0a0a] text-white px-8 py-6 rounded-[2rem] shadow-2xl transform rotate-[-2deg] max-w-xl text-center border border-white/10">
                 {/* White Tag attached to top-left */}
                 <span className="absolute -top-4 -left-2 bg-white text-black px-3 py-1 rounded-md text-[10px] mobile:text-xs font-bold tracking-widest shadow-md transform -rotate-3">
-                  WHEN I'M NOT DEVELOPING
+                  WHEN I&apos;M NOT DEVELOPING
                 </span>
 
                 <h2 className="text-2xl md:text-3xl lg:text-4xl font-black leading-tight tracking-tight">
@@ -892,8 +694,8 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent pointer-events-none" />
 
           <div className="p-6 md:p-14 relative z-10 flex flex-col items-center overflow-y-auto custom-scrollbar">
-            <DialogTitle className="text-3xl md:text-5xl font-black mb-4 text-center tracking-tighter uppercase text-white drop-shadow-lg">Let's Talk</DialogTitle>
-            <p className="text-neutral-400 mb-8 md:mb-12 text-center text-sm md:text-lg max-w-lg leading-relaxed">Choose your preferred way to connect. I'm always open to discussing new projects and ideas.</p>
+            <DialogTitle className="text-3xl md:text-5xl font-black mb-4 text-center tracking-tighter uppercase text-white drop-shadow-lg">Let&apos;s Talk</DialogTitle>
+            <p className="text-neutral-400 mb-8 md:mb-12 text-center text-sm md:text-lg max-w-lg leading-relaxed">Choose your preferred way to connect. I&apos;m always open to discussing new projects and ideas.</p>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 w-full">
               {/* WhatsApp */}
@@ -1091,11 +893,11 @@ export default function Home() {
           <Hyperspeed effectOptions={hyperspeedPresets.three} />
         </div>
         <div className="relative z-10 flex flex-col items-center justify-center space-y-12 text-center px-4">
-          <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight">Let's turn ideas into real-world software</h2>
+          <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight">Let&apos;s turn ideas into real-world software</h2>
 
           <Button onClick={() => setShowContactPopup(true)} className="rounded-full px-12 py-10 text-xl md:text-3xl bg-transparent border-2 border-white text-white hover:bg-white hover:text-black transition-all duration-300">
             <span className="flex items-center gap-4">
-              Let's Connect <ArrowRight className="w-6 h-6 md:w-8 md:h-8" />
+              Let&apos;s Connect <ArrowRight className="w-6 h-6 md:w-8 md:h-8" />
             </span>
           </Button>
 

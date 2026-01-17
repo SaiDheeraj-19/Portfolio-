@@ -44,8 +44,8 @@ export default function ToolsSection() {
 
         const container = containerRef.current
         const canvas = canvasRef.current
-        let width = container.clientWidth || window.innerWidth || 800
-        let height = container.clientHeight || 600
+        const width = container.clientWidth || window.innerWidth || 800
+        const height = container.clientHeight || 600
 
         console.log("ToolsSection Init:", width, height);
 
