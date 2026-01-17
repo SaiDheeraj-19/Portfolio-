@@ -226,9 +226,13 @@ export default function ToolsSection() {
 
             const bodies = processedTools
                 .map((tool) => {
-                    const x = Math.random() * (width - 100) + 50
-                    const y = Math.random() * (height / 2) // Spawn INSIDE the box (top half)
-                    const size = 90 + Math.random() * 30 // BIGGER Bubbles (90-120px diameter)
+                    const isMobile = width < 768;
+                    const baseSize = isMobile ? 55 : 90;
+                    const variation = isMobile ? 25 : 30;
+                    // Ensure bubbles spawn within bounds
+                    const x = Math.random() * (width - (isMobile ? 80 : 200)) + (isMobile ? 40 : 100);
+                    const y = Math.random() * (height / 2)
+                    const size = baseSize + Math.random() * variation
 
                     return Bodies.circle(x, y, size / 2, { // Circle radius is size/2
                         restitution: 0.6, // Bouncier
@@ -410,7 +414,7 @@ export default function ToolsSection() {
     }, [isMounted])
 
     return (
-        <section className="py-24 bg-[#F2F2F2] relative overflow-hidden text-black transition-colors duration-500">
+        <section className="py-16 md:py-24 bg-[#F2F2F2] relative overflow-hidden text-black transition-colors duration-500">
             <div className="container mx-auto px-6 text-center mb-10 relative z-10 flex flex-col items-center">
                 <p className="text-black font-bold text-sm tracking-widest uppercase mb-4 animate-pulse">Technology Stack</p>
                 <h2 className="text-4xl md:text-6xl font-black text-black leading-tight tracking-tight uppercase mb-4">
@@ -425,7 +429,7 @@ export default function ToolsSection() {
                 </div>
             </div>
 
-            <div ref={containerRef} className="relative w-full h-[600px] overflow-hidden">
+            <div ref={containerRef} className="relative w-full h-[500px] md:h-[600px] overflow-hidden">
                 <canvas ref={canvasRef} className="w-full h-full block" style={{ touchAction: 'pan-y' }} />
 
                 {/* Instruction Overlay */}

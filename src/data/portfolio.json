@@ -79,7 +79,7 @@
         "Real-Time Systems"
       ],
       "links": {
-        "demo": "#",
+        "demo": "https://fixit-demo.vercel.app",
         "github": "https://github.com/SaiDheeraj-19/fix-it"
       }
     },
@@ -110,7 +110,7 @@
         "Geofencing"
       ],
       "links": {
-        "demo": "#",
+        "demo": "https://solvra-demo.vercel.app",
         "github": "https://github.com/SaiDheeraj-19/Solvra-SmartAttendance"
       }
     },
@@ -131,7 +131,7 @@
         "Speech-to-Text"
       ],
       "links": {
-        "demo": "#",
+        "demo": "https://aura-demo.streamlit.app",
         "github": "https://github.com/SaiDheeraj-19/Aura"
       }
     }
