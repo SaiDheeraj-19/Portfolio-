@@ -84,7 +84,7 @@ export default function ToolsSection() {
             restitution: 0.8
         }
 
-        const wallThickness = 500; // MUCH Thicker walls to prevent tunneling
+        const wallThickness = 1000; // Even thicker walls
         let ground = Bodies.rectangle(width / 2, height + wallThickness / 2, width * 2, wallThickness, wallOptions)
         let leftWall = Bodies.rectangle(-wallThickness / 2, height / 2, wallThickness, height * 2, wallOptions)
         let rightWall = Bodies.rectangle(width + wallThickness / 2, height / 2, wallThickness, height * 2, wallOptions)
@@ -432,9 +432,10 @@ export default function ToolsSection() {
             render.options.width = newWidth
             render.options.height = newHeight
 
+            // Update walls
             Composite.remove(engine.world, [ground, leftWall, rightWall, ceiling])
 
-            const wallThickness = 500;
+            const wallThickness = 1000;
             ground = Bodies.rectangle(newWidth / 2, newHeight + wallThickness / 2, newWidth * 2, wallThickness, wallOptions)
             leftWall = Bodies.rectangle(-wallThickness / 2, newHeight / 2, wallThickness, newHeight * 2, wallOptions)
             rightWall = Bodies.rectangle(newWidth + wallThickness / 2, newHeight / 2, wallThickness, newHeight * 2, wallOptions)
@@ -443,11 +444,23 @@ export default function ToolsSection() {
             Composite.add(engine.world, [ground, leftWall, rightWall, ceiling])
         }
 
-        window.addEventListener('resize', handleResize)
+        // Debounce resize to prevent physics thrashing on mobile
+        let resizeTimeout: NodeJS.Timeout;
+        const onResize = () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(handleResize, 100);
+        };
+
+        window.addEventListener('resize', onResize)
+
+        // Force a resize calculation after mount to ensure walls are correctly positioned
+        // This fixes the issue where initial height might be wrong, causing icons to fall
+        setTimeout(handleResize, 500);
 
         return () => {
             isCurrent = false;
-            window.removeEventListener('resize', handleResize)
+            window.removeEventListener('resize', onResize)
+            clearTimeout(resizeTimeout);
 
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             mouseElement.removeEventListener('touchstart', handleTouchStart as any);
