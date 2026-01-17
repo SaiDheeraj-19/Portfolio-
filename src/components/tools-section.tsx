@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef } from "react"
 import Matter from "matter-js"
 
 const tools: { name: string; slug: string; color: string }[] = [
@@ -31,16 +31,11 @@ export default function ToolsSection() {
     const containerRef = useRef<HTMLDivElement>(null)
     const canvasRef = useRef<HTMLCanvasElement>(null)
     const activeToolRef = useRef<HTMLDivElement>(null) // Ref for Fixed Status Display
-    const [isMounted, setIsMounted] = useState(false)
-
     useEffect(() => {
-        setIsMounted(true)
-    }, [])
-
-    useEffect(() => {
-        if (!isMounted || !containerRef.current || !canvasRef.current) return
+        if (!containerRef.current || !canvasRef.current) return
 
         let isCurrent = true;
+
 
         const container = containerRef.current
         const canvas = canvasRef.current
@@ -208,7 +203,7 @@ export default function ToolsSection() {
                                 });
                             }
                         }
-                    } catch (e) {
+                    } catch {
                         // Next source
                     }
                 }
@@ -224,14 +219,19 @@ export default function ToolsSection() {
 
             if (!isCurrent) return; // Cleanup check
 
+            // Recalculate dimensions to ensure we spawn within current bounds (fixes mobile race condition)
+            const currentContainer = containerRef.current;
+            const currentWidth = currentContainer ? (currentContainer.clientWidth || width) : width;
+            const currentHeight = currentContainer ? (currentContainer.clientHeight || height) : height;
+
             const bodies = processedTools
                 .map((tool) => {
-                    const isMobile = width < 768;
+                    const isMobile = currentWidth < 768;
                     const baseSize = isMobile ? 55 : 90;
                     const variation = isMobile ? 25 : 30;
                     // Ensure bubbles spawn within bounds
-                    const x = Math.random() * (width - (isMobile ? 80 : 200)) + (isMobile ? 40 : 100);
-                    const y = Math.random() * (height / 2)
+                    const x = Math.random() * (currentWidth - (isMobile ? 80 : 200)) + (isMobile ? 40 : 100);
+                    const y = Math.random() * (currentHeight / 2) // Spawn in top half
                     const size = baseSize + Math.random() * variation
 
                     return Bodies.circle(x, y, size / 2, { // Circle radius is size/2
@@ -278,10 +278,14 @@ export default function ToolsSection() {
         const mouseElement = render.canvas;
         const events = ['mousedown', 'mousemove', 'mouseup', 'touchstart', 'touchmove', 'touchend'];
         events.forEach(evt => {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             mouseElement.removeEventListener(evt, (mouse as any)[evt]);
         });
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         mouseElement.removeEventListener("mousewheel", (mouse as any).mousewheel);
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         mouseElement.removeEventListener("DOMMouseScroll", (mouse as any).mousewheel);
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         mouseElement.removeEventListener("wheel", (mouse as any).mousewheel);
 
         // Smart Logic Handlers
@@ -296,6 +300,7 @@ export default function ToolsSection() {
 
             if (hits.length > 0) {
                 e.preventDefault();
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 (mouse as any).mousedown(e);
             }
         };
@@ -303,16 +308,19 @@ export default function ToolsSection() {
         const handleTouchMove = (e: TouchEvent) => {
             if (mouse.button !== -1) {
                 e.preventDefault();
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 (mouse as any).mousemove(e);
             }
         };
 
         const handleTouchEnd = (e: TouchEvent) => {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             (mouse as any).mouseup(e);
         };
 
         // Desktop Events (Pass through) with Cursor Logic & Status Update
         const handleMouseDown = (e: MouseEvent) => {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             (mouse as any).mousedown(e);
         };
         const handleMouseMove = (e: MouseEvent) => {
@@ -350,19 +358,27 @@ export default function ToolsSection() {
                 }
             }
 
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             (mouse as any).mousemove(e);
         };
         const handleMouseUp = (e: MouseEvent) => {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             (mouse as any).mouseup(e);
             mouseElement.style.cursor = 'default';
         };
 
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         mouseElement.addEventListener('touchstart', handleTouchStart as any, { passive: false });
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         mouseElement.addEventListener('touchmove', handleTouchMove as any, { passive: false });
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         mouseElement.addEventListener('touchend', handleTouchEnd as any);
 
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         mouseElement.addEventListener('mousedown', handleMouseDown as any);
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         mouseElement.addEventListener('mousemove', handleMouseMove as any);
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         mouseElement.addEventListener('mouseup', handleMouseUp as any);
 
 
@@ -399,11 +415,17 @@ export default function ToolsSection() {
             isCurrent = false;
             window.removeEventListener('resize', handleResize)
 
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             mouseElement.removeEventListener('touchstart', handleTouchStart as any);
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             mouseElement.removeEventListener('touchmove', handleTouchMove as any);
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             mouseElement.removeEventListener('touchend', handleTouchEnd as any);
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             mouseElement.removeEventListener('mousedown', handleMouseDown as any);
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             mouseElement.removeEventListener('mousemove', handleMouseMove as any);
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             mouseElement.removeEventListener('mouseup', handleMouseUp as any);
 
             Render.stop(render)
@@ -411,7 +433,7 @@ export default function ToolsSection() {
             Composite.clear(engine.world, false)
             Engine.clear(engine)
         }
-    }, [isMounted])
+    }, [])
 
     return (
         <section className="py-16 md:py-24 bg-[#F2F2F2] relative overflow-hidden text-black transition-colors duration-500">
