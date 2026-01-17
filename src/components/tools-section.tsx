@@ -92,179 +92,152 @@ export default function ToolsSection() {
 
         Composite.add(engine.world, [ground, leftWall, rightWall, ceiling])
 
-        // Robust Fetch + Coloring Logic
-        const createBodies = async () => {
+        const createBodies = () => {
+            // 1. Create Placeholder Bodies IMMEDIATELY (Optimistic UI)
+            const currentContainer = containerRef.current;
+            const currentWidth = currentContainer ? (currentContainer.clientWidth || width) : width;
+            const currentHeight = currentContainer ? (currentContainer.clientHeight || height) : height;
+
+            const bodies = tools.map((tool) => {
+                const isMobile = currentWidth < 768;
+                const baseSize = isMobile ? 30 : 60;
+                const variation = isMobile ? 15 : 20;
+
+                const x = Math.random() * (currentWidth - (isMobile ? 50 : 100)) + (isMobile ? 25 : 50);
+                const y = Math.random() * (currentHeight / 3);
+                const size = baseSize + Math.random() * variation;
+
+                return Bodies.circle(x, y, size / 2, {
+                    restitution: 0.6,
+                    friction: 0.05,
+                    density: 0.002,
+                    render: {
+                        // Default to colored circle first
+                        fillStyle: `#${tool.color}`,
+                        strokeStyle: '#ffffff',
+                        lineWidth: 2,
+                    },
+                    label: tool.name,
+                    plugin: {
+                        // Store original tool data for async update
+                        toolData: tool,
+                        size: size
+                    }
+                })
+            });
+
+            Composite.add(engine.world, bodies);
+            console.log("Spawned initial bodies:", bodies.length);
+
+            // 2. Async Loading Loop
             const getColoredIconURI = async (slug: string, color: string, name: string): Promise<string> => {
                 const cacheKey = `${slug}-${color}`;
-                if (iconCache.has(cacheKey)) {
-                    return iconCache.get(cacheKey)!;
-                }
-
+                if (iconCache.has(cacheKey)) return iconCache.get(cacheKey)!;
                 const fallback = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24' fill='black'%3E%3Crect x='2' y='2' width='20' height='20' rx='5' ry='5'/%3E%3C/svg%3E";
-
-                // Helper to return and cache
-                const resolveWithCache = (uri: string) => {
-                    iconCache.set(cacheKey, uri);
-                    return uri;
-                };
+                const resolveWithCache = (uri: string) => { iconCache.set(cacheKey, uri); return uri; };
 
                 // Handle Text/Number Bubbles (slug: "text:01")
                 if (slug.startsWith("text:")) {
+                    // ... (Existing text logic, simplified for brevity or can be copied if complex)
                     const text = slug.split(":")[1];
-                    const size = 128; // High res canvas
+                    const size = 128;
                     const canvas = document.createElement("canvas");
                     canvas.width = size;
                     canvas.height = size;
                     const ctx = canvas.getContext("2d");
                     if (ctx) {
-                        // Draw Black Circle Background
                         ctx.beginPath();
                         ctx.arc(size / 2, size / 2, size / 2, 0, Math.PI * 2);
-                        ctx.fillStyle = '#0a0a0a'; // Dark black/gray
+                        ctx.fillStyle = '#0a0a0a';
                         ctx.fill();
-
-                        // Draw Border (Gray Stroke)
                         ctx.strokeStyle = '#333333';
                         ctx.lineWidth = 4;
                         ctx.stroke();
-
-                        // Draw Text
                         ctx.fillStyle = '#ffffff';
                         ctx.font = '500 48px Inter, sans-serif';
                         ctx.textAlign = 'center';
                         ctx.textBaseline = 'middle';
-                        ctx.fillText(text, size / 2, size / 2 + 4); // +4 for visual centering
-
+                        ctx.fillText(text, size / 2, size / 2 + 4);
                         return resolveWithCache(canvas.toDataURL("image/png"));
                     }
                     return fallback;
                 }
 
-                // Normal Icon Fetching Logic
+
                 const sources = [
                     `https://cdn.jsdelivr.net/npm/simple-icons@v14/icons/${slug}.svg`,
                     `https://unpkg.com/simple-icons@latest/icons/${slug}.svg`,
                     `https://cdn.simpleicons.org/${slug}`,
                 ];
-
-                if (slug === 'visualstudiocode') {
-                    sources.unshift(`https://cdn.jsdelivr.net/npm/simple-icons@v14/icons/visual-studio-code.svg`);
-                }
+                if (slug === 'visualstudiocode') sources.unshift(`https://cdn.jsdelivr.net/npm/simple-icons@v14/icons/visual-studio-code.svg`);
 
                 for (const url of sources) {
-                    if (!isCurrent) return fallback; // Stop early if unmounted
+                    if (!isCurrent) return fallback;
                     try {
                         const response = await fetch(url);
                         if (response.ok) {
                             let svgText = await response.text();
-
                             if (svgText.includes("<svg")) {
-                                // Inject Color if needed (for branding inside the white bubble)
-                                if (!svgText.includes("fill=")) {
-                                    svgText = svgText.replace('<svg', `<svg fill="#${color}"`);
-                                } else {
-                                    // Force override for consistency - usually works for simple-icons
-                                    svgText = svgText.replace('<svg', `<svg fill="#${color}"`);
-                                }
+                                if (!svgText.includes("fill=")) svgText = svgText.replace('<svg', `<svg fill="#${color}"`);
+                                else svgText = svgText.replace('<svg', `<svg fill="#${color}"`);
 
-                                // Create Bubble (Canvas)
                                 const svgBase64 = `data:image/svg+xml;base64,${btoa(svgText)}`;
-
                                 return new Promise((resolve) => {
                                     const img = new Image();
-                                    const timeout = setTimeout(() => {
-                                        // If image takes too long, return fallback
-                                        resolve(fallback);
-                                    }, 2000);
-
+                                    const timeout = setTimeout(() => resolve(fallback), 2000);
                                     img.onload = () => {
                                         clearTimeout(timeout);
-                                        const size = 128; // High res canvas
+                                        const size = 128;
                                         const canvas = document.createElement("canvas");
                                         canvas.width = size;
                                         canvas.height = size;
                                         const ctx = canvas.getContext("2d");
                                         if (ctx) {
-                                            // Draw White Circle Background
                                             ctx.beginPath();
                                             ctx.arc(size / 2, size / 2, size / 2, 0, Math.PI * 2);
                                             ctx.fillStyle = '#ffffff';
                                             ctx.fill();
-                                            // Add shadow/border? Maybe subtle?
                                             ctx.strokeStyle = '#e5e5e5';
                                             ctx.lineWidth = 2;
                                             ctx.stroke();
-
-                                            // Draw Icon Centered (60% scale)
                                             const iconSize = size * 0.6;
                                             const offset = (size - iconSize) / 2;
                                             ctx.drawImage(img, offset, offset, iconSize, iconSize);
-
                                             resolve(resolveWithCache(canvas.toDataURL("image/png")));
                                         } else {
-                                            resolve(resolveWithCache(svgBase64)); // Fallback
+                                            resolve(resolveWithCache(svgBase64));
                                         }
                                     };
-                                    img.onerror = () => {
-                                        clearTimeout(timeout);
-                                        resolve(fallback);
-                                    };
+                                    img.onerror = () => { clearTimeout(timeout); resolve(fallback); };
                                     img.src = svgBase64;
                                 });
                             }
                         }
-                    } catch {
-                        // Next source
-                    }
+                    } catch { continue; }
                 }
-
-                console.warn(`All fetches failed for ${name} (${slug})`);
                 return fallback;
             };
 
-            const processedTools = await Promise.all(tools.map(async tool => {
-                const dataURI = await getColoredIconURI(tool.slug, tool.color, tool.name);
-                return { ...tool, icon: dataURI, valid: true };
-            }));
+            // Fetch and Update
+            bodies.forEach(async (body) => {
+                const tool = body.plugin.toolData;
+                const size = body.plugin.size;
+                try {
+                    const dataURI = await getColoredIconURI(tool.slug, tool.color, tool.name);
+                    if (!isCurrent) return;
 
-            if (!isCurrent) return; // Cleanup check
-
-            // Recalculate dimensions to ensure we spawn within current bounds (fixes mobile race condition)
-            const currentContainer = containerRef.current;
-            const currentWidth = currentContainer ? (currentContainer.clientWidth || width) : width;
-            const currentHeight = currentContainer ? (currentContainer.clientHeight || height) : height;
-
-            const bodies = processedTools
-                .map((tool) => {
-                    const isMobile = currentWidth < 768;
-                    const baseSize = isMobile ? 30 : 60; // Reduced from 55/90 to 30/60
-                    const variation = isMobile ? 15 : 20; // Reduced from 25/30 to 15/20
-                    // Ensure bubbles spawn within bounds
-                    const x = Math.random() * (currentWidth - (isMobile ? 50 : 100)) + (isMobile ? 25 : 50);
-                    const y = Math.random() * (currentHeight / 3); // Spawn in top third
-                    const size = baseSize + Math.random() * variation;
-
-                    return Bodies.circle(x, y, size / 2, { // Circle radius is size/2
-                        restitution: 0.6, // Bouncier
-                        friction: 0.05,
-                        density: 0.002,
-                        render: {
-                            sprite: {
-                                texture: tool.icon,
-                                xScale: (size) / 128, // Scale 128px texture to 'size'
-                                yScale: (size) / 128
-                            }
-                        },
-                        label: tool.name
-                    })
-                });
-
-            if (bodies.length > 0) {
-                console.log("Adding bodies:", bodies.length);
-                Composite.add(engine.world, bodies)
-            } else {
-                console.warn("No bodies created");
-            }
+                    // Update the body's render properties
+                    body.render.sprite = {
+                        texture: dataURI,
+                        xScale: size / 128,
+                        yScale: size / 128
+                    };
+                    // Clear the fillStyle so the sprite shows up clearly (or keep it as background?)
+                    // Matter.js prioritized sprite if present.
+                } catch (e) {
+                    console.warn("Failed to load icon for", tool.name);
+                }
+            });
         };
 
         createBodies();
