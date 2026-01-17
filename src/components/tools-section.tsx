@@ -228,12 +228,12 @@ export default function ToolsSection() {
             const bodies = processedTools
                 .map((tool) => {
                     const isMobile = currentWidth < 768;
-                    const baseSize = isMobile ? 55 : 90;
-                    const variation = isMobile ? 25 : 30;
+                    const baseSize = isMobile ? 30 : 60; // Reduced from 55/90 to 30/60
+                    const variation = isMobile ? 15 : 20; // Reduced from 25/30 to 15/20
                     // Ensure bubbles spawn within bounds
-                    const x = Math.random() * (currentWidth - (isMobile ? 80 : 200)) + (isMobile ? 40 : 100);
-                    const y = Math.random() * (currentHeight / 2) // Spawn in top half
-                    const size = baseSize + Math.random() * variation
+                    const x = Math.random() * (currentWidth - (isMobile ? 50 : 100)) + (isMobile ? 25 : 50);
+                    const y = Math.random() * (currentHeight / 3); // Spawn in top third
+                    const size = baseSize + Math.random() * variation;
 
                     return Bodies.circle(x, y, size / 2, { // Circle radius is size/2
                         restitution: 0.6, // Bouncier
