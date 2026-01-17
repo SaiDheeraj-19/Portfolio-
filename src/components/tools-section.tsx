@@ -52,7 +52,8 @@ export default function ToolsSection() {
             Composite = Matter.Composite,
             Mouse = Matter.Mouse,
             MouseConstraint = Matter.MouseConstraint,
-            Query = Matter.Query
+            Query = Matter.Query,
+            Events = Matter.Events
 
         // Create an engine
         const engine = Engine.create({
@@ -299,6 +300,7 @@ export default function ToolsSection() {
             const hits = Query.point(allBodies, { x, y });
 
             if (hits.length > 0) {
+                // Only prevent scroll if we touched a body
                 e.preventDefault();
                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 (mouse as any).mousedown(e);
@@ -306,7 +308,8 @@ export default function ToolsSection() {
         };
 
         const handleTouchMove = (e: TouchEvent) => {
-            if (mouse.button !== -1) {
+            // Check if we are actually dragging a body via the Constraint
+            if (mouseConstraint.body) {
                 e.preventDefault();
                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 (mouse as any).mousemove(e);
@@ -314,6 +317,9 @@ export default function ToolsSection() {
         };
 
         const handleTouchEnd = (e: TouchEvent) => {
+            if (mouseConstraint.body) {
+                e.preventDefault();
+            }
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             (mouse as any).mouseup(e);
         };
@@ -387,6 +393,34 @@ export default function ToolsSection() {
         const runner = Runner.create()
         Runner.run(runner, engine)
 
+        // Safety Mechanism: Respawn bodies if they fall out of bounds
+        Events.on(runner, 'beforeUpdate', () => {
+            const bodies = Composite.allBodies(engine.world);
+            const canvasHeight = render.options.height || 600;
+            const canvasWidth = render.options.width || 800;
+
+            bodies.forEach(body => {
+                if (body.isStatic) return;
+
+                // If body falls way below bottom (tunneling)
+                if (body.position.y > canvasHeight + 100) {
+                    Matter.Body.setPosition(body, {
+                        x: Math.random() * (canvasWidth - 100) + 50,
+                        y: -50 // Respawn just above top
+                    });
+                    Matter.Body.setVelocity(body, { x: 0, y: 0 });
+                }
+                // If body goes way above top (rare but possible with violent collisions)
+                else if (body.position.y < -200) {
+                    Matter.Body.setPosition(body, {
+                        x: Math.random() * (canvasWidth - 100) + 50,
+                        y: 50
+                    });
+                    Matter.Body.setVelocity(body, { x: 0, y: 0 });
+                }
+            });
+        });
+
         // Resize handler
         const handleResize = () => {
             if (!containerRef.current) return
@@ -452,7 +486,8 @@ export default function ToolsSection() {
             </div>
 
             <div ref={containerRef} className="relative w-full h-[500px] md:h-[600px] overflow-hidden">
-                <canvas ref={canvasRef} className="w-full h-full block" style={{ touchAction: 'pan-y' }} />
+                <canvas ref={canvasRef} className="w-full h-full block" />
+
 
                 {/* Instruction Overlay */}
                 <div className="absolute top-6 left-0 w-full text-center pointer-events-none">
