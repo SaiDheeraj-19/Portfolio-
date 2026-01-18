@@ -353,7 +353,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative py-16 md:py-32 px-4 md:px-6 overflow-hidden bg-black">
+      <section className="relative pt-16 pb-32 md:py-32 px-4 md:px-6 overflow-hidden bg-black">
         {/* Animated Background */}
         <div className="absolute inset-0 z-0 pointer-events-none opacity-60">
           <FloatingPaths position={1} />
@@ -385,7 +385,7 @@ export default function Home() {
               duration: 1.5,
               delay: 0.5
             }}
-            className="text-lg md:text-2xl lg:text-3xl font-medium text-white/90 leading-relaxed max-w-4xl mx-auto"
+            className="text-lg md:text-2xl lg:text-3xl font-medium text-white/90 leading-relaxed max-w-4xl mx-auto mb-12 md:mb-0"
           >
             From biometric verification to AI-driven workflows and multilingual voice pipelines, I build full-stack products where data, identity, and automation work together to survive real-world conditions — <span className="opacity-60">not just perfect demos.</span>
           </motion.p>
@@ -394,7 +394,7 @@ export default function Home() {
           02
         </div>
 
-        <div className="absolute left-0 w-full md:w-auto md:left-auto md:right-12 bottom-10 z-20 pointer-events-auto flex justify-center md:block px-6 md:px-0">
+        <div className="absolute left-0 w-full md:w-auto md:left-auto md:right-12 bottom-8 md:bottom-10 z-20 pointer-events-auto flex justify-center md:block px-6 md:px-0">
           <Button
             variant="outline"
             className="w-full md:w-auto rounded-full border-neutral-700/50 bg-black/20 text-neutral-400 backdrop-blur-sm hover:bg-white hover:text-black transition-all duration-300 px-6 py-6 font-mono text-[10px] md:text-xs tracking-widest uppercase"
