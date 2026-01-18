@@ -1,0 +1,6 @@
+navs_modules
+npm-debug.log
+Dockerfile
+.dockerignore
+.next
+.git
