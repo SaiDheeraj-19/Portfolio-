@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button"
 // Removed unused imports
 import Image from "next/image"
 import TextType from "@/components/TextType";
-import { FloatingPaths } from "@/components/ui/background-paths";
+
 import {
   Dialog,
   DialogContent,
@@ -20,9 +20,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog"
-import ProfileCard from "@/components/react-bits/ProfileCard"
-import Aurora from "@/components/react-bits/Aurora"
-import Hyperspeed, { hyperspeedPresets } from "@/components/react-bits/Hyperspeed"
+
 
 import Navbar from "@/components/layout/navbar"
 import HomeToolsSection from "@/components/home-tools-section"
