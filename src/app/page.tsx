@@ -179,11 +179,8 @@ export default function Home() {
 
         {/* Background Large Text - Responsive sizing */}
         <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none select-none overflow-hidden z-0 py-24 md:py-0 opacity-20 md:opacity-100">
-          <span className="text-[25vw] md:text-[17vw] font-black text-transparent bg-clip-text bg-gradient-to-b from-primary/60 to-primary/20 whitespace-nowrap tracking-tighter leading-[0.8] select-none animate-[pulse_3s_ease-in-out_infinite] drop-shadow-[0_0_10px_rgba(203,153,126,0.2)]">
-            SAI
-          </span>
-          <span className="text-[25vw] md:text-[17vw] font-black text-transparent bg-clip-text bg-gradient-to-b from-primary/60 to-primary/20 whitespace-nowrap tracking-tighter leading-[0.8] select-none animate-[pulse_3s_ease-in-out_infinite] drop-shadow-[0_0_10px_rgba(203,153,126,0.2)]">
-            DHEERAJ
+          <span className="text-[12vw] md:text-[10vw] font-black text-transparent bg-clip-text bg-gradient-to-b from-primary/60 to-primary/20 whitespace-nowrap tracking-tighter leading-[0.8] select-none animate-[pulse_3s_ease-in-out_infinite] drop-shadow-[0_0_10px_rgba(203,153,126,0.2)]">
+            SAI DHEERAJ
           </span>
         </div>
 
@@ -250,7 +247,7 @@ export default function Home() {
 
                       {/* Text Overlay */}
                       <div className="relative z-40 p-6 text-white mt-auto h-full flex flex-col justify-end pb-12 pointer-events-none">
-                        <p className="text-[10px] font-bold tracking-[0.2em] mb-1 opacity-90 drop-shadow-md">FULL STACK</p>
+                        <p className="text-[10px] font-bold tracking-[0.2em] mb-1 opacity-100 drop-shadow-md">FULL STACK</p>
                         <h2 className="text-4xl md:text-5xl font-black tracking-tighter leading-[0.85] mb-2 drop-shadow-lg">
                           DEVELOPER
                         </h2>
