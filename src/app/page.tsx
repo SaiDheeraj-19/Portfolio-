@@ -175,15 +175,7 @@ export default function Home() {
       {/* Hero Section */}
       <section id="home" className="relative h-dvh min-h-screen flex flex-col items-center justify-center overflow-hidden">
 
-        {/* Aurora Background */}
-        <div className="absolute inset-0 z-0 pointer-events-none opacity-50 mix-blend-screen">
-          <Aurora
-            colorStops={["#0088cc", "#eeeeee", "#ffffff"]}
-            amplitude={1}
-            blend={0.5}
-            speed={0.5}
-          />
-        </div>
+
 
         {/* Background Large Text - Responsive sizing */}
         <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none select-none overflow-hidden z-0 py-24 md:py-0 opacity-20 md:opacity-100">
