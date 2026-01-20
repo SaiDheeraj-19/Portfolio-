@@ -179,7 +179,10 @@ export default function Home() {
 
         {/* Background Large Text - Responsive sizing */}
         <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none select-none overflow-hidden z-0 py-24 md:py-0">
-          <span className="text-[18vw] md:text-[15vw] font-black text-foreground/20 whitespace-nowrap tracking-tighter leading-[0.8] select-none animate-[pulse_3s_ease-in-out_infinite]">
+          <span
+            className="text-[18vw] md:text-[15vw] font-black text-transparent whitespace-nowrap tracking-tighter leading-[0.8] select-none animate-[pulse_3s_ease-in-out_infinite]"
+            style={{ WebkitTextStroke: "1px rgba(26, 26, 26, 0.2)" }}
+          >
             SAI DHEERAJ
           </span>
         </div>
