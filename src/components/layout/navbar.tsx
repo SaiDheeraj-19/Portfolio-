@@ -44,9 +44,7 @@ export default function Navbar({ onOpenProjects, onOpenResume, onOpenAbout, onOp
     return (
         <nav
             className={cn(
-                "fixed top-0 z-50 w-full transition-all duration-300 ease-in-out py-6 md:py-8 layout-padding",
-                "bg-background/80 backdrop-blur-md",
-                scrollDirection === "down" ? "-translate-y-[200%]" : "translate-y-0"
+                "absolute top-0 z-50 w-full transition-all duration-300 ease-in-out py-6 md:py-8 layout-padding bg-transparent"
             )}
         >
             <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
