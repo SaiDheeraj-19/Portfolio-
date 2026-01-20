@@ -392,9 +392,7 @@ export default function Home() {
       {/* About Me Popup */}
       <Dialog open={showAboutPopup} onOpenChange={setShowAboutPopup}>
         <DialogContent className="max-w-[95vw] bg-background border-border text-foreground p-0 overflow-hidden !rounded-[2rem] w-[95vw] h-[90vh] [&>button]:hidden">
-          <div className="absolute inset-0 z-0">
-            <Hyperspeed effectOptions={hyperspeedPresets.three} />
-          </div>
+          <div className="absolute inset-0 z-0 bg-background" />
           <DialogTitle className="sr-only">Explore Sai Dheeraj</DialogTitle>
           <div className="relative z-10 w-full h-full flex flex-col items-start p-5 md:p-12 overflow-y-auto">
             {/* Close Button */}
