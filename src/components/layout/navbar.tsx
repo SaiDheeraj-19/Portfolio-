@@ -75,15 +75,15 @@ export default function Navbar({ onOpenProjects, onOpenResume, onOpenAbout, onOp
                     {mounted && (
                         <button
                             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                            className={cn("p-2 rounded-full transition-colors", hoverColorClass)}
+                            className="p-2 rounded-full transition-colors hover:text-primary text-foreground"
                             aria-label="Toggle Theme"
                         >
                             {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
                         </button>
                     )}
 
-                    <MusicToggle className={cn("border-opacity-30", isLightPage ? "border-black/20 text-black hover:bg-black/5" : "border-white/20")} />
-                    <Button onClick={onOpenContact} className={cn("rounded-full px-8 font-bold tracking-wide transition-all", contactBtnClass)}>
+                    <MusicToggle className="border-opacity-30 border-foreground/20 text-foreground hover:bg-foreground/5" />
+                    <Button onClick={onOpenContact} className="rounded-full px-8 font-bold tracking-wide transition-all bg-primary text-primary-foreground hover:bg-primary/90 shadow-xl border-transparent">
                         CONTACT
                     </Button>
                 </div>
