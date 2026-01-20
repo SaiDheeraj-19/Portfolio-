@@ -204,7 +204,7 @@ export default function Home() {
             <div className="w-[85vw] max-w-[320px] aspect-[2/3] md:w-[380px] md:h-[550px]">
               <ProfileCard
                 name="Sai Dheeraj"
-                title="Full Stack Engineer"
+                title="Full Stack Developer"
                 handle="Building Scalable Systems"
                 avatarUrl="/sai_profile_bw.png"
                 contactText="CONTACT ME"
@@ -260,9 +260,7 @@ export default function Home() {
                       <div className="relative z-40 p-6 text-white mt-auto h-full flex flex-col justify-end pb-12 pointer-events-none">
                         <p className="text-[10px] font-bold tracking-[0.2em] mb-1 opacity-90 drop-shadow-md">FULL STACK</p>
                         <h2 className="text-4xl md:text-5xl font-black tracking-tighter leading-[0.85] mb-2 drop-shadow-lg">
-                          ENGINEER
-                          <br />
-                          <span className="text-white/95">& AI DEV</span>
+                          DEVELOPER
                         </h2>
                       </div>
 
