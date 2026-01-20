@@ -27,7 +27,7 @@ export default function ToolsBentoGrid() {
     const [selectedTool, setSelectedTool] = useState<typeof tools[0] | null>(null)
 
     return (
-        <section id="tech-grid" className="bg-background py-12 md:py-20 px-4 sm:px-6 md:px-20 border-t border-border">
+        <section id="tech-grid" className="bg-muted py-12 md:py-20 px-4 sm:px-6 md:px-20 border-t border-border">
             <div className="max-w-7xl mx-auto">
 
 

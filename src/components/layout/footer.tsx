@@ -6,7 +6,7 @@ import { Linkedin, Instagram, Github, Music2 } from "lucide-react"
 
 export default function Footer() {
     return (
-        <footer className="bg-muted text-foreground pt-20 pb-0 overflow-hidden relative select-none">
+        <footer className="bg-black text-white pt-20 pb-0 overflow-hidden relative select-none">
             <div className="container mx-auto px-6 md:px-12 relative z-10">
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-10 mb-20">
 
@@ -17,7 +17,7 @@ export default function Footer() {
                             <Link
                                 href="https://github.com/SaiDheeraj-19"
                                 target="_blank"
-                                className="bg-neutral-800 p-4 rounded-xl hover:bg-white hover:text-black transition-all duration-300"
+                                className="bg-[#1c1c1e] p-4 rounded-xl hover:bg-white hover:text-black transition-all duration-300"
                             >
                                 <Github className="w-6 h-6" />
                             </Link>
@@ -25,7 +25,7 @@ export default function Footer() {
                             <Link
                                 href="https://www.linkedin.com/in/sai-dheeraj-a1145830b/"
                                 target="_blank"
-                                className="bg-neutral-800 p-4 rounded-xl hover:bg-white hover:text-black transition-all duration-300"
+                                className="bg-[#1c1c1e] p-4 rounded-xl hover:bg-white hover:text-black transition-all duration-300"
                             >
                                 <Linkedin className="w-6 h-6" />
                             </Link>
@@ -33,7 +33,7 @@ export default function Footer() {
                             <Link
                                 href="https://www.instagram.com/your.saidheeraj/"
                                 target="_blank"
-                                className="bg-neutral-800 p-4 rounded-xl hover:bg-white hover:text-black transition-all duration-300"
+                                className="bg-[#1c1c1e] p-4 rounded-xl hover:bg-white hover:text-black transition-all duration-300"
                             >
                                 <Instagram className="w-6 h-6" />
                             </Link>
@@ -43,7 +43,7 @@ export default function Footer() {
                     {/* Right Side - Message */}
                     <div className="text-left md:text-right space-y-4 md:space-y-6">
 
-                        <p className="text-base md:text-2xl font-light text-muted-foreground max-w-lg leading-relaxed">Designed and built by <span className="text-primary font-medium">Sai Dheeraj</span> to showcase learning-focused software projects.</p>
+                        <p className="text-base md:text-2xl font-light text-neutral-400 max-w-lg leading-relaxed">Designed and built by <span className="text-white font-medium">Sai Dheeraj</span> to showcase learning-focused software projects.</p>
                     </div>
                 </div>
             </div>
