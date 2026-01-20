@@ -4,7 +4,6 @@ import "./globals.css";
 // import Navbar from "@/components/layout/navbar"; // Removed unused import but wait, maybe I should just delete the line.
 import Footer from "@/components/layout/footer";
 import { ThemeProvider } from "@/components/theme-provider";
-import AnimatedBackground from "@/components/animated-background";
 import LoadingScreen from "@/components/ui/loading-screen";
 
 import { AudioProvider } from "@/context/audio-context";
@@ -38,7 +37,7 @@ export default function RootLayout({
         >
           <AudioProvider>
             <LoadingScreen />
-            <AnimatedBackground />
+            <LoadingScreen />
             <div className="min-h-screen flex flex-col relative">
 
               <main className="flex-1">{children}</main>
