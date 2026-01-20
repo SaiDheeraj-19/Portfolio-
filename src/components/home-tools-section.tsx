@@ -7,7 +7,8 @@ import { tools } from "@/data/tools"
 
 const DISPLAY_TOOLS = [
     "Next.js", "React", "TypeScript", "Tailwind CSS",
-    "Framer Motion", "Vercel"
+    "Framer Motion", "Vercel", "MongoDB", "Express",
+    "Node.js", "Streamlit", "Flutter"
 ]
 
 export default function HomeToolsSection() {
