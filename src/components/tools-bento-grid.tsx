@@ -50,7 +50,7 @@ export default function ToolsBentoGrid() {
 
                             <div className="relative z-10 p-3 md:p-4 bg-muted/20 rounded-full mb-3 md:mb-4 group-hover:scale-110 transition-transform duration-300">
                                 <Image
-                                    src={tool.icon || `https://cdn.simpleicons.org/${tool.slug}/000000`}
+                                    src={tool.icon || `https://cdn.simpleicons.org/${tool.slug}/ffffff`}
                                     alt={tool.name}
                                     width={32}
                                     height={32}

@@ -31,7 +31,7 @@ export default function Navbar({ onOpenProjects, onOpenResume, onOpenAbout, onOp
     const mobileMenuBg = isLightPage ? "bg-background/95" : "bg-black/95"
     const mobileMenuText = isLightPage ? "text-muted-foreground" : "text-gray-300"
     const contactBtnClass = isLightPage
-        ? "bg-primary text-white hover:bg-primary/90 shadow-xl border-transparent"
+        ? "bg-primary text-primary-foreground hover:bg-primary/90 shadow-xl border-transparent"
         : "bg-black hover:bg-neutral-800 text-white shadow-lg hover:shadow-white/10 border border-white/10"
 
     return (
