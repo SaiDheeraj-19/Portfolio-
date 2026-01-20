@@ -14,7 +14,7 @@ export default function HomeToolsSection() {
     const selectedTools = tools.filter(t => DISPLAY_TOOLS.includes(t.name))
 
     return (
-        <section className="py-24 pb-32 md:pb-24 border-t border-border relative overflow-hidden">
+        <section className="py-24 pb-32 md:pb-24 bg-secondary border-t border-border relative overflow-hidden">
             <div className="max-w-6xl mx-auto px-6 relative z-10">
                 <div className="text-center mb-12 md:mb-16">
                     <span className="text-[10px] md:text-sm font-bold tracking-[0.3em] uppercase text-muted-foreground mb-2 block">Powered By</span>

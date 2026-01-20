@@ -49,119 +49,122 @@
 :root {
   --radius: 0.625rem;
 
-  /* Apple-Style Minimalist Light Theme */
+  /* Page Background -> #FDFBD4 */
+  --background: #FDFBD4;
 
-  /* Background: White/Off-White (#eeeeee used for sections, pure white for main) */
-  --background: #ffffff;
+  /* Primary Text (Headings) -> #545333 */
+  --foreground: #545333;
 
-  /* Foreground: Black (#000000) */
-  --foreground: #000000;
+  /* Card Background -> #F2C7C7 */
+  --card: #F2C7C7;
+  --card-foreground: #545333;
 
-  /* Card: Light Gray (#f5f5f7 - Apple's background gray, close to #eeeeee) */
-  --card: #f5f5f7;
-  --card-foreground: #000000;
+  /* Popover */
+  --popover: #F2C7C7;
+  --popover-foreground: #545333;
 
-  /* Popover: White with shadow */
-  --popover: #ffffff;
-  --popover-foreground: #000000;
+  /* Accent (Buttons/Links) -> #FFB7C5 */
+  --primary: #FFB7C5;
+  --primary-foreground: #545333;
 
-  /* Primary: Apple Blue (#0066cc - Standard link blue, close to #0088cc) */
-  /* Using user's specific #0088cc */
-  --primary: #0088cc;
-  --primary-foreground: #ffffff;
+  /* Section Background -> #D9D7B6 */
+  --secondary: #D9D7B6;
+  --secondary-foreground: #545333;
 
-  /* Secondary: Neutral Gray (#eeeeee) */
-  --secondary: #eeeeee;
-  --secondary-foreground: #000000;
+  /* Muted / Section Background */
+  --muted: #D9D7B6;
+  --muted-foreground: #878672;
+  /* Secondary Text */
 
-  /* Muted: #f5f5f7 */
-  --muted: #f5f5f7;
-  --muted-foreground: #666666;
-  /* Subtext */
+  /* Accent -> #FFB7C5 */
+  --accent: #FFB7C5;
+  --accent-foreground: #545333;
 
-  /* Accent: #0088cc (Blue for interactions) */
-  --accent: #f5f5f7;
-  /* Hover state usually */
-  --accent-foreground: #0088cc;
-
-  /* Destructive: #ff3b30 (Apple Red) */
-  --destructive: #ff3b30;
+  /* Success/Highlight -> #D5F3D8 (Using as destructive/success proxy or custom) */
+  /* Mapping destructive to a standard red for safety, highlighting accessible areas */
+  --destructive: #ef4444;
   --destructive-foreground: #ffffff;
 
-  /* Border: #d2d2d7 (Apple Border) or #979797 (User provided) */
-  --border: #d2d2d7;
-  --input: #d2d2d7;
-  --ring: #0088cc;
+  /* Border -> #878672 (Secondary Text) */
+  --border: #878672;
+  --input: #D9D7B6;
+  --ring: #FFB7C5;
 
-  /* Charts */
-  --chart-1: #0088cc;
-  /* Blue */
-  --chart-2: #666666;
-  /* Dark Gray */
-  --chart-3: #979797;
-  /* Gray */
-  --chart-4: #000000;
-  /* Black */
-  --chart-5: #eeeeee;
-  /* Light Gray */
+  /* Pure White (Utility) */
+  /* Used in specific classes if needed, or sidebar default */
+
+  /* Charts - Mapped to palette */
+  --chart-1: #FFB7C5;
+  /* Pink */
+  --chart-2: #D5F3D8;
+  /* Light Green */
+  --chart-3: #D9D7B6;
+  /* Beige */
+  --chart-4: #545333;
+  /* Olive */
+  --chart-5: #878672;
+  /* Grey Olive */
 
   /* Sidebar */
-  --sidebar: #f5f5f7;
-  --sidebar-foreground: #000000;
-  --sidebar-primary: #0088cc;
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #e5e5ea;
-  --sidebar-accent-foreground: #000000;
-  --sidebar-border: #d2d2d7;
-  --sidebar-ring: #0088cc;
+  --sidebar: #FDFBD4;
+  --sidebar-foreground: #545333;
+  --sidebar-primary: #FFB7C5;
+  --sidebar-primary-foreground: #545333;
+  --sidebar-accent: #D9D7B6;
+  --sidebar-accent-foreground: #545333;
+  --sidebar-border: #878672;
+  --sidebar-ring: #FFB7C5;
 }
 
 .dark {
-  /* Apple Dark Mode */
-  --background: #000000;
-  --foreground: #ffffff;
+  /* No specific dark mode requested, user provided specific palette. 
+     Will map dark variables to similar tones but maybe inverted or just same 
+     to maintain the user's specific aesthetic if they toggle. 
+     Usually "retro" themes don't have a standard dark mode. 
+     I'll map them to a darker version of these colors for safety. */
 
-  --card: #1c1c1e;
-  /* Apple Dark Gray Card */
-  --card-foreground: #ffffff;
+  --background: #1a1a10;
+  --foreground: #FDFBD4;
 
-  --popover: #1c1c1e;
-  --popover-foreground: #ffffff;
+  --card: #2c2c1e;
+  --card-foreground: #FDFBD4;
 
-  --primary: #0a84ff;
-  /* Apple Dark Mode Blue */
-  --primary-foreground: #ffffff;
+  --popover: #2c2c1e;
+  --popover-foreground: #FDFBD4;
 
-  --secondary: #2c2c2e;
-  --secondary-foreground: #ffffff;
+  --primary: #FFB7C5;
+  --primary-foreground: #545333;
 
-  --muted: #1c1c1e;
-  --muted-foreground: #98989d;
+  --secondary: #3a3a2a;
+  --secondary-foreground: #FDFBD4;
 
-  --accent: #2c2c2e;
-  --accent-foreground: #ffffff;
+  --muted: #3a3a2a;
+  --muted-foreground: #D9D7B6;
 
-  --destructive: #ff453a;
+  --accent: #3a3a2a;
+  --accent-foreground: #FDFBD4;
+
+  --destructive: #7f1d1d;
   --destructive-foreground: #ffffff;
 
-  --border: #38383a;
-  --input: #38383a;
-  --ring: #0a84ff;
+  --border: #3a3a2a;
+  --input: #3a3a2a;
+  --ring: #FFB7C5;
 
-  --chart-1: #0a84ff;
-  --chart-2: #98989d;
-  --chart-3: #636366;
-  --chart-4: #ffffff;
-  --chart-5: #1c1c1e;
+  --chart-1: #FFB7C5;
+  --chart-2: #D5F3D8;
+  --chart-3: #D9D7B6;
+  --chart-4: #545333;
+  --chart-5: #878672;
 
-  --sidebar: #000000;
-  --sidebar-foreground: #ffffff;
-  --sidebar-primary: #0a84ff;
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #1c1c1e;
-  --sidebar-accent-foreground: #ffffff;
-  --sidebar-border: #38383a;
-  --sidebar-ring: #0a84ff;
+  --sidebar: #1a1a10;
+  --sidebar-foreground: #FDFBD4;
+  --sidebar-primary: #FFB7C5;
+  --sidebar-primary-foreground: #545333;
+  --sidebar-accent: #3a3a2a;
+  --sidebar-accent-foreground: #FDFBD4;
+  --sidebar-border: #3a3a2a;
+  --sidebar-ring: #FFB7C5;
 }
 
 @layer base {
