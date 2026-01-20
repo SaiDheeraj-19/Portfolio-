@@ -377,8 +377,7 @@ export default function Home() {
 
         <div className="absolute left-0 w-full md:w-auto md:left-auto md:right-12 bottom-8 md:bottom-10 z-20 pointer-events-auto flex justify-center md:block px-6 md:px-0">
           <Button
-            variant="outline"
-            className="w-full md:w-auto rounded-full border-neutral-700/50 bg-black/20 text-neutral-400 backdrop-blur-sm hover:bg-white hover:text-black transition-all duration-300 px-6 py-6 font-mono text-[10px] md:text-xs tracking-widest uppercase"
+            className="w-full md:w-auto rounded-full bg-primary text-primary-foreground shadow-lg border border-transparent hover:bg-primary/90 hover:scale-105 transition-all duration-300 px-8 py-6 font-bold font-mono text-xs tracking-widest uppercase"
             onClick={() => setShowAboutPopup(true)}
           >
             EXPLORE SAI DHEERAJ <ArrowRight className="ml-2 w-4 h-4" />
