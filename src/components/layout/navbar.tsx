@@ -2,12 +2,13 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { useState } from "react"
-import { Menu, X, ArrowLeft } from "lucide-react"
+import { useState, useEffect } from "react"
+import { Menu, X, ArrowLeft, Sun, Moon } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import MusicToggle from "@/components/music-toggle"
 import { useScrollDirection } from "@/hooks/use-scroll-direction"
+import { useTheme } from "next-themes"
 
 interface NavbarProps {
     onOpenProjects?: () => void;
@@ -21,6 +22,12 @@ export default function Navbar({ onOpenProjects, onOpenResume, onOpenAbout, onOp
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const scrollDirection = useScrollDirection()
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
+    const { theme, setTheme } = useTheme()
+    const [mounted, setMounted] = useState(false)
+
+    useEffect(() => {
+        setMounted(true)
+    }, [])
 
     // Hide navbar on admin page
     if (pathname === "/admin") return null
@@ -28,21 +35,17 @@ export default function Navbar({ onOpenProjects, onOpenResume, onOpenAbout, onOp
     // Check if we need dark text (for light backgrounds)
     const isLightPage = true
     const hoverColorClass = isLightPage ? "hover:text-primary" : "hover:text-white"
-    const mutedColorClass = isLightPage ? "text-muted-foreground" : "text-gray-300"
+    const mutedColorClass = isLightPage ? "text-muted-foreground mr-4" : "text-gray-300 mr-4"
     const logoColorClass = isLightPage ? "text-foreground" : "text-white"
     const mobileMenuBg = isLightPage ? "bg-background/95" : "bg-black/95"
     const mobileMenuText = isLightPage ? "text-muted-foreground" : "text-gray-300"
-    const contactBtnClass = isLightPage
-        ? "bg-primary text-primary-foreground hover:bg-primary/90 shadow-xl border-transparent"
-        : "bg-black hover:bg-neutral-800 text-white shadow-lg hover:shadow-white/10 border border-white/10"
+    const contactBtnClass = "bg-primary text-primary-foreground hover:bg-primary/90 shadow-xl border-transparent"
 
     return (
         <nav
             className={cn(
                 "fixed top-0 z-50 w-full transition-all duration-300 ease-in-out py-6 md:py-8 layout-padding",
                 "bg-background/80 backdrop-blur-md",
-                // Hide on scroll down (translate-y-full means move up out of view if top-0, wait. 
-                // -translate-y-full moves it UP (hidden). translate-y-0 is visible.
                 scrollDirection === "down" ? "-translate-y-[200%]" : "translate-y-0"
             )}
         >
@@ -59,7 +62,7 @@ export default function Navbar({ onOpenProjects, onOpenResume, onOpenAbout, onOp
                 )}
 
                 {/* Desktop Navigation */}
-                <div className="hidden md:flex items-center space-x-8">
+                <div className="hidden md:flex items-center space-x-6">
                     {/* Always show Home link if not on home page */}
                     {pathname !== "/" && (
                         <Link href="/" className={cn("transition-colors text-sm font-medium tracking-wide", mutedColorClass, hoverColorClass)}>
@@ -76,14 +79,34 @@ export default function Navbar({ onOpenProjects, onOpenResume, onOpenAbout, onOp
                     <button onClick={onOpenAbout} className={cn("transition-colors text-sm font-medium tracking-wide", mutedColorClass, hoverColorClass)}>
                         About me
                     </button>
+
+                    {/* Theme Toggle */}
+                    {mounted && (
+                        <button
+                            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                            className={cn("p-2 rounded-full transition-colors", hoverColorClass)}
+                            aria-label="Toggle Theme"
+                        >
+                            {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+                        </button>
+                    )}
+
                     <MusicToggle className={cn("border-opacity-30", isLightPage ? "border-black/20 text-black hover:bg-black/5" : "border-white/20")} />
                     <Button onClick={onOpenContact} className={cn("rounded-full px-8 font-bold tracking-wide transition-all", contactBtnClass)}>
                         CONTACT
                     </Button>
                 </div>
 
-                {/* Mobile: Music Toggle + Menu Button */}
+                {/* Mobile: Music Toggle + Theme + Menu Button */}
                 <div className="md:hidden flex items-center gap-3">
+                    {mounted && (
+                        <button
+                            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                            className={cn("p-2 rounded-full transition-colors", logoColorClass)}
+                        >
+                            {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+                        </button>
+                    )}
                     <MusicToggle className={cn("w-9 h-9", isLightPage ? "border-black/20 text-black" : "border-white/20")} />
                     <button className={logoColorClass} onClick={toggleMenu}>
                         {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
