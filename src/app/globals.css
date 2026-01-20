@@ -49,111 +49,99 @@
 :root {
   --radius: 0.625rem;
 
-  /* 1️⃣ PAGE BACKGROUND -> #FDFBD4 */
-  --background: #FDFBD4;
+  /* Lakshita Jaiswal Portfolio Palette (Minimalist Industrial) */
 
-  /* Text (Main Heading) -> #545333 */
-  --foreground: #545333;
+  /* Page Background: #FAFAFA (Light Off-White) */
+  --background: #FAFAFA;
 
-  /* 5️⃣ CARDS -> #F2C7C7 */
-  --card: #F2C7C7;
-  --card-foreground: #545333;
-  /* Heading inside card */
+  /* Primary Text: #1A1A1A (Dark Charcoal) */
+  --foreground: #1A1A1A;
+
+  /* Card Background: #FAFAFA (Same as page) or #FFFFFF */
+  --card: #FFFFFF;
+  --card-foreground: #1A1A1A;
 
   /* Popover */
-  --popover: #F2C7C7;
-  --popover-foreground: #545333;
+  --popover: #FFFFFF;
+  --popover-foreground: #1A1A1A;
 
-  /* 3️⃣ BUTTONS (Pink) -> #FFB7C5 */
-  --primary: #FFB7C5;
-  --primary-foreground: #545333;
-  /* Dark text on pink button */
+  /* Primary Accent: #1A1A1A (Dark Charcoal used for buttons/footer) */
+  --primary: #1A1A1A;
+  --primary-foreground: #FFFFFF;
 
-  /* 4️⃣ SECTIONS -> #D9D7B6 */
-  --secondary: #D9D7B6;
-  --secondary-foreground: #545333;
+  /* Secondary: #E5E5E5 (Grid Lines/Dividers) */
+  --secondary: #E5E5E5;
+  --secondary-foreground: #1A1A1A;
 
-  /* Muted / Paragraph Text -> #878672 */
-  /* Also used for Section backgrounds if needing differentiation, but 'secondary' is the section bg */
-  --muted: #D9D7B6;
-  --muted-foreground: #878672;
+  /* Muted Text: #808080 (Medium Grey) */
+  --muted: #FAFAFA;
+  --muted-foreground: #808080;
 
-  /* Accent (Hover) -> #FFB7C5 */
-  --accent: #FFB7C5;
-  --accent-foreground: #545333;
+  /* Accent (Hover): #333333 (Slightly lighter charcoal) */
+  --accent: #E5E5E5;
+  --accent-foreground: #1A1A1A;
 
-  /* 8️⃣ SUCCESS/HIGHLIGHT -> #D5F3D8 */
+  /* Destructive */
   --destructive: #ef4444;
-  /* Standard red for actual errors */
   --destructive-foreground: #ffffff;
 
-  /* Success Custom Variable (if needed in code, map to a CSS variable usage) */
-  /* --success: #D5F3D8; --success-foreground: #545333; */
+  /* Border: #E5E5E5 (Light Grey Grid Lines) */
+  --border: #E5E5E5;
+  --input: #E5E5E5;
+  --ring: #1A1A1A;
 
-  /* Border -> #878672 (Secondary Text color for subtle borders) */
-  --border: #878672;
-  --input: #D9D7B6;
-  --ring: #FFB7C5;
-
-  /* 6️⃣ TECH STACK TAGS -> #FFFFFF */
-  /* We can map sidebar or a specific utility for white pills */
+  /* Charts */
+  --chart-1: #1A1A1A;
+  --chart-2: #808080;
+  --chart-3: #E5E5E5;
+  --chart-4: #FAFAFA;
+  --chart-5: #333333;
 
   /* Sidebar */
-  --sidebar: #D9D7B6;
-  /* Like Navbar */
-  --sidebar-foreground: #545333;
-  --sidebar-primary: #FFB7C5;
-  --sidebar-primary-foreground: #545333;
-  --sidebar-accent: #FFB7C5;
-  --sidebar-accent-foreground: #545333;
-  --sidebar-border: #878672;
-  --sidebar-ring: #FFB7C5;
-
-  /* Chart Colors mapped to palette */
-  --chart-1: #FFB7C5;
-  --chart-2: #D5F3D8;
-  --chart-3: #D9D7B6;
-  --chart-4: #545333;
-  --chart-5: #878672;
+  --sidebar: #FAFAFA;
+  --sidebar-foreground: #1A1A1A;
+  --sidebar-primary: #1A1A1A;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #E5E5E5;
+  --sidebar-accent-foreground: #1A1A1A;
+  --sidebar-border: #E5E5E5;
+  --sidebar-ring: #1A1A1A;
 }
 
 .dark {
-  /* Enforcing the EXACT same palette even in 'dark mode' preference 
-     because the user strictly said "GOLDEN RULES (DO NOT BREAK)" 
-     and "One background color per section". 
-     This ensures consistency regardless of system theme. */
-  --background: #FDFBD4;
-  --foreground: #545333;
-  --card: #F2C7C7;
-  --card-foreground: #545333;
-  --popover: #F2C7C7;
-  --popover-foreground: #545333;
-  --primary: #FFB7C5;
-  --primary-foreground: #545333;
-  --secondary: #D9D7B6;
-  --secondary-foreground: #545333;
-  --muted: #D9D7B6;
-  --muted-foreground: #878672;
-  --accent: #FFB7C5;
-  --accent-foreground: #545333;
-  --destructive: #ef4444;
+  /* Minimalist Industrial Dark Mode */
+  --background: #0A0A0A;
+  --foreground: #FAFAFA;
+  --card: #141414;
+  --card-foreground: #FAFAFA;
+  --popover: #141414;
+  --popover-foreground: #FAFAFA;
+  --primary: #FAFAFA;
+  --primary-foreground: #0A0A0A;
+  --secondary: #262626;
+  --secondary-foreground: #FAFAFA;
+  --muted: #141414;
+  --muted-foreground: #A3A3A3;
+  --accent: #262626;
+  --accent-foreground: #FAFAFA;
+  --destructive: #7f1d1d;
   --destructive-foreground: #ffffff;
-  --border: #878672;
-  --input: #D9D7B6;
-  --ring: #FFB7C5;
-  --chart-1: #FFB7C5;
-  --chart-2: #D5F3D8;
-  --chart-3: #D9D7B6;
-  --chart-4: #545333;
-  --chart-5: #878672;
-  --sidebar: #D9D7B6;
-  --sidebar-foreground: #545333;
-  --sidebar-primary: #FFB7C5;
-  --sidebar-primary-foreground: #545333;
-  --sidebar-accent: #FFB7C5;
-  --sidebar-accent-foreground: #545333;
-  --sidebar-border: #878672;
-  --sidebar-ring: #FFB7C5;
+  --border: #333333;
+  --input: #333333;
+  --ring: #FAFAFA;
+  --chart-1: #FAFAFA;
+  --chart-2: #A3A3A3;
+  --chart-3: #525252;
+  --chart-4: #262626;
+  --chart-5: #0A0A0A;
+  --sidebar: #0A0A0A;
+  --sidebar-foreground: #FAFAFA;
+  --sidebar-primary: #FAFAFA;
+  --sidebar-primary-foreground: #0A0A0A;
+  --sidebar-accent: #262626;
+  --sidebar-accent-foreground: #FAFAFA;
+  --sidebar-border: #333333;
+  --sidebar-ring: #FAFAFA;
 }
 
 @layer base {
