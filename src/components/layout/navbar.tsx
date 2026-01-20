@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useState } from "react"
-import { Menu, X } from "lucide-react"
+import { Menu, X, ArrowLeft } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import MusicToggle from "@/components/music-toggle";
@@ -43,9 +43,15 @@ export default function Navbar({ onOpenProjects, onOpenResume, onOpenAbout, onOp
         >
             <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
 
-                <Link href="/" className={cn("text-xl md:text-2xl font-bold tracking-widest uppercase hover:opacity-80 transition-opacity", logoColorClass)}>
-                    SAI DHEERAJ
-                </Link>
+                {pathname !== "/" ? (
+                    <Link href="/" className={cn("text-sm md:text-base font-medium tracking-wide flex items-center gap-2 hover:opacity-80 transition-opacity", logoColorClass)}>
+                        <ArrowLeft className="w-4 h-4" /> Back to Home
+                    </Link>
+                ) : (
+                    <Link href="/" className={cn("text-xl md:text-2xl font-bold tracking-widest uppercase hover:opacity-80 transition-opacity", logoColorClass)}>
+                        SAI DHEERAJ
+                    </Link>
+                )}
 
                 {/* Desktop Navigation */}
                 <div className="hidden md:flex items-center space-x-8">
