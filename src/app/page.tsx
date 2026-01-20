@@ -333,9 +333,9 @@ export default function Home() {
             <div className="w-[1px] h-12 bg-neutral-500/50" />
           </div>
 
-          <div className="text-right text-neutral-400 font-mono pointer-events-auto">
-            <span className="block text-[10px] uppercase tracking-wider mb-0.5 opacity-60">Leveled up by:</span>
-            <span className="font-bold text-white text-xs md:text-sm uppercase tracking-widest">HARDWORK</span>
+          <div className="text-right font-mono pointer-events-auto">
+            <span className="block text-[10px] uppercase tracking-wider mb-0.5 text-muted-foreground opacity-80">Leveled up by:</span>
+            <span className="font-bold text-foreground text-xs md:text-sm uppercase tracking-widest">HARDWORK</span>
           </div>
         </div>
       </section>
