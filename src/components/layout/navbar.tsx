@@ -24,14 +24,14 @@ export default function Navbar({ onOpenProjects, onOpenResume, onOpenAbout, onOp
     if (pathname === "/admin") return null
 
     // Check if we need dark text (for light backgrounds)
-    const isLightPage = false // pathname === "/tech-stack" (This page is actually dark)
-    const hoverColorClass = isLightPage ? "hover:text-black" : "hover:text-white"
-    const mutedColorClass = isLightPage ? "text-neutral-600" : "text-gray-300"
-    const logoColorClass = isLightPage ? "text-black" : "text-white"
-    const mobileMenuBg = isLightPage ? "bg-white/95" : "bg-black/95"
-    const mobileMenuText = isLightPage ? "text-neutral-600" : "text-gray-300"
+    const isLightPage = true
+    const hoverColorClass = isLightPage ? "hover:text-foreground" : "hover:text-white"
+    const mutedColorClass = isLightPage ? "text-muted-foreground" : "text-gray-300"
+    const logoColorClass = isLightPage ? "text-foreground" : "text-white"
+    const mobileMenuBg = isLightPage ? "bg-background/95" : "bg-black/95"
+    const mobileMenuText = isLightPage ? "text-muted-foreground" : "text-gray-300"
     const contactBtnClass = isLightPage
-        ? "bg-black text-white hover:bg-neutral-800 shadow-xl border-transparent"
+        ? "bg-primary text-white hover:bg-primary/90 shadow-xl border-transparent"
         : "bg-black hover:bg-neutral-800 text-white shadow-lg hover:shadow-white/10 border border-white/10"
 
     return (

@@ -42,7 +42,7 @@ export default function LoadingScreen() {
         <AnimatePresence mode="wait">
             {isPresent && (
                 <motion.div
-                    className="fixed inset-0 z-[100] flex items-center justify-center bg-black"
+                    className="fixed inset-0 z-[100] flex items-center justify-center bg-background"
                     initial={{ opacity: 1 }}
                     exit={{ y: "-100%", transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] } }}
                 >
@@ -54,9 +54,9 @@ export default function LoadingScreen() {
                         transition={{ duration: 0.2 }}
                         className="flex items-center gap-4"
                     >
-                        <span className="text-4xl md:text-6xl font-bold text-white tracking-widest relative">
+                        <span className="text-4xl md:text-6xl font-bold text-primary tracking-widest relative">
                             {/* Add a small dot or decorative element if needed, but text alone is clean */}
-                            <span className="text-white/90">{greetings[index]}</span>
+                            <span className="text-primary/90">{greetings[index]}</span>
                             <span className="absolute -bottom-2 right-0 w-2 h-2 bg-orange-500 rounded-full animate-pulse" />
                         </span>
                     </motion.div>

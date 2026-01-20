@@ -27,7 +27,7 @@ export default function ToolsBentoGrid() {
     const [selectedTool, setSelectedTool] = useState<typeof tools[0] | null>(null)
 
     return (
-        <section id="tech-grid" className="bg-black py-12 md:py-20 px-4 sm:px-6 md:px-20 border-t border-neutral-900">
+        <section id="tech-grid" className="bg-background py-12 md:py-20 px-4 sm:px-6 md:px-20 border-t border-border">
             <div className="max-w-7xl mx-auto">
 
 
@@ -43,14 +43,14 @@ export default function ToolsBentoGrid() {
                             key={tool.slug}
                             layoutId={`card-${tool.slug}`}
                             onClick={() => setSelectedTool(tool)}
-                            className="group relative flex flex-col items-center justify-center p-4 md:p-6 bg-neutral-900 border border-neutral-800 rounded-2xl md:rounded-3xl cursor-pointer hover:border-neutral-600 transition-colors active:scale-95 overflow-hidden"
+                            className="group relative flex flex-col items-center justify-center p-4 md:p-6 bg-card border border-border rounded-2xl md:rounded-3xl cursor-pointer hover:border-primary transition-colors active:scale-95 overflow-hidden"
                             whileHover={{ y: -5 }}
                         >
                             <div className="absolute inset-0 h-full w-full bg-gradient-to-r from-blue-500 to-teal-500 transform scale-[0.80] bg-red-500 rounded-full blur-3xl opacity-0 group-hover:opacity-20 transition-opacity duration-500" />
 
-                            <div className="relative z-10 p-3 md:p-4 bg-neutral-800 rounded-full mb-3 md:mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <div className="relative z-10 p-3 md:p-4 bg-muted/20 rounded-full mb-3 md:mb-4 group-hover:scale-110 transition-transform duration-300">
                                 <Image
-                                    src={tool.icon || `https://cdn.simpleicons.org/${tool.slug}/ffffff`}
+                                    src={tool.icon || `https://cdn.simpleicons.org/${tool.slug}/000000`}
                                     alt={tool.name}
                                     width={32}
                                     height={32}
@@ -58,7 +58,7 @@ export default function ToolsBentoGrid() {
                                     unoptimized
                                 />
                             </div>
-                            <h3 className="relative z-10 text-sm md:text-lg font-bold text-white mb-1 text-center">{tool.name}</h3>
+                            <h3 className="relative z-10 text-sm md:text-lg font-bold text-card-foreground mb-1 text-center">{tool.name}</h3>
 
                             {/* Meteors Effect on Hover */}
                             <div className="absolute inset-x-0 bottom-0 h-1/2 overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
@@ -70,7 +70,7 @@ export default function ToolsBentoGrid() {
             </div>
 
             <Dialog open={!!selectedTool} onOpenChange={(open) => !open && setSelectedTool(null)}>
-                <DialogContent className="bg-neutral-900 border-neutral-800 text-white sm:max-w-md">
+                <DialogContent className="bg-card border-border text-card-foreground sm:max-w-md">
                     <DialogHeader className="flex flex-col items-center gap-4">
                         <div className="relative w-20 h-20 bg-neutral-800/50 rounded-full p-4 border border-neutral-700">
                             {selectedTool && (

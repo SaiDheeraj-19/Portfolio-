@@ -6,7 +6,7 @@ import { Linkedin, Instagram, Github, Music2 } from "lucide-react"
 
 export default function Footer() {
     return (
-        <footer className="bg-[#111] text-white pt-20 pb-0 overflow-hidden relative select-none">
+        <footer className="bg-muted text-foreground pt-20 pb-0 overflow-hidden relative select-none">
             <div className="container mx-auto px-6 md:px-12 relative z-10">
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-10 mb-20">
 
@@ -43,7 +43,7 @@ export default function Footer() {
                     {/* Right Side - Message */}
                     <div className="text-left md:text-right space-y-4 md:space-y-6">
 
-                        <p className="text-base md:text-2xl font-light text-gray-300 max-w-lg leading-relaxed">Designed and built by <span className="text-white font-medium">Sai Dheeraj</span> to showcase real-world engineering work.</p>
+                        <p className="text-base md:text-2xl font-light text-muted-foreground max-w-lg leading-relaxed">Designed and built by <span className="text-primary font-medium">Sai Dheeraj</span> to showcase real-world engineering work.</p>
                     </div>
                 </div>
             </div>
@@ -55,7 +55,7 @@ export default function Footer() {
                     whileInView={{ y: 0 }}
                     viewport={{ once: false }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="text-[17vw] font-black text-white tracking-tighter leading-[0.75] select-none text-center"
+                    className="text-[17vw] font-black text-secondary tracking-tighter leading-[0.75] select-none text-center"
                 >
                     SAI DHEERAJ
                 </motion.h1>

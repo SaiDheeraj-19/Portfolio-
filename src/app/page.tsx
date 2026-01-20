@@ -165,7 +165,7 @@ export default function Home() {
   // const contactInfo = ...
 
   return (
-    <div className="min-h-screen bg-black text-white overflow-x-hidden">
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <Navbar
         onOpenProjects={() => setShowProjectsPopup(true)}
         onOpenResume={() => window.open(profile?.resumeUrl || '/resume.pdf', '_blank')}
@@ -176,9 +176,9 @@ export default function Home() {
       <section id="home" className="relative h-dvh min-h-screen flex flex-col items-center justify-center overflow-hidden">
 
         {/* Aurora Background */}
-        <div className="absolute inset-0 z-0 pointer-events-none opacity-50 mix-blend-screen">
+        <div className="absolute inset-0 z-0 pointer-events-none opacity-50 mix-blend-multiply">
           <Aurora
-            colorStops={["#000000", "#ffffff", "#aaaaaa"]}
+            colorStops={["#f0efeb", "#cb997e", "#eddcd2"]}
             amplitude={1}
             blend={0.5}
             speed={0.5}
@@ -187,10 +187,10 @@ export default function Home() {
 
         {/* Background Large Text - Responsive sizing */}
         <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none select-none overflow-hidden z-0 py-24 md:py-0 opacity-20 md:opacity-100">
-          <span className="text-[25vw] md:text-[17vw] font-black text-transparent bg-clip-text bg-gradient-to-b from-white/40 to-white/10 whitespace-nowrap tracking-tighter leading-[0.8] select-none animate-[pulse_3s_ease-in-out_infinite] drop-shadow-[0_0_10px_rgba(255,255,255,0.4)]">
+          <span className="text-[25vw] md:text-[17vw] font-black text-transparent bg-clip-text bg-gradient-to-b from-primary/60 to-primary/20 whitespace-nowrap tracking-tighter leading-[0.8] select-none animate-[pulse_3s_ease-in-out_infinite] drop-shadow-[0_0_10px_rgba(203,153,126,0.2)]">
             SAI
           </span>
-          <span className="text-[25vw] md:text-[17vw] font-black text-transparent bg-clip-text bg-gradient-to-b from-white/40 to-white/10 whitespace-nowrap tracking-tighter leading-[0.8] select-none animate-[pulse_3s_ease-in-out_infinite] drop-shadow-[0_0_10px_rgba(255,255,255,0.4)]">
+          <span className="text-[25vw] md:text-[17vw] font-black text-transparent bg-clip-text bg-gradient-to-b from-primary/60 to-primary/20 whitespace-nowrap tracking-tighter leading-[0.8] select-none animate-[pulse_3s_ease-in-out_infinite] drop-shadow-[0_0_10px_rgba(203,153,126,0.2)]">
             DHEERAJ
           </span>
         </div>
@@ -353,7 +353,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative pt-16 pb-32 md:py-32 px-4 md:px-6 overflow-hidden bg-black">
+      <section className="relative pt-16 pb-32 md:py-32 px-4 md:px-6 overflow-hidden bg-background">
         {/* Animated Background */}
         <div className="absolute inset-0 z-0 pointer-events-none opacity-60">
           <FloatingPaths position={1} />
@@ -372,7 +372,7 @@ export default function Home() {
             cursorCharacter="|"
             loop={false}
             as="h2"
-            className="text-3xl md:text-5xl lg:text-7xl font-black text-white tracking-tight leading-[1.05] mb-10 inline-block min-h-[120px]"
+            className="text-3xl md:text-5xl lg:text-7xl font-black text-primary tracking-tight leading-[1.05] mb-10 inline-block min-h-[120px]"
           />
 
           <motion.p
@@ -385,7 +385,7 @@ export default function Home() {
               duration: 1.5,
               delay: 0.5
             }}
-            className="text-lg md:text-2xl lg:text-3xl font-medium text-white/90 leading-relaxed max-w-4xl mx-auto mb-12 md:mb-0"
+            className="text-lg md:text-2xl lg:text-3xl font-medium text-foreground/90 leading-relaxed max-w-4xl mx-auto mb-12 md:mb-0"
           >
             I work on full-stack projects involving features like authentication, data handling, and basic automation, with a focus on building things that work reliably beyond simple demos.
           </motion.p>
@@ -410,7 +410,7 @@ export default function Home() {
 
       {/* About Me Popup */}
       <Dialog open={showAboutPopup} onOpenChange={setShowAboutPopup}>
-        <DialogContent className="max-w-[95vw] bg-black border-neutral-800 text-white p-0 overflow-hidden !rounded-[2rem] w-[95vw] h-[90vh] [&>button]:hidden">
+        <DialogContent className="max-w-[95vw] bg-background border-border text-foreground p-0 overflow-hidden !rounded-[2rem] w-[95vw] h-[90vh] [&>button]:hidden">
           <div className="absolute inset-0 z-0">
             <Hyperspeed effectOptions={hyperspeedPresets.three} />
           </div>
@@ -427,7 +427,7 @@ export default function Home() {
 
             {/* Heading */}
             {/* Heading */}
-            <h2 className="text-5xl md:text-7xl font-black mb-12 text-white tracking-tighter leading-none">ABOUT ME</h2>
+            <h2 className="text-5xl md:text-7xl font-black mb-12 text-primary tracking-tighter leading-none">ABOUT ME</h2>
 
             {/* Content Container: Photo + Text Side-by-Side */}
             <div className="w-full flex flex-col md:flex-row gap-8 md:gap-16 items-start">
@@ -466,40 +466,18 @@ export default function Home() {
 
               {/* Bio Text */}
               <div className="flex-1 max-w-2xl">
-                <div className="space-y-6 text-neutral-300 text-base md:text-lg leading-relaxed font-light">
+                <div className="space-y-6 text-muted-foreground text-base md:text-lg leading-relaxed font-light">
                   <p>
-                    I&apos;m a <span className="text-white font-medium">Computer Science undergraduate</span> who builds software that has to survive real-world conditions, not just work in perfect demos.
+                    I&apos;m a <span className="text-foreground font-medium">Computer Science undergraduate</span> who is learning software development by building practical projects alongside my coursework.
                   </p>
                   <p>
-                    Since 2024, I&apos;ve been focused on building full-stack and AI-powered systems where data, identity, and automation are tightly connected. I don&apos;t think in screens or features — I think in how data flows, how users are verified, and how systems make decisions.
+                    Since 2024, I&apos;ve been focusing on understanding how software works beyond the UI—by writing code, handling data, and learning how different parts of an application fit together. I enjoy working on full-stack projects where I can practice concepts like authentication, data flow, and basic automation.
                   </p>
-
-                  <div>
-                    <h3 className="text-white font-bold mb-2 text-lg uppercase tracking-wide">My work includes:</h3>
-                    <ul className="list-disc pl-5 space-y-2 marker:text-white">
-                      <li>A <strong className="text-white">biometric attendance platform</strong> that uses face recognition, GPS geofencing, and QR validation to prevent fraud and proxy access.</li>
-                      <li>An <strong className="text-white">AI-powered commerce and repair-booking platform</strong> that generates instant, realistic price estimates for customers.</li>
-                      <li>A <strong className="text-white">multilingual voice pipeline</strong> that converts speech into text and translates it into South Indian languages for accessibility.</li>
-                    </ul>
-                  </div>
-
-                  <div className="py-4 border-l-4 border-white pl-6 italic text-white/90 bg-white/5 rounded-r-lg my-6">
-                    &quot;What ties all of this together is one idea: Software should behave predictably even when the real world is messy.&quot;
-                  </div>
-
-                  <div>
-                    <h3 className="text-white font-bold mb-2 text-lg uppercase tracking-wide">That’s why I focus on:</h3>
-                    <ul className="list-disc pl-5 space-y-2 marker:text-white">
-                      <li>Secure authentication and role-based access</li>
-                      <li>Real-time validation</li>
-                      <li>AI models connected directly to live user data</li>
-                      <li>Systems that don&apos;t break when conditions aren&apos;t perfect</li>
-                    </ul>
-                  </div>
-
-                  <p className="text-white font-medium text-xl md:text-2xl pt-6 border-t border-neutral-800 mt-6">
-                    I&apos;m not interested in building pretty demos.<br />
-                    <span className="text-white font-black">I&apos;m interested in building systems people can rely on.</span>
+                  <p>
+                    Most of my learning comes from building, breaking, and improving projects. I care about writing clear code, understanding why things work, and making applications usable beyond simple demos.
+                  </p>
+                  <p className="font-medium text-foreground text-lg md:text-xl pt-6 border-t border-border mt-6">
+                    I&apos;m currently looking for internship opportunities where I can learn from experienced developers, improve my fundamentals, and contribute to real projects while continuing to grow as a software engineer.
                   </p>
                 </div>
               </div>
@@ -682,7 +660,7 @@ export default function Home() {
       </Dialog>
 
       <Dialog open={showContactPopup} onOpenChange={setShowContactPopup}>
-        <DialogContent className="max-w-3xl w-[90vw] max-h-[90vh] bg-neutral-950/90 backdrop-blur-2xl border-neutral-800 text-white p-0 overflow-hidden rounded-[2rem] md:rounded-[2.5rem] shadow-2xl [&>button]:hidden flex flex-col">
+        <DialogContent className="max-w-3xl w-[90vw] max-h-[90vh] bg-background/95 backdrop-blur-2xl border-border text-foreground p-0 overflow-hidden rounded-[2rem] md:rounded-[2.5rem] shadow-2xl [&>button]:hidden flex flex-col">
           <div className="absolute top-4 right-4 md:top-6 md:right-6 z-50">
             <button
               onClick={() => setShowContactPopup(false)}
@@ -734,7 +712,7 @@ export default function Home() {
       </Dialog>
 
       <Dialog open={showProjectsPopup} onOpenChange={setShowProjectsPopup}>
-        <DialogContent className="max-w-5xl bg-black border-neutral-800 text-white p-0 overflow-hidden !rounded-[2rem] w-full h-[85vh]">
+        <DialogContent className="max-w-5xl bg-background border-border text-foreground p-0 overflow-hidden !rounded-[2rem] w-full h-[85vh]">
 
           <button
             onClick={() => setShowProjectsPopup(false)}
@@ -887,21 +865,21 @@ export default function Home() {
       {/* Sections Removed as per user request (About, Skills, Projects) moved to Popups */}
 
       {/* Contact Section */}
-      <section id="contact" className="relative py-32 bg-black overflow-hidden flex flex-col items-center justify-center min-h-[60vh]">
+      <section id="contact" className="relative py-32 bg-background overflow-hidden flex flex-col items-center justify-center min-h-[60vh]">
         <div className="absolute inset-0 z-0">
           <Hyperspeed effectOptions={hyperspeedPresets.three} />
         </div>
         <div className="relative z-10 flex flex-col items-center justify-center space-y-12 text-center px-4">
-          <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight">Let&apos;s turn ideas into real-world software</h2>
+          <h2 className="text-4xl md:text-6xl font-bold text-foreground tracking-tight">Let&apos;s turn ideas into real-world software</h2>
 
-          <Button onClick={() => setShowContactPopup(true)} className="rounded-full px-12 py-10 text-xl md:text-3xl bg-transparent border-2 border-white text-white hover:bg-white hover:text-black transition-all duration-300">
+          <Button onClick={() => setShowContactPopup(true)} className="rounded-full px-12 py-10 text-xl md:text-3xl bg-transparent border-2 border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300">
             <span className="flex items-center gap-4">
               Let&apos;s Connect <ArrowRight className="w-6 h-6 md:w-8 md:h-8" />
             </span>
           </Button>
 
 
-          <p className="max-w-xl text-neutral-400 text-sm md:text-base leading-relaxed mt-12">
+          <p className="max-w-xl text-muted-foreground text-sm md:text-base leading-relaxed mt-12">
             Warning: Exploring my work may result in better ideas and higher standards.
           </p>
         </div>
