@@ -17,9 +17,10 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogHeader,
   DialogTitle,
+  DialogHeader,
 } from "@/components/ui/dialog"
+import ProfileCard from "@/components/react-bits/ProfileCard"
 
 
 import Navbar from "@/components/layout/navbar"
@@ -838,9 +839,7 @@ export default function Home() {
 
       {/* Contact Section */}
       <section id="contact" className="relative py-32 bg-background overflow-hidden flex flex-col items-center justify-center min-h-[60vh]">
-        <div className="absolute inset-0 z-0">
-          <Hyperspeed effectOptions={hyperspeedPresets.three} />
-        </div>
+        <div className="absolute inset-0 z-0 bg-background" />
         <div className="relative z-10 flex flex-col items-center justify-center space-y-12 text-center px-4">
           <h2 className="text-4xl md:text-6xl font-bold text-foreground tracking-tight">Let&apos;s turn ideas into real-world software</h2>
 
