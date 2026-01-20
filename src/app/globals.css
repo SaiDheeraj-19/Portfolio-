@@ -49,121 +49,110 @@
 :root {
   --radius: 0.625rem;
 
-  /* Page Background -> #FDFBD4 */
+  /* 1️⃣ PAGE BACKGROUND -> #FDFBD4 */
   --background: #FDFBD4;
 
-  /* Primary Text (Headings) -> #545333 */
+  /* Text (Main Heading) -> #545333 */
   --foreground: #545333;
 
-  /* Card Background -> #F2C7C7 */
+  /* 5️⃣ CARDS -> #F2C7C7 */
   --card: #F2C7C7;
   --card-foreground: #545333;
+  /* Heading inside card */
 
   /* Popover */
   --popover: #F2C7C7;
   --popover-foreground: #545333;
 
-  /* Accent (Buttons/Links) -> #FFB7C5 */
+  /* 3️⃣ BUTTONS (Pink) -> #FFB7C5 */
   --primary: #FFB7C5;
   --primary-foreground: #545333;
+  /* Dark text on pink button */
 
-  /* Section Background -> #D9D7B6 */
+  /* 4️⃣ SECTIONS -> #D9D7B6 */
   --secondary: #D9D7B6;
   --secondary-foreground: #545333;
 
-  /* Muted / Section Background */
+  /* Muted / Paragraph Text -> #878672 */
+  /* Also used for Section backgrounds if needing differentiation, but 'secondary' is the section bg */
   --muted: #D9D7B6;
   --muted-foreground: #878672;
-  /* Secondary Text */
 
-  /* Accent -> #FFB7C5 */
+  /* Accent (Hover) -> #FFB7C5 */
   --accent: #FFB7C5;
   --accent-foreground: #545333;
 
-  /* Success/Highlight -> #D5F3D8 (Using as destructive/success proxy or custom) */
-  /* Mapping destructive to a standard red for safety, highlighting accessible areas */
+  /* 8️⃣ SUCCESS/HIGHLIGHT -> #D5F3D8 */
   --destructive: #ef4444;
+  /* Standard red for actual errors */
   --destructive-foreground: #ffffff;
 
-  /* Border -> #878672 (Secondary Text) */
+  /* Success Custom Variable (if needed in code, map to a CSS variable usage) */
+  /* --success: #D5F3D8; --success-foreground: #545333; */
+
+  /* Border -> #878672 (Secondary Text color for subtle borders) */
   --border: #878672;
   --input: #D9D7B6;
   --ring: #FFB7C5;
 
-  /* Pure White (Utility) */
-  /* Used in specific classes if needed, or sidebar default */
-
-  /* Charts - Mapped to palette */
-  --chart-1: #FFB7C5;
-  /* Pink */
-  --chart-2: #D5F3D8;
-  /* Light Green */
-  --chart-3: #D9D7B6;
-  /* Beige */
-  --chart-4: #545333;
-  /* Olive */
-  --chart-5: #878672;
-  /* Grey Olive */
+  /* 6️⃣ TECH STACK TAGS -> #FFFFFF */
+  /* We can map sidebar or a specific utility for white pills */
 
   /* Sidebar */
-  --sidebar: #FDFBD4;
+  --sidebar: #D9D7B6;
+  /* Like Navbar */
   --sidebar-foreground: #545333;
   --sidebar-primary: #FFB7C5;
   --sidebar-primary-foreground: #545333;
-  --sidebar-accent: #D9D7B6;
+  --sidebar-accent: #FFB7C5;
   --sidebar-accent-foreground: #545333;
   --sidebar-border: #878672;
   --sidebar-ring: #FFB7C5;
-}
 
-.dark {
-  /* No specific dark mode requested, user provided specific palette. 
-     Will map dark variables to similar tones but maybe inverted or just same 
-     to maintain the user's specific aesthetic if they toggle. 
-     Usually "retro" themes don't have a standard dark mode. 
-     I'll map them to a darker version of these colors for safety. */
-
-  --background: #1a1a10;
-  --foreground: #FDFBD4;
-
-  --card: #2c2c1e;
-  --card-foreground: #FDFBD4;
-
-  --popover: #2c2c1e;
-  --popover-foreground: #FDFBD4;
-
-  --primary: #FFB7C5;
-  --primary-foreground: #545333;
-
-  --secondary: #3a3a2a;
-  --secondary-foreground: #FDFBD4;
-
-  --muted: #3a3a2a;
-  --muted-foreground: #D9D7B6;
-
-  --accent: #3a3a2a;
-  --accent-foreground: #FDFBD4;
-
-  --destructive: #7f1d1d;
-  --destructive-foreground: #ffffff;
-
-  --border: #3a3a2a;
-  --input: #3a3a2a;
-  --ring: #FFB7C5;
-
+  /* Chart Colors mapped to palette */
   --chart-1: #FFB7C5;
   --chart-2: #D5F3D8;
   --chart-3: #D9D7B6;
   --chart-4: #545333;
   --chart-5: #878672;
+}
 
-  --sidebar: #1a1a10;
-  --sidebar-foreground: #FDFBD4;
+.dark {
+  /* Enforcing the EXACT same palette even in 'dark mode' preference 
+     because the user strictly said "GOLDEN RULES (DO NOT BREAK)" 
+     and "One background color per section". 
+     This ensures consistency regardless of system theme. */
+  --background: #FDFBD4;
+  --foreground: #545333;
+  --card: #F2C7C7;
+  --card-foreground: #545333;
+  --popover: #F2C7C7;
+  --popover-foreground: #545333;
+  --primary: #FFB7C5;
+  --primary-foreground: #545333;
+  --secondary: #D9D7B6;
+  --secondary-foreground: #545333;
+  --muted: #D9D7B6;
+  --muted-foreground: #878672;
+  --accent: #FFB7C5;
+  --accent-foreground: #545333;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #878672;
+  --input: #D9D7B6;
+  --ring: #FFB7C5;
+  --chart-1: #FFB7C5;
+  --chart-2: #D5F3D8;
+  --chart-3: #D9D7B6;
+  --chart-4: #545333;
+  --chart-5: #878672;
+  --sidebar: #D9D7B6;
+  --sidebar-foreground: #545333;
   --sidebar-primary: #FFB7C5;
   --sidebar-primary-foreground: #545333;
-  --sidebar-accent: #3a3a2a;
-  --sidebar-accent-foreground: #FDFBD4;
-  --sidebar-border: #3a3a2a;
+  --sidebar-accent: #FFB7C5;
+  --sidebar-accent-foreground: #545333;
+  --sidebar-border: #878672;
   --sidebar-ring: #FFB7C5;
 }
 

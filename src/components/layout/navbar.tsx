@@ -25,10 +25,10 @@ export default function Navbar({ onOpenProjects, onOpenResume, onOpenAbout, onOp
 
     // Check if we need dark text (for light backgrounds)
     const isLightPage = true
-    const hoverColorClass = isLightPage ? "hover:text-foreground" : "hover:text-white"
+    const hoverColorClass = isLightPage ? "hover:text-primary" : "hover:text-white"
     const mutedColorClass = isLightPage ? "text-muted-foreground" : "text-gray-300"
     const logoColorClass = isLightPage ? "text-foreground" : "text-white"
-    const mobileMenuBg = isLightPage ? "bg-background/95" : "bg-black/95"
+    const mobileMenuBg = isLightPage ? "bg-secondary" : "bg-black/95"
     const mobileMenuText = isLightPage ? "text-muted-foreground" : "text-gray-300"
     const contactBtnClass = isLightPage
         ? "bg-primary text-primary-foreground hover:bg-primary/90 shadow-xl border-transparent"
@@ -38,7 +38,7 @@ export default function Navbar({ onOpenProjects, onOpenResume, onOpenAbout, onOp
         <nav
             className={cn(
                 "fixed top-0 z-50 w-full transition-transform duration-300 ease-in-out py-6 md:py-8 layout-padding",
-                "bg-transparent",
+                "bg-secondary/90 backdrop-blur-md",
             )}
         >
             <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
