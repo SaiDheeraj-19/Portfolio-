@@ -49,122 +49,116 @@
 :root {
   --radius: 0.625rem;
 
-  /* Background: Linen 50 (Very light cream) */
-  --background: #fff1e5;
+  /* Background: Azure Mist 50 (Very light fresh teal) */
+  --background: #ecf8f8;
 
-  /* Foreground: Ash Grey 900 (Deep dark grey/brown) for high contrast text */
-  --foreground: #1d1d16;
+  /* Foreground: Azure Mist 950 (Deep dark teal) */
+  --foreground: #0a1a1a;
 
-  /* Card: Parchment 50 (Off-white) */
-  --card: #f4f3f0;
-  --card-foreground: #1d1c16;
+  /* Card: White for clean, professional look against the azure background */
+  --card: #ffffff;
+  --card-foreground: #0a1a1a;
 
-  /* Popover: Parchment 50 */
-  --popover: #f4f3f0;
-  --popover-foreground: #1d1c16;
+  /* Popover: White */
+  --popover: #ffffff;
+  --popover-foreground: #0a1a1a;
 
-  /* Primary: Light Bronze 500 (Terracotta-ish) */
-  --primary: #b66f49;
-  --primary-foreground: #f8f1ed;
+  /* Primary: Almond Silk 500 (Vibrant Rust/Orange) - Distinctive and Professional vs Teal */
+  --primary: #c3623c;
+  --primary-foreground: #ffffff;
 
-  /* Secondary: Dry Sage 400 (Muted Green/Grey) */
-  --secondary: #a5a58d;
-  --secondary-foreground: #ffffff;
+  /* Secondary: Azure Mist 200 (Soft Teal) */
+  --secondary: #b5e3e3;
+  --secondary-foreground: #0e2525;
 
-  /* Muted: Parchment 200 (Greyish Beige) */
-  --muted: #d3d0c5;
-  --muted-foreground: #746f58;
-  /* Parchment 600 */
+  /* Muted: Azure Mist 100 */
+  --muted: #daf1f1;
+  --muted-foreground: #379595;
+  /* Azure Mist 600 */
 
-  /* Accent: Powder Petal 300 (Soft Peach/Pink) */
-  --accent: #d3aa92;
-  --accent-foreground: #24170f;
+  /* Accent: Almond Cream 200 (Subtle Gold/Tan) */
+  --accent: #dfccb9;
+  --accent-foreground: #231a10;
 
-  /* Destructive: Desert Sand 600 */
-  --destructive: #925d3a;
-  --destructive-foreground: #f8f1ed;
+  /* Destructive: Almond Silk 700 */
+  --destructive: #753b24;
+  --destructive-foreground: #f9efeb;
 
-  /* Border: Parchment 300 */
-  --border: #bdb9a8;
-  --input: #bdb9a8;
-  --ring: #b66f49;
-  /* Primary */
+  /* Border: Azure Mist 200 */
+  --border: #b5e3e3;
+  --input: #b5e3e3;
+  --ring: #c3623c;
+  /* Primary Ring */
 
-  /* Charts - Mapped to palette spectrum */
-  --chart-1: #b66f49;
-  /* Bronze */
-  --chart-2: #a5a58d;
-  /* Sage */
-  --chart-3: #d3aa92;
-  /* Petal */
-  --chart-4: #ff8b33;
-  /* Linen Orange */
-  --chart-5: #918a6e;
-  /* Parchment Dark */
+  /* Charts */
+  --chart-1: #c3623c;
+  /* Rust */
+  --chart-2: #379595;
+  /* Teal */
+  --chart-3: #a17d5e;
+  /* Camel */
+  --chart-4: #dfccb9;
+  /* Cream */
+  --chart-5: #0e2525;
+  /* Dark Teal */
 
   /* Sidebar */
-  --sidebar: #f4f3f0;
-  --sidebar-foreground: #1d1c16;
-  --sidebar-primary: #b66f49;
-  --sidebar-primary-foreground: #f8f1ed;
-  --sidebar-accent: #d3d0c5;
-  --sidebar-accent-foreground: #1d1c16;
-  --sidebar-border: #bdb9a8;
-  --sidebar-ring: #b66f49;
+  --sidebar: #ecf8f8;
+  --sidebar-foreground: #0a1a1a;
+  --sidebar-primary: #c3623c;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #b5e3e3;
+  --sidebar-accent-foreground: #0a1a1a;
+  --sidebar-border: #b5e3e3;
+  --sidebar-ring: #c3623c;
 }
 
 .dark {
-  /* Dark Mode: Inverted to Deep Ash Grey/Bronze */
-  --background: #24160f;
-  /* Bronze 900 */
-  --foreground: #f8f1ed;
-  /* Bronze 50 */
+  /* Dark Mode: Deep Azure Mist 950 Background with Rust Accents */
+  --background: #0a1a1a;
+  --foreground: #ecf8f8;
 
-  --card: #1a100a;
-  /* Bronze 950 */
-  --card-foreground: #f8f1ed;
+  --card: #0e2525;
+  --card-foreground: #ecf8f8;
 
-  --popover: #1a100a;
-  --popover-foreground: #f8f1ed;
+  --popover: #0e2525;
+  --popover-foreground: #ecf8f8;
 
-  --primary: #b66f49;
-  /* Bronze 500 */
-  --primary-foreground: #f8f1ed;
+  --primary: #c3623c;
+  --primary-foreground: #ffffff;
 
-  --secondary: #565643;
-  /* Sage 700 */
-  --secondary-foreground: #f4f4f1;
+  --secondary: #297070;
+  /* Azure Mist 700 */
+  --secondary-foreground: #ecf8f8;
 
-  --muted: #492c1d;
-  /* Bronze 800 */
-  --muted-foreground: #d3a992;
-  /* Bronze 300 */
+  --muted: #1c4a4a;
+  /* Azure Mist 800 */
+  --muted-foreground: #8fd6d6;
 
-  --accent: #492c1d;
-  --accent-foreground: #f8f1ed;
+  --accent: #1c4a4a;
+  --accent-foreground: #ecf8f8;
 
-  --destructive: #92593a;
-  /* Bronze 600 */
-  --destructive-foreground: #f8f1ed;
+  --destructive: #9c4f30;
+  --destructive-foreground: #f9efeb;
 
-  --border: #492c1d;
-  --input: #492c1d;
-  --ring: #b66f49;
+  --border: #1c4a4a;
+  --input: #1c4a4a;
+  --ring: #c3623c;
 
-  --chart-1: #b66f49;
-  --chart-2: #a5a58d;
-  --chart-3: #d3aa92;
-  --chart-4: #ff8b33;
-  --chart-5: #918a6e;
+  --chart-1: #c3623c;
+  --chart-2: #379595;
+  --chart-3: #a17d5e;
+  --chart-4: #dfccb9;
+  --chart-5: #ecf8f8;
 
-  --sidebar: #1a100a;
-  --sidebar-foreground: #f8f1ed;
-  --sidebar-primary: #b66f49;
-  --sidebar-primary-foreground: #f8f1ed;
-  --sidebar-accent: #492c1d;
-  --sidebar-accent-foreground: #f8f1ed;
-  --sidebar-border: #492c1d;
-  --sidebar-ring: #b66f49;
+  --sidebar: #0a1a1a;
+  --sidebar-foreground: #ecf8f8;
+  --sidebar-primary: #c3623c;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #1c4a4a;
+  --sidebar-accent-foreground: #ecf8f8;
+  --sidebar-border: #1c4a4a;
+  --sidebar-ring: #c3623c;
 }
 
 @layer base {
