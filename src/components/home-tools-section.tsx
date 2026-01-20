@@ -32,7 +32,7 @@ export default function HomeToolsSection() {
                             {/* Icon */}
                             <div className="relative w-8 h-8 md:w-10 md:h-10 shrink-0">
                                 <Image
-                                    src={tool.icon || `https://cdn.simpleicons.org/${tool.slug}/ffffff`}
+                                    src={tool.icon || `https://cdn.simpleicons.org/${tool.slug}/000000`}
                                     alt={tool.name}
                                     fill
                                     className="object-contain"
