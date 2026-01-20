@@ -6,8 +6,8 @@ import { ArrowRight } from "lucide-react"
 import { tools } from "@/data/tools"
 
 const DISPLAY_TOOLS = [
-    "MongoDB", "Express", "React", "Node.js",
-    "Streamlit", "Flutter", "Google Gemini", "OpenAI"
+    "Next.js", "React", "TypeScript", "Tailwind CSS",
+    "Framer Motion", "Vercel"
 ]
 
 export default function HomeToolsSection() {
