@@ -365,7 +365,7 @@ export default function Home() {
 
         <div className="max-w-6xl mx-auto relative z-10 text-center">
           <TextType
-            text={["I’ve been learning how software actually works—beyond the UI—by building projects, writing code, and understanding the logic behind it."]}
+            text={["I’ve been learning how software actually works beyond the UI by building projects, writing code, and understanding the logic behind it."]}
             typingSpeed={75}
             pauseDuration={1500}
             showCursor={true}
