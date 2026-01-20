@@ -48,100 +48,123 @@
 
 :root {
   --radius: 0.625rem;
-  --background: #f0efeb; /* Isabelline */
-  --foreground: #4a4a4a; /* Dark Grey for text contrast */
-  
-  --card: #fff1e6; /* Linen */
-  --card-foreground: #4a4a4a;
-  
-  --popover: #fff1e6;
-  --popover-foreground: #4a4a4a;
-  
-  --primary: #cb997e; /* Terra Cotta */
-  --primary-foreground: #ffffff;
-  
-  --secondary: #ddbea9; /* Pale Brown */
-  --secondary-foreground: #2d2d2d;
-  
-  --muted: #eddcd2; /* Pale Pinkish Beige */
-  --muted-foreground: #a5a58d; /* Sage Green */
-  
-  --accent: #ddbea9; 
-  --accent-foreground: #2d2d2d;
-  
-  --destructive: #cb997e;
-  --destructive-foreground: #ffffff;
-  
-  --border: #b7b7a4; /* Sage */
-  --input: #b7b7a4;
-  --ring: #cb997e;
-  
-  --chart-1: #cb997e;
+
+  /* Background: Linen 50 (Very light cream) */
+  --background: #fff1e5;
+
+  /* Foreground: Ash Grey 900 (Deep dark grey/brown) for high contrast text */
+  --foreground: #1d1d16;
+
+  /* Card: Parchment 50 (Off-white) */
+  --card: #f4f3f0;
+  --card-foreground: #1d1c16;
+
+  /* Popover: Parchment 50 */
+  --popover: #f4f3f0;
+  --popover-foreground: #1d1c16;
+
+  /* Primary: Light Bronze 500 (Terracotta-ish) */
+  --primary: #b66f49;
+  --primary-foreground: #f8f1ed;
+
+  /* Secondary: Dry Sage 400 (Muted Green/Grey) */
+  --secondary: #a5a58d;
+  --secondary-foreground: #ffffff;
+
+  /* Muted: Parchment 200 (Greyish Beige) */
+  --muted: #d3d0c5;
+  --muted-foreground: #746f58;
+  /* Parchment 600 */
+
+  /* Accent: Powder Petal 300 (Soft Peach/Pink) */
+  --accent: #d3aa92;
+  --accent-foreground: #24170f;
+
+  /* Destructive: Desert Sand 600 */
+  --destructive: #925d3a;
+  --destructive-foreground: #f8f1ed;
+
+  /* Border: Parchment 300 */
+  --border: #bdb9a8;
+  --input: #bdb9a8;
+  --ring: #b66f49;
+  /* Primary */
+
+  /* Charts - Mapped to palette spectrum */
+  --chart-1: #b66f49;
+  /* Bronze */
   --chart-2: #a5a58d;
-  --chart-3: #ddbea9;
-  --chart-4: #eddcd2;
-  --chart-5: #b7b7a4;
-  
-  --sidebar: #fff1e6;
-  --sidebar-foreground: #4a4a4a;
-  --sidebar-primary: #cb997e;
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #eddcd2;
-  --sidebar-accent-foreground: #4a4a4a;
-  --sidebar-border: #b7b7a4;
-  --sidebar-ring: #cb997e;
+  /* Sage */
+  --chart-3: #d3aa92;
+  /* Petal */
+  --chart-4: #ff8b33;
+  /* Linen Orange */
+  --chart-5: #918a6e;
+  /* Parchment Dark */
+
+  /* Sidebar */
+  --sidebar: #f4f3f0;
+  --sidebar-foreground: #1d1c16;
+  --sidebar-primary: #b66f49;
+  --sidebar-primary-foreground: #f8f1ed;
+  --sidebar-accent: #d3d0c5;
+  --sidebar-accent-foreground: #1d1c16;
+  --sidebar-border: #bdb9a8;
+  --sidebar-ring: #b66f49;
 }
 
 .dark {
-  /* For now, mapping dark mode to the same palette or slightly inverted/dimmed version? 
-     The user requested specific colors. I will apply them to root. 
-     If the user wants a dark mode, they usually provide dark colors. 
-     These are light colors. I will make the 'dark' theme also use these colors or 
-     fallback to a dark grey background with these accents. 
-     Given the request "change the color palettes", I'll apply the new palette to the main variables. 
-     I'll keep a basic dark mode override just in case, but using the palette accents.
-     Actually, let's make .dark use a dark background but keep the accents.
-  */
-  --background: #2b2b2b;
-  --foreground: #f0efeb;
-  
-  --card: #3a3a3a;
-  --card-foreground: #f0efeb;
-  
-  --popover: #3a3a3a;
-  --popover-foreground: #f0efeb;
-  
-  --primary: #cb997e;
-  --primary-foreground: #ffffff;
-  
-  --secondary: #a5a58d;
-  --secondary-foreground: #ffffff;
-  
-  --muted: #4a4a4a;
-  --muted-foreground: #b7b7a4;
-  
-  --accent: #4a4a4a;
-  --accent-foreground: #f0efeb;
-  
-  --destructive: #9b2c2c;
-  --border: #4a4a4a;
-  --input: #4a4a4a;
-  --ring: #cb997e;
-  
-  --chart-1: #cb997e;
+  /* Dark Mode: Inverted to Deep Ash Grey/Bronze */
+  --background: #24160f;
+  /* Bronze 900 */
+  --foreground: #f8f1ed;
+  /* Bronze 50 */
+
+  --card: #1a100a;
+  /* Bronze 950 */
+  --card-foreground: #f8f1ed;
+
+  --popover: #1a100a;
+  --popover-foreground: #f8f1ed;
+
+  --primary: #b66f49;
+  /* Bronze 500 */
+  --primary-foreground: #f8f1ed;
+
+  --secondary: #565643;
+  /* Sage 700 */
+  --secondary-foreground: #f4f4f1;
+
+  --muted: #492c1d;
+  /* Bronze 800 */
+  --muted-foreground: #d3a992;
+  /* Bronze 300 */
+
+  --accent: #492c1d;
+  --accent-foreground: #f8f1ed;
+
+  --destructive: #92593a;
+  /* Bronze 600 */
+  --destructive-foreground: #f8f1ed;
+
+  --border: #492c1d;
+  --input: #492c1d;
+  --ring: #b66f49;
+
+  --chart-1: #b66f49;
   --chart-2: #a5a58d;
-  --chart-3: #ddbea9;
-  --chart-4: #eddcd2;
-  --chart-5: #b7b7a4;
-  
-  --sidebar: #2b2b2b;
-  --sidebar-foreground: #f0efeb;
-  --sidebar-primary: #cb997e;
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #4a4a4a;
-  --sidebar-accent-foreground: #f0efeb;
-  --sidebar-border: #4a4a4a;
-  --sidebar-ring: #cb997e;
+  --chart-3: #d3aa92;
+  --chart-4: #ff8b33;
+  --chart-5: #918a6e;
+
+  --sidebar: #1a100a;
+  --sidebar-foreground: #f8f1ed;
+  --sidebar-primary: #b66f49;
+  --sidebar-primary-foreground: #f8f1ed;
+  --sidebar-accent: #492c1d;
+  --sidebar-accent-foreground: #f8f1ed;
+  --sidebar-border: #492c1d;
+  --sidebar-ring: #b66f49;
 }
 
 @layer base {
