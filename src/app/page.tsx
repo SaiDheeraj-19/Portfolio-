@@ -200,21 +200,21 @@ export default function Home() {
                 enableTilt={true}
                 enableMobileTilt={true} // Allow tilt on mobile
                 enableDrag={true}
-                className="bg-neutral-900 border-neutral-800 p-1.5 shadow-2xl"
+                className="bg-neutral-900 border-neutral-800 dark:bg-neutral-100 dark:border-neutral-200 p-1.5 shadow-2xl"
               >
                 {/* Canvas/Container for 3D Faces */}
                 <div className="relative w-full h-full" style={{ transformStyle: "preserve-3d" }}>
 
                   {/* --- FRONT FACE --- */}
                   <div className="absolute inset-0 w-full h-full" style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden", zIndex: 20 }}>
-                    {/* Dark Card Body */}
-                    <div className="relative w-full h-full rounded-[20px] overflow-hidden" style={{ background: "radial-gradient(circle at top, #1B1E23 0%, #0E1116 40%, #050608 100%)" }}>
+                    {/* Dark Card Body (Light Mode) / Light Card Body (Dark Mode) */}
+                    <div className="relative w-full h-full rounded-[20px] overflow-hidden bg-[radial-gradient(circle_at_top,#1B1E23_0%,#0E1116_40%,#050608_100%)] dark:bg-white dark:bg-none">
 
 
 
                       {/* Left Side Greeting */}
                       <div className="absolute top-6 left-4 z-20 -rotate-6 opacity-70">
-                        <span className="text-[10px] font-black tracking-[0.2em] text-white/50">
+                        <span className="text-[10px] font-black tracking-[0.2em] text-white/50 dark:text-black/50">
                           HOLA AMIGOES
                         </span>
                       </div>
@@ -240,22 +240,23 @@ export default function Home() {
                             }}
                             alt="Sai Dheeraj"
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60" />
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60 dark:opacity-30" />
                         </div>
                       </div>
 
                       {/* Text Overlay */}
-                      <div className="relative z-40 p-6 text-white mt-auto h-full flex flex-col justify-end pb-12 pointer-events-none">
-                        <p className="text-sm font-black tracking-[0.25em] mb-2 text-white drop-shadow-sm border-black">FULL STACK</p>
-                        <h2 className="text-4xl md:text-5xl font-black tracking-tighter leading-[0.85] mb-2 drop-shadow-lg">
+                      <div className="relative z-40 p-6 text-white dark:text-black mt-auto h-full flex flex-col justify-end pb-12 pointer-events-none">
+                        <p className="text-sm font-black tracking-[0.25em] mb-2 text-white dark:text-black drop-shadow-sm border-black">FULL STACK</p>
+                        <h2 className="text-4xl md:text-5xl font-black tracking-tighter leading-[0.85] mb-2 drop-shadow-lg text-white dark:text-black">
                           DEVELOPER
                         </h2>
                       </div>
 
                       {/* Bottom Notch */}
                       <div className="absolute bottom-0 inset-x-0 h-10 z-30 flex items-center justify-center">
-                        <div className="bg-black/20 backdrop-blur-sm px-4 py-1 rounded-t-xl border-t border-white/5">
-                          <p className="text-[8px] uppercase tracking-widest opacity-70 font-mono text-white">
+                        <div className="bg-black/20 dark:bg-black/5 backdrop-blur-sm px-4 py-1 rounded-t-xl border-t border-white/5 dark:border-black/5">
+                          <p className="text-[8px] uppercase tracking-widest opacity-70 font-mono text-white dark:text-black">
                             ©2026, SKILLS NOT REPLACED BY AI (YET)
                           </p>
                         </div>
@@ -263,8 +264,8 @@ export default function Home() {
                     </div>
 
                     {/* Front Tag (Outside overflow-hidden but inside Front Face) */}
-                    <div className="absolute -top-1 -right-1 w-[42%] h-16 bg-neutral-900 rounded-bl-[2.5rem] z-20 flex items-center justify-center pt-2 pl-4">
-                      <span className="text-white/80 text-[10px] font-bold tracking-widest">
+                    <div className="absolute -top-1 -right-1 w-[42%] h-16 bg-neutral-900 dark:bg-neutral-200 rounded-bl-[2.5rem] z-20 flex items-center justify-center pt-2 pl-4">
+                      <span className="text-white/80 dark:text-black/80 text-[10px] font-bold tracking-widest">
                         (PORTFOLIO)
                       </span>
                     </div>
@@ -274,12 +275,12 @@ export default function Home() {
 
                   {/* --- BACK FACE --- */}
                   <div className="absolute inset-0 w-full h-full" style={{ transform: "rotateY(180deg)", backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden", zIndex: 10 }}>
-                    <div className="relative w-full h-full bg-black rounded-[20px] overflow-hidden flex items-center justify-center border border-white/10">
+                    <div className="relative w-full h-full bg-black dark:bg-white rounded-[20px] overflow-hidden flex items-center justify-center border border-white/10 dark:border-black/10">
 
 
 
                       {/* Watermark Text */}
-                      <span className="text-[8rem] font-black text-white/5 select-none absolute z-0 scale-x-[-1]">
+                      <span className="text-[8rem] font-black text-white/5 dark:text-black/5 select-none absolute z-0 scale-x-[-1]">
                         SAI
                       </span>
 
@@ -298,14 +299,14 @@ export default function Home() {
                             WebkitMaskPosition: "center"
                           }}
                         />
-                        <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white/90 text-[10px] font-bold tracking-[0.15em] font-mono -rotate-6 whitespace-nowrap">
+                        <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white/90 dark:text-black/90 text-[10px] font-bold tracking-[0.15em] font-mono -rotate-6 whitespace-nowrap">
                           R SAI DHEERAJ
                         </span>
                       </div>
                     </div>
 
                     {/* Back Tag (Mirrored to Left) */}
-                    <div className="absolute -top-1 -left-1 w-[42%] h-16 bg-neutral-900 rounded-br-[2.5rem] z-20" />
+                    <div className="absolute -top-1 -left-1 w-[42%] h-16 bg-neutral-900 dark:bg-neutral-200 rounded-br-[2.5rem] z-20" />
 
 
                   </div>
