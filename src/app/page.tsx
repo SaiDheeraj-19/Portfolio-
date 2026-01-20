@@ -247,10 +247,17 @@ export default function Home() {
 
                       {/* Text Overlay */}
                       <div className="relative z-40 p-6 text-white mt-auto h-full flex flex-col justify-end pb-12 pointer-events-none">
-                        <p className="text-sm font-black tracking-[0.25em] mb-2 text-white drop-shadow-sm border-black">FULL STACK</p>
-                        <h2 className="text-4xl md:text-5xl font-black tracking-tighter leading-[0.85] mb-2 drop-shadow-lg">
+                        <p className="text-3xl font-black tracking-[0.1em] mb-1 text-white drop-shadow-sm border-black leading-none">FULL STACK</p>
+                        <h2 className="text-4xl md:text-5xl font-black tracking-tighter leading-[0.85] mb-4 drop-shadow-lg">
                           DEVELOPER
                         </h2>
+
+                        {/* Tech Stack List */}
+                        <div className="flex flex-wrap gap-2 opacity-90">
+                          <span className="text-[10px] uppercase font-bold tracking-widest bg-white/10 px-2 py-1 rounded backdrop-blur-sm border border-white/10">Next.js</span>
+                          <span className="text-[10px] uppercase font-bold tracking-widest bg-white/10 px-2 py-1 rounded backdrop-blur-sm border border-white/10">React</span>
+                          <span className="text-[10px] uppercase font-bold tracking-widest bg-white/10 px-2 py-1 rounded backdrop-blur-sm border border-white/10">TS</span>
+                        </div>
                       </div>
 
                       {/* Bottom Notch */}
