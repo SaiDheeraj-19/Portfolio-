@@ -247,7 +247,7 @@ export default function Home() {
 
                       {/* Text Overlay */}
                       <div className="relative z-40 p-6 text-white mt-auto h-full flex flex-col justify-end pb-12 pointer-events-none">
-                        <p className="text-[10px] font-bold tracking-[0.2em] mb-1 opacity-100 drop-shadow-md">FULL STACK</p>
+                        <p className="text-sm font-black tracking-[0.25em] mb-2 text-white drop-shadow-xl border-black">FULL STACK</p>
                         <h2 className="text-4xl md:text-5xl font-black tracking-tighter leading-[0.85] mb-2 drop-shadow-lg">
                           DEVELOPER
                         </h2>
