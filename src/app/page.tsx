@@ -23,7 +23,7 @@ import {
 import ProfileCard from "@/components/react-bits/ProfileCard"
 import Aurora from "@/components/react-bits/Aurora"
 import Hyperspeed, { hyperspeedPresets } from "@/components/react-bits/Hyperspeed"
-import LetterGlitch from "@/components/react-bits/LetterGlitch"
+
 import Navbar from "@/components/layout/navbar"
 import HomeToolsSection from "@/components/home-tools-section"
 // import ToolsSection from "@/components/tools-section" // Moved to Tech Stack page
@@ -365,7 +365,7 @@ export default function Home() {
 
         <div className="max-w-6xl mx-auto relative z-10 text-center">
           <TextType
-            text={["Since 2024, I’ve approached software like a system, not a screen."]}
+            text={["I’ve been learning how software actually works—beyond the UI—by building projects, writing code, and understanding the logic behind it."]}
             typingSpeed={75}
             pauseDuration={1500}
             showCursor={true}
@@ -387,7 +387,7 @@ export default function Home() {
             }}
             className="text-lg md:text-2xl lg:text-3xl font-medium text-white/90 leading-relaxed max-w-4xl mx-auto mb-12 md:mb-0"
           >
-            From biometric verification to AI-driven workflows and multilingual voice pipelines, I build full-stack products where data, identity, and automation work together to survive real-world conditions — <span className="opacity-60">not just perfect demos.</span>
+            I work on full-stack projects involving features like authentication, data handling, and basic automation, with a focus on building things that work reliably beyond simple demos.
           </motion.p>
         </div>
         <div className="absolute left-6 md:left-12 bottom-10 border border-neutral-700/50 rounded-full w-10 h-10 md:w-12 md:h-12 flex items-center justify-center text-neutral-500 font-mono text-xs md:text-sm pointer-events-auto z-20 backdrop-blur-sm hidden sm:flex">
@@ -735,9 +735,7 @@ export default function Home() {
 
       <Dialog open={showProjectsPopup} onOpenChange={setShowProjectsPopup}>
         <DialogContent className="max-w-5xl bg-black border-neutral-800 text-white p-0 overflow-hidden !rounded-[2rem] w-full h-[85vh]">
-          <div className="absolute inset-0 z-0">
-            <LetterGlitch glitchSpeed={50} centerVignette={true} outerVignette={false} smooth={true} glitchColors={['#ffffff', '#999999', '#444444']} />
-          </div>
+
           <button
             onClick={() => setShowProjectsPopup(false)}
             className="absolute top-4 right-4 p-2 rounded-full bg-black/50 hover:bg-black/80 backdrop-blur-md transition-colors z-50 text-white border border-white/10"
