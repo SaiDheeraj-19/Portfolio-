@@ -176,9 +176,9 @@ export default function Home() {
       <section id="home" className="relative h-dvh min-h-screen flex flex-col items-center justify-center overflow-hidden">
 
         {/* Aurora Background */}
-        <div className="absolute inset-0 z-0 pointer-events-none opacity-50 mix-blend-multiply">
+        <div className="absolute inset-0 z-0 pointer-events-none opacity-50 mix-blend-screen">
           <Aurora
-            colorStops={["#ecf8f8", "#c3623c", "#b5e3e3"]}
+            colorStops={["#0088cc", "#eeeeee", "#ffffff"]}
             amplitude={1}
             blend={0.5}
             speed={0.5}
