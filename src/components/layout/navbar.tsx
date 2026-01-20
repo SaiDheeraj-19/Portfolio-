@@ -6,7 +6,8 @@ import { useState } from "react"
 import { Menu, X, ArrowLeft } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
-import MusicToggle from "@/components/music-toggle";
+import MusicToggle from "@/components/music-toggle"
+import { useScrollDirection } from "@/hooks/use-scroll-direction"
 
 interface NavbarProps {
     onOpenProjects?: () => void;
@@ -18,6 +19,7 @@ interface NavbarProps {
 export default function Navbar({ onOpenProjects, onOpenResume, onOpenAbout, onOpenContact }: NavbarProps) {
     const pathname = usePathname()
     const [isMenuOpen, setIsMenuOpen] = useState(false)
+    const scrollDirection = useScrollDirection()
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
 
     // Hide navbar on admin page
@@ -28,7 +30,7 @@ export default function Navbar({ onOpenProjects, onOpenResume, onOpenAbout, onOp
     const hoverColorClass = isLightPage ? "hover:text-primary" : "hover:text-white"
     const mutedColorClass = isLightPage ? "text-muted-foreground" : "text-gray-300"
     const logoColorClass = isLightPage ? "text-foreground" : "text-white"
-    const mobileMenuBg = isLightPage ? "bg-secondary" : "bg-black/95"
+    const mobileMenuBg = isLightPage ? "bg-background/95" : "bg-black/95"
     const mobileMenuText = isLightPage ? "text-muted-foreground" : "text-gray-300"
     const contactBtnClass = isLightPage
         ? "bg-primary text-primary-foreground hover:bg-primary/90 shadow-xl border-transparent"
@@ -37,8 +39,11 @@ export default function Navbar({ onOpenProjects, onOpenResume, onOpenAbout, onOp
     return (
         <nav
             className={cn(
-                "fixed top-0 z-50 w-full transition-transform duration-300 ease-in-out py-6 md:py-8 layout-padding",
-                "bg-secondary/90 backdrop-blur-md",
+                "fixed top-0 z-50 w-full transition-all duration-300 ease-in-out py-6 md:py-8 layout-padding",
+                "bg-background/80 backdrop-blur-md",
+                // Hide on scroll down (translate-y-full means move up out of view if top-0, wait. 
+                // -translate-y-full moves it UP (hidden). translate-y-0 is visible.
+                scrollDirection === "down" ? "-translate-y-[200%]" : "translate-y-0"
             )}
         >
             <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
@@ -62,23 +67,19 @@ export default function Navbar({ onOpenProjects, onOpenResume, onOpenAbout, onOp
                         </Link>
                     )}
 
-                    {!isLightPage && (
-                        <>
-                            <button onClick={onOpenProjects} className={cn("transition-colors text-sm font-medium tracking-wide", mutedColorClass, hoverColorClass)}>
-                                Projects
-                            </button>
-                            <button onClick={onOpenResume} className={cn("transition-colors text-sm font-medium tracking-wide", mutedColorClass, hoverColorClass)}>
-                                Resume
-                            </button>
-                            <button onClick={onOpenAbout} className={cn("transition-colors text-sm font-medium tracking-wide", mutedColorClass, hoverColorClass)}>
-                                About me
-                            </button>
-                            <MusicToggle className={cn("border-opacity-30", isLightPage ? "border-black/20 text-black hover:bg-black/5" : "border-white/20")} />
-                            <Button onClick={onOpenContact} className={cn("rounded-full px-8 font-bold tracking-wide transition-all", contactBtnClass)}>
-                                CONTACT
-                            </Button>
-                        </>
-                    )}
+                    <button onClick={onOpenProjects} className={cn("transition-colors text-sm font-medium tracking-wide", mutedColorClass, hoverColorClass)}>
+                        Projects
+                    </button>
+                    <button onClick={onOpenResume} className={cn("transition-colors text-sm font-medium tracking-wide", mutedColorClass, hoverColorClass)}>
+                        Resume
+                    </button>
+                    <button onClick={onOpenAbout} className={cn("transition-colors text-sm font-medium tracking-wide", mutedColorClass, hoverColorClass)}>
+                        About me
+                    </button>
+                    <MusicToggle className={cn("border-opacity-30", isLightPage ? "border-black/20 text-black hover:bg-black/5" : "border-white/20")} />
+                    <Button onClick={onOpenContact} className={cn("rounded-full px-8 font-bold tracking-wide transition-all", contactBtnClass)}>
+                        CONTACT
+                    </Button>
                 </div>
 
                 {/* Mobile: Music Toggle + Menu Button */}
@@ -99,23 +100,20 @@ export default function Navbar({ onOpenProjects, onOpenResume, onOpenAbout, onOp
                                 Home
                             </Link>
                         )}
-                        {!isLightPage && (
-                            <>
-                                <button onClick={() => { onOpenProjects?.(); toggleMenu(); }} className={cn("text-2xl transition-colors", mobileMenuText, hoverColorClass)}>
-                                    Projects
-                                </button>
-                                <button onClick={() => { onOpenResume?.(); toggleMenu(); }} className={cn("text-2xl transition-colors", mobileMenuText, hoverColorClass)}>
-                                    Resume
-                                </button>
-                                <button onClick={() => { onOpenAbout?.(); toggleMenu(); }} className={cn("text-2xl transition-colors", mobileMenuText, hoverColorClass)}>
-                                    About me
-                                </button>
 
-                                <button onClick={() => { onOpenContact?.(); toggleMenu(); }} className="text-2xl text-[#ff4d29] font-bold hover:opacity-80 transition-opacity">
-                                    CONTACT
-                                </button>
-                            </>
-                        )}
+                        <button onClick={() => { onOpenProjects?.(); toggleMenu(); }} className={cn("text-2xl transition-colors", mobileMenuText, hoverColorClass)}>
+                            Projects
+                        </button>
+                        <button onClick={() => { onOpenResume?.(); toggleMenu(); }} className={cn("text-2xl transition-colors", mobileMenuText, hoverColorClass)}>
+                            Resume
+                        </button>
+                        <button onClick={() => { onOpenAbout?.(); toggleMenu(); }} className={cn("text-2xl transition-colors", mobileMenuText, hoverColorClass)}>
+                            About me
+                        </button>
+
+                        <button onClick={() => { onOpenContact?.(); toggleMenu(); }} className="text-2xl text-[#ff4d29] font-bold hover:opacity-80 transition-opacity">
+                            CONTACT
+                        </button>
                     </div>
                 </div>
             )}
