@@ -179,7 +179,7 @@ export default function Home() {
 
         {/* Background Large Text - Responsive sizing */}
         <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none select-none overflow-hidden z-0 py-24 md:py-0 opacity-20 md:opacity-100">
-          <span className="text-[12vw] md:text-[10vw] font-black text-transparent bg-clip-text bg-gradient-to-b from-primary/60 to-primary/20 whitespace-nowrap tracking-tighter leading-[0.8] select-none animate-[pulse_3s_ease-in-out_infinite] drop-shadow-[0_0_10px_rgba(203,153,126,0.2)]">
+          <span className="text-[18vw] md:text-[15vw] font-black text-transparent bg-clip-text bg-gradient-to-b from-primary/60 to-primary/20 whitespace-nowrap tracking-tighter leading-[0.8] select-none animate-[pulse_3s_ease-in-out_infinite] drop-shadow-[0_0_10px_rgba(203,153,126,0.2)]">
             SAI DHEERAJ
           </span>
         </div>
