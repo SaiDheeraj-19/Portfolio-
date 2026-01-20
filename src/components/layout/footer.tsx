@@ -43,7 +43,7 @@ export default function Footer() {
                     {/* Right Side - Message */}
                     <div className="text-left md:text-right space-y-4 md:space-y-6">
 
-                        <p className="text-base md:text-2xl font-light text-neutral-400 max-w-lg leading-relaxed">Designed and built by <span className="text-white font-medium">Sai Dheeraj</span> to showcase learning-focused software projects.</p>
+                        <p className="text-base md:text-2xl font-light text-primary-foreground/60 max-w-lg leading-relaxed">Designed and built by <span className="text-primary-foreground font-medium">Sai Dheeraj</span> to showcase learning-focused software projects.</p>
                     </div>
                 </div>
             </div>
