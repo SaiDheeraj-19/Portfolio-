@@ -240,7 +240,7 @@ export default function Home() {
                             }}
                             alt="Sai Dheeraj"
                           />
-                          />
+
                           <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60 dark:opacity-30" />
                         </div>
                       </div>
