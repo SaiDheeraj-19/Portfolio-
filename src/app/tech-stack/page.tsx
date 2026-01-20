@@ -1,7 +1,5 @@
 "use client";
 
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import Navbar from "@/components/layout/navbar";
 import ToolsBentoGrid from "@/components/tools-bento-grid";
 
@@ -28,16 +26,7 @@ export default function TechStackPage() {
 
                 <ToolsBentoGrid />
 
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    className="flex justify-center pt-8 md:pt-12"
-                >
-                    <Link href="/how-i-built-this" className="group inline-flex items-center gap-2 px-6 py-3 md:px-8 md:py-4 rounded-full bg-white/5 border border-white/10 hover:bg-white hover:text-black transition-all duration-300 text-white text-sm md:text-base font-bold tracking-wide">
-                        Read &quot;How I Built My Portfolio&quot; <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                    </Link>
-                </motion.div>
+
             </div>
             {/* Background elements if any needed later */}
         </main>
