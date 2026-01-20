@@ -75,7 +75,7 @@ export default function HomeToolsSection() {
             <div className="absolute left-0 w-full md:w-auto md:left-auto md:right-12 bottom-10 z-20 pointer-events-auto flex justify-center md:block px-6 md:px-0">
                 <Link
                     href="/tech-stack"
-                    className="w-full md:w-auto flex items-center justify-center gap-2 px-6 py-4 rounded-full border border-border bg-card/50 text-muted-foreground backdrop-blur-sm hover:bg-primary hover:text-white transition-all duration-300 font-mono text-[10px] md:text-xs tracking-widest uppercase shadow-2xl"
+                    className="w-full md:w-auto flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-primary text-primary-foreground shadow-lg border border-transparent hover:bg-primary/90 hover:scale-105 transition-all duration-300 font-bold font-mono text-xs tracking-widest uppercase"
                 >
                     View Complete Stack <ArrowRight className="w-4 h-4" />
                 </Link>
