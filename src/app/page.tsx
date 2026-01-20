@@ -793,11 +793,7 @@ export default function Home() {
                   <Button className="flex-1 border-border hover:bg-secondary text-foreground font-bold h-12" variant="outline" asChild>
                     <a href={selectedProject.links.github} target="_blank" rel="noreferrer">Codebase <Github className="ml-2 w-4 h-4" /></a>
                   </Button>
-                  {selectedProject.links.demo && selectedProject.links.demo !== "#" && (
-                    <Button className="flex-1 bg-primary text-primary-foreground hover:bg-primary/90 font-bold h-12" asChild>
-                      <a href={selectedProject.links.demo} target="_blank" rel="noreferrer">Live Demo <ExternalLink className="ml-2 w-4 h-4" /></a>
-                    </Button>
-                  )}
+
                 </div>
               </div>
             </>
