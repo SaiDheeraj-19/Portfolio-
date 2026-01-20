@@ -17,25 +17,25 @@ export default function Footer() {
                             <Link
                                 href="https://github.com/SaiDheeraj-19"
                                 target="_blank"
-                                className="bg-[#262626] p-4 rounded-xl hover:bg-white hover:text-primary transition-all duration-300 border border-white/10"
+                                className="bg-primary-foreground/10 p-4 rounded-xl hover:bg-primary-foreground hover:text-primary text-primary-foreground transition-all duration-300 border border-primary-foreground/10"
                             >
-                                <Github className="w-6 h-6 text-white hover:text-primary" />
+                                <Github className="w-6 h-6 fill-current" />
                             </Link>
 
                             <Link
                                 href="https://www.linkedin.com/in/sai-dheeraj-a1145830b/"
                                 target="_blank"
-                                className="bg-[#262626] p-4 rounded-xl hover:bg-white hover:text-primary transition-all duration-300 border border-white/10"
+                                className="bg-primary-foreground/10 p-4 rounded-xl hover:bg-primary-foreground hover:text-primary text-primary-foreground transition-all duration-300 border border-primary-foreground/10"
                             >
-                                <Linkedin className="w-6 h-6 text-white hover:text-primary" />
+                                <Linkedin className="w-6 h-6 fill-current" />
                             </Link>
 
                             <Link
                                 href="https://www.instagram.com/your.saidheeraj/"
                                 target="_blank"
-                                className="bg-[#262626] p-4 rounded-xl hover:bg-white hover:text-primary transition-all duration-300 border border-white/10"
+                                className="bg-primary-foreground/10 p-4 rounded-xl hover:bg-primary-foreground hover:text-primary text-primary-foreground transition-all duration-300 border border-primary-foreground/10"
                             >
-                                <Instagram className="w-6 h-6 text-white hover:text-primary" />
+                                <Instagram className="w-6 h-6" />
                             </Link>
                         </div>
                     </div>
