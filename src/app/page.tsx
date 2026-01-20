@@ -341,14 +341,8 @@ export default function Home() {
       </section>
 
       <section className="relative pt-16 pb-32 md:py-32 px-4 md:px-6 overflow-hidden bg-background">
-        {/* Animated Background */}
-        <div className="absolute inset-0 z-0 pointer-events-none opacity-60">
-          <FloatingPaths position={1} />
-          <FloatingPaths position={-1} />
-        </div>
-
-        {/* Subtle Grid Pattern Overlay */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:60px_60px] opacity-20 pointer-events-none z-0" />
+        {/* Animated Background Removed */}
+        <div className="absolute inset-0 z-0 pointer-events-none opacity-0"></div>
 
         <div className="max-w-6xl mx-auto relative z-10 text-center">
           <TextType
@@ -508,13 +502,13 @@ export default function Home() {
                       key={idx}
                       type="button"
                       onClick={(e) => { e.stopPropagation(); setSelectedPhoto(cert.img); }}
-                      className="bg-neutral-800/50 p-6 rounded-2xl flex flex-col items-center border border-neutral-700/50 hover:border-white/50 transition-colors group cursor-pointer w-full text-left"
+                      className="bg-card p-6 rounded-2xl flex flex-col items-center border border-border hover:border-primary/50 transition-colors group cursor-pointer w-full text-left shadow-sm hover:shadow-md"
                     >
-                      <div className="w-full aspect-[4/3] relative mb-4 overflow-hidden rounded-lg pointer-events-none">
+                      <div className="w-full aspect-[4/3] relative mb-4 overflow-hidden rounded-lg pointer-events-none bg-muted/20">
                         <Image src={cert.img} fill className="object-contain group-hover:scale-105 transition-transform duration-500" alt={cert.title} />
                       </div>
-                      <h3 className="font-bold text-center text-lg leading-tight mb-2 pointer-events-none">{cert.title}</h3>
-                      <p className="text-neutral-400 text-sm font-mono text-center pointer-events-none">{cert.issuer}</p>
+                      <h3 className="font-bold text-center text-lg leading-tight mb-2 pointer-events-none text-foreground">{cert.title}</h3>
+                      <p className="text-muted-foreground text-sm font-mono text-center pointer-events-none">{cert.issuer}</p>
                     </button>
                   ))}
                 </div>
@@ -717,28 +711,28 @@ export default function Home() {
                 <button
                   key={idx}
                   onClick={() => setSelectedProject(project)}
-                  className="text-left bg-neutral-900/90 backdrop-blur-md rounded-2xl overflow-hidden border border-white/10 hover:border-white/50 transition-all flex flex-col h-full group w-full shadow-2xl"
+                  className="text-left bg-card rounded-2xl overflow-hidden border border-border hover:border-primary/50 transition-all flex flex-col h-full group w-full shadow-lg hover:shadow-xl"
                 >
-                  <div className="h-48 bg-neutral-800 w-full relative">
+                  <div className="h-48 bg-muted w-full relative">
                     {project.image && !project.image.includes('placeholder') ? (
                       <Image src={project.image} fill className="object-cover group-hover:scale-105 transition-transform duration-500" alt={project.title} />
                     ) : (
-                      <div className="absolute inset-0 flex items-center justify-center text-neutral-600">
-                        <Code className="w-12 h-12 group-hover:text-white transition-colors" />
+                      <div className="absolute inset-0 flex items-center justify-center text-muted-foreground/50">
+                        <Code className="w-12 h-12 group-hover:text-primary transition-colors" />
                       </div>
                     )}
                   </div>
                   <div className="p-6 flex flex-col grow">
                     <div className="flex justify-between items-start mb-4">
                       <div>
-                        <span className="text-white text-xs font-bold tracking-wider uppercase mb-1 block">{project.category}</span>
-                        <h3 className="text-xl font-bold">{project.title}</h3>
+                        <span className="text-primary text-xs font-bold tracking-wider uppercase mb-1 block">{project.category}</span>
+                        <h3 className="text-xl font-bold text-foreground">{project.title}</h3>
                       </div>
                     </div>
-                    <p className="text-neutral-400 text-sm mb-6 grow">{project.description}</p>
+                    <p className="text-muted-foreground text-sm mb-6 grow">{project.description}</p>
                     <div className="flex flex-wrap gap-2 mt-auto">
                       {project.tags.map((tag: string) => (
-                        <span key={tag} className="px-3 py-1 bg-neutral-900 rounded-full text-xs text-neutral-300 font-mono border border-neutral-700">{tag}</span>
+                        <span key={tag} className="px-3 py-1 bg-secondary rounded-full text-xs text-secondary-foreground font-mono border border-border">{tag}</span>
                       ))}
                     </div>
                   </div>
@@ -751,59 +745,59 @@ export default function Home() {
 
       {/* Project Details Modal */}
       <Dialog open={selectedProject !== null} onOpenChange={(open) => !open && setSelectedProject(null)}>
-        <DialogContent className="max-w-5xl bg-neutral-900 border-neutral-800 text-white p-0 !rounded-[2rem] w-full h-[85vh] overflow-y-auto flex flex-col md:flex-row overflow-hidden">
+        <DialogContent className="max-w-5xl bg-background border-border text-foreground p-0 !rounded-[2rem] w-full h-[85vh] overflow-y-auto flex flex-col md:flex-row overflow-hidden">
           <DialogTitle className="sr-only">Project Details</DialogTitle>
 
           {selectedProject && (
             <>
               {/* Left/Top: Image Gallery (Simplified to Main Image for now) */}
-              <div className="w-full md:w-1/2 bg-black/50 p-8 flex flex-col items-center gap-6 relative min-h-[300px] border-b md:border-b-0 md:border-r border-white/10 overflow-y-auto custom-scrollbar">
+              <div className="w-full md:w-1/2 bg-secondary/30 p-8 flex flex-col items-center gap-6 relative min-h-[300px] border-b md:border-b-0 md:border-r border-border overflow-y-auto custom-scrollbar">
                 <div className="absolute top-4 left-4 z-10">
-                  <span className="px-3 py-1 bg-white text-black text-xs font-bold rounded-full uppercase tracking-wider shadow-lg">{selectedProject.category}</span>
+                  <span className="px-3 py-1 bg-background text-foreground text-xs font-bold rounded-full uppercase tracking-wider shadow-lg border border-border">{selectedProject.category}</span>
                 </div>
 
                 {selectedProject.gallery && selectedProject.gallery.length > 0 ? (
                   selectedProject.gallery.map((img: string, i: number) => (
-                    <div key={i} className="relative w-full aspect-video rounded-xl overflow-hidden border border-neutral-800 shadow-xl shrink-0">
+                    <div key={i} className="relative w-full aspect-video rounded-xl overflow-hidden border border-border shadow-xl shrink-0">
                       <Image src={img} fill className="object-cover" alt={`${selectedProject.title} screenshot ${i + 1}`} />
                     </div>
                   ))
                 ) : (
-                  <div className="relative w-full aspect-video border-2 border-dashed border-neutral-700 rounded-xl bg-neutral-800/50 text-neutral-500 flex flex-col items-center justify-center">
-                    <Code className="w-16 h-16 mb-4 text-white" />
-                    <span className="text-sm font-mono text-white/60">NO PREVIEWS</span>
+                  <div className="relative w-full aspect-video border-2 border-dashed border-border rounded-xl bg-card text-muted-foreground flex flex-col items-center justify-center">
+                    <Code className="w-16 h-16 mb-4 text-foreground/40" />
+                    <span className="text-sm font-mono text-muted-foreground">NO PREVIEWS</span>
                   </div>
                 )}
               </div>
 
               {/* Right/Bottom: Content */}
-              <div className="w-full md:w-1/2 p-8 md:p-12 flex flex-col overflow-y-auto bg-neutral-900/50 relative">
+              <div className="w-full md:w-1/2 p-8 md:p-12 flex flex-col overflow-y-auto bg-background relative">
                 <button
                   onClick={() => setSelectedProject(null)}
-                  className="absolute top-6 right-6 p-2 text-neutral-400 hover:text-white transition-colors"
+                  className="absolute top-6 right-6 p-2 text-muted-foreground hover:text-foreground transition-colors"
                 >
                   <span className="sr-only">Close</span>
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
                 </button>
 
-                <h2 className="text-3xl md:text-4xl font-black mb-6 text-white leading-tight tracking-tight mt-4">{selectedProject.title}</h2>
+                <h2 className="text-3xl md:text-4xl font-black mb-6 text-foreground leading-tight tracking-tight mt-4">{selectedProject.title}</h2>
 
                 <div className="flex flex-wrap gap-2 mb-8">
                   {selectedProject.tags.map((tag: string) => (
-                    <span key={tag} className="px-3 py-1 bg-[#ff4d29]/10 text-[#ff4d29] text-xs font-bold font-mono rounded-md border border-[#ff4d29]/20">{tag}</span>
+                    <span key={tag} className="px-3 py-1 bg-primary/10 text-primary text-xs font-bold font-mono rounded-md border border-primary/20">{tag}</span>
                   ))}
                 </div>
 
-                <div className="prose prose-invert prose-sm mb-10 text-neutral-300">
+                <div className="prose prose-sm mb-10 text-muted-foreground">
                   <p className="whitespace-pre-line leading-relaxed text-base">{selectedProject.details || selectedProject.description}</p>
                 </div>
 
                 <div className="mt-auto flex flex-col md:flex-row gap-4">
-                  <Button className="flex-1 border-white/20 hover:bg-white/10 text-white font-bold h-12" variant="outline" asChild>
+                  <Button className="flex-1 border-border hover:bg-secondary text-foreground font-bold h-12" variant="outline" asChild>
                     <a href={selectedProject.links.github} target="_blank" rel="noreferrer">Codebase <Github className="ml-2 w-4 h-4" /></a>
                   </Button>
                   {selectedProject.links.demo && selectedProject.links.demo !== "#" && (
-                    <Button className="flex-1 bg-white text-black hover:bg-white/90 font-bold h-12" asChild>
+                    <Button className="flex-1 bg-primary text-primary-foreground hover:bg-primary/90 font-bold h-12" asChild>
                       <a href={selectedProject.links.demo} target="_blank" rel="noreferrer">Live Demo <ExternalLink className="ml-2 w-4 h-4" /></a>
                     </Button>
                   )}
