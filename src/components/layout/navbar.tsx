@@ -34,6 +34,9 @@ export default function Navbar({ onOpenProjects, onOpenResume, onOpenAbout, onOp
 
 
 
+    // Check if we're on the home page
+    const isHomePage = pathname === "/"
+
     return (
         <nav
             className={cn(
@@ -42,34 +45,46 @@ export default function Navbar({ onOpenProjects, onOpenResume, onOpenAbout, onOp
         >
             <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
 
-                {pathname !== "/" ? (
-                    <Link href="/" className="text-sm md:text-base font-medium tracking-wide flex items-center gap-2 hover:opacity-80 transition-opacity text-foreground">
-                        <ArrowLeft className="w-4 h-4" /> Back to Home
-                    </Link>
-                ) : (
-                    <Link href="/" className="text-xl md:text-2xl font-bold tracking-widest uppercase hover:opacity-80 transition-opacity text-foreground">
-                        SAI DHEERAJ
-                    </Link>
-                )}
+                {/* Always show name/logo - removed "Back to Home" */}
+                <Link href="/" className="text-xl md:text-2xl font-bold tracking-widest uppercase hover:opacity-80 transition-opacity text-foreground">
+                    SAI DHEERAJ
+                </Link>
 
                 {/* Desktop Navigation */}
                 <div className="hidden md:flex items-center space-x-6">
-                    {/* Always show Home link if not on home page */}
-                    {pathname !== "/" && (
+                    {/* Show Home link only if not on home page */}
+                    {!isHomePage && (
                         <Link href="/" className="transition-colors text-sm font-medium tracking-wide text-muted-foreground hover:text-primary mr-4">
                             Home
                         </Link>
                     )}
 
-                    <button onClick={onOpenProjects} className="transition-colors text-sm font-medium tracking-wide text-muted-foreground hover:text-primary mr-4">
-                        Projects
-                    </button>
-                    <button onClick={onOpenResume} className="transition-colors text-sm font-medium tracking-wide text-muted-foreground hover:text-primary mr-4">
-                        Resume
-                    </button>
-                    <button onClick={onOpenAbout} className="transition-colors text-sm font-medium tracking-wide text-muted-foreground hover:text-primary mr-4">
-                        About me
-                    </button>
+                    {/* On home page, use callbacks for scroll-to-section. On other pages, use Links */}
+                    {isHomePage ? (
+                        <>
+                            <button onClick={onOpenProjects} className="transition-colors text-sm font-medium tracking-wide text-muted-foreground hover:text-primary mr-4">
+                                Projects
+                            </button>
+                            <button onClick={onOpenResume} className="transition-colors text-sm font-medium tracking-wide text-muted-foreground hover:text-primary mr-4">
+                                Resume
+                            </button>
+                            <button onClick={onOpenAbout} className="transition-colors text-sm font-medium tracking-wide text-muted-foreground hover:text-primary mr-4">
+                                About me
+                            </button>
+                        </>
+                    ) : (
+                        <>
+                            <Link href="/#projects" className="transition-colors text-sm font-medium tracking-wide text-muted-foreground hover:text-primary mr-4">
+                                Projects
+                            </Link>
+                            <Link href="/#resume" className="transition-colors text-sm font-medium tracking-wide text-muted-foreground hover:text-primary mr-4">
+                                Resume
+                            </Link>
+                            <Link href="/#about" className="transition-colors text-sm font-medium tracking-wide text-muted-foreground hover:text-primary mr-4">
+                                About me
+                            </Link>
+                        </>
+                    )}
 
                     {/* Theme Toggle */}
                     {mounted && (
@@ -83,9 +98,17 @@ export default function Navbar({ onOpenProjects, onOpenResume, onOpenAbout, onOp
                     )}
 
                     <MusicToggle className="border-opacity-30 border-foreground/20 text-foreground hover:bg-foreground/5" />
-                    <Button onClick={onOpenContact} className="rounded-full px-8 font-bold tracking-wide transition-all bg-primary text-primary-foreground hover:bg-primary/90 shadow-xl border-transparent">
-                        CONTACT
-                    </Button>
+                    {isHomePage ? (
+                        <Button onClick={onOpenContact} className="rounded-full px-8 font-bold tracking-wide transition-all bg-primary text-primary-foreground hover:bg-primary/90 shadow-xl border-transparent">
+                            CONTACT
+                        </Button>
+                    ) : (
+                        <Link href="/#contact">
+                            <Button className="rounded-full px-8 font-bold tracking-wide transition-all bg-primary text-primary-foreground hover:bg-primary/90 shadow-xl border-transparent">
+                                CONTACT
+                            </Button>
+                        </Link>
+                    )}
                 </div>
 
                 {/* Mobile: Music Toggle + Theme + Menu Button */}
@@ -109,25 +132,43 @@ export default function Navbar({ onOpenProjects, onOpenResume, onOpenAbout, onOp
             {isMenuOpen && (
                 <div className="fixed inset-0 top-20 z-40 md:hidden p-8 animate-in slide-in-from-top-4 bg-background/95 backdrop-blur-md border-t border-border/50">
                     <div className="flex flex-col space-y-6 text-center">
-                        {pathname !== "/" && (
+                        {!isHomePage && (
                             <Link href="/" onClick={toggleMenu} className="text-2xl transition-colors text-muted-foreground hover:text-primary">
                                 Home
                             </Link>
                         )}
 
-                        <button onClick={() => { onOpenProjects?.(); toggleMenu(); }} className="text-2xl transition-colors text-muted-foreground hover:text-primary">
-                            Projects
-                        </button>
-                        <button onClick={() => { onOpenResume?.(); toggleMenu(); }} className="text-2xl transition-colors text-muted-foreground hover:text-primary">
-                            Resume
-                        </button>
-                        <button onClick={() => { onOpenAbout?.(); toggleMenu(); }} className="text-2xl transition-colors text-muted-foreground hover:text-primary">
-                            About me
-                        </button>
-
-                        <button onClick={() => { onOpenContact?.(); toggleMenu(); }} className="text-2xl text-primary font-bold hover:opacity-80 transition-opacity">
-                            CONTACT
-                        </button>
+                        {isHomePage ? (
+                            <>
+                                <button onClick={() => { onOpenProjects?.(); toggleMenu(); }} className="text-2xl transition-colors text-muted-foreground hover:text-primary">
+                                    Projects
+                                </button>
+                                <button onClick={() => { onOpenResume?.(); toggleMenu(); }} className="text-2xl transition-colors text-muted-foreground hover:text-primary">
+                                    Resume
+                                </button>
+                                <button onClick={() => { onOpenAbout?.(); toggleMenu(); }} className="text-2xl transition-colors text-muted-foreground hover:text-primary">
+                                    About me
+                                </button>
+                                <button onClick={() => { onOpenContact?.(); toggleMenu(); }} className="text-2xl text-primary font-bold hover:opacity-80 transition-opacity">
+                                    CONTACT
+                                </button>
+                            </>
+                        ) : (
+                            <>
+                                <Link href="/#projects" onClick={toggleMenu} className="text-2xl transition-colors text-muted-foreground hover:text-primary">
+                                    Projects
+                                </Link>
+                                <Link href="/#resume" onClick={toggleMenu} className="text-2xl transition-colors text-muted-foreground hover:text-primary">
+                                    Resume
+                                </Link>
+                                <Link href="/#about" onClick={toggleMenu} className="text-2xl transition-colors text-muted-foreground hover:text-primary">
+                                    About me
+                                </Link>
+                                <Link href="/#contact" onClick={toggleMenu} className="text-2xl text-primary font-bold hover:opacity-80 transition-opacity">
+                                    CONTACT
+                                </Link>
+                            </>
+                        )}
                     </div>
                 </div>
             )}

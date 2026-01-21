@@ -132,6 +132,20 @@ export default function Home() {
       .catch(err => console.error("Failed to fetch portfolio data", err))
   }, [])
 
+  // Handle Hash Navigation (for when coming from other pages like /tech-stack)
+  useEffect(() => {
+    // Small delay to ensure state and DOM are ready
+    const timer = setTimeout(() => {
+      const hash = window.location.hash;
+      if (hash === '#projects') setShowProjectsPopup(true);
+      if (hash === '#about') setShowAboutPopup(true);
+      if (hash === '#contact') setShowContactPopup(true);
+      // Resume is tricky as it's a window.open, usually blocked if not user-triggered. 
+      // We leave it for now or could show a toast. 
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
+
   // Removed unused categories array
   // const categories = ["All", "Full Stack", "Mobile", "AI"]
 
