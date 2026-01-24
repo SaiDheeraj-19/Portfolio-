@@ -36,7 +36,6 @@ export default function Home() {
   // const toggleCategory ...
 
   // Gallery State
-  const [showPhotoGallery, setShowPhotoGallery] = useState(false)
   const [showAboutPopup, setShowAboutPopup] = useState(false)
   const [showCertificatesPopup, setShowCertificatesPopup] = useState(false)
   const [showProjectsPopup, setShowProjectsPopup] = useState(false)
@@ -46,72 +45,7 @@ export default function Home() {
   const [selectedProject, setSelectedProject] = useState<any>(null)
   const [selectedPhoto, setSelectedPhoto] = useState<string | null>(null)
 
-  const galleryImages = [
-    // 1. Top Left (Behind Sticker)
-    {
-      src: "/gallery/photo1.jpg",
-      alt: "Green Field",
-      className: "top-[20%] left-[15%] md:left-[20%] w-48 h-60 md:w-60 md:h-72 rotate-[-15deg] opacity-80 hover:opacity-100",
-      initial: { opacity: 0, scale: 0.8, rotate: -25 },
-      animate: { opacity: 1, scale: 1, rotate: -15 },
-      transition: { duration: 0.6, delay: 0.1 }
-    },
-    // 2. Top Center-Right (Behind Sticker)
-    {
-      src: "/gallery/photo7.jpg",
-      alt: "Gym Mirror",
-      className: "top-[15%] right-[25%] md:right-[30%] w-44 h-56 md:w-52 md:h-64 rotate-[10deg] opacity-80 hover:opacity-100",
-      initial: { opacity: 0, scale: 0.8, rotate: 20 },
-      animate: { opacity: 1, scale: 1, rotate: 10 },
-      transition: { duration: 0.6, delay: 0.2 }
-    },
-    // 3. Middle Left (Peeking out)
-    {
-      src: "/gallery/photo5.jpg",
-      alt: "Standing Field",
-      className: "top-[40%] left-[8%] md:left-[15%] w-52 h-64 md:w-64 md:h-80 rotate-[-5deg] opacity-80 hover:opacity-100",
-      initial: { opacity: 0, x: -50, rotate: -15 },
-      animate: { opacity: 1, x: 0, rotate: -5 },
-      transition: { duration: 0.6, delay: 0.3 },
-      showInstagramLink: true
-    },
-    // 4. Middle Right (Peeking out)
-    {
-      src: "/gallery/photo2.jpg",
-      alt: "Mall Selfie",
-      className: "top-[45%] right-[10%] md:right-[15%] w-40 h-48 md:w-48 md:h-56 rotate-[8deg] opacity-80 hover:opacity-100",
-      initial: { opacity: 0, x: 50, rotate: 15 },
-      animate: { opacity: 1, x: 0, rotate: 8 },
-      transition: { duration: 0.6, delay: 0.4 }
-    },
-    // 5. Bottom Left (Under Social Tag)
-    {
-      src: "/gallery/photo6.jpg",
-      alt: "Blue Shirt College",
-      className: "bottom-[15%] left-[20%] md:left-[25%] w-48 h-40 md:w-60 md:h-48 rotate-[-10deg] opacity-80 hover:opacity-100",
-      initial: { opacity: 0, y: 50, rotate: -20 },
-      animate: { opacity: 1, y: 0, rotate: -10 },
-      transition: { duration: 0.6, delay: 0.6 }
-    },
-    // 6. Bottom Right
-    {
-      src: "/gallery/photo4.jpg",
-      alt: "Sitting Pose",
-      className: "bottom-[20%] right-[20%] md:right-[25%] w-48 h-60 md:w-56 md:h-72 rotate-[5deg] opacity-80 hover:opacity-100",
-      initial: { opacity: 0, y: 50, rotate: 15 },
-      animate: { opacity: 1, y: 0, rotate: 5 },
-      transition: { duration: 0.6, delay: 0.7 }
-    },
-    // 7. Deep Background Center
-    {
-      src: "/gallery/photo3.jpg",
-      alt: "B&W Gym",
-      className: "top-[10%] left-[45%] -translate-x-1/2 w-40 h-52 md:w-48 md:h-60 rotate-[-2deg] opacity-60 hover:opacity-100 z-0",
-      initial: { opacity: 0, scale: 0.5 },
-      animate: { opacity: 1, scale: 1 },
-      transition: { duration: 0.8, delay: 0 }
-    },
-  ]
+
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [certificationsData, setCertificationsData] = useState<any>({})
@@ -233,13 +167,9 @@ export default function Home() {
                         </span>
                       </div>
 
-                      {/* Photo - Clickable to open Gallery */}
+                      {/* Photo */}
                       <div
-                        className="absolute bottom-0 left-0 w-full h-[90%] z-10 flex items-end justify-center cursor-zoom-in hover:scale-[1.02] transition-transform duration-300"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setShowPhotoGallery(true);
-                        }}
+                        className="absolute bottom-0 left-0 w-full h-[90%] z-10 flex items-end justify-center hover:scale-[1.02] transition-transform duration-300"
                       >
                         <div className="relative w-full h-full">
                           <Image
@@ -342,9 +272,9 @@ export default function Home() {
             01
           </div>
 
-          <div className="absolute left-1/2 -translate-x-1/2 bottom-0 flex flex-col items-center gap-2 animate-bounce text-neutral-400 font-mono hidden md:flex">
-            <span className="text-[10px] tracking-[0.3em]">SCROLL</span>
-            <div className="w-[1px] h-12 bg-neutral-500/50" />
+          <div className="absolute left-1/2 -translate-x-1/2 bottom-0 flex flex-col items-center gap-2 animate-bounce text-black font-mono hidden md:flex">
+            <span className="text-[10px] tracking-[0.3em] font-bold">SCROLL</span>
+            <div className="w-[1px] h-12 bg-black" />
           </div>
 
           <div className="text-right font-mono pointer-events-auto">
@@ -458,9 +388,9 @@ export default function Home() {
 
               {/* Bio Text */}
               <div className="flex-1 max-w-2xl">
-                <div className="space-y-6 text-muted-foreground text-base md:text-lg leading-relaxed font-light">
+                <div className="space-y-6 text-neutral-800 text-base md:text-lg leading-relaxed font-normal">
                   <p>
-                    I&apos;m a <span className="text-foreground font-medium">Computer Science undergraduate</span> who is learning software development by building practical projects alongside my coursework.
+                    I&apos;m a <span className="text-black font-bold">Computer Science undergraduate</span> who is learning software development by building practical projects alongside my coursework.
                   </p>
                   <p>
                     Since 2024, I&apos;ve been focusing on understanding how software works beyond the UI—by writing code, handling data, and learning how different parts of an application fit together. I enjoy working on full-stack projects where I can practice concepts like authentication, data flow, and basic automation.
@@ -468,7 +398,7 @@ export default function Home() {
                   <p>
                     Most of my learning comes from building, breaking, and improving projects. I care about writing clear code, understanding why things work, and making applications usable beyond simple demos.
                   </p>
-                  <p className="font-medium text-foreground text-lg md:text-xl pt-6 border-t border-border mt-6">
+                  <p className="font-bold text-black text-lg md:text-xl pt-6 border-t border-neutral-300 mt-6">
                     I&apos;m currently looking for internship opportunities where I can learn from experienced developers, improve my fundamentals, and contribute to real projects while continuing to grow as a software engineer.
                   </p>
                 </div>
@@ -537,119 +467,7 @@ export default function Home() {
         </DialogContent>
       </Dialog>
 
-      {/* Photo Gallery Overlay */}
-      <Dialog open={showPhotoGallery} onOpenChange={setShowPhotoGallery}>
-        <DialogContent className="!fixed !top-0 !left-0 !translate-x-0 !translate-y-0 !w-screen !h-screen !max-w-none !m-0 !p-0 !rounded-none !border-none bg-transparent overflow-hidden flex items-center justify-center z-[100] [&>button]:hidden">
-          <DialogHeader className="sr-only">
-            <DialogTitle>Photo Gallery</DialogTitle>
-            <DialogDescription>Interactive gallery of my personal photos.</DialogDescription>
-          </DialogHeader>
 
-          {/* Custom Background Effect */}
-          <div className="absolute inset-0 z-0 bg-black" />
-
-          {/* Close Area */}
-          <div className="absolute inset-0 z-10" onClick={() => setShowPhotoGallery(false)} />
-
-          <div className="relative w-full max-w-[90vw] h-[90vh] pointer-events-none">
-
-            {/* --- Central Text Block (Sticker Style) --- */}
-            {/* --- Decorative Stickers --- */}
-            {/* 1. Dumbbells (Bottom Right - Physical) */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0, rotate: 45 }}
-              animate={{ opacity: 1, scale: 1, rotate: 15 }}
-              transition={{ duration: 0.6, delay: 0.8, type: "spring" }}
-              className="absolute bottom-[20%] right-[25%] md:right-[30%] w-24 h-24 md:w-32 md:h-32 z-40 pointer-events-none opacity-90"
-            >
-              <Image src="/gallery/sticker1.png" fill className="object-contain drop-shadow-xl" alt="Gym Sticker" />
-            </motion.div>
-
-            {/* 2. Laptop Character (Top Right - Mental/Work) */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0, rotate: -20 }}
-              animate={{ opacity: 1, scale: 1, rotate: 10 }}
-              transition={{ duration: 0.6, delay: 0.9, type: "spring" }}
-              className="absolute top-[18%] right-[20%] md:right-[25%] w-28 h-28 md:w-36 md:h-36 z-40 pointer-events-none opacity-90"
-            >
-              <Image src="/gallery/sticker2.png" fill className="object-contain drop-shadow-xl" alt="Coding Sticker" />
-            </motion.div>
-
-            {/* 3. Rabbit (Top Left - Fun) */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0, rotate: 20 }}
-              animate={{ opacity: 1, scale: 1, rotate: -10 }}
-              transition={{ duration: 0.6, delay: 1.0, type: "spring" }}
-              className="absolute top-[22%] left-[20%] md:left-[25%] w-20 h-20 md:w-28 md:h-28 z-40 pointer-events-none opacity-90"
-            >
-              <Image src="/gallery/sticker3.png" fill className="object-contain drop-shadow-xl" alt="Rabbit Sticker" />
-            </motion.div>
-
-            {/* --- Central Text Block (Organic Sticker) --- */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
-              animate={{ opacity: 1, scale: 1, rotate: -2 }}
-              transition={{ duration: 0.8, delay: 0.2, type: "spring", stiffness: 100 }}
-              className="absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 pointer-events-auto"
-            >
-              <div className="relative bg-[#0a0a0a] text-white px-8 py-6 rounded-[2rem] shadow-2xl transform rotate-[-2deg] max-w-xl text-center border border-white/10">
-                {/* White Tag attached to top-left */}
-                <span className="absolute -top-4 -left-2 bg-white text-black px-3 py-1 rounded-md text-[10px] mobile:text-xs font-bold tracking-widest shadow-md transform -rotate-3">
-                  WHEN I&apos;M NOT DEVELOPING
-                </span>
-
-                <h2 className="text-2xl md:text-3xl lg:text-4xl font-black leading-tight tracking-tight">
-                  I focus on improving myself
-                </h2>
-                <p className="text-white/60 text-lg md:text-xl font-medium mt-1">
-                  — Mentally & Physically —
-                </p>
-              </div>
-            </motion.div>
-
-            {/* --- Social Gradient Sticker (Floating) --- */}
-            <motion.div
-              initial={{ opacity: 0, y: 20, rotate: 10 }}
-              animate={{ opacity: 1, y: 0, rotate: 6 }}
-              transition={{ duration: 0.6, delay: 0.6, type: "spring" }}
-              className="absolute top-[58%] left-[60%] md:left-[55%] z-[60] pointer-events-auto"
-            >
-              <Link
-                href="https://instagram.com/your.saidheeraj"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 text-white px-6 py-2 rounded-full font-bold text-sm shadow-xl hover:scale-105 transition-transform flex items-center gap-2"
-              >
-                <Instagram className="w-4 h-4" />
-                @your.saidheeraj
-              </Link>
-            </motion.div>
-
-            {galleryImages.map((img, index) => (
-              <motion.div
-                key={index}
-                initial={img.initial}
-                animate={img.animate}
-                transition={img.transition}
-                whileHover={{ scale: 1.8, zIndex: 100, rotate: 0, filter: "grayscale(0%)" }}
-                onClick={(e) => { e.stopPropagation(); setSelectedPhoto(img.src); }}
-                style={{ filter: "grayscale(100%)" }} // Default state: Grayscale
-                className={`absolute ${img.className.replace('opacity-80', '').replace('hover:opacity-100', '')} bg-white p-2 pb-8 rounded shadow-2xl transition-all duration-300 cursor-pointer pointer-events-auto group hover:z-50`}
-              >
-                <div className="w-full h-full bg-neutral-200 overflow-hidden relative transition-all duration-300">
-                  <Image src={img.src} fill className="object-cover" alt={img.alt} />
-                </div>
-                {img.showInstagramLink && (
-                  <Link href="https://instagram.com/your.saidheeraj" target="_blank" rel="noopener noreferrer" className="absolute -bottom-6 right-0 bg-purple-600 text-white text-[10px] font-bold px-3 py-1 rounded-full rotate-[-6deg] hover:scale-110 transition-transform z-50">
-                    @your.saidheeraj
-                  </Link>
-                )}
-              </motion.div>
-            ))}
-
-          </div>
-        </DialogContent>
-      </Dialog>
 
       <Dialog open={showContactPopup} onOpenChange={setShowContactPopup}>
         <DialogContent className="max-w-3xl w-[90vw] max-h-[90vh] bg-background/95 backdrop-blur-2xl border-border text-foreground p-0 overflow-hidden rounded-[2rem] md:rounded-[2.5rem] shadow-2xl [&>button]:hidden flex flex-col">
