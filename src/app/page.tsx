@@ -1,0 +1,693 @@
+"use client"
+
+import Link from "next/link"
+import { useState, useEffect } from "react"
+import { motion } from "framer-motion"
+import {
+  ArrowRight, Github, Mail, Code, Award, Instagram,
+  ExternalLink, Phone, Layers, Folder, ArrowLeft
+} from "lucide-react"
+
+import { Button } from "@/components/ui/button"
+// Removed unused imports
+import Image from "next/image"
+import TextType from "@/components/TextType";
+
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogTitle,
+  DialogHeader,
+} from "@/components/ui/dialog"
+import ProfileCard from "@/components/react-bits/ProfileCard"
+
+
+import Navbar from "@/components/layout/navbar"
+import HomeToolsSection from "@/components/home-tools-section"
+// import ToolsSection from "@/components/tools-section" // Moved to Tech Stack page
+
+export default function Home() {
+  // --- Projects State ---
+  // Unused state commented out
+  // const [searchTerm, setSearchTerm] = useState("")
+  // const [selectedCategory, setSelectedCategory] = useState("All")
+  // const [openCategories, setOpenCategories] = useState<string[]>([])
+  // const toggleCategory ...
+
+  // Gallery State
+  const [showAboutPopup, setShowAboutPopup] = useState(false)
+  const [showCertificatesPopup, setShowCertificatesPopup] = useState(false)
+  const [showProjectsPopup, setShowProjectsPopup] = useState(false)
+  const [showContactPopup, setShowContactPopup] = useState(false)
+  const [selectedCertCategory, setSelectedCertCategory] = useState<string | null>(null)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [selectedProject, setSelectedProject] = useState<any>(null)
+  const [selectedPhoto, setSelectedPhoto] = useState<string | null>(null)
+
+
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [certificationsData, setCertificationsData] = useState<any>({})
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [projects, setProjects] = useState<any[]>([])
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [profile, setProfile] = useState<any>(null)
+
+  // Removed unused useEffect dependency array issues if any, keeping bare minimum
+  useEffect(() => {
+    fetch('/api/portfolio')
+      .then(res => res.json())
+      .then(data => {
+        if (data.certificationsData) setCertificationsData(data.certificationsData)
+        if (data.projects) setProjects(data.projects)
+        if (data.profile) setProfile(data.profile)
+      })
+      .catch(err => console.error("Failed to fetch portfolio data", err))
+  }, [])
+
+  // Handle Hash Navigation (for when coming from other pages like /tech-stack)
+  useEffect(() => {
+    // Small delay to ensure state and DOM are ready
+    const timer = setTimeout(() => {
+      const hash = window.location.hash;
+      if (hash === '#projects') setShowProjectsPopup(true);
+      if (hash === '#about') setShowAboutPopup(true);
+      if (hash === '#contact') setShowContactPopup(true);
+      // Resume is tricky as it's a window.open, usually blocked if not user-triggered. 
+      // We leave it for now or could show a toast. 
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Removed unused categories array
+  // const categories = ["All", "Full Stack", "Mobile", "AI"]
+
+  // Removed unused getCategoryIcon function
+
+  // ... (rest of file)
+
+  // Later down in JSX... I will target the Image component separately in next chunk?
+  // No, I can't do multiple discontinuous chunks if I replace this block.
+  // Wait, I am replacing lines 127-149 roughly?
+  // Let's do state/effect update first.
+
+  // Actually, I'll split this into 2 chunks in one call.
+
+
+  // Removed unused filteredProjects
+  // const filteredProjects = ...
+
+  // --- About Data ---
+  // Removed unused skills object
+
+  // Removed unused certifications object (using fetched data instead)
+
+  // --- Contact Form State ---
+  // Removed unused form data and handlers
+  // const [formData, setFormData] = useState(...)
+
+  // Removed unused socialLinks and contactInfo arrays
+  // const socialLinks = ...
+  // const contactInfo = ...
+
+  return (
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+      <Navbar
+        onOpenProjects={() => setShowProjectsPopup(true)}
+        onOpenResume={() => window.open(profile?.resumeUrl || '/resume.pdf', '_blank')}
+        onOpenAbout={() => setShowAboutPopup(true)}
+        onOpenContact={() => setShowContactPopup(true)}
+      />
+      {/* Hero Section */}
+      <section id="home" className="relative h-dvh min-h-screen flex flex-col items-center justify-center overflow-hidden">
+
+
+
+        {/* Background Large Text - Responsive sizing */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none select-none overflow-hidden z-0 py-24 md:py-0">
+          <span className="text-[18vw] md:text-[15vw] font-black text-foreground/60 whitespace-nowrap tracking-tighter leading-[0.8] select-none animate-[pulse_3s_ease-in-out_infinite]">
+            SAI DHEERAJ
+          </span>
+        </div>
+
+        {/* Hanging ID Card Wrapper */}
+        <div className="relative z-10 flex flex-col items-center -mt-12 animate-in fade-in duration-1000">
+          {/* Lanyard Strap Removed */}
+
+          {/* The Swing Animation Container */}
+          <div className="origin-top animate-swing hover:animate-none transition-all duration-500 ease-out">
+            <div className="w-[85vw] max-w-[320px] aspect-[2/3] md:w-[380px] md:h-[550px]">
+              <ProfileCard
+                name="Sai Dheeraj"
+                title="Full Stack Developer"
+                handle="Building Scalable Systems"
+                avatarUrl="/sai_profile_bw.png"
+                contactText="CONTACT ME"
+                status="OPEN TO WORK"
+                enableTilt={true}
+                enableMobileTilt={true} // Allow tilt on mobile
+                enableDrag={true}
+                className="bg-neutral-900 border-neutral-800 dark:bg-neutral-100 dark:border-neutral-200 p-1.5 shadow-2xl"
+              >
+                {/* Canvas/Container for 3D Faces */}
+                <div className="relative w-full h-full" style={{ transformStyle: "preserve-3d" }}>
+
+                  {/* --- FRONT FACE --- */}
+                  <div className="absolute inset-0 w-full h-full" style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden", zIndex: 20 }}>
+                    {/* Dark Card Body (Light Mode) / Light Card Body (Dark Mode) */}
+                    <div className="relative w-full h-full rounded-[20px] overflow-hidden bg-[radial-gradient(circle_at_top,#1B1E23_0%,#0E1116_40%,#050608_100%)] dark:bg-white dark:bg-none">
+
+
+
+                      {/* Left Side Greeting */}
+                      <div className="absolute top-6 left-4 z-20 -rotate-6 opacity-70">
+                        <span className="text-[10px] font-black tracking-[0.2em] text-white/50 dark:text-black/50">
+                          HOLA AMIGOES
+                        </span>
+                      </div>
+
+                      {/* Photo */}
+                      <div
+                        className="absolute bottom-0 left-0 w-full h-[90%] z-10 flex items-end justify-center hover:scale-[1.02] transition-transform duration-300"
+                      >
+                        <div className="relative w-full h-full">
+                          <Image
+                            src={profile?.idCardPhoto || "/sai_profile_bw.png"}
+                            fill
+                            priority
+                            className="object-cover object-center"
+                            style={{
+                              transform: profile?.idCardConfig
+                                ? `scale(${profile.idCardConfig.scale}) translate(${profile.idCardConfig.x}px, ${profile.idCardConfig.y}px)`
+                                : "scale(1.1) translateY(8px)" // Default fallback matching previous look
+                            }}
+                            alt="Sai Dheeraj"
+                          />
+
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60 dark:opacity-30" />
+                        </div>
+                      </div>
+
+                      {/* Text Overlay */}
+                      <div className="relative z-40 p-6 text-white dark:text-black mt-auto h-full flex flex-col justify-end pb-12 pointer-events-none">
+                        <p className="text-sm font-black tracking-[0.25em] mb-2 text-white dark:text-black drop-shadow-sm border-black">FULL STACK</p>
+                        <h2 className="text-4xl md:text-5xl font-black tracking-tighter leading-[0.85] mb-2 drop-shadow-lg text-white dark:text-black">
+                          DEVELOPER
+                        </h2>
+                      </div>
+
+                      {/* Bottom Notch */}
+                      <div className="absolute bottom-0 inset-x-0 h-10 z-30 flex items-center justify-center">
+                        <div className="bg-black/20 dark:bg-black/5 backdrop-blur-sm px-4 py-1 rounded-t-xl border-t border-white/5 dark:border-black/5">
+                          <p className="text-[8px] uppercase tracking-widest opacity-70 font-mono text-white dark:text-black">
+                            ©2026, SKILLS NOT REPLACED BY AI (YET)
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Front Tag (Outside overflow-hidden but inside Front Face) */}
+                    <div className="absolute -top-1 -right-1 w-[42%] h-16 bg-neutral-900 dark:bg-neutral-200 rounded-bl-[2.5rem] z-20 flex items-center justify-center pt-2 pl-4">
+                      <span className="text-white/80 dark:text-black/80 text-[10px] font-bold tracking-widest">
+                        (PORTFOLIO)
+                      </span>
+                    </div>
+
+
+                  </div>
+
+                  {/* --- BACK FACE --- */}
+                  <div className="absolute inset-0 w-full h-full" style={{ transform: "rotateY(180deg)", backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden", zIndex: 10 }}>
+                    <div className="relative w-full h-full bg-black dark:bg-white rounded-[20px] overflow-hidden flex items-center justify-center border border-white/10 dark:border-black/10">
+
+
+
+                      {/* Watermark Text */}
+                      <span className="text-[8rem] font-black text-white/5 dark:text-black/5 select-none absolute z-0 scale-x-[-1]">
+                        SAI
+                      </span>
+
+                      {/* Stamp Image */}
+                      <div className="relative w-64 h-64 -rotate-12 z-10 flex items-center justify-center opacity-90">
+                        <div
+                          className="w-full h-full bg-gradient-to-br from-[#ff4d29] to-yellow-400 opacity-90"
+                          style={{
+                            maskImage: "url(/stamp.png)",
+                            WebkitMaskImage: "url(/stamp.png)",
+                            maskSize: "contain",
+                            WebkitMaskSize: "contain",
+                            maskRepeat: "no-repeat",
+                            WebkitMaskRepeat: "no-repeat",
+                            maskPosition: "center",
+                            WebkitMaskPosition: "center"
+                          }}
+                        />
+                        <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white/90 dark:text-black/90 text-[10px] font-bold tracking-[0.15em] font-mono -rotate-6 whitespace-nowrap">
+                          R SAI DHEERAJ
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Back Tag (Mirrored to Left) */}
+                    <div className="absolute -top-1 -left-1 w-[42%] h-16 bg-neutral-900 dark:bg-neutral-200 rounded-br-[2.5rem] z-20" />
+
+
+                  </div>
+
+                </div>
+              </ProfileCard>
+            </div>
+          </div>
+
+          {/* Foreground Floating Elements */}
+
+
+
+        </div>
+
+        {/* Bottom Elements - Optimized for Mobile */}
+        <div className="absolute bottom-6 md:bottom-10 w-full z-20 pointer-events-none px-6 md:px-12 flex items-end justify-between">
+          <div className="border border-neutral-500/50 backdrop-blur-sm rounded-full w-10 h-10 md:w-12 md:h-12 flex items-center justify-center text-neutral-300 font-mono text-xs md:text-sm pointer-events-auto">
+            01
+          </div>
+
+          <div className="absolute left-1/2 -translate-x-1/2 bottom-0 flex flex-col items-center gap-2 animate-bounce text-black font-mono hidden md:flex">
+            <span className="text-[10px] tracking-[0.3em] font-bold">SCROLL</span>
+            <div className="w-[1px] h-12 bg-black" />
+          </div>
+
+          <div className="text-right font-mono pointer-events-auto">
+            <span className="block text-[10px] uppercase tracking-wider mb-0.5 text-muted-foreground opacity-80">Leveled up by:</span>
+            <span className="font-bold text-foreground text-xs md:text-sm uppercase tracking-widest">HARDWORK</span>
+          </div>
+        </div>
+      </section>
+
+      <section className="relative pt-16 pb-32 md:py-32 px-4 md:px-6 overflow-hidden bg-background">
+        {/* Animated Background Removed */}
+        <div className="absolute inset-0 z-0 pointer-events-none opacity-0"></div>
+
+        <div className="max-w-6xl mx-auto relative z-10 text-center">
+          <TextType
+            text={["I’ve been learning how software actually works beyond the UI by building projects, writing code, and understanding the logic behind it."]}
+            typingSpeed={75}
+            pauseDuration={1500}
+            showCursor={true}
+            cursorCharacter="|"
+            loop={false}
+            as="h2"
+            className="text-3xl md:text-5xl lg:text-7xl font-black text-primary tracking-tight leading-[1.05] mb-10 inline-block min-h-[120px]"
+          />
+
+          <motion.p
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{
+              type: "spring",
+              bounce: 0.4,
+              duration: 1.5,
+              delay: 0.5
+            }}
+            className="text-lg md:text-2xl lg:text-3xl font-medium text-foreground/90 leading-relaxed max-w-4xl mx-auto mb-12 md:mb-0"
+          >
+            I work on full-stack projects involving features like authentication, data handling, and basic automation, with a focus on building things that work reliably beyond simple demos.
+          </motion.p>
+        </div>
+        <div className="absolute left-6 md:left-12 bottom-10 border border-neutral-700/50 rounded-full w-10 h-10 md:w-12 md:h-12 flex items-center justify-center text-neutral-500 font-mono text-xs md:text-sm pointer-events-auto z-20 backdrop-blur-sm hidden sm:flex">
+          02
+        </div>
+
+        <div className="absolute left-0 w-full md:w-auto md:left-auto md:right-12 bottom-8 md:bottom-10 z-20 pointer-events-auto flex justify-center md:block px-6 md:px-0">
+          <Button
+            className="w-full md:w-auto rounded-full bg-primary text-primary-foreground shadow-lg border border-transparent hover:bg-primary/90 hover:scale-105 transition-all duration-300 px-8 py-6 font-bold font-mono text-xs tracking-widest uppercase"
+            onClick={() => setShowAboutPopup(true)}
+          >
+            EXPLORE SAI DHEERAJ <ArrowRight className="ml-2 w-4 h-4" />
+          </Button>
+        </div>
+      </section>
+
+      {/* Tools Grid Section */}
+      <HomeToolsSection />
+
+      {/* About Me Popup */}
+      <Dialog open={showAboutPopup} onOpenChange={setShowAboutPopup}>
+        <DialogContent className="max-w-[95vw] bg-background border-border text-foreground p-0 overflow-hidden !rounded-[2rem] w-[95vw] h-[90vh] [&>button]:hidden">
+          <div className="absolute inset-0 z-0 bg-background" />
+          <DialogTitle className="sr-only">Explore Sai Dheeraj</DialogTitle>
+          <div className="relative z-10 w-full h-full flex flex-col items-start p-5 md:p-12 overflow-y-auto">
+            {/* Close Button */}
+            <button
+              onClick={() => setShowAboutPopup(false)}
+              className="absolute top-4 right-4 md:top-6 md:right-6 p-2 rounded-full bg-black/50 hover:bg-black/80 backdrop-blur-md transition-colors z-50 text-white border border-white/10"
+            >
+              <span className="sr-only">Close</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
+            </button>
+
+            {/* Heading */}
+            {/* Heading */}
+            <h2 className="text-5xl md:text-7xl font-black mb-12 text-primary tracking-tighter leading-none">ABOUT ME</h2>
+
+            {/* Content Container: Photo + Text Side-by-Side */}
+            <div className="w-full flex flex-col md:flex-row gap-8 md:gap-16 items-start">
+
+              {/* Left Column: Photo + Button */}
+              <div className="flex flex-col gap-6 shrink-0">
+                {/* Profile Pic */}
+                <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-3xl overflow-hidden border-4 border-neutral-800 shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-300">
+                  <Image
+                    src="/about_me_photo_2.jpg"
+                    fill
+                    className="object-cover object-top"
+                    alt="Sai Dheeraj"
+                    priority
+                  />
+                </div>
+
+                {/* Certificates Button */}
+                {/* Certificates Button */}
+                <Button
+                  className="w-full bg-white hover:bg-neutral-200 text-black font-bold tracking-wider py-6 text-lg shadow-lg hover:shadow-white/20 transition-all"
+                  onClick={() => setShowCertificatesPopup(true)}
+                >
+                  <Award className="mr-2 w-5 h-5" />
+                  VIEW CERTIFICATES
+                </Button>
+
+                <Button
+                  className="w-full bg-white hover:bg-neutral-200 text-black font-bold tracking-wider py-6 text-lg shadow-lg hover:shadow-white/20 transition-all border-t border-neutral-300"
+                  onClick={() => setShowProjectsPopup(true)}
+                >
+                  <Layers className="mr-2 w-5 h-5" />
+                  VIEW PROJECTS
+                </Button>
+              </div>
+
+              {/* Bio Text */}
+              <div className="flex-1 max-w-2xl">
+                <div className="space-y-6 text-neutral-800 text-base md:text-lg leading-relaxed font-normal">
+                  <p>
+                    I&apos;m a <span className="text-black font-bold">Computer Science undergraduate</span> who is learning software development by building practical projects alongside my coursework.
+                  </p>
+                  <p>
+                    Since 2024, I&apos;ve been focusing on understanding how software works beyond the UI—by writing code, handling data, and learning how different parts of an application fit together. I enjoy working on full-stack projects where I can practice concepts like authentication, data flow, and basic automation.
+                  </p>
+                  <p>
+                    Most of my learning comes from building, breaking, and improving projects. I care about writing clear code, understanding why things work, and making applications usable beyond simple demos.
+                  </p>
+                  <p className="font-bold text-black text-lg md:text-xl pt-6 border-t border-neutral-300 mt-6">
+                    I&apos;m currently looking for internship opportunities where I can learn from experienced developers, improve my fundamentals, and contribute to real projects while continuing to grow as a software engineer.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* Certificates Popup */}
+      <Dialog open={showCertificatesPopup} onOpenChange={(open) => { setShowCertificatesPopup(open); if (!open) setSelectedCertCategory(null); }}>
+        <DialogContent className="max-w-4xl bg-neutral-900 border-neutral-800 text-white p-8 md:p-12 !rounded-[2rem] w-full h-auto max-h-[85vh] overflow-y-auto">
+          <DialogTitle className="sr-only">Certifications</DialogTitle>
+          <div className="flex flex-col items-center">
+            <h2 className="text-3xl md:text-5xl font-black mb-8 text-white tracking-tighter uppercase">
+              {selectedCertCategory || "Certifications"}
+            </h2>
+
+            {!selectedCertCategory ? (
+              /* Folder View */
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
+                {Object.keys(certificationsData).map((category) => (
+                  <button
+                    type="button"
+                    key={category}
+                    onClick={() => setSelectedCertCategory(category)}
+                    className="bg-neutral-800/50 p-8 rounded-2xl flex flex-col items-center justify-center border border-neutral-700/50 hover:border-white/50 hover:bg-neutral-800 transition-all cursor-pointer group gap-4 aspect-square w-full"
+                  >
+                    <Folder className="w-24 h-24 text-white group-hover:scale-110 transition-transform" />
+                    <h3 className="text-xl font-bold text-center">{category}</h3>
+                    <p className="text-neutral-500 text-sm">{certificationsData[category as keyof typeof certificationsData].length} Certificates</p>
+                  </button>
+                ))}
+              </div>
+            ) : (
+              /* Certificates Grid View */
+              <div className="w-full">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 w-full animate-in fade-in zoom-in-95 duration-300">
+                  {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+                  {(selectedCertCategory ? certificationsData[selectedCertCategory as keyof typeof certificationsData] : []).map((cert: any, idx: number) => (
+                    <button
+                      key={idx}
+                      type="button"
+                      onClick={(e) => { e.stopPropagation(); setSelectedPhoto(cert.img); }}
+                      className="bg-card p-6 rounded-2xl flex flex-col items-center border border-border hover:border-primary/50 transition-colors group cursor-pointer w-full text-left shadow-sm hover:shadow-md"
+                    >
+                      <div className="w-full aspect-[4/3] relative mb-4 overflow-hidden rounded-lg pointer-events-none bg-muted/20">
+                        <Image src={cert.img} fill className="object-contain group-hover:scale-105 transition-transform duration-500" alt={cert.title} />
+                      </div>
+                      <h3 className="font-bold text-center text-lg leading-tight mb-2 pointer-events-none text-foreground">{cert.title}</h3>
+                      <p className="text-muted-foreground text-sm font-mono text-center pointer-events-none">{cert.issuer}</p>
+                    </button>
+                  ))}
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => setSelectedCertCategory(null)}
+                  className="mt-8 flex items-center gap-2 text-neutral-400 hover:text-white transition-colors mx-auto"
+                >
+                  <ArrowLeft className="w-4 h-4" /> Back to Folders
+                </button>
+              </div>
+            )}
+          </div>
+        </DialogContent>
+      </Dialog>
+
+
+
+      <Dialog open={showContactPopup} onOpenChange={setShowContactPopup}>
+        <DialogContent className="max-w-3xl w-[90vw] max-h-[90vh] bg-background/95 backdrop-blur-2xl border-border text-foreground p-0 overflow-hidden rounded-[2rem] md:rounded-[2.5rem] shadow-2xl [&>button]:hidden flex flex-col">
+          <div className="absolute top-4 right-4 md:top-6 md:right-6 z-50">
+            <button
+              onClick={() => setShowContactPopup(false)}
+              className="p-2 rounded-full bg-black/50 hover:bg-black/80 backdrop-blur-md transition-colors text-white/70 hover:text-white border border-white/10"
+            >
+              <span className="sr-only">Close</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
+            </button>
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent pointer-events-none" />
+
+          <div className="p-6 md:p-14 relative z-10 flex flex-col items-center overflow-y-auto custom-scrollbar">
+            <DialogTitle className="text-3xl md:text-5xl font-black mb-4 text-center tracking-tighter uppercase text-white drop-shadow-lg">Let&apos;s Talk</DialogTitle>
+            <p className="text-neutral-400 mb-8 md:mb-12 text-center text-sm md:text-lg max-w-lg leading-relaxed">Choose your preferred way to connect. I&apos;m always open to discussing new projects and ideas.</p>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 w-full">
+              {/* WhatsApp */}
+              <a href="https://wa.me/919493552753" target="_blank" rel="noopener noreferrer"
+                className="group relative flex flex-col items-center justify-center p-6 md:p-8 rounded-3xl bg-neutral-900/60 border border-white/5 hover:bg-[#25D366]/10 hover:border-[#25D366]/50 transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(37,211,102,0.2)]">
+                <div className="w-16 h-16 md:w-20 md:h-20 mb-4 md:mb-6 rounded-full bg-[#25D366]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-inner">
+                  <svg viewBox="0 0 24 24" className="w-8 h-8 md:w-10 md:h-10 fill-[#25D366]" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" /></svg>
+                </div>
+                <span className="font-bold text-lg md:text-xl text-white group-hover:text-[#25D366] transition-colors">WhatsApp</span>
+                <span className="text-xs md:text-sm text-neutral-500 mt-2 font-mono tracking-wider opacity-60 group-hover:opacity-100 transition-opacity">Chat Now</span>
+              </a>
+
+              {/* Phone */}
+              <a href="tel:+919908918853"
+                className="group relative flex flex-col items-center justify-center p-6 md:p-8 rounded-3xl bg-neutral-900/60 border border-white/5 hover:bg-blue-500/10 hover:border-blue-500/50 transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(59,130,246,0.2)]">
+                <div className="w-16 h-16 md:w-20 md:h-20 mb-4 md:mb-6 rounded-full bg-blue-500/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-inner">
+                  <Phone className="w-8 h-8 md:w-10 md:h-10 text-blue-500 fill-current" />
+                </div>
+                <span className="font-bold text-lg md:text-xl text-white group-hover:text-blue-500 transition-colors">Call Me</span>
+                <span className="text-xs md:text-sm text-neutral-500 mt-2 font-mono tracking-wider opacity-60 group-hover:opacity-100 transition-opacity">Personal Line</span>
+              </a>
+
+              {/* Email */}
+              <a href="mailto:16saidheeraj@gmail.com"
+                className="group relative flex flex-col items-center justify-center p-6 md:p-8 rounded-3xl bg-neutral-900/60 border border-white/5 hover:bg-white/10 hover:border-white/50 transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]">
+                <div className="w-16 h-16 md:w-20 md:h-20 mb-4 md:mb-6 rounded-full bg-white/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-inner">
+                  <Mail className="w-8 h-8 md:w-10 md:h-10 text-white fill-current" />
+                </div>
+                <span className="font-bold text-lg md:text-xl text-white group-hover:text-white transition-colors">Email</span>
+                <span className="text-xs md:text-sm text-neutral-500 mt-2 font-mono tracking-wider opacity-60 group-hover:opacity-100 transition-opacity">Send Message</span>
+              </a>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={showProjectsPopup} onOpenChange={setShowProjectsPopup}>
+        <DialogContent className="max-w-5xl bg-background border-border text-foreground p-0 overflow-hidden !rounded-[2rem] w-full h-[85vh]">
+
+          <button
+            onClick={() => setShowProjectsPopup(false)}
+            className="absolute top-4 right-4 p-2 rounded-full bg-black/50 hover:bg-black/80 backdrop-blur-md transition-colors z-50 text-white border border-white/10"
+          >
+            <span className="sr-only">Close</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
+          </button>
+          <DialogTitle className="sr-only">Projects</DialogTitle>
+          <div className="relative z-10 flex flex-col items-center w-full h-full overflow-y-auto p-8 md:p-12">
+
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
+              {projects.map((project, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setSelectedProject(project)}
+                  className="text-left bg-card rounded-2xl overflow-hidden border border-border hover:border-primary/50 transition-all flex flex-col h-full group w-full shadow-lg hover:shadow-xl"
+                >
+                  <div className="h-48 bg-muted w-full relative">
+                    {project.image && !project.image.includes('placeholder') ? (
+                      <Image src={project.image} fill className="object-cover group-hover:scale-105 transition-transform duration-500" alt={project.title} />
+                    ) : (
+                      <div className="absolute inset-0 flex items-center justify-center text-muted-foreground/50">
+                        <Code className="w-12 h-12 group-hover:text-primary transition-colors" />
+                      </div>
+                    )}
+                  </div>
+                  <div className="p-6 flex flex-col grow">
+                    <div className="flex justify-between items-start mb-4">
+                      <div>
+                        <span className="text-primary text-xs font-bold tracking-wider uppercase mb-1 block">{project.category}</span>
+                        <h3 className="text-xl font-bold text-foreground">{project.title}</h3>
+                      </div>
+                    </div>
+                    <p className="text-muted-foreground text-sm mb-6 grow">{project.description}</p>
+                    <div className="flex flex-wrap gap-2 mt-auto">
+                      {project.tags.map((tag: string) => (
+                        <span key={tag} className="px-3 py-1 bg-secondary rounded-full text-xs text-secondary-foreground font-mono border border-border">{tag}</span>
+                      ))}
+                    </div>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* Project Details Modal */}
+      <Dialog open={selectedProject !== null} onOpenChange={(open) => !open && setSelectedProject(null)}>
+        <DialogContent className="max-w-5xl bg-background border-border text-foreground p-0 !rounded-[2rem] w-full h-[85vh] overflow-y-auto flex flex-col md:flex-row overflow-hidden">
+          <DialogTitle className="sr-only">Project Details</DialogTitle>
+
+          {selectedProject && (
+            <>
+              {/* Left/Top: Image Gallery (Simplified to Main Image for now) */}
+              <div className="w-full md:w-1/2 bg-secondary/30 p-8 flex flex-col items-center gap-6 relative min-h-[300px] border-b md:border-b-0 md:border-r border-border overflow-y-auto custom-scrollbar">
+                <div className="absolute top-4 left-4 z-10">
+                  <span className="px-3 py-1 bg-background text-foreground text-xs font-bold rounded-full uppercase tracking-wider shadow-lg border border-border">{selectedProject.category}</span>
+                </div>
+
+                {selectedProject.gallery && selectedProject.gallery.length > 0 ? (
+                  selectedProject.gallery.map((img: string, i: number) => (
+                    <div key={i} className="relative w-full aspect-video rounded-xl overflow-hidden border border-border shadow-xl shrink-0">
+                      <Image src={img} fill className="object-cover" alt={`${selectedProject.title} screenshot ${i + 1}`} />
+                    </div>
+                  ))
+                ) : (
+                  <div className="relative w-full aspect-video border-2 border-dashed border-border rounded-xl bg-card text-muted-foreground flex flex-col items-center justify-center">
+                    <Code className="w-16 h-16 mb-4 text-foreground/40" />
+                    <span className="text-sm font-mono text-muted-foreground">NO PREVIEWS</span>
+                  </div>
+                )}
+              </div>
+
+              {/* Right/Bottom: Content */}
+              <div className="w-full md:w-1/2 p-8 md:p-12 flex flex-col overflow-y-auto bg-background relative">
+                <button
+                  onClick={() => setSelectedProject(null)}
+                  className="absolute top-6 right-6 p-2 text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  <span className="sr-only">Close</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
+                </button>
+
+                <h2 className="text-3xl md:text-4xl font-black mb-6 text-foreground leading-tight tracking-tight mt-4">{selectedProject.title}</h2>
+
+                <div className="flex flex-wrap gap-2 mb-8">
+                  {selectedProject.tags.map((tag: string) => (
+                    <span key={tag} className="px-3 py-1 bg-primary/10 text-primary text-xs font-bold font-mono rounded-md border border-primary/20">{tag}</span>
+                  ))}
+                </div>
+
+                <div className="prose prose-sm mb-10 text-muted-foreground">
+                  <p className="whitespace-pre-line leading-relaxed text-base">{selectedProject.details || selectedProject.description}</p>
+                </div>
+
+                <div className="mt-auto flex flex-col md:flex-row gap-4">
+                  <Button className="flex-1 border-border hover:bg-secondary text-foreground font-bold h-12" variant="outline" asChild>
+                    <a href={selectedProject.links.github} target="_blank" rel="noreferrer">Codebase <Github className="ml-2 w-4 h-4" /></a>
+                  </Button>
+
+                </div>
+              </div>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={selectedPhoto !== null} onOpenChange={(open) => !open && setSelectedPhoto(null)}>
+        <DialogContent className="!fixed !top-0 !left-0 !translate-x-0 !translate-y-0 !w-screen !h-screen !max-w-none !m-0 !p-0 border-none bg-black/95 z-[9999] [&>button]:hidden flex items-center justify-center overflow-hidden">
+          <DialogTitle className="sr-only">Selected Certificate</DialogTitle>
+
+          {/* Custom Close Button */}
+          <button
+            onClick={() => setSelectedPhoto(null)}
+            className="absolute top-6 right-6 z-[10000] p-3 rounded-full bg-neutral-800 text-white hover:bg-[#ff4d29] transition-colors"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
+          </button>
+
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.9, opacity: 0 }}
+            className="relative w-full h-full p-4 md:p-10 flex items-center justify-center"
+            onClick={() => setSelectedPhoto(null)} // Click outside image to close
+          >
+            {selectedPhoto && (
+              <div className="relative w-full h-full max-w-7xl max-h-[90vh]">
+                <Image
+                  src={selectedPhoto}
+                  fill
+                  className="object-contain"
+                  alt="Certificate View"
+                  priority
+                />
+              </div>
+            )}
+          </motion.div>
+        </DialogContent>
+      </Dialog>
+
+
+      {/* Sections Removed as per user request (About, Skills, Projects) moved to Popups */}
+
+      {/* Contact Section */}
+      <section id="contact" className="relative py-32 bg-background overflow-hidden flex flex-col items-center justify-center min-h-[60vh]">
+        <div className="absolute inset-0 z-0 bg-background" />
+        <div className="relative z-10 flex flex-col items-center justify-center space-y-12 text-center px-4">
+          <h2 className="text-4xl md:text-6xl font-bold text-foreground tracking-tight">Let&apos;s turn ideas into real-world software</h2>
+
+          <Button onClick={() => setShowContactPopup(true)} className="rounded-full px-12 py-10 text-xl md:text-3xl bg-transparent border-2 border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300">
+            <span className="flex items-center gap-4">
+              Let&apos;s Connect <ArrowRight className="w-6 h-6 md:w-8 md:h-8" />
+            </span>
+          </Button>
+
+
+          <p className="max-w-xl text-muted-foreground text-sm md:text-base leading-relaxed mt-12">
+            Warning: Exploring my work may result in better ideas and higher standards.
+          </p>
+        </div>
+      </section>
+    </div >
+  )
+}
