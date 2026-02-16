@@ -39,6 +39,11 @@
         "title": "Fundamentals of Deep Learning",
         "img": "/certifications/nvidia_deep_learning.png",
         "issuer": "NVIDIA DLI"
+      },
+      {
+        "title": "Facial Expression Recognition with PyTorch",
+        "img": "/certifications/facial_expression_pytorch.png",
+        "issuer": "Coursera Project Network"
       }
     ],
     "Professional": [
