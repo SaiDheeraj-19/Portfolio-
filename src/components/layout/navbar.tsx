@@ -3,24 +3,21 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useState, useEffect } from "react"
-import { Menu, X, ArrowLeft, Sun, Moon } from "lucide-react"
+import { Menu, X, Sun, Moon } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import MusicToggle from "@/components/music-toggle"
-import { useScrollDirection } from "@/hooks/use-scroll-direction"
 import { useTheme } from "next-themes"
 
 interface NavbarProps {
     onOpenProjects?: () => void;
-    onOpenResume?: () => void;
     onOpenAbout?: () => void;
     onOpenContact?: () => void;
 }
 
-export default function Navbar({ onOpenProjects, onOpenResume, onOpenAbout, onOpenContact }: NavbarProps) {
+export default function Navbar({ onOpenProjects, onOpenAbout, onOpenContact }: NavbarProps) {
     const pathname = usePathname()
     const [isMenuOpen, setIsMenuOpen] = useState(false)
-    const scrollDirection = useScrollDirection()
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
     const { theme, setTheme } = useTheme()
     const [mounted, setMounted] = useState(false)
@@ -65,9 +62,6 @@ export default function Navbar({ onOpenProjects, onOpenResume, onOpenAbout, onOp
                             <button onClick={onOpenProjects} className="transition-colors text-sm font-medium tracking-wide text-muted-foreground hover:text-primary mr-4">
                                 Projects
                             </button>
-                            <button onClick={onOpenResume} className="transition-colors text-sm font-medium tracking-wide text-muted-foreground hover:text-primary mr-4">
-                                Resume
-                            </button>
                             <button onClick={onOpenAbout} className="transition-colors text-sm font-medium tracking-wide text-muted-foreground hover:text-primary mr-4">
                                 About me
                             </button>
@@ -76,9 +70,6 @@ export default function Navbar({ onOpenProjects, onOpenResume, onOpenAbout, onOp
                         <>
                             <Link href="/#projects" className="transition-colors text-sm font-medium tracking-wide text-muted-foreground hover:text-primary mr-4">
                                 Projects
-                            </Link>
-                            <Link href="/#resume" className="transition-colors text-sm font-medium tracking-wide text-muted-foreground hover:text-primary mr-4">
-                                Resume
                             </Link>
                             <Link href="/#about" className="transition-colors text-sm font-medium tracking-wide text-muted-foreground hover:text-primary mr-4">
                                 About me
@@ -143,9 +134,6 @@ export default function Navbar({ onOpenProjects, onOpenResume, onOpenAbout, onOp
                                 <button onClick={() => { onOpenProjects?.(); toggleMenu(); }} className="text-2xl transition-colors text-muted-foreground hover:text-primary">
                                     Projects
                                 </button>
-                                <button onClick={() => { onOpenResume?.(); toggleMenu(); }} className="text-2xl transition-colors text-muted-foreground hover:text-primary">
-                                    Resume
-                                </button>
                                 <button onClick={() => { onOpenAbout?.(); toggleMenu(); }} className="text-2xl transition-colors text-muted-foreground hover:text-primary">
                                     About me
                                 </button>
@@ -157,9 +145,6 @@ export default function Navbar({ onOpenProjects, onOpenResume, onOpenAbout, onOp
                             <>
                                 <Link href="/#projects" onClick={toggleMenu} className="text-2xl transition-colors text-muted-foreground hover:text-primary">
                                     Projects
-                                </Link>
-                                <Link href="/#resume" onClick={toggleMenu} className="text-2xl transition-colors text-muted-foreground hover:text-primary">
-                                    Resume
                                 </Link>
                                 <Link href="/#about" onClick={toggleMenu} className="text-2xl transition-colors text-muted-foreground hover:text-primary">
                                     About me

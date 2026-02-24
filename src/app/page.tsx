@@ -74,8 +74,6 @@ export default function Home() {
       if (hash === '#projects') setShowProjectsPopup(true);
       if (hash === '#about') setShowAboutPopup(true);
       if (hash === '#contact') setShowContactPopup(true);
-      // Resume is tricky as it's a window.open, usually blocked if not user-triggered. 
-      // We leave it for now or could show a toast. 
     }, 100);
     return () => clearTimeout(timer);
   }, []);
@@ -115,7 +113,6 @@ export default function Home() {
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <Navbar
         onOpenProjects={() => setShowProjectsPopup(true)}
-        onOpenResume={() => window.open(profile?.resumeUrl || '/resume.pdf', '_blank')}
         onOpenAbout={() => setShowAboutPopup(true)}
         onOpenContact={() => setShowContactPopup(true)}
       />
