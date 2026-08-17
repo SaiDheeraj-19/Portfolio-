@@ -1,84 +1,49 @@
-# Sai Dheeraj Portfolio
+<div align="center">
+  <h1 align="center">Sai Dheeraj | Portfolio</h1>
+  <p align="center">
+    A premium, high-performance developer portfolio engineered with Next.js 14, TypeScript, and Tailwind CSS.
+    <br />
+    <a href="https://portfolio-saidheeraj.vercel.app/"><strong>View Live Site »</strong></a>
+  </p>
+</div>
 
-A beautiful, modern portfolio website showcasing projects and professional work. Built with Next.js, TypeScript, and Tailwind CSS.
+---
 
-## 🚀 Features
+## ✦ Overview
 
-- **Modern Design**: Clean, responsive layout with pastel color scheme
-- **Dark/Light Mode**: Seamless theme switching with system preference detection
-- **Smooth Animations**: Subtle transitions and micro-interactions
-- **Fully Responsive**: Optimized for all device sizes
-- **Accessible**: WCAG 2.2 AA compliant with semantic HTML
-- **Performance Optimized**: Fast loading with optimized assets
+An executive-level digital portfolio designed to showcase production-grade web applications, backend infrastructure, and scalable mobile solutions. The architecture emphasizes a minimalist, Awwwards-winning aesthetic combined with uncompromising performance and modern web standards.
 
-## 📁 Project Structure
+## ✦ Architecture & Tech Stack
 
-```
-src/
-├── app/                    # Next.js app router pages
-│   ├── page.tsx           # Landing page
-│   ├── projects/          # Projects showcase
-│   ├── about/             # About me page
-│   ├── contact/           # Contact form
-│   └── layout.tsx         # Root layout
-├── components/
-│   ├── ui/                # Reusable UI components
-│   └── layout/            # Layout components
-├── lib/                   # Utility functions
-└── styles/                # Global styles
-```
+This project is built on a bleeding-edge modern stack, ensuring optimal performance, SEO, and developer experience.
 
-## 🛠 Tech Stack
+- **Framework:** Next.js (App Router)
+- **Language:** TypeScript (Strict Mode)
+- **Styling:** Tailwind CSS (Custom Design System)
+- **Animation:** Framer Motion & CSS Micro-interactions
+- **Components:** Radix UI & shadcn/ui
+- **Icons:** Lucide React
+- **Email API:** Resend (Serverless Edge Functions)
+- **State Management:** Zustand
+- **Deployment:** Vercel
 
-- **Framework**: Next.js 16 with App Router
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **UI Components**: Radix UI + shadcn/ui
-- **Animations**: Framer Motion
-- **Icons**: Lucide React
-- **Theme**: next-themes
-- **State**: Zustand
+## ✦ Key Features
 
-## 🎨 Design System
+- **Premium UI/UX:** Clean, typographic-driven layout inspired by high-end design agencies.
+- **Theme Awareness:** Seamless Dark/Light mode switching utilizing `next-themes` and CSS variables.
+- **Dynamic Routing:** Highly optimized dedicated pages for Projects, Experience, and Certifications.
+- **Serverless API Integration:** A fully functional, secure contact form powered by the Resend API that dispatches direct emails.
+- **Performance Optimized:** Achieving near-perfect Core Web Vitals through aggressive image optimization, Next.js static generation, and Turbopack.
+- **Responsive Geometry:** Fluid layouts that scale gracefully from ultra-wide desktop monitors to mobile viewports.
 
-- **Primary Color**: #3B82F6 (Blue)
-- **Secondary Color**: #34D399 (Green)
-- **Typography**: Inter font family
-- **Spacing**: Consistent 4-point grid system
-- **Animations**: Ease-in-out transitions
+## ✦ Local Development
 
-## 📱 Pages
-
-### Landing Page
-- Hero section with call-to-action
-- Featured projects preview
-- Skills showcase
-- Social links integration
-
-### Projects Page
-- Project gallery with filtering
-- Search functionality
-- Category tabs
-- Live demo and code links
-
-### About Page
-- Personal story
-- Experience timeline
-- Education background
-- Skills overview
-
-### Contact Page
-- Contact form with validation
-- Multiple contact methods
-- FAQ section
-- Social media links
-
-## 🚀 Getting Started
+To run this project locally, follow these steps:
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
-   cd portfolio
+   git clone https://github.com/SaiDheeraj-19/Portfolio-.git
+   cd Portfolio-
    ```
 
 2. **Install dependencies**
@@ -86,69 +51,42 @@ src/
    npm install
    ```
 
-3. **Run development server**
+3. **Configure Environment Variables**
+   Create a `.env.local` file in the root directory and add your Resend API key for the contact form:
+   ```env
+   RESEND_API_KEY=your_resend_api_key
+   ```
+
+4. **Boot the development server**
    ```bash
    npm run dev
    ```
+   *Navigate to [http://localhost:3000](http://localhost:3000) to view the application.*
 
-4. **Open in browser**
-   Navigate to [http://localhost:3000](http://localhost:3000)
+## ✦ Project Structure
 
-## 📝 Customization
-
-### Personal Information
-Update your personal details in:
-- `src/app/page.tsx` - Hero section
-- `src/app/about/page.tsx` - About page
-- `src/app/contact/page.tsx` - Contact information
-
-### Projects
-Add your projects in `src/app/projects/page.tsx` by updating the projects array.
-
-### Social Links
-Update social media links in:
-- `src/components/layout/navbar.tsx`
-- `src/components/layout/footer.tsx`
-
-### Styling
-Customize colors and themes in `src/styles/globals.css`.
-
-## 🌟 Features Implemented
-
-✅ Landing page with hero section  
-✅ Projects showcase with filtering  
-✅ About page with experience timeline  
-✅ Contact page with form validation  
-✅ Dark/light mode toggle  
-✅ Responsive design  
-✅ Smooth animations  
-✅ Accessibility features  
-✅ Performance optimizations  
-✅ Reusable UI components  
-
-## 🚀 Deployment
-
-### Vercel (Recommended)
-1. Push to GitHub
-2. Connect repository to Vercel
-3. Deploy automatically
-
-### Other Platforms
-```bash
-npm run build
-npm start
+```text
+src/
+├── app/                    # Next.js App Router (Pages & Layouts)
+│   ├── about/              # Professional CV & Timeline
+│   ├── api/contact/        # Resend API Serverless Route
+│   ├── contact/            # Minimalist Direct Contact Interface
+│   ├── experience/         # Detailed Work History
+│   ├── projects/           # Curated Project Index
+│   └── page.tsx            # Hero Landing Page
+├── components/             # Reusable UI Architecture
+│   ├── layout/             # Navigation & Footer Shells
+│   ├── ui/                 # Atomic UI Components
+│   └── react-bits/         # Complex Interactive Visuals
+├── lib/                    # Core Utilities & Types
+└── styles/                 # Global Tailwind Typography & Variables
 ```
 
-## 📧 Contact
+## ✦ Connect
 
-- **LinkedIn**: [https://www.linkedin.com/in/sai-dheeraj-a1145830b/](https://www.linkedin.com/in/sai-dheeraj-a1145830b/)
-- **GitHub**: [https://github.com/SaiDheeraj-19](https://github.com/SaiDheeraj-19)
-- **Email**: 16saidheeraj@gmail.com
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
+- **LinkedIn**: [sai-dheeraj-a1145830b](https://www.linkedin.com/in/sai-dheeraj-a1145830b/)
+- **GitHub**: [SaiDheeraj-19](https://github.com/SaiDheeraj-19)
+- **Email**: [16saidheeraj@gmail.com](mailto:16saidheeraj@gmail.com)
 
 ---
-
-Built with ❤️ using Next.js and modern web technologies.
+*Engineered by Sai Dheeraj.*
