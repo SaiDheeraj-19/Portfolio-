@@ -36,32 +36,7 @@ This project is built on a bleeding-edge modern stack, ensuring optimal performa
 - **Performance Optimized:** Achieving near-perfect Core Web Vitals through aggressive image optimization, Next.js static generation, and Turbopack.
 - **Responsive Geometry:** Fluid layouts that scale gracefully from ultra-wide desktop monitors to mobile viewports.
 
-## ✦ Local Development
 
-To run this project locally, follow these steps:
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/SaiDheeraj-19/Portfolio-.git
-   cd Portfolio-
-   ```
-
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
-
-3. **Configure Environment Variables**
-   Create a `.env.local` file in the root directory and add your Resend API key for the contact form:
-   ```env
-   RESEND_API_KEY=your_resend_api_key
-   ```
-
-4. **Boot the development server**
-   ```bash
-   npm run dev
-   ```
-   *Navigate to [http://localhost:3000](http://localhost:3000) to view the application.*
 
 ## ✦ Project Structure
 
