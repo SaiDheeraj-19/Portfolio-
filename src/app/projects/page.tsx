@@ -44,22 +44,7 @@ export default function ProjectsPage() {
             {/* Content Area */}
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl pt-8">
                 
-                {/* Minimal Filters */}
-                <div className="flex flex-wrap gap-8 mb-16">
-                    {categories.map((category) => (
-                        <button
-                            key={category}
-                            onClick={() => setSelectedCategory(category)}
-                            className={`text-sm font-bold uppercase tracking-widest transition-colors hover:text-primary ${
-                                selectedCategory === category 
-                                    ? "text-primary" 
-                                    : "text-neutral-400"
-                            }`}
-                        >
-                            {category}
-                        </button>
-                    ))}
-                </div>
+
 
                 {/* Awwwards Style Giant Accordion List */}
                 <div className="flex flex-col border-t border-neutral-200">
