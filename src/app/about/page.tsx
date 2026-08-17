@@ -1,298 +1,212 @@
 "use client"
 
+import Image from "next/image"
 import Link from "next/link"
-import { GraduationCap, Briefcase, Award, Code, Palette, Users, ArrowRight, Download } from "lucide-react"
+import { ArrowLeft, Github, Linkedin, Mail, ExternalLink, Instagram } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-
-const experiences = [
-    {
-        title: "Full Stack Developer",
-        company: "Tech Company",
-        period: "2022 - Present",
-        description: "Leading development of scalable web applications using modern technologies. Collaborating with cross-functional teams to deliver high-quality solutions.",
-        achievements: [
-            "Increased application performance by 40%",
-            "Led a team of 5 developers",
-            "Implemented CI/CD pipelines"
-        ]
-    },
-    {
-        title: "Frontend Developer",
-        company: "Digital Agency",
-        period: "2020 - 2022",
-        description: "Developed responsive and interactive user interfaces for various client projects. Focused on creating exceptional user experiences.",
-        achievements: [
-            "Built 15+ client websites",
-            "Improved accessibility scores by 30%",
-            "Reduced page load times by 50%"
-        ]
-    },
-    {
-        title: "Junior Developer",
-        company: "Startup Inc",
-        period: "2019 - 2020",
-        description: "Started my professional journey learning best practices and contributing to various projects in an agile environment.",
-        achievements: [
-            "Learned React and TypeScript",
-            "Contributed to 10+ features",
-            "Participated in code reviews"
-        ]
-    }
-]
-
-const education = [
-    {
-        degree: "Bachelor of Computer Science",
-        school: "University Name",
-        period: "2015 - 2019",
-        description: "Graduated with honors. Specialized in Software Engineering and Web Technologies.",
-        achievements: ["GPA: 3.8/4.0", "Dean's List", "Computer Science Club President"]
-    }
-]
 
 const skills = {
-    "Frontend": ["React", "Next.js", "TypeScript", "Tailwind CSS", "Vue.js", "HTML5", "CSS3", "JavaScript"],
-    "Backend": ["Node.js", "Express", "Python", "PostgreSQL", "MongoDB", "REST APIs", "GraphQL"],
-    "Tools": ["Git", "Docker", "AWS", "Figma", "VS Code", "Webpack", "Jest", "Cypress"],
-    "Design": ["UI/UX Design", "Figma", "Adobe XD", "Responsive Design", "Wireframing", "Prototyping"]
+    "Programming": ["Python", "TypeScript", "JavaScript", "SQL"],
+    "Frontend": ["React 19", "Next.js", "React Native", "Tailwind CSS", "Framer Motion", "Zustand"],
+    "Backend": ["FastAPI", "Node.js", "Express", "REST APIs", "SQLAlchemy"],
+    "Databases": ["PostgreSQL", "MongoDB", "Supabase"],
+    "AI & ML": ["Groq Vision API", "OpenAI", "Gemini", "YOLOv8", "Hugging Face"],
+    "DevOps & Security": ["Docker", "Vercel", "JWT", "RBAC"]
 }
 
-const certifications = [
+const journey = [
     {
-        name: "Oracle Certified Foundations Associate",
-        title: "Oracle Cloud Infrastructure AI Foundations",
-        issuer: "Oracle",
-        date: "2025",
-        image: "/certifications/oracle_ai_foundations.png",
-        credentialId: "OCI-AI-2025"
+        period: "2024",
+        phase: "START",
+        title: "Computer Science Engineering",
+        description: "Began my B.Tech journey at G. Pullaiah College of Engineering and Technology and started building the foundations of software engineering."
+    },
+    {
+        period: "2025",
+        phase: "BUILD",
+        title: "From concepts to products",
+        description: "Moved from learning individual technologies to building complete web applications, APIs, databases, and product experiences."
+    },
+    {
+        period: "2025 → 2026",
+        phase: "EXPLORE",
+        title: "Beyond traditional software",
+        description: "Started exploring AI, computer vision, speech, multilingual technology, security, and real-time systems through increasingly complex projects."
+    },
+    {
+        period: "2026",
+        phase: "ENGINEER",
+        title: "AI × Full Stack × Real-Time",
+        description: "Started building complete intelligent systems — connecting AI models with frontend experiences, backend services, databases, and real-time infrastructure."
+    },
+    {
+        period: "MAY → JULY 2026",
+        phase: "ROOTEDLABS",
+        title: "Web Development Intern",
+        description: "Worked on the official RootedLabs website and AI-powered learning platform, gaining experience building software for real educational use cases."
+    },
+    {
+        period: "JULY 2026 → PRESENT",
+        phase: "RMJ IT SOLUTIONS",
+        title: "Team Lead Intern",
+        description: "Currently working on MicroIntern, taking responsibility across system architecture, AI pipelines, backend engineering, database design, API integration, and DevOps."
     }
 ]
 
 export default function AboutPage() {
     return (
-        <div className="min-h-screen">
-            {/* Hero Section */}
-            <section className="py-20 lg:py-32 bg-gradient-to-br from-primary/5 to-secondary/5">
-                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center max-w-3xl mx-auto animate-fade-in">
-                        <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
-                            About <span className="text-primary">Me</span>
-                        </h1>
-                        <p className="text-xl text-muted-foreground mb-8">
-                            Passionate developer and designer with a love for creating beautiful, functional digital experiences.
-                            I believe in the power of technology to solve real-world problems and make life better.
-                        </p>
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <Button size="lg" asChild>
-                                <Link href="/contact">
-                                    Get in Touch
-                                    <ArrowRight className="ml-2 h-4 w-4" />
-                                </Link>
-                            </Button>
-                            <Button variant="outline" size="lg">
-                                <Download className="mr-2 h-4 w-4" />
-                                Download Resume
-                            </Button>
-                        </div>
-                    </div>
-                </div>
-            </section>
+        <div className="min-h-screen bg-background pt-24 pb-24 text-foreground selection:bg-primary/20">
+            <div className="container mx-auto px-4 md:px-8 max-w-7xl">
+                
+                {/* Back to Home */}
+                <Button variant="ghost" asChild className="mb-8 md:mb-16 -ml-4 hover:bg-transparent hover:text-primary">
+                    <Link href="/">
+                        <ArrowLeft className="mr-2 h-4 w-4" />
+                        Back to Home
+                    </Link>
+                </Button>
 
-            {/* About Content */}
-            <section className="py-20">
-                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-                        {/* Main Content */}
-                        <div className="lg:col-span-2 space-y-12">
-                            {/* Story */}
-                            <div className="max-w-3xl">
-                                <h2 className="text-3xl font-bold mb-6">About Me</h2>
-                                <div className="prose prose-muted dark:prose-invert max-w-none">
-                                    <p className="text-lg text-muted-foreground mb-6">
-                                        Full Stack Developer | Generative AI Specialist (Oracle, Google, NVIDIA Certified) | BTech CSE @ GPCET | Building AI-Powered User Experiences
-                                    </p>
-                                    <p>
-                                        I specialize in creating cutting-edge web applications that leverage the power of Generative AI to deliver exceptional user experiences. With certifications from industry leaders like Oracle, Google, and NVIDIA, I bring a unique blend of full stack development expertise and AI/ML capabilities to every project.
-                                    </p>
-                                    <p>
-                                        My approach combines modern web technologies with artificial intelligence to build intelligent, responsive, and user-centric applications. I'm passionate about pushing the boundaries of what's possible at the intersection of AI and full stack development.
-                                    </p>
-                                </div>
+                {/* Two Column Layout */}
+                <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 relative">
+                    
+                    {/* Left Column: Sticky Sidebar */}
+                    <div className="w-full lg:w-1/3">
+                        <div className="lg:sticky lg:top-32 flex flex-col animate-in fade-in slide-in-from-bottom-8 duration-1000">
+                            
+                            {/* Profile Image */}
+                            <div className="relative w-full aspect-square mb-8 rounded-2xl overflow-hidden bg-neutral-100 dark:bg-neutral-900 border border-border shadow-sm group">
+                                <Image 
+                                    src="/profile.jpg"
+                                    alt="Sai Dheeraj"
+                                    fill
+                                    className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                                    sizes="(max-width: 1024px) 100vw, 33vw"
+                                    priority
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
                             </div>
 
-                            {/* Experience & Education */}
-                            <Tabs defaultValue="about" className="animate-slide-up">
-                                <TabsList className="grid w-full grid-cols-2">
-                                    <TabsTrigger value="about">About</TabsTrigger>
-                                    <TabsTrigger value="certifications">Certifications</TabsTrigger>
-                                </TabsList>
+                            {/* Info */}
+                            <div>
+                                <h1 className="text-4xl md:text-5xl font-black tracking-tight mb-2 uppercase">Sai Dheeraj</h1>
+                                <p className="text-primary font-mono text-sm tracking-widest uppercase mb-6">Full-Stack AI Engineer</p>
+                                
+                                <p className="text-muted-foreground leading-relaxed mb-8 text-sm md:text-base">
+                                    Architecting intelligent, scalable software systems that drive real-world impact across web, mobile, and AI infrastructure.
+                                </p>
 
-                                <TabsContent value="about" className="space-y-6">
-                                    <Card>
-                                        <CardHeader>
-                                            <CardTitle className="text-xl">Open for Work & Freelancing</CardTitle>
-                                        </CardHeader>
-                                        <CardContent>
-                                            <p className="text-muted-foreground mb-4">
-                                                I'm currently available for freelance projects and full-time opportunities.
-                                                With expertise in modern web technologies, I can help bring your ideas to life.
-                                            </p>
-                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                                                <div>
-                                                    <h4 className="font-medium mb-2">Services Offered</h4>
-                                                    <ul className="space-y-1 text-sm text-muted-foreground">
-                                                        <li>• Full Stack Web Development</li>
-                                                        <li>• UI/UX Design</li>
-                                                        <li>• API Development</li>
-                                                        <li>• Performance Optimization</li>
-                                                    </ul>
-                                                </div>
-                                                <div>
-                                                    <h4 className="font-medium mb-2">Availability</h4>
-                                                    <ul className="space-y-1 text-sm text-muted-foreground">
-                                                        <li>• Freelance Projects</li>
-                                                        <li>• Full-time Positions</li>
-                                                        <li>• Consulting</li>
-                                                        <li>• Quick Response Time</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <Button asChild className="w-full md:w-auto">
-                                                <Link href="/contact">Get in Touch</Link>
-                                            </Button>
-                                        </CardContent>
-                                    </Card>
-                                </TabsContent>
-
-                                <TabsContent value="certifications" className="space-y-6">
-                                    {certifications.map((cert, index) => (
-                                        <Card key={index}>
-                                            <CardContent className="p-6">
-                                                <div className="flex flex-col md:flex-row gap-6 items-center">
-                                                    <div className="w-32 h-32 flex-shrink-0">
-                                                        <img
-                                                            src={cert.image}
-                                                            alt={cert.name}
-                                                            className="w-full h-full object-contain rounded-lg"
-                                                        />
-                                                    </div>
-                                                    <div className="flex-1 text-center md:text-left">
-                                                        <h3 className="text-xl font-semibold mb-2">{cert.name}</h3>
-                                                        <h4 className="text-lg text-primary font-medium mb-2">{cert.title}</h4>
-                                                        <p className="text-muted-foreground mb-1">Issued by: {cert.issuer}</p>
-                                                        <p className="text-muted-foreground mb-1">Valid until: {cert.date}</p>
-                                                        <p className="text-sm text-muted-foreground">Credential ID: {cert.credentialId}</p>
-                                                    </div>
-                                                </div>
-                                            </CardContent>
-                                        </Card>
-                                    ))}
-                                </TabsContent>
-                            </Tabs>
-                        </div>
-
-                        {/* Sidebar */}
-                        <div className="space-y-8">
-                            {/* Profile Photo */}
-                            <Card className="animate-scale-in">
-                                <CardContent className="p-6">
-                                    <div className="w-full h-48 rounded-lg overflow-hidden mb-4">
-                                        <img
-                                            src="/IMG_6380.png"
-                                            alt="Sai Dheeraj"
-                                            className="w-full h-full object-cover"
-                                            onError={(e) => {
-                                                e.currentTarget.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23f3f4f6'/%3E%3Ctext x='50' y='50' font-family='Arial' font-size='14' fill='%236b7280' text-anchor='middle' dy='.3em'%3E👨‍💻%3C/text%3E%3C/svg%3E";
-                                            }}
-                                        />
-                                    </div>
-                                    <div className="text-center">
-                                        <h3 className="text-xl font-semibold">Sai Dheeraj</h3>
-                                        <p className="text-muted-foreground">Full Stack Developer</p>
-                                    </div>
-                                </CardContent>
-                            </Card>
-
-                            {/* Quick Stats */}
-                            <Card className="animate-scale-in">
-                                <CardHeader>
-                                    <CardTitle className="text-lg">Quick Stats</CardTitle>
-                                </CardHeader>
-                                <CardContent className="space-y-4">
-                                    <div className="flex items-center justify-between">
-                                        <div className="flex items-center">
-                                            <Code className="w-5 h-5 text-primary mr-3" />
-                                            <span className="text-sm">Projects</span>
-                                        </div>
-                                        <span className="font-semibold">50+ Completed</span>
-                                    </div>
-                                    <div className="flex items-center justify-between">
-                                        <div className="flex items-center">
-                                            <Users className="w-5 h-5 text-primary mr-3" />
-                                            <span className="text-sm">Clients</span>
-                                        </div>
-                                        <span className="font-semibold">30+ Happy</span>
-                                    </div>
-                                    <div className="flex items-center justify-between">
-                                        <div className="flex items-center">
-                                            <Award className="w-5 h-5 text-primary mr-3" />
-                                            <span className="text-sm">Awards</span>
-                                        </div>
-                                        <span className="font-semibold">5+ Won</span>
-                                    </div>
-                                </CardContent>
-                            </Card>
-
-                            {/* Skills */}
-                            <Card className="animate-scale-in">
-                                <CardHeader>
-                                    <CardTitle className="text-lg">Core Skills</CardTitle>
-                                </CardHeader>
-                                <CardContent>
-                                    <div className="space-y-6">
-                                        {Object.entries(skills).map(([category, skillList]) => (
-                                            <div key={category}>
-                                                <h4 className="font-medium mb-2 text-sm">{category}</h4>
-                                                <div className="flex flex-wrap gap-2">
-                                                    {skillList.map((skill) => (
-                                                        <span
-                                                            key={skill}
-                                                            className="px-2 py-1 bg-muted text-muted-foreground rounded-md text-xs"
-                                                        >
-                                                            {skill}
-                                                        </span>
-                                                    ))}
-                                                </div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </CardContent>
-                            </Card>
-
-                            {/* Interests */}
-                            <Card className="animate-scale-in">
-                                <CardHeader>
-                                    <CardTitle className="text-lg">Interests</CardTitle>
-                                </CardHeader>
-                                <CardContent>
-                                    <div className="flex flex-wrap gap-2">
-                                        {["Web Development", "UI/UX Design", "Open Source", "Machine Learning", "Photography", "Travel"].map((interest) => (
-                                            <span
-                                                key={interest}
-                                                className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm"
-                                            >
-                                                {interest}
-                                            </span>
-                                        ))}
-                                    </div>
-                                </CardContent>
-                            </Card>
+                                {/* Contact Links */}
+                                <div className="flex flex-col gap-3 border-t border-border pt-6">
+                                    <a href="mailto:16saidheeraj@gmail.com" className="flex items-center gap-3 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors group">
+                                        <Mail className="w-4 h-4 group-hover:text-primary transition-colors" />
+                                        16saidheeraj@gmail.com
+                                    </a>
+                                    <a href="https://www.linkedin.com/in/sai-dheeraj-a1145830b/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors group">
+                                        <Linkedin className="w-4 h-4 group-hover:text-primary transition-colors" />
+                                        LinkedIn Profile <ExternalLink className="w-3 h-3 opacity-50" />
+                                    </a>
+                                    <a href="https://github.com/SaiDheeraj-19" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors group">
+                                        <Github className="w-4 h-4 group-hover:text-primary transition-colors" />
+                                        GitHub Portfolio <ExternalLink className="w-3 h-3 opacity-50" />
+                                    </a>
+                                    <a href="https://www.instagram.com/your.saidheeraj/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors group">
+                                        <Instagram className="w-4 h-4 group-hover:text-primary transition-colors" />
+                                        Instagram Profile <ExternalLink className="w-3 h-3 opacity-50" />
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
+                    {/* Right Column: Scrolling Content */}
+                    <div className="w-full lg:w-2/3 flex flex-col gap-24">
+                        
+                        {/* Section 1: Biography */}
+                        <section className="animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-150">
+                            <h2 className="text-xs font-mono uppercase tracking-[0.2em] text-muted-foreground mb-8 pb-4 border-b border-border">Professional Summary</h2>
+                            <div className="prose prose-neutral dark:prose-invert prose-lg max-w-none text-muted-foreground leading-relaxed">
+                                <p className="mb-6">
+                                    I am a <strong className="text-foreground">Full-Stack AI Engineer</strong> specializing in the design and development of intelligent, scalable software systems. By bridging the gap between advanced artificial intelligence and robust full-stack architecture, I build solutions that drive real-world impact.
+                                </p>
+                                <p className="mb-6">
+                                    My expertise spans machine learning, computer vision, multilingual processing, and real-time infrastructure—allowing me to architect end-to-end applications that are both highly innovative and enterprise-ready.
+                                </p>
+                                <p>
+                                    I enjoy solving the problems beneath the interface — how systems communicate, how data moves, how AI fits into a product, and how everything can work together reliably at scale. I care about building software that is technically sound, practical to use, and engineered with purpose.
+                                </p>
+                            </div>
+                        </section>
+
+                        {/* Section 2: Technical Skills */}
+                        <section className="animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300">
+                            <h2 className="text-xs font-mono uppercase tracking-[0.2em] text-muted-foreground mb-8 pb-4 border-b border-border">Technical Capabilities</h2>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
+                                {Object.entries(skills).map(([category, items]) => (
+                                    <div key={category}>
+                                        <h3 className="text-sm font-bold uppercase tracking-wider text-foreground mb-4">{category}</h3>
+                                        <div className="flex flex-wrap gap-2">
+                                            {items.map((skill) => (
+                                                <span 
+                                                    key={skill} 
+                                                    className="px-3 py-1 bg-secondary/50 border border-border rounded-md text-xs font-medium text-foreground hover:bg-secondary transition-colors"
+                                                >
+                                                    {skill}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </section>
+
+                        {/* Section 3: Journey Timeline */}
+                        <section className="animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-500">
+                            <h2 className="text-xs font-mono uppercase tracking-[0.2em] text-muted-foreground mb-8 pb-4 border-b border-border">Career Progression</h2>
+                            
+                            <div className="relative border-l border-border ml-3 md:ml-4 space-y-12 pb-8">
+                                {journey.map((item, i) => (
+                                    <div key={i} className="relative pl-8 md:pl-12 group">
+                                        {/* Timeline Node */}
+                                        <div className="absolute -left-[5px] top-1.5 w-2.5 h-2.5 bg-border rounded-full ring-4 ring-background group-hover:bg-primary transition-colors duration-300"></div>
+                                        
+                                        <div className="flex flex-col gap-1.5">
+                                            <span className="text-xs font-mono tracking-widest uppercase text-muted-foreground">
+                                                {item.period}
+                                            </span>
+                                            <h3 className="text-xl md:text-2xl font-bold tracking-tight text-foreground mt-1">
+                                                {item.title}
+                                            </h3>
+                                            <span className="text-xs font-bold uppercase tracking-wider text-primary mb-2">
+                                                {item.phase}
+                                            </span>
+                                            <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
+                                                {item.description}
+                                            </p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </section>
+
+                        {/* Footer Outro */}
+                        <section className="animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-700 pb-12">
+                             <div className="p-8 md:p-12 bg-neutral-50 dark:bg-neutral-900 rounded-3xl border border-border">
+                                <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tight text-foreground mb-4">
+                                    Still learning. Still building. 
+                                </h3>
+                                <p className="text-muted-foreground text-lg mb-8 max-w-xl">
+                                    The journey isn&apos;t about knowing everything. It&apos;s about being able to build what comes next. Let&apos;s build something great together.
+                                </p>
+                                <Button asChild className="rounded-full px-8 py-6 font-bold tracking-widest uppercase">
+                                    <Link href="/contact">Get in Touch</Link>
+                                </Button>
+                             </div>
+                        </section>
+
+                    </div>
                 </div>
-            </section>
+
+            </div>
         </div>
     )
 }

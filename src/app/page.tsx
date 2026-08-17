@@ -1,11 +1,12 @@
 "use client"
+import HeroBackground from "@/components/ui/hero-background";
 
 import Link from "next/link"
 import { useState, useEffect } from "react"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import {
   ArrowRight, Github, Mail, Code, Award, Instagram,
-  ExternalLink, Phone, Layers, Folder, ArrowLeft
+  ExternalLink, Phone, Layers, Folder, ArrowLeft, Briefcase
 } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
@@ -36,13 +37,7 @@ export default function Home() {
   // const toggleCategory ...
 
   // Gallery State
-  const [showAboutPopup, setShowAboutPopup] = useState(false)
-  const [showCertificatesPopup, setShowCertificatesPopup] = useState(false)
-  const [showProjectsPopup, setShowProjectsPopup] = useState(false)
   const [showContactPopup, setShowContactPopup] = useState(false)
-  const [selectedCertCategory, setSelectedCertCategory] = useState<string | null>(null)
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [selectedProject, setSelectedProject] = useState<any>(null)
   const [selectedPhoto, setSelectedPhoto] = useState<string | null>(null)
 
 
@@ -71,8 +66,6 @@ export default function Home() {
     // Small delay to ensure state and DOM are ready
     const timer = setTimeout(() => {
       const hash = window.location.hash;
-      if (hash === '#projects') setShowProjectsPopup(true);
-      if (hash === '#about') setShowAboutPopup(true);
       if (hash === '#contact') setShowContactPopup(true);
     }, 100);
     return () => clearTimeout(timer);
@@ -112,12 +105,11 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <Navbar
-        onOpenProjects={() => setShowProjectsPopup(true)}
-        onOpenAbout={() => setShowAboutPopup(true)}
         onOpenContact={() => setShowContactPopup(true)}
       />
       {/* Hero Section */}
       <section id="home" className="relative h-dvh min-h-screen flex flex-col items-center justify-center overflow-hidden">
+        <HeroBackground />
 
 
 
@@ -137,9 +129,9 @@ export default function Home() {
             <div className="w-[85vw] max-w-[320px] aspect-[2/3] md:w-[380px] md:h-[550px]">
               <ProfileCard
                 name="Sai Dheeraj"
-                title="Full Stack Developer"
+                title="FULL-STACK AI ENGINEER"
                 handle="Building Scalable Systems"
-                avatarUrl="/sai_profile_bw.png"
+                avatarUrl="/profile.jpg"
                 contactText="CONTACT ME"
                 status="OPEN TO WORK"
                 enableTilt={true}
@@ -152,104 +144,87 @@ export default function Home() {
 
                   {/* --- FRONT FACE --- */}
                   <div className="absolute inset-0 w-full h-full" style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden", zIndex: 20 }}>
-                    {/* Dark Card Body (Light Mode) / Light Card Body (Dark Mode) */}
-                    <div className="relative w-full h-full rounded-[20px] overflow-hidden bg-[radial-gradient(circle_at_top,#1B1E23_0%,#0E1116_40%,#050608_100%)] dark:bg-white dark:bg-none">
-
-
-
-                      {/* Left Side Greeting */}
-                      <div className="absolute top-6 left-4 z-20 -rotate-6 opacity-70">
-                        <span className="text-[10px] font-black tracking-[0.2em] text-white/50 dark:text-black/50">
-                          HOLA AMIGOES
-                        </span>
-                      </div>
+                    <div className="relative w-full h-full rounded-[20px] overflow-hidden bg-[#0a0a0a] border border-white/10 dark:bg-white dark:border-black/10">
+                      
+                      {/* Noise Texture */}
+                      <div className="absolute inset-0 opacity-[0.15] mix-blend-overlay pointer-events-none" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E")' }}></div>
 
                       {/* Photo */}
-                      <div
-                        className="absolute bottom-0 left-0 w-full h-[90%] z-10 flex items-end justify-center hover:scale-[1.02] transition-transform duration-300"
-                      >
+                      <div className="absolute inset-0 z-10 flex items-end justify-center hover:scale-[1.02] transition-transform duration-500">
                         <div className="relative w-full h-full">
                           <Image
-                            src={profile?.idCardPhoto || "/sai_profile_bw.png"}
+                            src={profile?.idCardPhoto || "/profile.jpg"}
                             fill
                             priority
                             className="object-cover object-center"
                             style={{
                               transform: profile?.idCardConfig
                                 ? `scale(${profile.idCardConfig.scale}) translate(${profile.idCardConfig.x}px, ${profile.idCardConfig.y}px)`
-                                : "scale(1.1) translateY(8px)" // Default fallback matching previous look
+                                : "scale(1.05) translateY(4px)" // Slight adjustment for the full bleed
                             }}
                             alt="Sai Dheeraj"
                           />
-
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60 dark:opacity-30" />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80" />
                         </div>
                       </div>
 
-                      {/* Text Overlay */}
-                      <div className="relative z-40 p-6 text-white dark:text-black mt-auto h-full flex flex-col justify-end pb-12 pointer-events-none">
-                        <p className="text-sm font-black tracking-[0.25em] mb-2 text-white dark:text-black drop-shadow-sm border-black">FULL STACK</p>
-                        <h2 className="text-4xl md:text-5xl font-black tracking-tighter leading-[0.85] mb-2 drop-shadow-lg text-white dark:text-black">
-                          DEVELOPER
-                        </h2>
-                      </div>
-
-                      {/* Bottom Notch */}
-                      <div className="absolute bottom-0 inset-x-0 h-10 z-30 flex items-center justify-center">
-                        <div className="bg-black/20 dark:bg-black/5 backdrop-blur-sm px-4 py-1 rounded-t-xl border-t border-white/5 dark:border-black/5">
-                          <p className="text-[8px] uppercase tracking-widest opacity-70 font-mono text-white dark:text-black">
-                            ©2026, SKILLS NOT REPLACED BY AI (YET)
-                          </p>
+                      {/* Bottom Layout */}
+                      <div className="absolute bottom-0 inset-x-0 h-[30%] z-40 p-6 flex flex-col justify-end pb-12 pointer-events-none">
+                        
+                        {/* Text Block */}
+                        <div className="font-sans text-3xl md:text-4xl font-black tracking-tight text-white dark:text-black leading-[1.05] drop-shadow-md">
+                          <div className="font-mono text-white/70 dark:text-black/70 text-[10px] tracking-[0.2em] mb-2 font-medium uppercase">ROLE //</div>
+                          <div>FULL-STACK</div>
+                          <div>AI ENGINEER</div>
                         </div>
                       </div>
                     </div>
-
-                    {/* Front Tag (Outside overflow-hidden but inside Front Face) */}
-                    <div className="absolute -top-1 -right-1 w-[42%] h-16 bg-neutral-900 dark:bg-neutral-200 rounded-bl-[2.5rem] z-20 flex items-center justify-center pt-2 pl-4">
-                      <span className="text-white/80 dark:text-black/80 text-[10px] font-bold tracking-widest">
-                        (PORTFOLIO)
-                      </span>
-                    </div>
-
-
                   </div>
 
                   {/* --- BACK FACE --- */}
                   <div className="absolute inset-0 w-full h-full" style={{ transform: "rotateY(180deg)", backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden", zIndex: 10 }}>
-                    <div className="relative w-full h-full bg-black dark:bg-white rounded-[20px] overflow-hidden flex items-center justify-center border border-white/10 dark:border-black/10">
-
-
-
-                      {/* Watermark Text */}
-                      <span className="text-[8rem] font-black text-white/5 dark:text-black/5 select-none absolute z-0 scale-x-[-1]">
-                        SAI
-                      </span>
-
-                      {/* Stamp Image */}
-                      <div className="relative w-64 h-64 -rotate-12 z-10 flex items-center justify-center opacity-90">
-                        <div
-                          className="w-full h-full bg-gradient-to-br from-[#ff4d29] to-yellow-400 opacity-90"
-                          style={{
-                            maskImage: "url(/stamp.png)",
-                            WebkitMaskImage: "url(/stamp.png)",
-                            maskSize: "contain",
-                            WebkitMaskSize: "contain",
-                            maskRepeat: "no-repeat",
-                            WebkitMaskRepeat: "no-repeat",
-                            maskPosition: "center",
-                            WebkitMaskPosition: "center"
-                          }}
-                        />
-                        <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white/90 dark:text-black/90 text-[10px] font-bold tracking-[0.15em] font-mono -rotate-6 whitespace-nowrap">
-                          R SAI DHEERAJ
-                        </span>
+                    <div className="relative w-full h-full bg-[#050505] dark:bg-[#fafafa] rounded-[20px] overflow-hidden border border-white/10 dark:border-black/10 p-6 flex flex-col">
+                      
+                      {/* Grid overlay */}
+                      <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]" style={{ backgroundImage: "linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)", backgroundSize: "20px 20px" }}></div>
+                      
+                      {/* Top Bar */}
+                      <div className="flex justify-between items-center border-b border-white/10 dark:border-black/10 pb-4 z-20">
+                        <span className="text-[10px] font-mono tracking-widest text-white/50 dark:text-black/50">SYSTEM PROFILE</span>
+                        <div className="px-2 py-0.5 border border-white/20 dark:border-black/20 text-[8px] font-mono tracking-widest text-white/70 dark:text-black/70">VERIFIED</div>
                       </div>
+
+                      {/* Data List */}
+                      <div className="flex flex-col gap-4 mt-6 z-20 flex-grow">
+                        
+                        <div>
+                          <p className="text-[8px] font-mono tracking-widest text-white/40 dark:text-black/40 mb-1 uppercase">IDENTITY</p>
+                          <p className="text-xs font-sans font-bold tracking-widest text-white dark:text-black uppercase">SAI DHEERAJ</p>
+                        </div>
+
+                        <div>
+                          <p className="text-[8px] font-mono tracking-widest text-white/40 dark:text-black/40 mb-1 uppercase">ROLE</p>
+                          <p className="text-xs font-sans font-bold tracking-widest text-white dark:text-black uppercase">FULL-STACK AI ENGINEER</p>
+                        </div>
+
+                        <div>
+                          <p className="text-[8px] font-mono tracking-widest text-white/40 dark:text-black/40 mb-1 uppercase">SPECIALIZATION</p>
+                          <p className="text-xs font-sans font-bold tracking-widest text-white dark:text-black uppercase leading-[1.4]">AI SYSTEMS<br/>REAL-TIME ENGINEERING<br/>FULL-STACK ARCHITECTURE</p>
+                        </div>
+
+                        <div>
+                          <p className="text-[8px] font-mono tracking-widest text-white/40 dark:text-black/40 mb-1 uppercase">FOCUS</p>
+                          <p className="text-xs font-sans font-bold tracking-widest text-white dark:text-black uppercase leading-[1.4]">INTELLIGENT SOFTWARE<br/>SCALABLE SYSTEMS</p>
+                        </div>
+
+                        <div className="mt-auto pt-4">
+                          <p className="text-[8px] font-mono tracking-widest text-white/40 dark:text-black/40 mb-1 uppercase">LOCATION</p>
+                          <p className="text-xs font-sans font-bold tracking-widest text-white dark:text-black uppercase">KURNOOL // INDIA</p>
+                        </div>
+                        
+                      </div>
+
                     </div>
-
-                    {/* Back Tag (Mirrored to Left) */}
-                    <div className="absolute -top-1 -left-1 w-[42%] h-16 bg-neutral-900 dark:bg-neutral-200 rounded-br-[2.5rem] z-20" />
-
-
                   </div>
 
                 </div>
@@ -287,7 +262,7 @@ export default function Home() {
 
         <div className="max-w-6xl mx-auto relative z-10 text-center">
           <TextType
-            text={["I’ve been learning how software actually works beyond the UI by building projects, writing code, and understanding the logic behind it."]}
+            text={["I architect intelligent, scalable software systems that drive real-world impact."]}
             typingSpeed={75}
             pauseDuration={1500}
             showCursor={true}
@@ -309,7 +284,7 @@ export default function Home() {
             }}
             className="text-lg md:text-2xl lg:text-3xl font-medium text-foreground/90 leading-relaxed max-w-4xl mx-auto mb-12 md:mb-0"
           >
-            I work on full-stack projects involving features like authentication, data handling, and basic automation, with a focus on building things that work reliably beyond simple demos.
+            I am a <span className="font-bold text-primary">Full-Stack AI Engineer</span> with deep expertise spanning machine learning, computer vision, multilingual processing, and robust real-time infrastructure.
           </motion.p>
         </div>
         <div className="absolute left-6 md:left-12 bottom-10 border border-neutral-700/50 rounded-full w-10 h-10 md:w-12 md:h-12 flex items-center justify-center text-neutral-500 font-mono text-xs md:text-sm pointer-events-auto z-20 backdrop-blur-sm hidden sm:flex">
@@ -318,10 +293,12 @@ export default function Home() {
 
         <div className="absolute left-0 w-full md:w-auto md:left-auto md:right-12 bottom-8 md:bottom-10 z-20 pointer-events-auto flex justify-center md:block px-6 md:px-0">
           <Button
+            asChild
             className="w-full md:w-auto rounded-full bg-primary text-primary-foreground shadow-lg border border-transparent hover:bg-primary/90 hover:scale-105 transition-all duration-300 px-8 py-6 font-bold font-mono text-xs tracking-widest uppercase"
-            onClick={() => setShowAboutPopup(true)}
           >
-            EXPLORE SAI DHEERAJ <ArrowRight className="ml-2 w-4 h-4" />
+            <Link href="/about">
+              EXPLORE SAI DHEERAJ <ArrowRight className="ml-2 w-4 h-4" />
+            </Link>
           </Button>
         </div>
       </section>
@@ -329,306 +306,60 @@ export default function Home() {
       {/* Tools Grid Section */}
       <HomeToolsSection />
 
-      {/* About Me Popup */}
-      <Dialog open={showAboutPopup} onOpenChange={setShowAboutPopup}>
-        <DialogContent className="max-w-[95vw] bg-background border-border text-foreground p-0 overflow-hidden !rounded-[2rem] w-[95vw] h-[90vh] [&>button]:hidden">
-          <div className="absolute inset-0 z-0 bg-background" />
-          <DialogTitle className="sr-only">Explore Sai Dheeraj</DialogTitle>
-          <div className="relative z-10 w-full h-full flex flex-col items-start p-5 md:p-12 overflow-y-auto">
-            {/* Close Button */}
-            <button
-              onClick={() => setShowAboutPopup(false)}
-              className="absolute top-4 right-4 md:top-6 md:right-6 p-2 rounded-full bg-black/50 hover:bg-black/80 backdrop-blur-md transition-colors z-50 text-white border border-white/10"
-            >
-              <span className="sr-only">Close</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
-            </button>
-
-            {/* Heading */}
-            {/* Heading */}
-            <h2 className="text-5xl md:text-7xl font-black mb-12 text-primary tracking-tighter leading-none">ABOUT ME</h2>
-
-            {/* Content Container: Photo + Text Side-by-Side */}
-            <div className="w-full flex flex-col md:flex-row gap-8 md:gap-16 items-start">
-
-              {/* Left Column: Photo + Button */}
-              <div className="flex flex-col gap-6 shrink-0">
-                {/* Profile Pic */}
-                <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-3xl overflow-hidden border-4 border-neutral-800 shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-300">
-                  <Image
-                    src="/about_me_photo_2.jpg"
-                    fill
-                    className="object-cover object-top"
-                    alt="Sai Dheeraj"
-                    priority
-                  />
-                </div>
-
-                {/* Certificates Button */}
-                {/* Certificates Button */}
-                <Button
-                  className="w-full bg-white hover:bg-neutral-200 text-black font-bold tracking-wider py-6 text-lg shadow-lg hover:shadow-white/20 transition-all"
-                  onClick={() => setShowCertificatesPopup(true)}
-                >
-                  <Award className="mr-2 w-5 h-5" />
-                  VIEW CERTIFICATES
-                </Button>
-
-                <Button
-                  className="w-full bg-white hover:bg-neutral-200 text-black font-bold tracking-wider py-6 text-lg shadow-lg hover:shadow-white/20 transition-all border-t border-neutral-300"
-                  onClick={() => setShowProjectsPopup(true)}
-                >
-                  <Layers className="mr-2 w-5 h-5" />
-                  VIEW PROJECTS
-                </Button>
-              </div>
-
-              {/* Bio Text */}
-              <div className="flex-1 max-w-2xl">
-                <div className="space-y-6 text-neutral-800 text-base md:text-lg leading-relaxed font-normal">
-                  <p>
-                    I&apos;m a <span className="text-black font-bold">Computer Science undergraduate</span> who is learning software development by building practical projects alongside my coursework.
-                  </p>
-                  <p>
-                    Since 2024, I&apos;ve been focusing on understanding how software works beyond the UI—by writing code, handling data, and learning how different parts of an application fit together. I enjoy working on full-stack projects where I can practice concepts like authentication, data flow, and basic automation.
-                  </p>
-                  <p>
-                    Most of my learning comes from building, breaking, and improving projects. I care about writing clear code, understanding why things work, and making applications usable beyond simple demos.
-                  </p>
-                  <p className="font-bold text-black text-lg md:text-xl pt-6 border-t border-neutral-300 mt-6">
-                    I&apos;m currently looking for internship opportunities where I can learn from experienced developers, improve my fundamentals, and contribute to real projects while continuing to grow as a software engineer.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </DialogContent>
-      </Dialog>
-
-      {/* Certificates Popup */}
-      <Dialog open={showCertificatesPopup} onOpenChange={(open) => { setShowCertificatesPopup(open); if (!open) setSelectedCertCategory(null); }}>
-        <DialogContent className="max-w-4xl bg-neutral-900 border-neutral-800 text-white p-8 md:p-12 !rounded-[2rem] w-full h-auto max-h-[85vh] overflow-y-auto">
-          <DialogTitle className="sr-only">Certifications</DialogTitle>
-          <div className="flex flex-col items-center">
-            <h2 className="text-3xl md:text-5xl font-black mb-8 text-white tracking-tighter uppercase">
-              {selectedCertCategory || "Certifications"}
-            </h2>
-
-            {!selectedCertCategory ? (
-              /* Folder View */
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
-                {Object.keys(certificationsData).map((category) => (
-                  <button
-                    type="button"
-                    key={category}
-                    onClick={() => setSelectedCertCategory(category)}
-                    className="bg-neutral-800/50 p-8 rounded-2xl flex flex-col items-center justify-center border border-neutral-700/50 hover:border-white/50 hover:bg-neutral-800 transition-all cursor-pointer group gap-4 aspect-square w-full"
-                  >
-                    <Folder className="w-24 h-24 text-white group-hover:scale-110 transition-transform" />
-                    <h3 className="text-xl font-bold text-center">{category}</h3>
-                    <p className="text-neutral-500 text-sm">{certificationsData[category as keyof typeof certificationsData].length} Certificates</p>
-                  </button>
-                ))}
-              </div>
-            ) : (
-              /* Certificates Grid View */
-              <div className="w-full">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 w-full animate-in fade-in zoom-in-95 duration-300">
-                  {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-                  {(selectedCertCategory ? certificationsData[selectedCertCategory as keyof typeof certificationsData] : []).map((cert: any, idx: number) => (
-                    <button
-                      key={idx}
-                      type="button"
-                      onClick={(e) => { e.stopPropagation(); setSelectedPhoto(cert.img); }}
-                      className="bg-card p-6 rounded-2xl flex flex-col items-center border border-border hover:border-primary/50 transition-colors group cursor-pointer w-full text-left shadow-sm hover:shadow-md"
-                    >
-                      <div className="w-full aspect-[4/3] relative mb-4 overflow-hidden rounded-lg pointer-events-none bg-muted/20">
-                        <Image src={cert.img} fill className="object-contain group-hover:scale-105 transition-transform duration-500" alt={cert.title} />
-                      </div>
-                      <h3 className="font-bold text-center text-lg leading-tight mb-2 pointer-events-none text-foreground">{cert.title}</h3>
-                      <p className="text-muted-foreground text-sm font-mono text-center pointer-events-none">{cert.issuer}</p>
-                    </button>
-                  ))}
-                </div>
-
-                <button
-                  type="button"
-                  onClick={() => setSelectedCertCategory(null)}
-                  className="mt-8 flex items-center gap-2 text-neutral-400 hover:text-white transition-colors mx-auto"
-                >
-                  <ArrowLeft className="w-4 h-4" /> Back to Folders
-                </button>
-              </div>
-            )}
-          </div>
-        </DialogContent>
-      </Dialog>
 
 
 
       <Dialog open={showContactPopup} onOpenChange={setShowContactPopup}>
-        <DialogContent className="max-w-3xl w-[90vw] max-h-[90vh] bg-background/95 backdrop-blur-2xl border-border text-foreground p-0 overflow-hidden rounded-[2rem] md:rounded-[2.5rem] shadow-2xl [&>button]:hidden flex flex-col">
+        <DialogContent className="max-w-4xl w-[95vw] bg-background border-border text-foreground p-0 overflow-hidden rounded-[2rem] shadow-2xl [&>button]:hidden flex flex-col">
           <div className="absolute top-4 right-4 md:top-6 md:right-6 z-50">
             <button
               onClick={() => setShowContactPopup(false)}
-              className="p-2 rounded-full bg-black/50 hover:bg-black/80 backdrop-blur-md transition-colors text-white/70 hover:text-white border border-white/10"
+              className="p-3 rounded-full bg-secondary hover:bg-secondary/80 transition-colors text-muted-foreground hover:text-foreground"
             >
               <span className="sr-only">Close</span>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
             </button>
           </div>
-          <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent pointer-events-none" />
 
-          <div className="p-6 md:p-14 relative z-10 flex flex-col items-center overflow-y-auto custom-scrollbar">
-            <DialogTitle className="text-3xl md:text-5xl font-black mb-4 text-center tracking-tighter uppercase text-white drop-shadow-lg">Let&apos;s Talk</DialogTitle>
-            <p className="text-neutral-400 mb-8 md:mb-12 text-center text-sm md:text-lg max-w-lg leading-relaxed">Choose your preferred way to connect. I&apos;m always open to discussing new projects and ideas.</p>
+          <div className="p-8 md:p-16 relative z-10 flex flex-col items-center overflow-y-auto custom-scrollbar">
+            <DialogTitle className="text-4xl md:text-6xl font-black mb-4 text-center tracking-tighter uppercase text-foreground">Let&apos;s Talk</DialogTitle>
+            <p className="text-muted-foreground mb-12 text-center text-sm md:text-lg max-w-lg leading-relaxed">Choose your preferred way to connect. I&apos;m always open to discussing new projects and ideas.</p>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 w-full">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
               {/* WhatsApp */}
-              <a href="https://wa.me/919493552753" target="_blank" rel="noopener noreferrer"
-                className="group relative flex flex-col items-center justify-center p-6 md:p-8 rounded-3xl bg-neutral-900/60 border border-white/5 hover:bg-[#25D366]/10 hover:border-[#25D366]/50 transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(37,211,102,0.2)]">
-                <div className="w-16 h-16 md:w-20 md:h-20 mb-4 md:mb-6 rounded-full bg-[#25D366]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-inner">
+              <a href="https://wa.me/919908918853" target="_blank" rel="noopener noreferrer"
+                className="group relative flex flex-col items-center justify-center p-8 rounded-3xl bg-card border border-border hover:border-[#25D366] transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                <div className="w-16 h-16 md:w-20 md:h-20 mb-6 rounded-full bg-[#25D366]/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   <svg viewBox="0 0 24 24" className="w-8 h-8 md:w-10 md:h-10 fill-[#25D366]" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" /></svg>
                 </div>
-                <span className="font-bold text-lg md:text-xl text-white group-hover:text-[#25D366] transition-colors">WhatsApp</span>
-                <span className="text-xs md:text-sm text-neutral-500 mt-2 font-mono tracking-wider opacity-60 group-hover:opacity-100 transition-opacity">Chat Now</span>
+                <span className="font-bold text-xl text-foreground group-hover:text-[#25D366] transition-colors">WhatsApp</span>
+                <span className="text-xs text-muted-foreground mt-2 font-mono tracking-wider opacity-60 group-hover:opacity-100 transition-opacity uppercase">Chat Now</span>
               </a>
 
               {/* Phone */}
               <a href="tel:+919908918853"
-                className="group relative flex flex-col items-center justify-center p-6 md:p-8 rounded-3xl bg-neutral-900/60 border border-white/5 hover:bg-blue-500/10 hover:border-blue-500/50 transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(59,130,246,0.2)]">
-                <div className="w-16 h-16 md:w-20 md:h-20 mb-4 md:mb-6 rounded-full bg-blue-500/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-inner">
-                  <Phone className="w-8 h-8 md:w-10 md:h-10 text-blue-500 fill-current" />
+                className="group relative flex flex-col items-center justify-center p-8 rounded-3xl bg-card border border-border hover:border-blue-500 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                <div className="w-16 h-16 md:w-20 md:h-20 mb-6 rounded-full bg-blue-500/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <Phone className="w-8 h-8 md:w-10 md:h-10 text-blue-500" />
                 </div>
-                <span className="font-bold text-lg md:text-xl text-white group-hover:text-blue-500 transition-colors">Call Me</span>
-                <span className="text-xs md:text-sm text-neutral-500 mt-2 font-mono tracking-wider opacity-60 group-hover:opacity-100 transition-opacity">Personal Line</span>
+                <span className="font-bold text-xl text-foreground group-hover:text-blue-500 transition-colors">Call Me</span>
+                <span className="text-xs text-muted-foreground mt-2 font-mono tracking-wider opacity-60 group-hover:opacity-100 transition-opacity uppercase">Personal Line</span>
               </a>
 
               {/* Email */}
               <a href="mailto:16saidheeraj@gmail.com"
-                className="group relative flex flex-col items-center justify-center p-6 md:p-8 rounded-3xl bg-neutral-900/60 border border-white/5 hover:bg-white/10 hover:border-white/50 transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]">
-                <div className="w-16 h-16 md:w-20 md:h-20 mb-4 md:mb-6 rounded-full bg-white/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-inner">
-                  <Mail className="w-8 h-8 md:w-10 md:h-10 text-white fill-current" />
+                className="group relative flex flex-col items-center justify-center p-8 rounded-3xl bg-card border border-border hover:border-primary transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                <div className="w-16 h-16 md:w-20 md:h-20 mb-6 rounded-full bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <Mail className="w-8 h-8 md:w-10 md:h-10 text-primary" />
                 </div>
-                <span className="font-bold text-lg md:text-xl text-white group-hover:text-white transition-colors">Email</span>
-                <span className="text-xs md:text-sm text-neutral-500 mt-2 font-mono tracking-wider opacity-60 group-hover:opacity-100 transition-opacity">Send Message</span>
+                <span className="font-bold text-xl text-foreground group-hover:text-primary transition-colors">Email</span>
+                <span className="text-xs text-muted-foreground mt-2 font-mono tracking-wider opacity-60 group-hover:opacity-100 transition-opacity uppercase">Send Message</span>
               </a>
             </div>
           </div>
         </DialogContent>
       </Dialog>
 
-      <Dialog open={showProjectsPopup} onOpenChange={setShowProjectsPopup}>
-        <DialogContent className="max-w-5xl bg-background border-border text-foreground p-0 overflow-hidden !rounded-[2rem] w-full h-[85vh]">
-
-          <button
-            onClick={() => setShowProjectsPopup(false)}
-            className="absolute top-4 right-4 p-2 rounded-full bg-black/50 hover:bg-black/80 backdrop-blur-md transition-colors z-50 text-white border border-white/10"
-          >
-            <span className="sr-only">Close</span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
-          </button>
-          <DialogTitle className="sr-only">Projects</DialogTitle>
-          <div className="relative z-10 flex flex-col items-center w-full h-full overflow-y-auto p-8 md:p-12">
-
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
-              {projects.map((project, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setSelectedProject(project)}
-                  className="text-left bg-card rounded-2xl overflow-hidden border border-border hover:border-primary/50 transition-all flex flex-col h-full group w-full shadow-lg hover:shadow-xl"
-                >
-                  <div className="h-48 bg-muted w-full relative">
-                    {project.image && !project.image.includes('placeholder') ? (
-                      <Image src={project.image} fill className="object-cover group-hover:scale-105 transition-transform duration-500" alt={project.title} />
-                    ) : (
-                      <div className="absolute inset-0 flex items-center justify-center text-muted-foreground/50">
-                        <Code className="w-12 h-12 group-hover:text-primary transition-colors" />
-                      </div>
-                    )}
-                  </div>
-                  <div className="p-6 flex flex-col grow">
-                    <div className="flex justify-between items-start mb-4">
-                      <div>
-                        <span className="text-primary text-xs font-bold tracking-wider uppercase mb-1 block">{project.category}</span>
-                        <h3 className="text-xl font-bold text-foreground">{project.title}</h3>
-                      </div>
-                    </div>
-                    <p className="text-muted-foreground text-sm mb-6 grow">{project.description}</p>
-                    <div className="flex flex-wrap gap-2 mt-auto">
-                      {project.tags.map((tag: string) => (
-                        <span key={tag} className="px-3 py-1 bg-secondary rounded-full text-xs text-secondary-foreground font-mono border border-border">{tag}</span>
-                      ))}
-                    </div>
-                  </div>
-                </button>
-              ))}
-            </div>
-          </div>
-        </DialogContent>
-      </Dialog>
-
-      {/* Project Details Modal */}
-      <Dialog open={selectedProject !== null} onOpenChange={(open) => !open && setSelectedProject(null)}>
-        <DialogContent className="max-w-5xl bg-background border-border text-foreground p-0 !rounded-[2rem] w-full h-[85vh] overflow-y-auto flex flex-col md:flex-row overflow-hidden">
-          <DialogTitle className="sr-only">Project Details</DialogTitle>
-
-          {selectedProject && (
-            <>
-              {/* Left/Top: Image Gallery (Simplified to Main Image for now) */}
-              <div className="w-full md:w-1/2 bg-secondary/30 p-8 flex flex-col items-center gap-6 relative min-h-[300px] border-b md:border-b-0 md:border-r border-border overflow-y-auto custom-scrollbar">
-                <div className="absolute top-4 left-4 z-10">
-                  <span className="px-3 py-1 bg-background text-foreground text-xs font-bold rounded-full uppercase tracking-wider shadow-lg border border-border">{selectedProject.category}</span>
-                </div>
-
-                {selectedProject.gallery && selectedProject.gallery.length > 0 ? (
-                  selectedProject.gallery.map((img: string, i: number) => (
-                    <div key={i} className="relative w-full aspect-video rounded-xl overflow-hidden border border-border shadow-xl shrink-0">
-                      <Image src={img} fill className="object-cover" alt={`${selectedProject.title} screenshot ${i + 1}`} />
-                    </div>
-                  ))
-                ) : (
-                  <div className="relative w-full aspect-video border-2 border-dashed border-border rounded-xl bg-card text-muted-foreground flex flex-col items-center justify-center">
-                    <Code className="w-16 h-16 mb-4 text-foreground/40" />
-                    <span className="text-sm font-mono text-muted-foreground">NO PREVIEWS</span>
-                  </div>
-                )}
-              </div>
-
-              {/* Right/Bottom: Content */}
-              <div className="w-full md:w-1/2 p-8 md:p-12 flex flex-col overflow-y-auto bg-background relative">
-                <button
-                  onClick={() => setSelectedProject(null)}
-                  className="absolute top-6 right-6 p-2 text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  <span className="sr-only">Close</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
-                </button>
-
-                <h2 className="text-3xl md:text-4xl font-black mb-6 text-foreground leading-tight tracking-tight mt-4">{selectedProject.title}</h2>
-
-                <div className="flex flex-wrap gap-2 mb-8">
-                  {selectedProject.tags.map((tag: string) => (
-                    <span key={tag} className="px-3 py-1 bg-primary/10 text-primary text-xs font-bold font-mono rounded-md border border-primary/20">{tag}</span>
-                  ))}
-                </div>
-
-                <div className="prose prose-sm mb-10 text-muted-foreground">
-                  <p className="whitespace-pre-line leading-relaxed text-base">{selectedProject.details || selectedProject.description}</p>
-                </div>
-
-                <div className="mt-auto flex flex-col md:flex-row gap-4">
-                  <Button className="flex-1 border-border hover:bg-secondary text-foreground font-bold h-12" variant="outline" asChild>
-                    <a href={selectedProject.links.github} target="_blank" rel="noreferrer">Codebase <Github className="ml-2 w-4 h-4" /></a>
-                  </Button>
-
-                </div>
-              </div>
-            </>
-          )}
-        </DialogContent>
-      </Dialog>
 
       <Dialog open={selectedPhoto !== null} onOpenChange={(open) => !open && setSelectedPhoto(null)}>
         <DialogContent className="!fixed !top-0 !left-0 !translate-x-0 !translate-y-0 !w-screen !h-screen !max-w-none !m-0 !p-0 border-none bg-black/95 z-[9999] [&>button]:hidden flex items-center justify-center overflow-hidden">

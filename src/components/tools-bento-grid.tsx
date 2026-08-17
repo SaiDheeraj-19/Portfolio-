@@ -40,7 +40,7 @@ export default function ToolsBentoGrid() {
                 >
                     {tools.map((tool) => (
                         <motion.div
-                            key={tool.slug}
+                            key={tool.name}
                             layoutId={`card-${tool.slug}`}
                             onClick={() => setSelectedTool(tool)}
                             className="group relative flex flex-col items-center justify-center p-4 md:p-6 bg-card border border-border rounded-2xl md:rounded-3xl cursor-pointer hover:border-primary transition-colors active:scale-95 overflow-hidden"

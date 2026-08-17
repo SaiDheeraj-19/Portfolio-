@@ -1,201 +1,414 @@
 {
-  "certificationsData": {
-    "Oracle Cloud": [
-      {
-        "title": "Generative AI Professional 2025",
-        "img": "/certifications/oracle_gen_ai_prof_cert.png",
-        "issuer": "Oracle Cloud"
-      },
-      {
-        "title": "AI Foundations Associate 2025",
-        "img": "/certifications/oracle_ai_foundations_badge.jpg",
-        "issuer": "Oracle Cloud"
-      }
+    "certificationsData": {
+        "Oracle Cloud": [
+            {
+                "title": "Generative AI Professional",
+                "img": "/certifications/oracle_gen_ai_prof_cert.png",
+                "issuer": "Oracle Cloud Infrastructure 2025"
+            },
+            {
+                "title": "Generative AI Professional 2025",
+                "img": "/certifications/oracle_gen_ai_prof_cert.png",
+                "issuer": "Oracle Cloud"
+            },
+            {
+                "title": "AI Foundations Associate 2025",
+                "img": "/certifications/oracle_ai_foundations_badge.jpg",
+                "issuer": "Oracle Cloud"
+            }
+        ],
+        "Google Cloud": [
+            {
+                "title": "Generative AI Leader Track",
+                "img": "/certifications/google_gen_ai_leader.png",
+                "issuer": "Google Cloud Career Launchpad"
+            }
+        ],
+        "NVIDIA": [
+            {
+                "title": "Fundamentals of Deep Learning",
+                "img": "/certifications/nvidia_deep_learning.png",
+                "issuer": "NVIDIA"
+            }
+        ],
+        "Coursera": [
+            {
+                "title": "Facial Expression Recognition with PyTorch",
+                "img": "/certifications/facial_expression_pytorch.png",
+                "issuer": "Coursera, February 2026"
+            },
+            {
+                "title": "Build a Computer Vision App with Azure Cognitive Services",
+                "img": "/certifications/microsoft_azure_cv_cert.png",
+                "issuer": "Microsoft / Coursera"
+            }
+        ],
+        "Forage Job Simulations": [
+            {
+                "title": "GenAI Powered Data Analytics Job Simulation",
+                "img": "/certifications/tata_data_analytics.png",
+                "issuer": "TATA"
+            },
+            {
+                "title": "Technology Job Simulation",
+                "img": "/certifications/deloitte_job_sim.png",
+                "issuer": "Deloitte"
+            },
+            {
+                "title": "GenAI Powered Data Analytics",
+                "img": "/certifications/tata_data_analytics.png",
+                "issuer": "Tata / Forage"
+            }
+        ],
+        "Global": [
+            {
+                "title": "Generative AI Leader",
+                "img": "/certifications/google_gen_ai_leader.png",
+                "issuer": "Google Cloud"
+            },
+            {
+                "title": "Build a Computer Vision App",
+                "img": "/certifications/microsoft_azure_cv_cert.png",
+                "issuer": "Microsoft / Coursera"
+            },
+            {
+                "title": "Fundamentals of Deep Learning",
+                "img": "/certifications/nvidia_deep_learning.png",
+                "issuer": "NVIDIA DLI"
+            },
+            {
+                "title": "Facial Expression Recognition with PyTorch",
+                "img": "/certifications/facial_expression_pytorch.png",
+                "issuer": "Coursera Project Network"
+            }
+        ],
+        "Professional": [
+            {
+                "title": "Generative AI Mastermind",
+                "img": "/certifications/outskill_genai.png",
+                "issuer": "Outskill"
+            },
+            {
+                "title": "Teaching the AI Fluency Framework",
+                "img": "/certifications/anthropic_fluency_teaching_cert.png",
+                "issuer": "Anthrop\\C"
+            },
+            {
+                "title": "AI Fluency for Students",
+                "img": "/certifications/anthropic_fluency_students.png",
+                "issuer": "Anthrop\\C"
+            }
+        ]
+    },
+    "projects": [
+        {
+            "title": "StakeUp",
+            "category": "Featured",
+            "description": "AI-Powered Accountability Platform",
+            "details": "Led a 5-member team as Team Leader and Full Stack Architect.\nBuilt StakeUp during a 24-hour hackathon sprint.\nDesigned a scalable AI-powered accountability platform.\nImplemented ProofIQ image verification.\nImplemented Stake Battles.\nImplemented AI Smart Planner.\nImplemented Virtual Escrow Wallet.\nImplemented Leaderboards.\nImplemented Analytics Dashboard.\nArchitected the complete frontend, backend, database, and AI integration.\nIntegrated Groq Vision API using Llama 3.2 90B Vision for AI-powered task verification.\nBuilt a responsive interface using Tailwind CSS and Framer Motion.\n\nAward: 1st Place \u2014 Syntax2Code Industry Simulation Hackathon 2026\nAdditional: Awarded a 6-month internship opportunity.",
+            "image": "/projects/stakeup.png",
+            "gallery": [],
+            "tags": [
+                "Next.js",
+                "TypeScript",
+                "FastAPI",
+                "PostgreSQL",
+                "Groq Vision API",
+                "Tailwind CSS",
+                "Framer Motion",
+                "Supabase"
+            ],
+            "links": {
+                "github": "https://github.com/SaiDheeraj-19/StakeUp"
+            }
+        },
+        {
+            "title": "HomeProof",
+            "category": "Featured",
+            "description": "AI-Powered Property Inspection & Risk Assessment Platform",
+            "details": "AI-powered property evaluation ecosystem.\nUses YOLOv8 to identify structural anomalies, maintenance requirements, and safety vulnerabilities.\nIntegrates OpenAI and Gemini for automated property insights.\nGenerates inspection narratives and remediation plans.\nUses Sarvam AI for multilingual accessibility and voice-driven interactions.\nUses Groq for low-latency inference.\nBackend built with FastAPI and PostgreSQL.\nSupabase used for authentication and secure asset management.\nCross-platform React Native interface.\nAI-enhanced documentation and media ingestion.",
+            "image": "/projects/homeproof.png",
+            "gallery": [],
+            "tags": [
+                "React Native",
+                "FastAPI",
+                "PostgreSQL",
+                "YOLOv8",
+                "OpenAI",
+                "Gemini",
+                "Groq",
+                "Sarvam AI",
+                "Supabase"
+            ],
+            "links": {
+                "github": "https://github.com/SaiDheeraj-19/HomeProof-APP"
+            }
+        },
+        {
+            "title": "Sonic Bridge",
+            "category": "Featured",
+            "description": "Real-Time Multilingual Translation Platform",
+            "details": "Room-based real-time translation system.\nDesigned for live lectures and professional sessions.\nBinary PCM streaming over WebSockets.\nSub-6-second end-to-end translation.\nWebRTC noise suppression.\nVoice Activity Detection.\nSpeaker verification.\n1-to-many broadcast architecture.\nOne speaker can stream translated audio to multiple listeners.\nSpeech-to-text.\nNeural translation.\nStreaming text-to-speech.",
+            "image": "/projects/sonicbridge.png",
+            "gallery": [],
+            "tags": [
+                "React 19",
+                "Node.js",
+                "WebSockets",
+                "AI Speech Pipeline"
+            ],
+            "links": {
+                "github": "https://github.com/SaiDheeraj-19/SonicBridge"
+            }
+        },
+        {
+            "title": "Smart Attendance System",
+            "category": "Additional",
+            "description": "3-Factor Secure Academic Platform",
+            "details": "Built a fraud-resistant attendance system.\nFace recognition verification.\nGPS geofencing.\nSession-specific QR codes.\nJWT authentication.\nBcrypt password encryption.\nRole-Based Access Control.\nStudent, Faculty, and Admin roles.\nReal-time location validation.\nAttendance restricted to authorized classrooms.\nNext.js frontend.\nNode.js + MongoDB backend.",
+            "image": "/uploads/1768284766473_Screenshot_2026-01-13_at_11.38.21_AM.png",
+            "gallery": [
+                "/uploads/1768285226046_Screenshot_2026-01-13_at_11.38.21_AM.png",
+                "/uploads/1768285229986_Screenshot_2026-01-13_at_11.47.25_AM.png",
+                "/uploads/1768285234461_Screenshot_2026-01-13_at_11.47.36_AM.png",
+                "/uploads/1768285237685_Screenshot_2026-01-13_at_11.47.47_AM.png",
+                "/uploads/1768285750802_Screenshot_2026-01-13_at_11.58.05_AM.png",
+                "/uploads/1768285762618_Screenshot_2026-01-13_at_11.55.30_AM.png",
+                "/uploads/1768285766551_Screenshot_2026-01-13_at_11.55.42_AM.png",
+                "/uploads/1768285769753_Screenshot_2026-01-13_at_11.55.49_AM.png",
+                "/uploads/1768285773467_Screenshot_2026-01-13_at_11.56.24_AM.png",
+                "/uploads/1768285796209_Screenshot_2026-01-13_at_11.57.40_AM.png",
+                "/uploads/1768285801088_Screenshot_2026-01-13_at_11.57.46_AM.png",
+                "/uploads/1768285805094_Screenshot_2026-01-13_at_11.57.53_AM.png"
+            ],
+            "tags": [
+                "Next.js",
+                "Node.js",
+                "MongoDB",
+                "Face Recognition",
+                "GPS Geofencing"
+            ],
+            "links": {
+                "github": "https://github.com/SaiDheeraj-19/Solvra-SmartAttendance"
+            }
+        },
+        {
+            "title": "ClassSync",
+            "category": "Additional",
+            "description": "Real-Time Academic Management Platform",
+            "details": "Centralized student management system.\nJWT authentication.\nRole-Based Access Control.\nAdmin / Student roles.\nDynamic live timetable.\nReal-time updates.\nPoll management.\nVoter tracking.\nCSV export.\nAutomated email notifications.\nNotices and announcements.",
+            "image": "/projects/classsync/student_portal.png",
+            "gallery": [
+                "/projects/classsync/loading.png",
+                "/projects/classsync/login.png",
+                "/projects/classsync/student_portal.png",
+                "/projects/classsync/admin_attendance.png"
+            ],
+            "tags": [
+                "React 19",
+                "Node.js",
+                "MongoDB",
+                "JWT"
+            ],
+            "links": {
+                "github": "https://github.com/SaiDheeraj-19/-CLASSSYNC"
+            }
+        },
+        {
+            "title": "Wave",
+            "category": "Additional",
+            "description": "Real-Time Social Music Platform",
+            "details": "WebSocket-based session architecture.\nSynchronized 1-to-many music playback.\nCustom audio crossfade engine.\nWeb Audio API.\nSecure room-based joining.\nJWT authentication.\nReal-time state synchronization.\nScalable full-stack architecture.",
+            "image": "/projects/wave.png",
+            "gallery": [],
+            "tags": [
+                "Next.js",
+                "TypeScript",
+                "WebSockets",
+                "Web Audio API",
+                "JWT"
+            ],
+            "links": {
+                "github": "https://github.com/SaiDheeraj-19/Wave"
+            }
+        },
+        {
+            "title": "Fix It",
+            "category": "Additional",
+            "description": "Premium POS & Repair Management System",
+            "details": "Full-stack repair lifecycle and POS system.\nRepair workflow: Intake \u2192 In Progress \u2192 Delivered\nSecure storage for device credentials.\nEncrypted PIN/Pattern storage.\nAutomated PDF invoice generation.\nReal-time revenue dashboards.\nPostgreSQL database.\nPrisma ORM.\nRole-Based Access Control.\nAdmin and Staff operations.",
+            "image": "/fixit_home.png",
+            "gallery": [
+                "/fixit_home.png",
+                "/fixit_store.png",
+                "/fixit_service.png",
+                "/fixit_login.png"
+            ],
+            "tags": [
+                "Next.js 14",
+                "TypeScript",
+                "PostgreSQL",
+                "Prisma"
+            ],
+            "links": {
+                "github": "https://github.com/SaiDheeraj-19/fix-it-possystem"
+            }
+        },
+        {
+            "title": "Aura",
+            "category": "Additional",
+            "description": "AI Speech-to-Text & Multilingual Translation Platform",
+            "details": "Converts spoken audio into text.\nTranslates speech into South Indian languages.\nBuilt speech ingestion, transcription, and translation pipelines.\nDesigned for multilingual accessibility.\nSupports regional-language communication.\nHelps users who are not fluent in English.",
+            "image": "/uploads/1768331606398_Gemini_Generated_Image_ec9qsjec9qsjec9q.jpeg",
+            "gallery": [
+                "/projects/aura/aura-preview-1.png",
+                "/projects/aura/aura-preview-2.png",
+                "/projects/aura/aura-preview-3.png"
+            ],
+            "tags": [
+                "Streamlit",
+                "AI Speech Models",
+                "Translation Pipelines"
+            ],
+            "links": {
+                "github": "https://github.com/SaiDheeraj-19/Aura"
+            }
+        }
     ],
-    "Forage Job Simulations": [
-      {
-        "title": "GenAI Powered Data Analytics",
-        "img": "/certifications/tata_data_analytics.png",
-        "issuer": "Tata / Forage"
-      },
-      {
-        "title": "Technology Job Simulation",
-        "img": "/certifications/deloitte_job_sim.png",
-        "issuer": "Deloitte / Forage"
-      }
+    "profile": {
+        "idCardConfig": {
+            "scale": 1,
+            "x": 0,
+            "y": 0
+        },
+        "idCardPhoto": "/profile.jpg",
+        "aboutMePhoto": "/about_me_photo.jpg",
+        "resumeUrl": "/uploads/1768326558615_R_SAI_DHEERAJ.pdf"
+    },
+    "experience": [
+        {
+            "company": "RMJ IT SOLUTIONS",
+            "role": "Team Lead Intern",
+            "duration": "July 2026 \u2013 Present",
+            "workMode": "On-site",
+            "product": "MicroIntern \u2014 AI-Powered Skill Assessment & Recruitment Platform",
+            "description": "Technical lead responsible for strategic planning, system architecture, AI integration, backend engineering, database architecture, DevOps, and directing the development cohort.",
+            "responsibilities": [
+                "Serving as the technical lead for the MicroIntern development project.",
+                "Overseeing strategic planning and directing the development cohort toward successful project execution.",
+                "Architecting the end-to-end system framework.",
+                "Prioritizing high-performance scalability and robust security.",
+                "Integrating AI pipelines for automated resume parsing.",
+                "Building intelligent assessment generation capabilities.",
+                "Implementing objective candidate scoring.",
+                "Spearheading server-side development.",
+                "Facilitating API integrations.",
+                "Designing complex relational database schemas.",
+                "Establishing and maintaining automated DevOps pipelines.",
+                "Supporting continuous testing.",
+                "Supporting production-ready deployments."
+            ],
+            "skills": [
+                "Technical Leadership",
+                "System Architecture",
+                "AI Engineering",
+                "Backend Engineering",
+                "Database Architecture",
+                "API Integration",
+                "DevOps",
+                "Security",
+                "Recruitment Technology"
+            ]
+        },
+        {
+            "company": "ROOTEDLABS",
+            "role": "Web Development Intern",
+            "duration": "May 2026 \u2013 July 2026",
+            "workMode": "Remote",
+            "website": "www.rootedel.com",
+            "status": "Completed",
+            "description": "Worked on the RootedLabs website and AI-powered learning platform, taking ownership of web development and scalable product features.",
+            "responsibilities": [
+                "Independently designed, developed, and deployed the official RootedLabs website from scratch.",
+                "Delivered a modern, responsive, production-ready web application.",
+                "Served as the primary developer for the RootedLabs AI-powered learning platform.",
+                "Built scalable features for: Students, Teachers, Parents, School administrators",
+                "Translated product and educational requirements into scalable, maintainable software solutions.",
+                "Developed reusable components.",
+                "Optimized application performance.",
+                "Enhanced user experience across desktop and mobile platforms.",
+                "Followed Git-based version control.",
+                "Followed testing practices.",
+                "Maintained project documentation.",
+                "Followed clean-code principles throughout development."
+            ],
+            "skills": [
+                "Web Development",
+                "AI-Powered Education",
+                "EdTech",
+                "Responsive Development",
+                "Product Engineering",
+                "Component Architecture",
+                "Performance Optimization"
+            ]
+        }
     ],
-    "Global": [
-      {
-        "title": "Generative AI Leader",
-        "img": "/certifications/google_gen_ai_leader.png",
-        "issuer": "Google Cloud"
-      },
-      {
-        "title": "Build a Computer Vision App",
-        "img": "/certifications/microsoft_azure_cv_cert.png",
-        "issuer": "Microsoft / Coursera"
-      },
-      {
-        "title": "Fundamentals of Deep Learning",
-        "img": "/certifications/nvidia_deep_learning.png",
-        "issuer": "NVIDIA DLI"
-      },
-      {
-        "title": "Facial Expression Recognition with PyTorch",
-        "img": "/certifications/facial_expression_pytorch.png",
-        "issuer": "Coursera Project Network"
-      }
-    ],
-    "Professional": [
-      {
-        "title": "Generative AI Mastermind",
-        "img": "/certifications/outskill_genai.png",
-        "issuer": "Outskill"
-      },
-      {
-        "title": "Teaching the AI Fluency Framework",
-        "img": "/certifications/anthropic_fluency_teaching_cert.png",
-        "issuer": "Anthrop\\C"
-      },
-      {
-        "title": "AI Fluency for Students",
-        "img": "/certifications/anthropic_fluency_students.png",
-        "issuer": "Anthrop\\C"
-      }
+    "hackathons": [
+        {
+            "title": "Syntax2Code Industry Simulation Hackathon 2026",
+            "achievement": "1st Place \ud83e\udd47",
+            "institution": "G. Pullaiah College of Engineering and Technology (GPCET)",
+            "date": "July 10, 2026",
+            "role": "Team Lead & Architect",
+            "team": "5-person team",
+            "project": "StakeUp \u2014 AI-Powered Accountability Platform",
+            "timeframe": "24-hour sprint",
+            "description": "Led a 5-member team as Team Leader and Full Stack Architect to win 1st place. Received a 6-month internship opportunity based on technical execution, innovation, and professional presentation.",
+            "contributions": [
+                "Designed the complete full-stack architecture.",
+                "Directed implementation of the interface.",
+                "Oversaw server-side logic and AI modules.",
+                "Engineered ProofIQ automated verification.",
+                "Implemented competitive Stake Battles.",
+                "Designed secure virtual escrow systems.",
+                "Built real-time analytical dashboards.",
+                "Integrated the frontend, backend, database, and AI services."
+            ],
+            "technologies": [
+                "Next.js",
+                "TypeScript",
+                "FastAPI",
+                "PostgreSQL",
+                "Groq Vision API",
+                "Tailwind CSS",
+                "Framer Motion",
+                "Supabase"
+            ]
+        },
+        {
+            "title": "TechXplore 2026",
+            "achievement": "2nd Prize \ud83e\udd48",
+            "institution": "G. Pullaiah College of Engineering and Technology (GPCET)",
+            "date": "March 31, 2026",
+            "description": "Independently developed a software solution, architecting and realizing a fully operational prototype within the intensive hackathon timeframe.",
+            "contributions": [
+                "Showcased the working prototype.",
+                "Demonstrated full-stack engineering proficiency.",
+                "Demonstrated agile technical problem-solving under competitive pressure."
+            ],
+            "technologies": []
+        },
+        {
+            "title": "NEXORA Hackathon 2026",
+            "achievement": "3rd Prize \ud83e\udd49",
+            "institution": "Ashoka Women's Engineering College",
+            "date": "March 25, 2026",
+            "description": "Independently developed a software solution.",
+            "contributions": [
+                "Constructed an end-to-end working prototype.",
+                "Validated the prototype within the specified event duration."
+            ],
+            "technologies": []
+        }
     ]
-  },
-  "projects": [
-    {
-      "title": "E-commerce & Repair Booking Web Application",
-      "category": "Full Stack",
-      "description": "A real e-commerce and repair-booking platform replacing manual workflows with digital precision. Features AI instant quotes and real-time tracking.",
-      "details": "This is a real e-commerce and repair-booking platform built for a local mobile repair shop, designed to replace WhatsApp messages, phone calls, and guesswork with a proper digital workflow.\n\nThe system includes an AI-powered Instant Quote engine that:\n• Takes the device model\n• Understands the type of damage\n• Uses live spare-part pricing\n• Returns a realistic repair estimate in seconds\n\nAlongside that, the platform provides:\n• 24/7 repair slot booking\n• An online store for accessories\n• Real-time order and inventory tracking\n• A business dashboard to manage jobs and customers\n\nThis isn’t a demo store — it’s software built to increase trust, reduce friction, and convert visitors into paying customers.",
-      "image": "/fixit_home.png",
-      "gallery": [
-        "/fixit_home.png",
-        "/fixit_store.png",
-        "/fixit_service.png",
-        "/fixit_login.png"
-      ],
-      "tags": [
-        "React 19",
-        "Supabase",
-        "Gemini API",
-        "Real-Time Systems"
-      ],
-      "links": {
-        "demo": "https://fixit-demo.vercel.app",
-        "github": "https://github.com/SaiDheeraj-19/fix-it"
-      }
-    },
-    {
-      "title": "Attendance Management Web Application",
-      "category": "Full Stack",
-      "description": "A fraud-resistant attendance platform using face recognition, geofencing, and QR codes to eliminate proxy attendance.",
-      "details": "A fraud-resistant attendance platform built to eliminate proxy and location-based cheating in educational institutions.\n\nSolvra verifies attendance using three independent signals — student identity (face recognition), physical presence (GPS geofencing), and session-bound QR codes — ensuring only the right student in the right classroom can mark attendance.\n\nThe system includes:\n• Role-based dashboards for Admin, Faculty, and Students\n• Real-time attendance tracking\n• Secure JWT-based authentication\n• Live classroom location validation\n\nBuilt as a full-stack, security-first system designed to work under real classroom conditions.",
-      "image": "/uploads/1768284766473_Screenshot_2026-01-13_at_11.38.21_AM.png",
-      "gallery": [
-        "/uploads/1768285226046_Screenshot_2026-01-13_at_11.38.21_AM.png",
-        "/uploads/1768285229986_Screenshot_2026-01-13_at_11.47.25_AM.png",
-        "/uploads/1768285234461_Screenshot_2026-01-13_at_11.47.36_AM.png",
-        "/uploads/1768285237685_Screenshot_2026-01-13_at_11.47.47_AM.png",
-        "/uploads/1768285750802_Screenshot_2026-01-13_at_11.58.05_AM.png",
-        "/uploads/1768285762618_Screenshot_2026-01-13_at_11.55.30_AM.png",
-        "/uploads/1768285766551_Screenshot_2026-01-13_at_11.55.42_AM.png",
-        "/uploads/1768285769753_Screenshot_2026-01-13_at_11.55.49_AM.png",
-        "/uploads/1768285773467_Screenshot_2026-01-13_at_11.56.24_AM.png",
-        "/uploads/1768285796209_Screenshot_2026-01-13_at_11.57.40_AM.png",
-        "/uploads/1768285801088_Screenshot_2026-01-13_at_11.57.46_AM.png",
-        "/uploads/1768285805094_Screenshot_2026-01-13_at_11.57.53_AM.png"
-      ],
-      "tags": [
-        "MERN Full Stack",
-        "Next.js",
-        "Face Verification",
-        "Geofencing"
-      ],
-      "links": {
-        "demo": "https://solvra-demo.vercel.app",
-        "github": "https://github.com/SaiDheeraj-19/Solvra-SmartAttendance"
-      }
-    },
-    {
-      "title": "Multilingual Speech Translation Web App",
-      "category": "AI",
-      "description": "A Streamlit-based web app that converts speech into text and regional Indian languages (English, Tamil, Telugu, Malayalam, Kannada).",
-      "details": "Built a web app that converts speech into text and regional Indian languages (English, Tamil, Telugu, Malayalam, Kannada).\n\nSupports video uploads and YouTube links to generate translated transcripts from any video.\n\nUsed AssemblyAI for accurate speech recognition.\n\nUsed Google Language APIs to create clear, grammatically correct translations.\n\nBuilt the UI with Streamlit for fast and simple user interaction.\n\nAutomatically processes:\nVideo → Audio → Text → Translation → Final Transcript\n\nHelps make English content accessible to regional language users across India.",
-      "image": "/uploads/1768331606398_Gemini_Generated_Image_ec9qsjec9qsjec9q.jpeg",
-      "gallery": [
-        "/projects/aura/aura-preview-1.png",
-        "/projects/aura/aura-preview-2.png",
-        "/projects/aura/aura-preview-3.png"
-      ],
-      "tags": [
-        "Streamlit",
-        "AssemblyAI",
-        "Speech-to-Text"
-      ],
-      "links": {
-        "demo": "https://aura-demo.streamlit.app",
-        "github": "https://github.com/SaiDheeraj-19/Aura"
-      }
-    },
-    {
-      "title": "ClassSync",
-      "category": "Full Stack",
-      "description": "A sleek, high-contrast Cyberpunk educational management platform that seamlessly connects Students and Administrators.",
-      "details": "ClassSync redefines the educational management experience with a sleek, high-contrast Cyberpunk interface. Gone are the days of boring, white-and-grey dashboards. Welcome to a platform that feels as advanced as the subjects you're studying.\n\nDesigned for efficiency, speed, and visual impact, ClassSync seamlessly connects Students and Administrators.\n\nKey Features:\n• Role-based dashboards for Admin and Students\n• Real-time updates\n• Secure Authentication\n• Modern Cyberpunk Aesthetic\n\nBuilt with a robust tech stack ensuring performance and scalability.",
-      "image": "/projects/classsync/student_portal.png",
-      "gallery": [
-        "/projects/classsync/loading.png",
-        "/projects/classsync/login.png",
-        "/projects/classsync/student_portal.png",
-        "/projects/classsync/admin_attendance.png"
-      ],
-      "tags": [
-        "MERN Stack",
-        "React",
-        "Node.js",
-        "MongoDB",
-        "Cyberpunk UI"
-      ],
-      "links": {
-        "demo": "https://classsync-one.vercel.app",
-        "github": "https://github.com/SaiDheeraj-19/-CLASSSYNC"
-      }
-    },
-    {
-      "title": "FIX IT - Premium POS System",
-      "category": "Web App",
-      "description": "A state-of-the-art Point of Sale and Repair Management system designed for modern mobile service centers.",
-      "details": "FIX IT is a state-of-the-art POS and Repair Management system designed for modern mobile service centers. It combines a premium user experience with robust tracking, secure authentication, and real-time analytics.\n\nKey Features:\n• Premium Security: Android-style pattern lock capture & encrypted storage\n• Advanced Repair Workflow: Dynamic image gallery & live status tracking (Intake → Delivered)\n• Financials: Real-time revenue dashboards & automated PDF invoicing\n• Modern UI/UX: Glassmorphism effects & Framer Motion transitions",
-      "image": "/projects/fixit-pos/staff.png",
-      "gallery": [
-        "/projects/fixit-pos/staff.png",
-        "/projects/fixit-pos/admin.png",
-        "/projects/fixit-pos/admin1.png",
-        "/projects/fixit-pos/login.png"
-      ],
-      "tags": [
-        "Next.js 14",
-        "PostgreSQL",
-        "Lucide React",
-        "Framer Motion"
-      ],
-      "links": {
-        "demo": "https://fix-it-possystem.vercel.app",
-        "github": "https://github.com/SaiDheeraj-19/fix-it-possystem"
-      }
-    }
-  ],
-  "profile": {
-    "idCardConfig": {
-      "scale": 1,
-      "x": 0,
-      "y": 0
-    },
-    "idCardPhoto": "/sai_profile_bw.png",
-    "aboutMePhoto": "/about_me_photo.jpg",
-    "resumeUrl": "/uploads/1768326558615_R_SAI_DHEERAJ.pdf"
-  }
 }

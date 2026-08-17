@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { Renderer, Program, Mesh, Triangle } from 'ogl';
 import { useEffect, useRef } from 'react';
 

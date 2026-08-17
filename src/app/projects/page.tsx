@@ -2,338 +2,180 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { ArrowRight, ExternalLink, Github, Filter, Search, Code, Briefcase, Smartphone, Palette, Database } from "lucide-react"
+import { ExternalLink, Github, ArrowLeft } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-
-const projects = [
-    {
-        id: 1,
-        title: "E-Commerce Platform",
-        description: "A modern e-commerce platform with real-time inventory management, secure payment processing, and responsive design. Built with scalability and performance in mind.",
-        image: "🛍️",
-        technologies: ["React", "Node.js", "MongoDB", "Stripe", "Tailwind CSS"],
-        category: "Full Stack",
-        liveUrl: "#",
-        githubUrl: "https://github.com/SaiDheeraj-19",
-        featured: true,
-        highlights: ["Real-time inventory", "Secure payments", "Responsive design"]
-    },
-    {
-        id: 2,
-        title: "Task Management Dashboard",
-        description: "Collaborative task management tool with drag-and-drop functionality, real-time updates, and team collaboration features. Includes analytics and reporting.",
-        image: "📊",
-        technologies: ["Next.js", "TypeScript", "PostgreSQL", "Prisma", "Socket.io"],
-        category: "Web App",
-        liveUrl: "#",
-        githubUrl: "https://github.com/SaiDheeraj-19",
-        featured: true,
-        highlights: ["Drag & drop", "Real-time sync", "Analytics dashboard"]
-    },
-    {
-        id: 3,
-        title: "Weather App",
-        description: "Beautiful weather application with location-based forecasts, interactive maps, and detailed weather analytics. Features dark mode and notifications.",
-        image: "🌤️",
-        technologies: ["React Native", "TypeScript", "OpenWeather API", "Redux"],
-        category: "Mobile",
-        liveUrl: "#",
-        githubUrl: "https://github.com/SaiDheeraj-19",
-        featured: false,
-        highlights: ["Location-based", "Interactive maps", "Push notifications"]
-    },
-    {
-        id: 4,
-        title: "Portfolio Website",
-        description: "Personal portfolio website showcasing projects and skills with smooth animations, responsive design, and optimized performance.",
-        image: "🎨",
-        technologies: ["Next.js", "Tailwind CSS", "Framer Motion", "TypeScript"],
-        category: "Design",
-        liveUrl: "#",
-        githubUrl: "https://github.com/SaiDheeraj-19",
-        featured: true,
-        highlights: ["Smooth animations", "Optimized performance", "Responsive design"]
-    },
-    {
-        id: 5,
-        title: "Social Media Analytics",
-        description: "Analytics dashboard for social media metrics with data visualization, export features, and automated reporting capabilities.",
-        image: "📈",
-        technologies: ["Vue.js", "D3.js", "Express", "MySQL", "Chart.js"],
-        category: "Data",
-        liveUrl: "#",
-        githubUrl: "https://github.com/SaiDheeraj-19",
-        featured: false,
-        highlights: ["Data visualization", "Export features", "Automated reports"]
-    },
-    {
-        id: 6,
-        title: "Chat Application",
-        description: "Real-time messaging application with end-to-end encryption, file sharing, voice/video calls, and group chat functionality.",
-        image: "💬",
-        technologies: ["React", "WebRTC", "Socket.io", "Node.js", "JWT"],
-        category: "Web App",
-        liveUrl: "#",
-        githubUrl: "https://github.com/SaiDheeraj-19",
-        featured: false,
-        highlights: ["End-to-end encryption", "File sharing", "Video calls"]
-    }
-]
-
-const categories = ["All", "Full Stack", "Web App", "Mobile", "Design", "Data"]
-
-const getCategoryIcon = (category: string) => {
-    switch (category) {
-        case "Full Stack": return <Code className="w-4 h-4" />
-        case "Web App": return <Briefcase className="w-4 h-4" />
-        case "Mobile": return <Smartphone className="w-4 h-4" />
-        case "Design": return <Palette className="w-4 h-4" />
-        case "Data": return <Database className="w-4 h-4" />
-        default: return <Code className="w-4 h-4" />
-    }
-}
+import portfolio from "@/data/portfolio.json"
+import { motion, AnimatePresence } from "framer-motion"
 
 export default function ProjectsPage() {
-    const [searchTerm, setSearchTerm] = useState("")
+    const categories = ["All", "Web", "AI", "Mobile", "Other"]
     const [selectedCategory, setSelectedCategory] = useState("All")
+    const [hoveredProject, setHoveredProject] = useState<string | null>(null)
 
-    const filteredProjects = projects.filter((project) => {
-        const matchesSearch = project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            project.description.toLowerCase().includes(searchTerm.toLowerCase())
-        const matchesCategory = selectedCategory === "All" || project.category === selectedCategory
-        return matchesSearch && matchesCategory
+    const filteredProjects = portfolio.projects.filter(project => {
+        return selectedCategory === "All" || project.category === selectedCategory
     })
 
-    const featuredProjects = projects.filter((project) => project.featured)
-
     return (
-        <div className="min-h-screen">
-            {/* Hero Section */}
-            <section className="py-20 lg:py-32 bg-gradient-to-br from-primary/5 to-secondary/5">
-                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center max-w-3xl mx-auto animate-fade-in">
-                        <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
-                            My <span className="text-primary">Projects</span>
+        <div className="min-h-screen bg-background text-foreground pb-20 overflow-hidden">
+            {/* Minimal Header */}
+            <header className="pt-24 pb-12">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+                    <Button variant="ghost" asChild className="mb-12 -ml-4 hover:bg-transparent hover:text-primary">
+                        <Link href="/">
+                            <ArrowLeft className="mr-2 h-4 w-4" />
+                            Back to Home
+                        </Link>
+                    </Button>
+                    
+                    <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 border-b border-neutral-200 pb-10">
+                        <h1 className="text-6xl md:text-8xl font-black tracking-tighter leading-none text-neutral-900 uppercase">
+                            Selected<br />Works
                         </h1>
-                        <p className="text-xl text-muted-foreground mb-8">
-                            A collection of my work showcasing web development, design, and problem-solving skills.
-                            Each project represents a unique challenge and learning experience.
+                        <p className="text-lg text-neutral-500 max-w-sm font-medium leading-relaxed">
+                            A curated index of production-ready applications, open-source tools, and digital platforms.
                         </p>
-
-                        {/* Search Bar */}
-                        <div className="relative max-w-md mx-auto mb-8">
-                            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-                            <Input
-                                placeholder="Search projects..."
-                                value={searchTerm}
-                                onChange={(e) => setSearchTerm(e.target.value)}
-                                className="pl-10"
-                            />
-                        </div>
                     </div>
                 </div>
-            </section>
+            </header>
 
-            {/* Featured Projects Bento Grid */}
-            {selectedCategory === "All" && !searchTerm && featuredProjects.length > 0 && (
-                <section className="py-20">
-                    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="text-center mb-12">
-                            <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Projects</h2>
-                            <p className="text-lg text-muted-foreground">
-                                Highlighted work showcasing my best capabilities
-                            </p>
-                        </div>
+            {/* Content Area */}
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl pt-8">
+                
+                {/* Minimal Filters */}
+                <div className="flex flex-wrap gap-8 mb-16">
+                    {categories.map((category) => (
+                        <button
+                            key={category}
+                            onClick={() => setSelectedCategory(category)}
+                            className={`text-sm font-bold uppercase tracking-widest transition-colors hover:text-primary ${
+                                selectedCategory === category 
+                                    ? "text-primary" 
+                                    : "text-neutral-400"
+                            }`}
+                        >
+                            {category}
+                        </button>
+                    ))}
+                </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[300px]">
-                            {featuredProjects.map((project, index) => (
-                                <div
-                                    key={project.id}
-                                    className={`${index === 0 ? 'md:col-span-2 lg:col-span-2' : ''} animate-scale-in`}
-                                    style={{ animationDelay: `${index * 0.1}s` }}
-                                >
-                                    <Card className="h-full group hover:shadow-xl transition-all duration-300 overflow-hidden">
-                                        <CardContent className="p-0 h-full">
-                                            <div className="relative h-full">
-                                                {/* Project Image */}
-                                                <div className={`h-48 ${index === 0 ? 'md:h-64' : ''} bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center`}>
-                                                    <span className="text-6xl opacity-20">{project.image}</span>
-                                                </div>
-
-                                                {/* Content */}
-                                                <div className="p-6">
-                                                    <div className="flex items-center justify-between mb-3">
-                                                        <h3 className="text-xl font-semibold">{project.title}</h3>
-                                                        <div className="flex items-center text-sm text-muted-foreground">
-                                                            {getCategoryIcon(project.category)}
-                                                            <span className="ml-1">{project.category}</span>
-                                                        </div>
-                                                    </div>
-
-                                                    <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
-                                                        {project.description}
-                                                    </p>
-
-                                                    {/* Highlights */}
-                                                    <div className="flex flex-wrap gap-2 mb-4">
-                                                        {project.highlights?.slice(0, 2).map((highlight) => (
-                                                            <span
-                                                                key={highlight}
-                                                                className="px-2 py-1 bg-primary/10 text-primary rounded-md text-xs"
-                                                            >
-                                                                {highlight}
-                                                            </span>
-                                                        ))}
-                                                    </div>
-
-                                                    {/* Technologies */}
-                                                    <div className="flex flex-wrap gap-1 mb-4">
-                                                        {project.technologies.slice(0, 3).map((tech) => (
-                                                            <span
-                                                                key={tech}
-                                                                className="px-2 py-1 bg-muted text-muted-foreground rounded text-xs"
-                                                            >
-                                                                {tech}
-                                                            </span>
-                                                        ))}
-                                                    </div>
-
-                                                    {/* Actions */}
-                                                    <div className="flex gap-2">
-                                                        <Button size="sm" variant="outline" asChild className="flex-1">
-                                                            <Link href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                                                                <Github className="h-3 w-3 mr-1" />
-                                                                Code
-                                                            </Link>
-                                                        </Button>
-                                                        <Button size="sm" asChild className="flex-1">
-                                                            <Link href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                                                                <ExternalLink className="h-3 w-3 mr-1" />
-                                                                Live
-                                                            </Link>
-                                                        </Button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </CardContent>
-                                    </Card>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </section>
-            )}
-
-            {/* All Projects Bento Grid */}
-            <section className="py-20 bg-muted/50">
-                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-12">
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                            {searchTerm ? "Search Results" : "All Projects"}
-                        </h2>
-                        <p className="text-lg text-muted-foreground">
-                            {searchTerm ? `Found ${filteredProjects.length} project(s)` : "Complete project portfolio"}
-                        </p>
-                    </div>
-
-                    {/* Category Tabs */}
-                    <Tabs value={selectedCategory} onValueChange={setSelectedCategory} className="mb-12">
-                        <TabsList className="grid w-full grid-cols-3 md:grid-cols-6">
-                            {categories.map((category) => (
-                                <TabsTrigger key={category} value={category} className="capitalize">
-                                    {category}
-                                </TabsTrigger>
-                            ))}
-                        </TabsList>
-                    </Tabs>
-
-                    {/* Projects Grid */}
+                {/* Awwwards Style Giant Accordion List */}
+                <div className="flex flex-col border-t border-neutral-200">
                     {filteredProjects.length > 0 ? (
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[280px]">
-                            {filteredProjects.map((project, index) => (
-                                <div
-                                    key={project.id}
-                                    className="animate-scale-in"
-                                    style={{ animationDelay: `${index * 0.1}s` }}
+                        filteredProjects.map((project, index) => {
+                            const isHovered = hoveredProject === project.title;
+                            
+                            return (
+                                <div 
+                                    key={project.title} 
+                                    className="group border-b border-neutral-200 py-8 transition-colors duration-500 hover:bg-neutral-50 cursor-crosshair"
+                                    onMouseEnter={() => setHoveredProject(project.title)}
+                                    onMouseLeave={() => setHoveredProject(null)}
                                 >
-                                    <Card className="h-full group hover:shadow-lg transition-all duration-300 overflow-hidden">
-                                        <CardContent className="p-0 h-full">
-                                            <div className="relative h-full">
-                                                {/* Project Image */}
-                                                <div className="h-40 bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center">
-                                                    <span className="text-5xl opacity-20">{project.image}</span>
-                                                </div>
+                                    <div className="flex flex-col w-full">
+                                        
+                                        {/* Top Row: Meta and Title */}
+                                        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 w-full px-4">
+                                            {/* Left: Index & Category */}
+                                            <div className="flex items-center gap-6 md:w-1/4 shrink-0">
+                                                <span className="text-neutral-300 font-mono text-lg">
+                                                    {(index + 1).toString().padStart(2, '0')}
+                                                </span>
+                                                <span className="text-neutral-500 font-bold text-xs uppercase tracking-[0.2em]">
+                                                    {project.category}
+                                                </span>
+                                            </div>
+                                            
+                                            {/* Middle: Giant Title */}
+                                            <div className="w-full md:w-2/4">
+                                                <h3 className={`text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight transition-all duration-500 ${isHovered ? 'text-primary' : 'text-neutral-900'}`}>
+                                                    {project.title}
+                                                </h3>
+                                            </div>
+                                            
+                                            {/* Right: Year/Tech summary indicator (Desktop only) */}
+                                            <div className="hidden md:flex justify-end w-1/4 shrink-0 overflow-hidden">
+                                                <span className={`text-neutral-400 font-mono text-sm transition-all duration-500 ${isHovered ? 'translate-x-full opacity-0' : 'translate-x-0 opacity-100'}`}>
+                                                    View Details →
+                                                </span>
+                                            </div>
+                                        </div>
 
-                                                {/* Content */}
-                                                <div className="p-4">
-                                                    <div className="flex items-center justify-between mb-2">
-                                                        <h3 className="font-semibold">{project.title}</h3>
-                                                        <div className="flex items-center text-xs text-muted-foreground">
-                                                            {getCategoryIcon(project.category)}
+                                        {/* Expanding Content */}
+                                        <AnimatePresence>
+                                            {isHovered && (
+                                                <motion.div 
+                                                    initial={{ height: 0, opacity: 0 }}
+                                                    animate={{ height: "auto", opacity: 1 }}
+                                                    exit={{ height: 0, opacity: 0 }}
+                                                    transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                                                    className="overflow-hidden px-4"
+                                                >
+                                                    <div className="pt-8 pb-4 flex flex-col md:flex-row gap-8 md:gap-16 w-full md:w-3/4 md:ml-auto">
+                                                        
+                                                        {/* Description */}
+                                                        <div className="w-full md:w-1/2">
+                                                            <p className="text-neutral-600 font-medium leading-relaxed text-base md:text-lg">
+                                                                {project.description}
+                                                            </p>
+                                                        </div>
+                                                        
+                                                        {/* Tech Stack & Links */}
+                                                        <div className="w-full md:w-1/2 flex flex-col gap-6">
+                                                            {/* Tech Tags */}
+                                                            <div className="flex flex-wrap gap-2">
+                                                                {project.tags?.map((tech: string) => (
+                                                                    <span key={tech} className="px-4 py-2 bg-neutral-100 border border-neutral-200 rounded-full text-xs font-bold text-neutral-600 uppercase tracking-wider">
+                                                                        {tech}
+                                                                    </span>
+                                                                ))}
+                                                            </div>
+                                                            
+                                                            {/* Action Links */}
+                                                            <div className="flex items-center gap-6 pt-4 mt-auto border-t border-neutral-100">
+                                                                {(project.links as any)?.github && (project.links as any)?.github !== "#" && (
+                                                                    <Link 
+                                                                        href={(project.links as any)?.github} 
+                                                                        target="_blank" 
+                                                                        rel="noopener noreferrer"
+                                                                        className="flex items-center text-sm font-black uppercase tracking-widest text-neutral-900 hover:text-primary transition-colors group/link"
+                                                                    >
+                                                                        <Github className="w-4 h-4 mr-2" />
+                                                                        <span className="group-hover/link:underline underline-offset-8">Source Code</span>
+                                                                    </Link>
+                                                                )}
+                                                                {(project.links as any)?.live && (project.links as any)?.live !== "#" && (
+                                                                    <Link 
+                                                                        href={(project.links as any)?.live} 
+                                                                        target="_blank" 
+                                                                        rel="noopener noreferrer"
+                                                                        className="flex items-center text-sm font-black uppercase tracking-widest text-neutral-900 hover:text-primary transition-colors group/link"
+                                                                    >
+                                                                        <ExternalLink className="w-4 h-4 mr-2" />
+                                                                        <span className="group-hover/link:underline underline-offset-8">Live Platform</span>
+                                                                    </Link>
+                                                                )}
+                                                            </div>
                                                         </div>
                                                     </div>
-
-                                                    <p className="text-muted-foreground text-xs mb-3 line-clamp-2">
-                                                        {project.description}
-                                                    </p>
-
-                                                    {/* Technologies */}
-                                                    <div className="flex flex-wrap gap-1 mb-3">
-                                                        {project.technologies.slice(0, 2).map((tech) => (
-                                                            <span
-                                                                key={tech}
-                                                                className="px-1 py-0.5 bg-muted text-muted-foreground rounded text-xs"
-                                                            >
-                                                                {tech}
-                                                            </span>
-                                                        ))}
-                                                        {project.technologies.length > 2 && (
-                                                            <span className="px-1 py-0.5 bg-muted text-muted-foreground rounded text-xs">
-                                                                +{project.technologies.length - 2}
-                                                            </span>
-                                                        )}
-                                                    </div>
-
-                                                    {/* Actions */}
-                                                    <div className="flex gap-2">
-                                                        <Button size="sm" variant="outline" asChild className="flex-1 text-xs">
-                                                            <Link href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                                                                <Github className="h-3 w-3 mr-1" />
-                                                                Code
-                                                            </Link>
-                                                        </Button>
-                                                        <Button size="sm" asChild className="flex-1 text-xs">
-                                                            <Link href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                                                                <ExternalLink className="h-3 w-3 mr-1" />
-                                                                Live
-                                                            </Link>
-                                                        </Button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </CardContent>
-                                    </Card>
+                                                </motion.div>
+                                            )}
+                                        </AnimatePresence>
+                                        
+                                    </div>
                                 </div>
-                            ))}
-                        </div>
+                            )
+                        })
                     ) : (
-                        <div className="text-center py-12">
-                            <p className="text-muted-foreground text-lg">
-                                No projects found matching your criteria.
-                            </p>
-                            <Button variant="outline" className="mt-4" onClick={() => {
-                                setSearchTerm("")
-                                setSelectedCategory("All")
-                            }}>
-                                Clear filters
+                        <div className="py-32 text-center border-b border-neutral-200">
+                            <p className="text-neutral-500 font-medium text-lg mb-6 uppercase tracking-widest">No matching projects found.</p>
+                            <Button variant="outline" className="rounded-full px-8 uppercase font-bold tracking-widest" onClick={() => setSelectedCategory("All")}>
+                                View All Index
                             </Button>
                         </div>
                     )}
                 </div>
-            </section>
+            </div>
         </div>
     )
 }

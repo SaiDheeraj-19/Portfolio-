@@ -44,7 +44,7 @@ export default function HomeToolsSection() {
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 md:gap-x-12 gap-y-12 md:gap-y-16 items-center justify-items-center">
                     {selectedTools.map((tool) => (
                         <div
-                            key={tool.slug}
+                            key={tool.name}
                             onClick={() => setActiveTool(tool)}
                             className="flex items-center gap-3 md:gap-4 group cursor-pointer transition-all duration-300 hover:opacity-100 hover:scale-105 opacity-80 backdrop-blur-sm bg-card/60 p-3 md:p-4 rounded-xl border border-border hover:border-primary/50 w-full justify-center md:w-auto active:scale-95"
                         >

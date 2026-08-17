@@ -1,25 +1,23 @@
+/* eslint-disable */
+
 "use client"
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useState, useEffect } from "react"
-import { Menu, X, Sun, Moon } from "lucide-react"
+import { Menu, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import MusicToggle from "@/components/music-toggle"
-import { useTheme } from "next-themes"
 
 interface NavbarProps {
-    onOpenProjects?: () => void;
-    onOpenAbout?: () => void;
     onOpenContact?: () => void;
 }
 
-export default function Navbar({ onOpenProjects, onOpenAbout, onOpenContact }: NavbarProps) {
+export default function Navbar({ onOpenContact }: NavbarProps) {
     const pathname = usePathname()
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
-    const { theme, setTheme } = useTheme()
     const [mounted, setMounted] = useState(false)
 
     useEffect(() => {
@@ -59,34 +57,44 @@ export default function Navbar({ onOpenProjects, onOpenAbout, onOpenContact }: N
                     {/* On home page, use callbacks for scroll-to-section. On other pages, use Links */}
                     {isHomePage ? (
                         <>
-                            <button onClick={onOpenProjects} className="transition-colors text-sm font-medium tracking-wide text-muted-foreground hover:text-primary mr-4">
+                            <Link href="/projects" className="transition-colors text-sm font-medium tracking-wide text-muted-foreground hover:text-primary mr-4">
                                 Projects
-                            </button>
-                            <button onClick={onOpenAbout} className="transition-colors text-sm font-medium tracking-wide text-muted-foreground hover:text-primary mr-4">
+                            </Link>
+                            <Link href="/experience" className="transition-colors text-sm font-medium tracking-wide text-muted-foreground hover:text-primary mr-4">
+                                Experience
+                            </Link>
+                            <Link href="/certifications" className="transition-colors text-sm font-medium tracking-wide text-muted-foreground hover:text-primary mr-4">
+                                Certifications
+                            </Link>
+                            <Link href="/hackathons" className="transition-colors text-sm font-medium tracking-wide text-muted-foreground hover:text-primary mr-4">
+                                Hackathons
+                            </Link>
+                            <Link href="/about" className="transition-colors text-sm font-medium tracking-wide text-muted-foreground hover:text-primary mr-4">
                                 About me
-                            </button>
+                            </Link>
                         </>
                     ) : (
                         <>
-                            <Link href="/#projects" className="transition-colors text-sm font-medium tracking-wide text-muted-foreground hover:text-primary mr-4">
+                            <Link href="/projects" className="transition-colors text-sm font-medium tracking-wide text-muted-foreground hover:text-primary mr-4">
                                 Projects
                             </Link>
-                            <Link href="/#about" className="transition-colors text-sm font-medium tracking-wide text-muted-foreground hover:text-primary mr-4">
+                            <Link href="/experience" className="transition-colors text-sm font-medium tracking-wide text-muted-foreground hover:text-primary mr-4">
+                                Experience
+                            </Link>
+                            <Link href="/certifications" className="transition-colors text-sm font-medium tracking-wide text-muted-foreground hover:text-primary mr-4">
+                                Certifications
+                            </Link>
+                            <Link href="/hackathons" className="transition-colors text-sm font-medium tracking-wide text-muted-foreground hover:text-primary mr-4">
+                                Hackathons
+                            </Link>
+                            <Link href="/about" className="transition-colors text-sm font-medium tracking-wide text-muted-foreground hover:text-primary mr-4">
                                 About me
                             </Link>
                         </>
                     )}
 
                     {/* Theme Toggle */}
-                    {mounted && (
-                        <button
-                            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                            className="p-2 rounded-full transition-colors hover:text-primary text-foreground"
-                            aria-label="Toggle Theme"
-                        >
-                            {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-                        </button>
-                    )}
+                    
 
                     <MusicToggle className="border-opacity-30 border-foreground/20 text-foreground hover:bg-foreground/5" />
                     {isHomePage ? (
@@ -104,14 +112,7 @@ export default function Navbar({ onOpenProjects, onOpenAbout, onOpenContact }: N
 
                 {/* Mobile: Music Toggle + Theme + Menu Button */}
                 <div className="md:hidden flex items-center gap-3">
-                    {mounted && (
-                        <button
-                            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                            className="p-2 rounded-full transition-colors text-foreground"
-                        >
-                            {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-                        </button>
-                    )}
+                    
                     <MusicToggle className="w-9 h-9 border-foreground/20 text-foreground" />
                     <button className="text-foreground" onClick={toggleMenu}>
                         {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -131,22 +132,40 @@ export default function Navbar({ onOpenProjects, onOpenAbout, onOpenContact }: N
 
                         {isHomePage ? (
                             <>
-                                <button onClick={() => { onOpenProjects?.(); toggleMenu(); }} className="text-2xl transition-colors text-muted-foreground hover:text-primary">
+                                <Link href="/projects" onClick={toggleMenu} className="text-2xl transition-colors text-muted-foreground hover:text-primary">
                                     Projects
-                                </button>
-                                <button onClick={() => { onOpenAbout?.(); toggleMenu(); }} className="text-2xl transition-colors text-muted-foreground hover:text-primary">
+                                </Link>
+                                <Link href="/experience" onClick={toggleMenu} className="text-2xl transition-colors text-muted-foreground hover:text-primary">
+                                    Experience
+                                </Link>
+                                <Link href="/certifications" onClick={toggleMenu} className="text-2xl transition-colors text-muted-foreground hover:text-primary">
+                                    Certifications
+                                </Link>
+                                <Link href="/hackathons" onClick={toggleMenu} className="text-2xl transition-colors text-muted-foreground hover:text-primary">
+                                    Hackathons
+                                </Link>
+                                <Link href="/about" onClick={toggleMenu} className="text-2xl transition-colors text-muted-foreground hover:text-primary">
                                     About me
-                                </button>
+                                </Link>
                                 <button onClick={() => { onOpenContact?.(); toggleMenu(); }} className="text-2xl text-primary font-bold hover:opacity-80 transition-opacity">
                                     CONTACT
                                 </button>
                             </>
                         ) : (
                             <>
-                                <Link href="/#projects" onClick={toggleMenu} className="text-2xl transition-colors text-muted-foreground hover:text-primary">
+                                <Link href="/projects" onClick={toggleMenu} className="text-2xl transition-colors text-muted-foreground hover:text-primary">
                                     Projects
                                 </Link>
-                                <Link href="/#about" onClick={toggleMenu} className="text-2xl transition-colors text-muted-foreground hover:text-primary">
+                                <Link href="/experience" onClick={toggleMenu} className="text-2xl transition-colors text-muted-foreground hover:text-primary">
+                                    Experience
+                                </Link>
+                                <Link href="/certifications" onClick={toggleMenu} className="text-2xl transition-colors text-muted-foreground hover:text-primary">
+                                    Certifications
+                                </Link>
+                                <Link href="/hackathons" onClick={toggleMenu} className="text-2xl transition-colors text-muted-foreground hover:text-primary">
+                                    Hackathons
+                                </Link>
+                                <Link href="/about" onClick={toggleMenu} className="text-2xl transition-colors text-muted-foreground hover:text-primary">
                                     About me
                                 </Link>
                                 <Link href="/#contact" onClick={toggleMenu} className="text-2xl text-primary font-bold hover:opacity-80 transition-opacity">

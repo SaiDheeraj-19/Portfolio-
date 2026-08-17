@@ -14,8 +14,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "SAI DHEERAJ",
-  description: "A beautiful portfolio showcasing creative projects and professional work",
+  title: "R. Sai Dheeraj — Full-Stack Developer & AI Engineer",
+  description: "Computer Science undergraduate and Full-Stack Developer building AI-powered applications, real-time systems, secure platforms, and scalable digital products.",
   icons: {
     icon: "/face-icon.png",
   },
@@ -32,11 +32,12 @@ export default function RootLayout({
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
+          forcedTheme="light"
           enableSystem={false}
           disableTransitionOnChange
         >
           <AudioProvider>
-            <LoadingScreen />
+                        <LoadingScreen />
             <LoadingScreen />
             <div className="min-h-screen flex flex-col relative">
 
