@@ -126,13 +126,13 @@ export default function AboutPage() {
                             <h2 className="text-xs font-mono uppercase tracking-[0.2em] text-muted-foreground mb-8 pb-4 border-b border-border">Professional Summary</h2>
                             <div className="prose prose-neutral dark:prose-invert prose-lg max-w-none text-muted-foreground leading-relaxed">
                                 <p className="mb-6">
-                                    I’m an <strong className="text-foreground">AI Engineer & Full-Stack Developer</strong> focused on building intelligent, scalable software systems that solve real-world problems.
+                                    I’m an <strong className="text-foreground">AI Engineer & Full-Stack Developer</strong> focused on building intelligent software systems that solve real-world problems.
                                 </p>
                                 <p className="mb-6">
-                                    I work across <strong className="text-foreground">AI engineering and full-stack development</strong>, combining machine learning, computer vision, multilingual processing, real-time systems, backend architecture, databases, and modern web and mobile technologies to turn ideas into complete, reliable products.
+                                    I work across <strong className="text-foreground">AI engineering and full-stack development</strong>, combining machine learning, computer vision, multilingual processing, real-time systems, backend architecture, databases, and modern web and mobile technologies to turn complex ideas into complete, reliable products.
                                 </p>
                                 <p className="mb-6">
-                                    I enjoy working beneath the interface — understanding how systems communicate, how data flows, how AI becomes part of a product, and how different components come together to work reliably at scale.
+                                    I enjoy working beneath the interface — understanding <strong className="text-foreground">how systems communicate, how data flows, how AI becomes part of a product, and how individual components come together into a reliable system</strong>.
                                 </p>
                                 <p>
                                     I believe good engineering is about more than using advanced technology. It’s about <strong className="text-foreground">understanding the problem, choosing the right approach, and building software that is practical, reliable, and genuinely useful</strong>.
