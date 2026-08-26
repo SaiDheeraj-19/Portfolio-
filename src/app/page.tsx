@@ -284,7 +284,7 @@ export default function Home() {
             }}
             className="text-lg md:text-2xl lg:text-3xl font-medium text-foreground/90 leading-relaxed max-w-4xl mx-auto mb-12 md:mb-0"
           >
-            I am a <span className="font-bold text-primary">Full-Stack AI Engineer</span> with deep expertise spanning machine learning, computer vision, multilingual processing, and robust real-time infrastructure.
+            I am a <span className="font-bold text-primary">Full-Stack AI Engineer</span> with deep expertise spanning computer vision, multilingual processing, and robust real-time infrastructure.
           </motion.p>
         </div>
         <div className="absolute left-6 md:left-12 bottom-10 border border-neutral-700/50 rounded-full w-10 h-10 md:w-12 md:h-12 flex items-center justify-center text-neutral-500 font-mono text-xs md:text-sm pointer-events-auto z-20 backdrop-blur-sm hidden sm:flex">
