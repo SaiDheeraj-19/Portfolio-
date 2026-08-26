@@ -2,11 +2,6 @@
     "certificationsData": {
         "Oracle Cloud": [
             {
-                "title": "Generative AI Professional",
-                "img": "/certifications/oracle_gen_ai_prof_cert.png",
-                "issuer": "Oracle Cloud Infrastructure 2025"
-            },
-            {
                 "title": "Generative AI Professional 2025",
                 "img": "/certifications/oracle_gen_ai_prof_cert.png",
                 "issuer": "Oracle Cloud"
@@ -53,33 +48,6 @@
                 "title": "Technology Job Simulation",
                 "img": "/certifications/deloitte_job_sim.png",
                 "issuer": "Deloitte"
-            },
-            {
-                "title": "GenAI Powered Data Analytics",
-                "img": "/certifications/tata_data_analytics.png",
-                "issuer": "Tata / Forage"
-            }
-        ],
-        "Global": [
-            {
-                "title": "Generative AI Leader",
-                "img": "/certifications/google_gen_ai_leader.png",
-                "issuer": "Google Cloud"
-            },
-            {
-                "title": "Build a Computer Vision App",
-                "img": "/certifications/microsoft_azure_cv_cert.png",
-                "issuer": "Microsoft / Coursera"
-            },
-            {
-                "title": "Fundamentals of Deep Learning",
-                "img": "/certifications/nvidia_deep_learning.png",
-                "issuer": "NVIDIA DLI"
-            },
-            {
-                "title": "Facial Expression Recognition with PyTorch",
-                "img": "/certifications/facial_expression_pytorch.png",
-                "issuer": "Coursera Project Network"
             }
         ],
         "Professional": [
@@ -286,6 +254,27 @@
         "resumeUrl": "/uploads/1768326558615_R_SAI_DHEERAJ.pdf"
     },
     "experience": [
+        {
+            "company": "SYNC AI",
+            "role": "AI Engineer",
+            "duration": "August 2026 \u2013 Present",
+            "workMode": "On-site",
+            "product": "Core AI Infrastructure & Intelligent Systems",
+            "description": "Building next-generation intelligent systems and architecting scalable AI pipelines.",
+            "responsibilities": [
+                "Developing scalable AI architectures.",
+                "Building next-generation intelligent systems.",
+                "Optimizing machine learning pipelines for production.",
+                "Integrating advanced AI capabilities into core infrastructure."
+            ],
+            "skills": [
+                "AI Engineering",
+                "System Architecture",
+                "Machine Learning",
+                "Scalable Pipelines",
+                "AI Infrastructure"
+            ]
+        },
         {
             "company": "RMJ IT SOLUTIONS",
             "role": "Team Lead Intern",

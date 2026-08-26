@@ -22,13 +22,13 @@ export default function Footer() {
                                 <Github className="w-6 h-6 fill-current" />
                             </Link>
 
-                            <Link
-                                href="https://www.linkedin.com/in/sai-dheeraj-a1145830b/"
+                            <a
+                                href="https://www.linkedin.com/in/sai-dheeraj-r/"
                                 target="_blank"
                                 className="bg-primary-foreground/10 p-4 rounded-xl hover:bg-primary-foreground hover:text-primary text-primary-foreground transition-all duration-300 border border-primary-foreground/10"
                             >
                                 <Linkedin className="w-6 h-6 fill-current" />
-                            </Link>
+                            </a>
 
                             <Link
                                 href="https://www.instagram.com/your.saidheeraj/"

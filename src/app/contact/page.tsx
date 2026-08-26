@@ -209,7 +209,7 @@ export default function ContactPage() {
                         <h2 className="text-xs font-mono uppercase tracking-[0.2em] text-muted-foreground mb-8 pb-4 border-b border-border">Social Connectivity</h2>
                         
                         <div className="flex flex-col gap-4">
-                            <a href="https://www.linkedin.com/in/sai-dheeraj-a1145830b/" target="_blank" rel="noopener noreferrer" 
+                            <a href="https://www.linkedin.com/in/sai-dheeraj-r/" target="_blank" rel="noopener noreferrer" 
                                className="flex items-center justify-between p-6 rounded-2xl bg-secondary/30 hover:bg-secondary border border-transparent hover:border-border transition-all duration-300 group">
                                 <div className="flex items-center gap-4">
                                     <Linkedin className="w-6 h-6 text-muted-foreground group-hover:text-[#0A66C2] transition-colors" />
