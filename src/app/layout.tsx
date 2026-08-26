@@ -57,7 +57,8 @@ const jsonLd = {
   "description": "Computer Science undergraduate and Full-Stack Developer building AI-powered applications, real-time systems, secure platforms, and scalable digital products.",
   "sameAs": [
     "https://github.com/SaiDheeraj-19",
-    "https://www.linkedin.com/in/sai-dheeraj-r/"
+    "https://www.linkedin.com/in/sai-dheeraj-r/",
+    "https://www.instagram.com/your.saidheeraj/"
   ]
 };
 
