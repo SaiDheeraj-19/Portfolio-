@@ -17,6 +17,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://saidheeraj.co.in"),
   title: "R. Sai Dheeraj — Full-Stack Developer & AI Engineer",
   description: "Computer Science undergraduate and Full-Stack Developer building AI-powered applications, real-time systems, secure platforms, and scalable digital products.",
+  keywords: ["Sai Dheeraj", "R. Sai Dheeraj", "Sai Dheeraj portfolio", "AI Engineer", "Full-Stack Developer", "Software Engineer portfolio"],
   icons: {
     icon: "/face-icon.png",
   },
