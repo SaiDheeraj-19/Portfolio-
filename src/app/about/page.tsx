@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Navbar } from "@/components/layout/navbar";
+import Navbar from "@/components/layout/navbar";
 import { motion, useScroll, useTransform, useMotionValueEvent } from "framer-motion"
 import { useRef, useState } from "react"
 
@@ -86,7 +86,7 @@ export default function AboutPage() {
     };
 
     return (
-        <div className="bg-background text-foreground font-sans selection:bg-primary/20">
+        <div ref={targetRef} className="relative bg-background text-foreground font-sans selection:bg-primary/20">
             
             {/* Top Navigation - Fixed so it stays while scrolling horizontally */}
             <div className="fixed top-0 left-0 w-full z-50 pt-8 pb-4 pointer-events-none">
@@ -118,7 +118,7 @@ export default function AboutPage() {
             </div>
 
             {/* --- DESKTOP HORIZONTAL SCROLL EXPERIENCE --- */}
-            <section ref={targetRef} className="relative h-[700vh] hidden md:block">
+            <section className="relative h-[700vh] hidden md:block">
                 <div className="sticky top-0 h-screen flex items-center overflow-hidden">
                     <motion.div style={{ x }} className="flex h-full w-[700vw]">
                         
