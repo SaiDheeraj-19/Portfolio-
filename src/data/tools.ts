@@ -49,12 +49,12 @@ export const tools: Tool[] = [
     { name: "OpenAI", slug: "openai", color: "000000", description: "LLM Integrations", category: "AI Engineer" },
     { name: "Gemini", slug: "google", color: "4285F4", description: "LLM Integrations", category: "AI Engineer" },
     { name: "Groq", slug: "groq", color: "000000", description: "LLM Integrations", category: "AI Engineer" },
-    { name: "OpenRouter", slug: "Network", color: "FFFFFF", description: "LLM Integrations", category: "AI Engineer", isLucide: true },
-    { name: "Sarvam AI", slug: "BrainCircuit", color: "FFFFFF", description: "LLM Integrations", category: "AI Engineer", isLucide: true },
+    { name: "OpenRouter", slug: "openrouter", color: "FFFFFF", description: "LLM Integrations", category: "AI Engineer", icon: "https://openrouter.ai/favicon.ico" },
+    { name: "Sarvam AI", slug: "sarvamai", color: "FFFFFF", description: "LLM Integrations", category: "AI Engineer", icon: "https://avatars.githubusercontent.com/u/152391264?s=200&v=4" },
     
     // AI Frameworks & RAG
     { name: "LangChain", slug: "langchain", color: "121212", description: "AI Frameworks & RAG", category: "AI Engineer" },
-    { name: "LlamaIndex", slug: "BookOpen", color: "FFFFFF", description: "AI Frameworks & RAG", category: "AI Engineer", isLucide: true },
+    { name: "LlamaIndex", slug: "llamaindex", color: "FFFFFF", description: "AI Frameworks & RAG", category: "AI Engineer", icon: "https://avatars.githubusercontent.com/u/132170308?s=200&v=4" },
     { name: "Qdrant", slug: "qdrant", color: "000000", description: "AI Frameworks & RAG", category: "AI Engineer" },
     { name: "RAG", slug: "Database", color: "FFFFFF", description: "AI Frameworks & RAG", category: "AI Engineer", isLucide: true },
     { name: "Embeddings", slug: "Binary", color: "FFFFFF", description: "AI Frameworks & RAG", category: "AI Engineer", isLucide: true },
@@ -74,6 +74,6 @@ export const tools: Tool[] = [
     
     // Multimodal AI
     { name: "Vision LLMs", slug: "Eye", color: "FFFFFF", description: "Multimodal AI", category: "AI Engineer", isLucide: true },
-    { name: "SpeechBrain", slug: "AudioLines", color: "FFFFFF", description: "Multimodal AI", category: "AI Engineer", isLucide: true },
+    { name: "SpeechBrain", slug: "speechbrain", color: "FFFFFF", description: "Multimodal AI", category: "AI Engineer", icon: "https://avatars.githubusercontent.com/u/55152399?s=200&v=4" },
     { name: "Speech-to-Text", slug: "Mic", color: "FFFFFF", description: "Multimodal AI", category: "AI Engineer", isLucide: true }
 ];
