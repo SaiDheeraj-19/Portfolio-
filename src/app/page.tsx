@@ -6,7 +6,7 @@ import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import {
   ArrowRight, Github, Mail, Code, Award, Instagram,
-  ExternalLink, Phone, Layers, Folder, ArrowLeft, Briefcase
+  ExternalLink, Phone, Layers, Folder, ArrowLeft, Briefcase, Send
 } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
@@ -39,6 +39,50 @@ export default function Home() {
   // Gallery State
   const [showContactPopup, setShowContactPopup] = useState(false)
   const [selectedPhoto, setSelectedPhoto] = useState<string | null>(null)
+
+  // Contact Form State
+  const [formData, setFormData] = useState({
+      name: "",
+      email: "",
+      subject: "",
+      message: ""
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      const { name, value } = e.target
+      setFormData(prev => ({ ...prev, [name]: value }))
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+      e.preventDefault()
+      setIsSubmitting(true)
+      setSubmitStatus("idle")
+
+      try {
+          const response = await fetch('/api/contact', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(formData),
+          });
+
+          if (!response.ok) {
+              throw new Error('Failed to send message');
+          }
+
+          setSubmitStatus("success")
+          setFormData({ name: "", email: "", subject: "", message: "" })
+      } catch (error) {
+          console.error(error);
+          setSubmitStatus("error")
+      } finally {
+          setIsSubmitting(false)
+          setTimeout(() => setSubmitStatus("idle"), 5000)
+      }
+  }
 
 
 
@@ -355,6 +399,112 @@ export default function Home() {
                 <span className="font-bold text-xl text-foreground group-hover:text-primary transition-colors">Email</span>
                 <span className="text-xs text-muted-foreground mt-2 font-mono tracking-wider opacity-60 group-hover:opacity-100 transition-opacity uppercase">Send Message</span>
               </a>
+            </div>
+
+            {/* Inline Direct Message Form */}
+            <div className="w-full mt-16 pt-12 border-t border-border/50 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300">
+              <h2 className="text-xs font-mono uppercase tracking-[0.2em] text-muted-foreground mb-12 text-center md:text-left">Direct Message</h2>
+              
+              <form onSubmit={handleSubmit} className="space-y-16">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                      <div className="relative group">
+                          <input
+                              id="name"
+                              name="name"
+                              type="text"
+                              required
+                              value={formData.name}
+                              onChange={handleInputChange}
+                              className="w-full bg-transparent border-b border-border/30 pb-4 text-foreground focus:outline-none focus:border-primary transition-colors peer placeholder-transparent"
+                              placeholder="YOUR NAME"
+                          />
+                          <label htmlFor="name" className="absolute left-0 top-0 text-sm md:text-base uppercase tracking-widest text-muted-foreground/70 transition-all peer-focus:-translate-y-8 peer-focus:text-xs peer-focus:text-primary peer-valid:-translate-y-8 peer-valid:text-xs peer-valid:text-muted-foreground cursor-text">
+                              Your Name
+                          </label>
+                      </div>
+                      <div className="relative group">
+                          <input
+                              id="email"
+                              name="email"
+                              type="email"
+                              required
+                              value={formData.email}
+                              onChange={handleInputChange}
+                              className="w-full bg-transparent border-b border-border/30 pb-4 text-foreground focus:outline-none focus:border-primary transition-colors peer placeholder-transparent"
+                              placeholder="EMAIL ADDRESS"
+                          />
+                          <label htmlFor="email" className="absolute left-0 top-0 text-sm md:text-base uppercase tracking-widest text-muted-foreground/70 transition-all peer-focus:-translate-y-8 peer-focus:text-xs peer-focus:text-primary peer-valid:-translate-y-8 peer-valid:text-xs peer-valid:text-muted-foreground cursor-text">
+                              Email Address
+                          </label>
+                      </div>
+                  </div>
+
+                  <div className="relative group">
+                      <input
+                          id="subject"
+                          name="subject"
+                          type="text"
+                          required
+                          value={formData.subject}
+                          onChange={handleInputChange}
+                          className="w-full bg-transparent border-b border-border/30 pb-4 text-foreground focus:outline-none focus:border-primary transition-colors peer placeholder-transparent"
+                          placeholder="SUBJECT"
+                      />
+                      <label htmlFor="subject" className="absolute left-0 top-0 text-sm md:text-base uppercase tracking-widest text-muted-foreground/70 transition-all peer-focus:-translate-y-8 peer-focus:text-xs peer-focus:text-primary peer-valid:-translate-y-8 peer-valid:text-xs peer-valid:text-muted-foreground cursor-text">
+                          Subject
+                      </label>
+                  </div>
+
+                  <div className="relative group mt-24">
+                      <textarea
+                          id="message"
+                          name="message"
+                          required
+                          rows={1}
+                          value={formData.message}
+                          onChange={handleInputChange}
+                          className="w-full bg-transparent border-b border-border/30 pb-4 text-foreground focus:outline-none focus:border-primary transition-colors peer placeholder-transparent resize-none overflow-hidden min-h-[40px]"
+                          placeholder="PROJECT DETAILS / MESSAGE"
+                          onInput={(e) => {
+                              const target = e.target as HTMLTextAreaElement;
+                              target.style.height = 'auto';
+                              target.style.height = target.scrollHeight + 'px';
+                          }}
+                      />
+                      <label htmlFor="message" className="absolute left-0 top-0 text-sm md:text-base uppercase tracking-widest text-muted-foreground/70 transition-all peer-focus:-translate-y-8 peer-focus:text-xs peer-focus:text-primary peer-valid:-translate-y-8 peer-valid:text-xs peer-valid:text-muted-foreground cursor-text">
+                          Project Details / Message
+                      </label>
+                  </div>
+
+                  {submitStatus === "success" && (
+                      <div className="p-6 bg-[#25D366]/10 border border-[#25D366]/30 rounded-2xl animate-in fade-in">
+                          <p className="text-[#25D366] font-medium text-lg text-center">Thank you! Your message has been sent successfully.</p>
+                      </div>
+                  )}
+
+                  {submitStatus === "error" && (
+                      <div className="p-6 bg-red-500/10 border border-red-500/30 rounded-2xl animate-in fade-in">
+                          <p className="text-red-500 font-medium text-lg text-center">Something went wrong. Please try again or use direct contact.</p>
+                      </div>
+                  )}
+
+                  <div className="flex justify-center md:justify-start">
+                    <Button
+                        type="submit"
+                        disabled={isSubmitting}
+                        className="w-full md:w-auto rounded-full px-12 py-8 text-lg font-bold tracking-widest uppercase transition-all duration-300 hover:scale-105"
+                    >
+                        {isSubmitting ? (
+                            "Sending..."
+                        ) : (
+                            <>
+                                Send Message
+                                <Send className="ml-3 h-5 w-5" />
+                            </>
+                        )}
+                    </Button>
+                  </div>
+              </form>
             </div>
           </div>
         </DialogContent>
