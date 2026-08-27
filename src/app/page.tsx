@@ -354,7 +354,7 @@ export default function Home() {
 
 
       <Dialog open={showContactPopup} onOpenChange={setShowContactPopup}>
-        <DialogContent className="max-w-4xl w-[95vw] bg-background border-border text-foreground p-0 overflow-hidden rounded-[2rem] shadow-2xl [&>button]:hidden flex flex-col">
+        <DialogContent className="max-w-4xl w-[95vw] max-h-[90vh] bg-background border-border text-foreground p-0 overflow-hidden rounded-[2rem] shadow-2xl [&>button]:hidden flex flex-col">
           <div className="absolute top-4 right-4 md:top-6 md:right-6 z-50">
             <button
               onClick={() => setShowContactPopup(false)}
