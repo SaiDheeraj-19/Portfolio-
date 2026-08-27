@@ -49,10 +49,8 @@ export default function ToolsBentoGrid() {
     }
 
     return (
-        <section id="tech-gallery" className="bg-secondary py-16 md:py-32 px-4 sm:px-6 md:px-20 border-t border-border min-h-screen relative overflow-hidden">
-            <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
-            
-            <div className="max-w-7xl mx-auto relative z-10">
+        <section id="tech-gallery" className="bg-background py-16 md:py-32 px-4 sm:px-6 md:px-20 border-t border-border min-h-screen">
+            <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-20 space-y-4">
                     <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-foreground">
                         Tech Stack <span className="text-primary">Gallery</span>
@@ -62,18 +60,18 @@ export default function ToolsBentoGrid() {
                     </p>
                 </div>
 
-                <div className="space-y-32">
+                <div className="space-y-24">
                     {categories.map(cat => {
                         const catTools = tools.filter(t => t.category === cat);
                         if (catTools.length === 0) return null;
 
                         return (
-                            <div key={cat} className="space-y-12">
+                            <div key={cat} className="space-y-10">
                                 <div className="flex flex-col items-center gap-4">
-                                    <h3 className="text-2xl md:text-3xl font-bold uppercase tracking-[0.2em] text-foreground/90 text-center">
+                                    <h3 className="text-xl md:text-2xl font-bold uppercase tracking-[0.2em] text-foreground/90 text-center">
                                         {cat}
                                     </h3>
-                                    <div className="h-1 w-24 bg-primary rounded-full opacity-50" />
+                                    <div className="h-px w-full max-w-xs bg-border" />
                                 </div>
                                 
                                 <motion.div
@@ -81,33 +79,29 @@ export default function ToolsBentoGrid() {
                                     initial="hidden"
                                     whileInView="visible"
                                     viewport={{ once: true, margin: "-100px" }}
-                                    className="flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-10"
+                                    className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4"
                                 >
                                     {catTools.map((tool) => (
                                         <motion.div
                                             key={tool.name}
                                             layoutId={`gallery-${tool.slug}`}
                                             onClick={() => setSelectedTool(tool)}
-                                            className="group relative flex flex-col items-center justify-center cursor-pointer transition-all active:scale-95"
-                                            whileHover={{ y: -8 }}
+                                            className="group relative flex flex-col items-center justify-center p-4 bg-card border border-border rounded-2xl cursor-pointer hover:border-primary hover:bg-card/80 transition-colors active:scale-95 overflow-hidden"
+                                            whileHover={{ y: -4 }}
                                         >
-                                            {/* Glowing Background Blob */}
+                                            {/* Subtle Glow on Hover */}
                                             <div 
-                                                className="absolute inset-0 rounded-full blur-2xl opacity-0 group-hover:opacity-40 transition-opacity duration-500 pointer-events-none" 
+                                                className="absolute inset-0 h-full w-full opacity-0 group-hover:opacity-5 transition-opacity duration-500 pointer-events-none" 
                                                 style={{ backgroundColor: `#${tool.color}` }}
                                             />
 
-                                            {/* Glassmorphic Icon Container */}
-                                            <div className="relative z-10 p-5 md:p-8 bg-background/50 backdrop-blur-xl border border-border/50 rounded-2xl md:rounded-3xl shadow-xl group-hover:shadow-[0_0_40px_rgba(0,0,0,0.5)] group-hover:bg-background/80 group-hover:border-border transition-all duration-300 flex items-center justify-center h-24 w-24 md:h-32 md:w-32">
-                                                {renderIcon(tool, "w-12 h-12 md:w-16 md:h-16", 64, 64)}
+                                            <div className="relative z-10 p-4 bg-muted/20 border border-border/50 rounded-full mb-3 flex items-center justify-center h-14 w-14">
+                                                {renderIcon(tool, "w-8 h-8", 32, 32)}
                                             </div>
 
-                                            {/* Name Tooltip (visible on hover) */}
-                                            <div className="absolute -bottom-8 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 pointer-events-none whitespace-nowrap z-20">
-                                                <span className="bg-foreground text-background text-xs md:text-sm font-bold px-3 py-1.5 rounded-md shadow-lg">
-                                                    {tool.name}
-                                                </span>
-                                            </div>
+                                            <h3 className="relative z-10 text-xs md:text-sm font-bold text-card-foreground text-center line-clamp-2 px-1">
+                                                {tool.name}
+                                            </h3>
                                         </motion.div>
                                     ))}
                                 </motion.div>
