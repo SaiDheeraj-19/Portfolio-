@@ -51,15 +51,6 @@ export default function ToolsBentoGrid() {
     return (
         <section id="tech-gallery" className="bg-background py-16 md:py-32 px-4 sm:px-6 md:px-20 border-t border-border min-h-screen">
             <div className="max-w-7xl mx-auto">
-                <div className="text-center mb-20 space-y-4">
-                    <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-foreground">
-                        Tech Stack <span className="text-primary">Gallery</span>
-                    </h2>
-                    <p className="text-muted-foreground text-sm md:text-lg max-w-2xl mx-auto">
-                        An interactive collection of the tools, frameworks, and technologies I use to build scalable, intelligent applications.
-                    </p>
-                </div>
-
                 <div className="space-y-24">
                     {categories.map(cat => {
                         const catTools = tools.filter(t => t.category === cat);
