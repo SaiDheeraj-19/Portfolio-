@@ -45,70 +45,35 @@ export const tools: Tool[] = [
     { name: "GPS Geofencing", slug: "googlemaps", color: "4285F4", description: "Location Services", category: "Mobile Stack" },
     
     // === AI ENGINEER ===
-    // LLM Engineering
-    { name: "OpenAI", slug: "openai", color: "000000", description: "LLM Engineering", category: "AI Engineer" },
-    { name: "Gemini", slug: "google", color: "4285F4", description: "LLM Engineering", category: "AI Engineer" },
-    { name: "Groq", slug: "groq", color: "000000", description: "LLM Engineering", category: "AI Engineer" },
-    { name: "OpenRouter", slug: "Network", color: "FFFFFF", description: "LLM Engineering", category: "AI Engineer", isLucide: true },
-    { name: "Prompt Engineering", slug: "MessageSquareText", color: "FFFFFF", description: "LLM Engineering", category: "AI Engineer", isLucide: true },
-    { name: "Structured Outputs", slug: "CodeXml", color: "FFFFFF", description: "LLM Engineering", category: "AI Engineer", isLucide: true },
-    { name: "Function Calling", slug: "Braces", color: "FFFFFF", description: "LLM Engineering", category: "AI Engineer", isLucide: true },
-    { name: "Streaming", slug: "Activity", color: "FFFFFF", description: "LLM Engineering", category: "AI Engineer", isLucide: true },
+    // LLM Integrations
+    { name: "OpenAI", slug: "openai", color: "000000", description: "LLM Integrations", category: "AI Engineer" },
+    { name: "Gemini", slug: "google", color: "4285F4", description: "LLM Integrations", category: "AI Engineer" },
+    { name: "Groq", slug: "groq", color: "000000", description: "LLM Integrations", category: "AI Engineer" },
+    { name: "OpenRouter", slug: "Network", color: "FFFFFF", description: "LLM Integrations", category: "AI Engineer", isLucide: true },
+    { name: "Sarvam AI", slug: "BrainCircuit", color: "FFFFFF", description: "LLM Integrations", category: "AI Engineer", isLucide: true },
     
-    // RAG
-    { name: "LangChain", slug: "langchain", color: "121212", description: "RAG", category: "AI Engineer" },
-    { name: "LlamaIndex", slug: "BookOpen", color: "FFFFFF", description: "RAG", category: "AI Engineer", isLucide: true },
-    { name: "Qdrant", slug: "qdrant", color: "000000", description: "RAG", category: "AI Engineer" },
-    { name: "pgvector", slug: "postgresql", color: "4169E1", description: "RAG", category: "AI Engineer" },
-    { name: "Embeddings", slug: "Binary", color: "FFFFFF", description: "RAG", category: "AI Engineer", isLucide: true },
-    { name: "Vector Search", slug: "Search", color: "FFFFFF", description: "RAG", category: "AI Engineer", isLucide: true },
-    { name: "Hybrid Search", slug: "Blend", color: "FFFFFF", description: "RAG", category: "AI Engineer", isLucide: true },
-    { name: "Reranking", slug: "ArrowUpDown", color: "FFFFFF", description: "RAG", category: "AI Engineer", isLucide: true },
-    { name: "Query Rewriting", slug: "RefreshCcw", color: "FFFFFF", description: "RAG", category: "AI Engineer", isLucide: true },
+    // AI Frameworks & RAG
+    { name: "LangChain", slug: "langchain", color: "121212", description: "AI Frameworks & RAG", category: "AI Engineer" },
+    { name: "LlamaIndex", slug: "BookOpen", color: "FFFFFF", description: "AI Frameworks & RAG", category: "AI Engineer", isLucide: true },
+    { name: "Qdrant", slug: "qdrant", color: "000000", description: "AI Frameworks & RAG", category: "AI Engineer" },
+    { name: "RAG", slug: "Database", color: "FFFFFF", description: "AI Frameworks & RAG", category: "AI Engineer", isLucide: true },
+    { name: "Embeddings", slug: "Binary", color: "FFFFFF", description: "AI Frameworks & RAG", category: "AI Engineer", isLucide: true },
+    { name: "Vector Search", slug: "Search", color: "FFFFFF", description: "AI Frameworks & RAG", category: "AI Engineer", isLucide: true },
     
-    // AI Agents
-    { name: "LangGraph", slug: "Network", color: "FFFFFF", description: "AI Agents", category: "AI Engineer", isLucide: true },
-    { name: "Tool Calling", slug: "Wrench", color: "FFFFFF", description: "AI Agents", category: "AI Engineer", isLucide: true },
-    { name: "Agent Workflows", slug: "Workflow", color: "FFFFFF", description: "AI Agents", category: "AI Engineer", isLucide: true },
-    { name: "Memory", slug: "BrainCircuit", color: "FFFFFF", description: "AI Agents", category: "AI Engineer", isLucide: true },
-    { name: "State Management", slug: "Database", color: "FFFFFF", description: "AI Agents", category: "AI Engineer", isLucide: true },
-    { name: "MCP", slug: "Cpu", color: "FFFFFF", description: "AI Agents", category: "AI Engineer", isLucide: true },
+    // AI Agents & Workflows
+    { name: "LangGraph", slug: "Workflow", color: "FFFFFF", description: "AI Agents & Workflows", category: "AI Engineer", isLucide: true },
+    { name: "Agents", slug: "Bot", color: "FFFFFF", description: "AI Agents & Workflows", category: "AI Engineer", isLucide: true },
+    { name: "MCP", slug: "Cpu", color: "FFFFFF", description: "AI Agents & Workflows", category: "AI Engineer", isLucide: true },
     
-    // AI Backend
-    { name: "Python", slug: "python", color: "3776AB", description: "AI Backend", category: "AI Engineer" },
-    { name: "FastAPI", slug: "fastapi", color: "009688", description: "AI Backend", category: "AI Engineer" },
-    { name: "Redis", slug: "redis", color: "DC382D", description: "AI Backend", category: "AI Engineer" },
-    { name: "Celery", slug: "celery", color: "37814A", description: "AI Backend", category: "AI Engineer" },
-    { name: "REST APIs", slug: "json", color: "000000", description: "AI Backend", category: "AI Engineer" },
-    { name: "WebSockets", slug: "ArrowRightLeft", color: "FFFFFF", description: "AI Backend", category: "AI Engineer", isLucide: true },
-    { name: "Async Processing", slug: "Timer", color: "FFFFFF", description: "AI Backend", category: "AI Engineer", isLucide: true },
-    
-    // AI Evaluation
-    { name: "RAG Evaluation", slug: "CheckCircle", color: "FFFFFF", description: "AI Evaluation", category: "AI Engineer", isLucide: true },
-    { name: "LLM-as-a-Judge", slug: "Gavel", color: "FFFFFF", description: "AI Evaluation", category: "AI Engineer", isLucide: true },
-    { name: "Hallucination Detection", slug: "ScanSearch", color: "FFFFFF", description: "AI Evaluation", category: "AI Engineer", isLucide: true },
-    { name: "Groundedness", slug: "Anchor", color: "FFFFFF", description: "AI Evaluation", category: "AI Engineer", isLucide: true },
-    { name: "Faithfulness", slug: "Scale", color: "FFFFFF", description: "AI Evaluation", category: "AI Engineer", isLucide: true },
-    { name: "Regression Testing", slug: "TestTube", color: "FFFFFF", description: "AI Evaluation", category: "AI Engineer", isLucide: true },
+    // AI Backend Architecture
+    { name: "FastAPI", slug: "fastapi", color: "009688", description: "AI Backend Architecture", category: "AI Engineer" },
+    { name: "Redis", slug: "redis", color: "DC382D", description: "AI Backend Architecture", category: "AI Engineer" },
+    { name: "Celery", slug: "celery", color: "37814A", description: "AI Backend Architecture", category: "AI Engineer" },
+    { name: "REST APIs", slug: "json", color: "000000", description: "AI Backend Architecture", category: "AI Engineer" },
+    { name: "WebSockets", slug: "ArrowRightLeft", color: "FFFFFF", description: "AI Backend Architecture", category: "AI Engineer", isLucide: true },
     
     // Multimodal AI
     { name: "Vision LLMs", slug: "Eye", color: "FFFFFF", description: "Multimodal AI", category: "AI Engineer", isLucide: true },
-    { name: "Speech-to-Text", slug: "Mic", color: "FFFFFF", description: "Multimodal AI", category: "AI Engineer", isLucide: true },
-    { name: "Audio Processing", slug: "Waveform", color: "FFFFFF", description: "Multimodal AI", category: "AI Engineer", isLucide: true },
-    { name: "Document AI", slug: "FileText", color: "FFFFFF", description: "Multimodal AI", category: "AI Engineer", isLucide: true },
-    
-    // AI Security
-    { name: "Prompt Injection", slug: "ShieldAlert", color: "FFFFFF", description: "AI Security", category: "AI Engineer", isLucide: true },
-    { name: "RAG Security", slug: "Lock", color: "FFFFFF", description: "AI Security", category: "AI Engineer", isLucide: true },
-    { name: "Output Validation", slug: "ShieldCheck", color: "FFFFFF", description: "AI Security", category: "AI Engineer", isLucide: true },
-    { name: "Tool Permissions", slug: "Key", color: "FFFFFF", description: "AI Security", category: "AI Engineer", isLucide: true },
-    
-    // AI Infrastructure
-    { name: "PostgreSQL", slug: "postgresql", color: "4169E1", description: "AI Infrastructure", category: "AI Engineer" },
-    { name: "Supabase", slug: "supabase", color: "3ECF8E", description: "AI Infrastructure", category: "AI Engineer" },
-    { name: "Docker", slug: "docker", color: "2496ED", description: "AI Infrastructure", category: "AI Engineer" },
-    { name: "GitHub Actions", slug: "githubactions", color: "2088FF", description: "AI Infrastructure", category: "AI Engineer" },
-    { name: "Monitoring", slug: "ActivitySquare", color: "FFFFFF", description: "AI Infrastructure", category: "AI Engineer", isLucide: true },
-    { name: "Caching", slug: "Zap", color: "FFFFFF", description: "AI Infrastructure", category: "AI Engineer", isLucide: true },
-    { name: "Model Fallbacks", slug: "ArrowDownUp", color: "FFFFFF", description: "AI Infrastructure", category: "AI Engineer", isLucide: true }
+    { name: "SpeechBrain", slug: "AudioLines", color: "FFFFFF", description: "Multimodal AI", category: "AI Engineer", isLucide: true },
+    { name: "Speech-to-Text", slug: "Mic", color: "FFFFFF", description: "Multimodal AI", category: "AI Engineer", isLucide: true }
 ];
