@@ -109,7 +109,7 @@ export default function ContactPage() {
                     <div className="w-full lg:w-2/3">
                         <h2 className="text-xs font-mono uppercase tracking-[0.2em] text-muted-foreground mb-8 pb-4 border-b border-border">Direct Message</h2>
                         
-                        <form onSubmit={handleSubmit} className="space-y-12">
+                        <form onSubmit={handleSubmit} className="space-y-16">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                                 <div className="relative group">
                                     <input
@@ -119,10 +119,10 @@ export default function ContactPage() {
                                         required
                                         value={formData.name}
                                         onChange={handleInputChange}
-                                        className="w-full bg-transparent border-b-2 border-border/50 py-4 text-foreground placeholder-transparent focus:outline-none focus:border-primary transition-colors peer"
-                                        placeholder="Name"
+                                        className="w-full bg-transparent border-b border-border/30 pb-4 text-foreground focus:outline-none focus:border-primary transition-colors peer placeholder-transparent"
+                                        placeholder="YOUR NAME"
                                     />
-                                    <label htmlFor="name" className="absolute left-0 -top-6 text-sm font-bold uppercase tracking-wider text-muted-foreground transition-all peer-placeholder-shown:text-lg peer-placeholder-shown:top-4 peer-placeholder-shown:font-normal peer-focus:-top-6 peer-focus:text-sm peer-focus:font-bold peer-focus:text-primary">
+                                    <label htmlFor="name" className="absolute left-0 top-0 text-sm md:text-base uppercase tracking-widest text-muted-foreground/70 transition-all peer-focus:-translate-y-8 peer-focus:text-xs peer-focus:text-primary peer-valid:-translate-y-8 peer-valid:text-xs peer-valid:text-muted-foreground cursor-text">
                                         Your Name
                                     </label>
                                 </div>
@@ -134,10 +134,10 @@ export default function ContactPage() {
                                         required
                                         value={formData.email}
                                         onChange={handleInputChange}
-                                        className="w-full bg-transparent border-b-2 border-border/50 py-4 text-foreground placeholder-transparent focus:outline-none focus:border-primary transition-colors peer"
-                                        placeholder="Email"
+                                        className="w-full bg-transparent border-b border-border/30 pb-4 text-foreground focus:outline-none focus:border-primary transition-colors peer placeholder-transparent"
+                                        placeholder="EMAIL ADDRESS"
                                     />
-                                    <label htmlFor="email" className="absolute left-0 -top-6 text-sm font-bold uppercase tracking-wider text-muted-foreground transition-all peer-placeholder-shown:text-lg peer-placeholder-shown:top-4 peer-placeholder-shown:font-normal peer-focus:-top-6 peer-focus:text-sm peer-focus:font-bold peer-focus:text-primary">
+                                    <label htmlFor="email" className="absolute left-0 top-0 text-sm md:text-base uppercase tracking-widest text-muted-foreground/70 transition-all peer-focus:-translate-y-8 peer-focus:text-xs peer-focus:text-primary peer-valid:-translate-y-8 peer-valid:text-xs peer-valid:text-muted-foreground cursor-text">
                                         Email Address
                                     </label>
                                 </div>
@@ -151,26 +151,31 @@ export default function ContactPage() {
                                     required
                                     value={formData.subject}
                                     onChange={handleInputChange}
-                                    className="w-full bg-transparent border-b-2 border-border/50 py-4 text-foreground placeholder-transparent focus:outline-none focus:border-primary transition-colors peer"
-                                    placeholder="Subject"
+                                    className="w-full bg-transparent border-b border-border/30 pb-4 text-foreground focus:outline-none focus:border-primary transition-colors peer placeholder-transparent"
+                                    placeholder="SUBJECT"
                                 />
-                                <label htmlFor="subject" className="absolute left-0 -top-6 text-sm font-bold uppercase tracking-wider text-muted-foreground transition-all peer-placeholder-shown:text-lg peer-placeholder-shown:top-4 peer-placeholder-shown:font-normal peer-focus:-top-6 peer-focus:text-sm peer-focus:font-bold peer-focus:text-primary">
+                                <label htmlFor="subject" className="absolute left-0 top-0 text-sm md:text-base uppercase tracking-widest text-muted-foreground/70 transition-all peer-focus:-translate-y-8 peer-focus:text-xs peer-focus:text-primary peer-valid:-translate-y-8 peer-valid:text-xs peer-valid:text-muted-foreground cursor-text">
                                     Subject
                                 </label>
                             </div>
 
-                            <div className="relative group">
+                            <div className="relative group mt-24">
                                 <textarea
                                     id="message"
                                     name="message"
                                     required
-                                    rows={4}
+                                    rows={1}
                                     value={formData.message}
                                     onChange={handleInputChange}
-                                    className="w-full bg-transparent border-b-2 border-border/50 py-4 text-foreground placeholder-transparent focus:outline-none focus:border-primary transition-colors peer resize-none"
-                                    placeholder="Message"
+                                    className="w-full bg-transparent border-b border-border/30 pb-4 text-foreground focus:outline-none focus:border-primary transition-colors peer placeholder-transparent resize-none overflow-hidden min-h-[40px]"
+                                    placeholder="PROJECT DETAILS / MESSAGE"
+                                    onInput={(e) => {
+                                        const target = e.target as HTMLTextAreaElement;
+                                        target.style.height = 'auto';
+                                        target.style.height = target.scrollHeight + 'px';
+                                    }}
                                 />
-                                <label htmlFor="message" className="absolute left-0 -top-6 text-sm font-bold uppercase tracking-wider text-muted-foreground transition-all peer-placeholder-shown:text-lg peer-placeholder-shown:top-4 peer-placeholder-shown:font-normal peer-focus:-top-6 peer-focus:text-sm peer-focus:font-bold peer-focus:text-primary">
+                                <label htmlFor="message" className="absolute left-0 top-0 text-sm md:text-base uppercase tracking-widest text-muted-foreground/70 transition-all peer-focus:-translate-y-8 peer-focus:text-xs peer-focus:text-primary peer-valid:-translate-y-8 peer-valid:text-xs peer-valid:text-muted-foreground cursor-text">
                                     Project Details / Message
                                 </label>
                             </div>
