@@ -103,15 +103,15 @@ export default function AboutPage() {
             {/* Floating Table of Contents */}
             <div className="fixed bottom-12 right-12 z-50 hidden md:flex flex-col gap-6 items-end mix-blend-difference text-white">
                 <div className="flex flex-col items-end gap-4">
-                    <p className="text-[10px] font-mono uppercase tracking-[0.3em] mb-2 opacity-50">Contents</p>
+                    <p className="text-[10px] font-mono uppercase tracking-[0.3em] mb-2 text-[#888]">Contents</p>
                     {navItems.map((item, idx) => (
                         <button 
                             key={idx} 
                             onClick={() => scrollToView(item.vh)}
-                            className={`text-[10px] font-mono uppercase tracking-[0.2em] transition-all duration-300 flex items-center gap-4 group ${activeSection === idx ? 'text-white' : 'text-white/40 hover:text-white/70'}`}
+                            className={`text-[10px] font-mono uppercase tracking-[0.2em] transition-all duration-300 flex items-center gap-4 group ${activeSection === idx ? 'text-white' : 'text-[#666] hover:text-[#aaa]'}`}
                         >
                             <span>{item.name}</span>
-                            <div className={`transition-all duration-300 ${activeSection === idx ? 'w-8 h-px bg-white' : 'w-2 h-px bg-white/40 group-hover:w-4 group-hover:bg-white/70'}`} />
+                            <div className={`transition-all duration-300 ${activeSection === idx ? 'w-8 h-px bg-white' : 'w-2 h-px bg-[#666] group-hover:w-4 group-hover:bg-[#aaa]'}`} />
                         </button>
                     ))}
                 </div>
