@@ -161,14 +161,16 @@ export default function ToolsBentoGrid() {
 
             {/* Floating Table of Contents */}
             <div className="fixed bottom-12 right-12 z-50 hidden md:flex flex-col gap-6 items-end mix-blend-difference text-white">
-                <div className="flex flex-col items-end gap-3">
-                    <p className="text-[10px] font-mono uppercase tracking-[0.3em] mb-1 opacity-50">Contents</p>
+                <div className="flex flex-col items-end gap-4">
+                    <p className="text-[10px] font-mono uppercase tracking-[0.3em] mb-2 opacity-50">Contents</p>
                     {navItems.map((item, idx) => (
-                        <button key={idx} onClick={() => scrollToVh(item.threshold)}
-                            className={`text-[10px] font-mono uppercase tracking-[0.2em] transition-all duration-300 flex items-center gap-4 group ${activeSection === idx ? "opacity-100" : "opacity-30 hover:opacity-60"}`}
+                        <button 
+                            key={idx} 
+                            onClick={() => scrollToVh(item.threshold)}
+                            className={`text-[10px] font-mono uppercase tracking-[0.2em] transition-all duration-300 flex items-center gap-4 group ${activeSection === idx ? "text-white" : "text-white/40 hover:text-white/70"}`}
                         >
                             <span>{item.name}</span>
-                            <div className={`bg-white transition-all duration-300 ${activeSection === idx ? "w-8 h-px" : "w-2 h-px group-hover:w-4"}`} />
+                            <div className={`transition-all duration-300 ${activeSection === idx ? "w-8 h-px bg-white" : "w-2 h-px bg-white/40 group-hover:w-4 group-hover:bg-white/70"}`} />
                         </button>
                     ))}
                 </div>
@@ -288,7 +290,7 @@ export default function ToolsBentoGrid() {
                             animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 60, scale: 0.95 }}
                             transition={{ type: "spring", stiffness: 280, damping: 28 }}
                             onClick={(e) => e.stopPropagation()}
-                            className="relative w-full max-w-2xl rounded-none md:rounded-2xl overflow-hidden shadow-2xl bg-white"
+                            className="relative w-full max-w-2xl rounded-none md:rounded-2xl overflow-hidden shadow-2xl bg-background"
                             style={{ border: `1px solid var(--border)` }}>
 
                             <div className="p-8 md:p-12">

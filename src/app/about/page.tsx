@@ -108,10 +108,10 @@ export default function AboutPage() {
                         <button 
                             key={idx} 
                             onClick={() => scrollToView(item.vh)}
-                            className={`text-[10px] font-mono uppercase tracking-[0.2em] transition-all duration-300 flex items-center gap-4 group ${activeSection === idx ? 'opacity-100' : 'opacity-40 hover:opacity-70'}`}
+                            className={`text-[10px] font-mono uppercase tracking-[0.2em] transition-all duration-300 flex items-center gap-4 group ${activeSection === idx ? 'text-white' : 'text-white/40 hover:text-white/70'}`}
                         >
                             <span>{item.name}</span>
-                            <div className={`bg-white transition-all duration-300 ${activeSection === idx ? 'w-8 h-px' : 'w-2 h-px group-hover:w-4'}`} />
+                            <div className={`transition-all duration-300 ${activeSection === idx ? 'w-8 h-px bg-white' : 'w-2 h-px bg-white/40 group-hover:w-4 group-hover:bg-white/70'}`} />
                         </button>
                     ))}
                 </div>
