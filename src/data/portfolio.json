@@ -2,6 +2,11 @@
     "certificationsData": {
         "Oracle Cloud": [
             {
+                "title": "Agentic AI Certified Foundations Associate",
+                "img": "/certifications/oracle_agentic_ai_certified.png",
+                "issuer": "Oracle Cloud"
+            },
+            {
                 "title": "Fusion AI Agent Studio Foundations Associate - Rel 1",
                 "img": "/certifications/oracle_fusion_ai_agent_studio.png",
                 "issuer": "Oracle Cloud"
