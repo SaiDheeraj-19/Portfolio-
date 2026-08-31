@@ -69,6 +69,9 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
                             <Link href="/hackathons" className="transition-colors text-sm font-medium tracking-wide text-muted-foreground hover:text-primary mr-4">
                                 Hackathons
                             </Link>
+                            <Link href="/tech-stack" className="transition-colors text-sm font-medium tracking-wide text-muted-foreground hover:text-primary mr-4">
+                                Tech Stack
+                            </Link>
                             <Link href="/about" className="transition-colors text-sm font-medium tracking-wide text-muted-foreground hover:text-primary mr-4">
                                 About me
                             </Link>
@@ -86,6 +89,9 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
                             </Link>
                             <Link href="/hackathons" className="transition-colors text-sm font-medium tracking-wide text-muted-foreground hover:text-primary mr-4">
                                 Hackathons
+                            </Link>
+                            <Link href="/tech-stack" className="transition-colors text-sm font-medium tracking-wide text-muted-foreground hover:text-primary mr-4">
+                                Tech Stack
                             </Link>
                             <Link href="/about" className="transition-colors text-sm font-medium tracking-wide text-muted-foreground hover:text-primary mr-4">
                                 About me
@@ -144,6 +150,9 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
                                 <Link href="/hackathons" onClick={toggleMenu} className="text-2xl transition-colors text-muted-foreground hover:text-primary">
                                     Hackathons
                                 </Link>
+                                <Link href="/tech-stack" onClick={toggleMenu} className="text-2xl transition-colors text-muted-foreground hover:text-primary">
+                                    Tech Stack
+                                </Link>
                                 <Link href="/about" onClick={toggleMenu} className="text-2xl transition-colors text-muted-foreground hover:text-primary">
                                     About me
                                 </Link>
@@ -164,6 +173,9 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
                                 </Link>
                                 <Link href="/hackathons" onClick={toggleMenu} className="text-2xl transition-colors text-muted-foreground hover:text-primary">
                                     Hackathons
+                                </Link>
+                                <Link href="/tech-stack" onClick={toggleMenu} className="text-2xl transition-colors text-muted-foreground hover:text-primary">
+                                    Tech Stack
                                 </Link>
                                 <Link href="/about" onClick={toggleMenu} className="text-2xl transition-colors text-muted-foreground hover:text-primary">
                                     About me
