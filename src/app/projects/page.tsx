@@ -100,11 +100,31 @@ export default function ProjectsPage() {
                                                 >
                                                     <div className="pt-8 pb-4 flex flex-col md:flex-row gap-8 md:gap-16 w-full md:w-3/4 md:ml-auto">
                                                         
-                                                        {/* Description */}
-                                                        <div className="w-full md:w-1/2">
-                                                            <p className="text-neutral-600 font-medium leading-relaxed text-base md:text-lg">
-                                                                {project.description}
-                                                            </p>
+                                                        {/* Description Area */}
+                                                        <div className="w-full md:w-1/2 flex flex-col gap-8">
+                                                            <div>
+                                                                <p className="text-neutral-600 font-medium leading-relaxed text-base md:text-lg">
+                                                                    {project.description}
+                                                                </p>
+                                                            </div>
+                                                            
+                                                            {(project as any).problemStatement && (
+                                                                <div className="space-y-2">
+                                                                    <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-neutral-400">The Problem</h4>
+                                                                    <p className="text-neutral-600 leading-relaxed text-sm">
+                                                                        {(project as any).problemStatement}
+                                                                    </p>
+                                                                </div>
+                                                            )}
+                                                            
+                                                            {(project as any).motivation && (
+                                                                <div className="space-y-2">
+                                                                    <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-neutral-400">Why I Built It</h4>
+                                                                    <p className="text-neutral-600 leading-relaxed text-sm">
+                                                                        {(project as any).motivation}
+                                                                    </p>
+                                                                </div>
+                                                            )}
                                                         </div>
                                                         
                                                         {/* Tech Stack & Links */}
