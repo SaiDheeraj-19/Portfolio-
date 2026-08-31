@@ -2,6 +2,11 @@
     "certificationsData": {
         "Oracle Cloud": [
             {
+                "title": "Fusion AI Agent Studio Foundations Associate - Rel 1",
+                "img": "/certifications/oracle_fusion_ai_agent_studio.png",
+                "issuer": "Oracle Cloud"
+            },
+            {
                 "title": "Generative AI Professional 2025",
                 "img": "/certifications/oracle_gen_ai_prof_cert.png",
                 "issuer": "Oracle Cloud"
