@@ -83,7 +83,7 @@
             "title": "StakeUp",
             "category": "Featured",
             "description": "AI-Powered Accountability Platform",
-            "details": "Led a 5-member team as Team Leader and Full Stack Architect.\nBuilt StakeUp during a 24-hour hackathon sprint.\nDesigned a scalable AI-powered accountability platform.\nImplemented ProofIQ image verification.\nImplemented Stake Battles.\nImplemented AI Smart Planner.\nImplemented Virtual Escrow Wallet.\nImplemented Leaderboards.\nImplemented Analytics Dashboard.\nArchitected the complete frontend, backend, database, and AI integration.\nIntegrated Groq Vision API using Llama 3.2 90B Vision for AI-powered task verification.\nBuilt a responsive interface using Tailwind CSS and Framer Motion.\n\nAward: 1st Place \u2014 Syntax2Code Industry Simulation Hackathon 2026\nAdditional: Awarded a 6-month internship opportunity.",
+            "details": "Led a 5-member team as Team Leader and Full Stack Architect.\nBuilt StakeUp during a 24-hour hackathon sprint.\nDesigned a scalable AI-powered accountability platform.\nImplemented ProofIQ image verification.\nImplemented Stake Battles.\nImplemented AI Smart Planner.\nImplemented Virtual Escrow Wallet.\nImplemented Leaderboards.\nImplemented Analytics Dashboard.\nArchitected the complete frontend, backend, database, and AI integration.\nIntegrated Groq Vision API using Llama 3.2 90B Vision for AI-powered task verification.\nBuilt a responsive interface using Tailwind CSS and Framer Motion.\n\nAward: 1st Place — Syntax2Code Industry Simulation Hackathon 2026\nAdditional: Awarded a 6-month internship opportunity.",
             "image": "/projects/stakeup.png",
             "gallery": [],
             "tags": [
@@ -98,7 +98,9 @@
             ],
             "links": {
                 "github": "https://github.com/SaiDheeraj-19/StakeUp"
-            }
+            },
+            "problemStatement": "People often struggle to stay accountable to their personal goals and lose motivation without tangible stakes or impartial verification.",
+            "motivation": "I wanted to create a gamified, high-stakes environment where AI verifies progress objectively, preventing cheating and making goal achievement competitive, engaging, and rewarding."
         },
         {
             "title": "HomeProof",
@@ -120,7 +122,9 @@
             ],
             "links": {
                 "github": "https://github.com/SaiDheeraj-19/HomeProof-APP"
-            }
+            },
+            "problemStatement": "Traditional property inspections are manual, highly prone to human error, and require extensive time to generate accurate structural and safety reports.",
+            "motivation": "I aimed to leverage computer vision (YOLOv8) and generative AI to automate the identification of structural anomalies, drastically reducing inspection time and standardizing safety assessments."
         },
         {
             "title": "Sonic Bridge",
@@ -137,7 +141,9 @@
             ],
             "links": {
                 "github": "https://github.com/SaiDheeraj-19/SonicBridge"
-            }
+            },
+            "problemStatement": "Language barriers in live lectures and professional sessions severely hinder effective communication and learning for non-native speakers.",
+            "motivation": "I built this to provide sub-6-second real-time neural translation over WebSockets, ensuring seamless, low-latency cross-lingual communication in 1-to-many broadcast settings."
         },
         {
             "title": "Smart Attendance System",
@@ -168,7 +174,9 @@
             ],
             "links": {
                 "github": "https://github.com/SaiDheeraj-19/Solvra-SmartAttendance"
-            }
+            },
+            "problemStatement": "Traditional academic attendance tracking is highly vulnerable to proxy attendance, buddy punching, and location spoofing.",
+            "motivation": "To enforce strict academic integrity by combining facial recognition, GPS geofencing, and session-specific QR codes into a single, fraud-resistant 3-factor authentication workflow."
         },
         {
             "title": "ClassSync",
@@ -190,7 +198,9 @@
             ],
             "links": {
                 "github": "https://github.com/SaiDheeraj-19/-CLASSSYNC"
-            }
+            },
+            "problemStatement": "Academic management systems are often fragmented, static, and lack real-time synchronization between students, faculty, and daily schedules.",
+            "motivation": "I wanted a centralized, dynamic platform with live timetables, real-time polling, and automated notifications to vastly streamline campus communication and administration."
         },
         {
             "title": "Wave",
@@ -208,13 +218,15 @@
             ],
             "links": {
                 "github": "https://github.com/SaiDheeraj-19/Wave"
-            }
+            },
+            "problemStatement": "Listening to music with friends online often suffers from synchronization drift, latency, and clunky third-party bot integrations.",
+            "motivation": "I engineered a custom Web Audio API and WebSocket architecture to ensure perfectly synchronized 1-to-many music playback, creating a seamless and immersive social listening experience."
         },
         {
             "title": "Fix It",
             "category": "Additional",
             "description": "Premium POS & Repair Management System",
-            "details": "Full-stack repair lifecycle and POS system.\nRepair workflow: Intake \u2192 In Progress \u2192 Delivered\nSecure storage for device credentials.\nEncrypted PIN/Pattern storage.\nAutomated PDF invoice generation.\nReal-time revenue dashboards.\nPostgreSQL database.\nPrisma ORM.\nRole-Based Access Control.\nAdmin and Staff operations.",
+            "details": "Full-stack repair lifecycle and POS system.\nRepair workflow: Intake → In Progress → Delivered\nSecure storage for device credentials.\nEncrypted PIN/Pattern storage.\nAutomated PDF invoice generation.\nReal-time revenue dashboards.\nPostgreSQL database.\nPrisma ORM.\nRole-Based Access Control.\nAdmin and Staff operations.",
             "image": "/fixit_home.png",
             "gallery": [
                 "/fixit_home.png",
@@ -230,7 +242,9 @@
             ],
             "links": {
                 "github": "https://github.com/SaiDheeraj-19/fix-it-possystem"
-            }
+            },
+            "problemStatement": "Electronic repair shops struggle with tracking complex repair lifecycles, securely managing customer device credentials, and handling invoicing in a unified system.",
+            "motivation": "To provide a premium, end-to-end POS and repair management system with encrypted credential storage, automated PDF invoices, and real-time revenue dashboards tailored for small businesses."
         },
         {
             "title": "Aura",
@@ -250,7 +264,9 @@
             ],
             "links": {
                 "github": "https://github.com/SaiDheeraj-19/Aura"
-            }
+            },
+            "problemStatement": "High-quality, real-time speech-to-text and translation tools are often inaccessible or poorly optimized for South Indian regional languages.",
+            "motivation": "To build an inclusive, multilingual accessibility tool that empowers users who are not fluent in English to easily communicate and consume spoken content in their native regional languages."
         }
     ],
     "profile": {
@@ -267,7 +283,7 @@
         {
             "company": "SYNC AI",
             "role": "AI Engineer",
-            "duration": "August 2026 \u2013 Present",
+            "duration": "August 2026 – Present",
             "workMode": "On-site",
             "product": "Core AI Infrastructure & Intelligent Systems",
             "description": "Building next-generation intelligent systems and architecting scalable AI pipelines.",
@@ -288,9 +304,9 @@
         {
             "company": "RMJ IT SOLUTIONS",
             "role": "Team Lead Intern",
-            "duration": "July 2026 \u2013 Present",
+            "duration": "July 2026 – Present",
             "workMode": "On-site",
-            "product": "MicroIntern \u2014 AI-Powered Skill Assessment & Recruitment Platform",
+            "product": "MicroIntern — AI-Powered Skill Assessment & Recruitment Platform",
             "description": "Technical lead responsible for strategic planning, system architecture, AI integration, backend engineering, database architecture, DevOps, and directing the development cohort.",
             "responsibilities": [
                 "Serving as the technical lead for the MicroIntern development project.",
@@ -322,7 +338,7 @@
         {
             "company": "ROOTEDLABS",
             "role": "Web Development Intern",
-            "duration": "May 2026 \u2013 July 2026",
+            "duration": "May 2026 – July 2026",
             "workMode": "Remote",
             "website": "www.rootedel.com",
             "status": "Completed",
@@ -355,12 +371,12 @@
     "hackathons": [
         {
             "title": "Syntax2Code Industry Simulation Hackathon 2026",
-            "achievement": "1st Place \ud83e\udd47",
+            "achievement": "1st Place 🥇",
             "institution": "G. Pullaiah College of Engineering and Technology (GPCET)",
             "date": "July 10, 2026",
             "role": "Team Lead & Architect",
             "team": "5-person team",
-            "project": "StakeUp \u2014 AI-Powered Accountability Platform",
+            "project": "StakeUp — AI-Powered Accountability Platform",
             "timeframe": "24-hour sprint",
             "description": "Led a 5-member team as Team Leader and Full Stack Architect to win 1st place. Received a 6-month internship opportunity based on technical execution, innovation, and professional presentation.",
             "contributions": [
@@ -386,7 +402,7 @@
         },
         {
             "title": "TechXplore 2026",
-            "achievement": "2nd Prize \ud83e\udd48",
+            "achievement": "2nd Prize 🥈",
             "institution": "G. Pullaiah College of Engineering and Technology (GPCET)",
             "date": "March 31, 2026",
             "description": "Independently developed a software solution, architecting and realizing a fully operational prototype within the intensive hackathon timeframe.",
@@ -399,7 +415,7 @@
         },
         {
             "title": "NEXORA Hackathon 2026",
-            "achievement": "3rd Prize \ud83e\udd49",
+            "achievement": "3rd Prize 🥉",
             "institution": "Ashoka Women's Engineering College",
             "date": "March 25, 2026",
             "description": "Independently developed a software solution.",
