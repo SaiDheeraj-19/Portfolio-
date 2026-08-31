@@ -83,7 +83,7 @@
             "title": "StakeUp",
             "category": "Featured",
             "description": "AI-Powered Accountability Platform",
-            "details": "Led a 5-member team as Team Leader and Full Stack Architect.\nBuilt StakeUp during a 24-hour hackathon sprint.\nDesigned a scalable AI-powered accountability platform.\nImplemented ProofIQ image verification.\nImplemented Stake Battles.\nImplemented AI Smart Planner.\nImplemented Virtual Escrow Wallet.\nImplemented Leaderboards.\nImplemented Analytics Dashboard.\nArchitected the complete frontend, backend, database, and AI integration.\nIntegrated Groq Vision API using Llama 3.2 90B Vision for AI-powered task verification.\nBuilt a responsive interface using Tailwind CSS and Framer Motion.\n\nAward: 1st Place — Syntax2Code Industry Simulation Hackathon 2026\nAdditional: Awarded a 6-month internship opportunity.",
+            "details": "Led a 5-member team as Team Leader and Full Stack Architect.\nBuilt StakeUp during a 24-hour hackathon sprint.\nDesigned a scalable AI-powered accountability platform.\nImplemented ProofIQ image verification.\nImplemented Stake Battles.\nImplemented AI Smart Planner.\nImplemented Virtual Escrow Wallet.\nImplemented Leaderboards.\nImplemented Analytics Dashboard.\nArchitected the complete frontend, backend, database, and AI integration.\nIntegrated Computer Vision API using Llama 3.2 90B Vision for AI-powered task verification.\nBuilt a responsive interface using Tailwind CSS and Framer Motion.\n\nAward: 1st Place — Syntax2Code Industry Simulation Hackathon 2026\nAdditional: Awarded a 6-month internship opportunity.",
             "image": "/projects/stakeup.png",
             "gallery": [],
             "tags": [
@@ -91,7 +91,7 @@
                 "TypeScript",
                 "FastAPI",
                 "PostgreSQL",
-                "Groq Vision API",
+                "Computer Vision",
                 "Tailwind CSS",
                 "Framer Motion",
                 "Supabase"
@@ -394,7 +394,7 @@
                 "TypeScript",
                 "FastAPI",
                 "PostgreSQL",
-                "Groq Vision API",
+                "Computer Vision",
                 "Tailwind CSS",
                 "Framer Motion",
                 "Supabase"
