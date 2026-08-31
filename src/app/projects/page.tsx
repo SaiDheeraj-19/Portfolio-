@@ -21,7 +21,7 @@ export default function ProjectsPage() {
     return (
         <div className="min-h-screen bg-background text-foreground pb-20 overflow-hidden">
             {/* Minimal Header */}
-            <header className="pt-24 pb-12">
+            <header className="pt-24">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
                     <Button variant="ghost" asChild className="mb-12 -ml-4 hover:bg-transparent hover:text-primary">
                         <Link href="/">
@@ -30,7 +30,7 @@ export default function ProjectsPage() {
                         </Link>
                     </Button>
                     
-                    <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 border-b border-neutral-200 pb-10">
+                    <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 pb-10">
                         <h1 className="text-6xl md:text-8xl font-black tracking-tighter leading-none text-neutral-900 uppercase">
                             Selected<br />Works
                         </h1>
@@ -42,7 +42,7 @@ export default function ProjectsPage() {
             </header>
 
             {/* Content Area */}
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl pt-8">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
                 
 
 
