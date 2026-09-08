@@ -65,9 +65,8 @@ export default function CertificationsPage() {
                                 <button
                                     key={category}
                                     onClick={() => setSelectedCategory(category)}
-                                    className="group aspect-square bg-neutral-50 hover:bg-neutral-900 border border-neutral-200 rounded-3xl p-8 flex flex-col items-center justify-center gap-6 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl"
                                 >
-                                    <Folder className="w-24 h-24 text-neutral-300 group-hover:text-primary group-hover:scale-110 transition-all duration-500" />
+                                    <Folder className="w-24 h-24 text-neutral-300 group-hover:text-white group-hover:scale-110 transition-all duration-500" />
                                     <div className="text-center">
                                         <h3 className="text-xl font-black tracking-tight text-neutral-900 group-hover:text-white transition-colors duration-500">
                                             {category}
