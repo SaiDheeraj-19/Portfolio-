@@ -119,13 +119,15 @@ export default function CertificationsPage() {
             <Dialog open={!!selectedPhoto} onOpenChange={(open) => !open && setSelectedPhoto(null)}>
                 <DialogContent className="max-w-5xl bg-neutral-900/95 backdrop-blur-xl border-white/10 p-4 md:p-8 !rounded-3xl w-full h-[90vh] flex flex-col items-center justify-center shadow-2xl [&>button]:hidden">
                     <DialogTitle className="sr-only">Certificate Preview</DialogTitle>
-                    <button
-                        onClick={() => setSelectedPhoto(null)}
-                        className="absolute top-4 right-4 md:top-6 md:right-6 p-3 rounded-full bg-black/50 hover:bg-black text-white border border-white/10 transition-all hover:scale-110 z-50"
-                    >
-                        <span className="sr-only">Close</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
-                    </button>
+                    <div className="absolute top-4 right-4 md:top-6 md:right-6 z-50">
+                        <button
+                            onClick={() => setSelectedPhoto(null)}
+                            className="p-3 rounded-full bg-black/50 hover:bg-black text-white border border-white/10 transition-all hover:scale-110"
+                        >
+                            <span className="sr-only">Close</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
+                        </button>
+                    </div>
                     {selectedPhoto && (
                         <div className="relative w-full h-full">
                             <Image src={selectedPhoto} fill className="object-contain drop-shadow-2xl" alt="Certificate Preview" />
