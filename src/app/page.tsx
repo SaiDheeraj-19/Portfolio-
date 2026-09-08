@@ -169,7 +169,7 @@ export default function Home() {
           {/* Lanyard Strap Removed */}
 
           {/* The Swing Animation Container */}
-          <div className="origin-top animate-swing hover:animate-none transition-all duration-500 ease-out">
+          <div className="origin-top md:animate-swing hover:animate-none transition-all duration-500 ease-out">
             <div className="w-[85vw] max-w-[320px] aspect-[2/3] md:w-[380px] md:h-[550px]">
               <ProfileCard
                 name="Sai Dheeraj"
@@ -179,7 +179,7 @@ export default function Home() {
                 contactText="CONTACT ME"
                 status="OPEN TO WORK"
                 enableTilt={true}
-                enableMobileTilt={true} // Allow tilt on mobile
+                enableMobileTilt={false} // Allow tilt on mobile
                 enableDrag={true}
                 className="bg-neutral-900 border-neutral-800 dark:bg-neutral-100 dark:border-neutral-200 p-1.5 shadow-2xl"
               >
@@ -288,9 +288,9 @@ export default function Home() {
             01
           </div>
 
-          <div className="absolute left-1/2 -translate-x-1/2 bottom-0 flex flex-col items-center gap-2 animate-bounce text-black font-mono hidden md:flex">
+          <div className="absolute left-1/2 -translate-x-1/2 bottom-0 flex flex-col items-center gap-2 animate-bounce text-foreground font-mono">
             <span className="text-[10px] tracking-[0.3em] font-bold">SCROLL</span>
-            <div className="w-[1px] h-12 bg-black" />
+            <div className="w-[1px] h-12 bg-foreground" />
           </div>
 
           <div className="text-right font-mono pointer-events-auto">
