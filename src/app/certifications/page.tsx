@@ -15,6 +15,10 @@ export default function CertificationsPage() {
     const [selectedPhoto, setSelectedPhoto] = useState<string | null>(null)
 
     const categories = Object.keys(portfolio.certificationsData)
+    const totalCertifications = Object.values(portfolio.certificationsData).reduce(
+        (acc: number, curr: any) => acc + curr.length, 
+        0
+    );
 
     return (
         <div className="min-h-screen bg-white text-neutral-900">
@@ -34,7 +38,7 @@ export default function CertificationsPage() {
                     <span className="text-xs font-black tracking-[0.3em] text-neutral-400 uppercase">
                         {selectedCategory 
                             ? `${(portfolio.certificationsData as any)[selectedCategory].length} Credentials` 
-                            : `${categories.length} Categories`}
+                            : `${categories.length} Categories • ${totalCertifications} Certifications`}
                     </span>
                     {selectedCategory && (
                         <button
