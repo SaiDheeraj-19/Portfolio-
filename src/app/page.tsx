@@ -184,10 +184,10 @@ export default function Home() {
                 className="bg-neutral-900 border-neutral-800 dark:bg-neutral-100 dark:border-neutral-200 p-1.5 shadow-2xl"
               >
                 {/* Canvas/Container for 3D Faces */}
-                <div className="relative w-full h-full" style={{ transformStyle: "preserve-3d" }}>
+                <div className="relative w-full h-full" style={{ transformStyle: "preserve-3d", WebkitTransformStyle: "preserve-3d" }}>
 
                   {/* --- FRONT FACE --- */}
-                  <div className="absolute inset-0 w-full h-full" style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden", zIndex: 20 }}>
+                  <div className="absolute inset-0 w-full h-full" style={{ transform: "rotateY(0deg)", backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden", zIndex: 20 }}>
                     <div className="relative w-full h-full rounded-[20px] overflow-hidden bg-[#0a0a0a] border border-white/10 dark:bg-white dark:border-black/10">
                       
                       {/* Noise Texture */}
