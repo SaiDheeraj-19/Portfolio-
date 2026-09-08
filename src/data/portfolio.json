@@ -93,6 +93,13 @@
                 "img": "/certifications/hackerrank_software_engineer.png",
                 "issuer": "HackerRank"
             }
+        ],
+        "OpenCV": [
+            {
+                "title": "OpenCV Bootcamp",
+                "img": "/certifications/opencv_bootcamp.png",
+                "issuer": "OpenCV University"
+            }
         ]
     },
     "projects": [
