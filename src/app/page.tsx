@@ -92,8 +92,16 @@ export default function Home() {
   const [projects, setProjects] = useState<any[]>([])
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [profile, setProfile] = useState<any>(null)
+  const [isMobile, setIsMobile] = useState(false)
 
   // Removed unused useEffect dependency array issues if any, keeping bare minimum
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768)
+    const handleResize = () => setIsMobile(window.innerWidth < 768)
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
   useEffect(() => {
     fetch('/api/portfolio')
       .then(res => res.json())
@@ -180,7 +188,7 @@ export default function Home() {
                 status="OPEN TO WORK"
                 enableTilt={true}
                 enableMobileTilt={false} // Allow tilt on mobile
-                enableDrag={true}
+                enableDrag={!isMobile}
                 className="bg-neutral-900 border-neutral-800 dark:bg-neutral-100 dark:border-neutral-200 p-1.5 shadow-2xl"
               >
                 {/* Canvas/Container for 3D Faces */}
