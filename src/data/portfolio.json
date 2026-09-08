@@ -79,6 +79,11 @@
         ],
         "HackerRank": [
             {
+                "title": "Software Engineer Intern",
+                "img": "/certifications/hackerrank_software_engineer_intern.png",
+                "issuer": "HackerRank"
+            },
+            {
                 "title": "Software Engineer",
                 "img": "/certifications/hackerrank_software_engineer.png",
                 "issuer": "HackerRank"
