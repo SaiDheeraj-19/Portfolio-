@@ -76,6 +76,13 @@
                 "img": "/certifications/anthropic_fluency_students.png",
                 "issuer": "Anthrop\\C"
             }
+        ],
+        "HackerRank": [
+            {
+                "title": "Software Engineer",
+                "img": "/certifications/hackerrank_software_engineer.png",
+                "issuer": "HackerRank"
+            }
         ]
     },
     "projects": [
