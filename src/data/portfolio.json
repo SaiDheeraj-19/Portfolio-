@@ -96,6 +96,11 @@
         ],
         "OpenCV": [
             {
+                "title": "Vision Language Models (VLM) Bootcamp",
+                "img": "/certifications/opencv_vlm_bootcamp.png",
+                "issuer": "OpenCV University"
+            },
+            {
                 "title": "OpenCV Bootcamp",
                 "img": "/certifications/opencv_bootcamp.png",
                 "issuer": "OpenCV University"
